@@ -19,7 +19,7 @@ function querytool_topics_menu() {
     $items['topics'] = array(
         'title' => 'Topics',
         'page callback' => 'querytool_topics',
-        'access arguments' => array('view published content'),
+        'access callback' => TRUE,
     );
     return $items;
 }

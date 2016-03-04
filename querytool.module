@@ -100,7 +100,7 @@ function querytool_preprocess_html(&$variables, $hook)
     $variables['theme_hook_suggestions'][] = 'querytool_html';
 
     $path = drupal_get_path('module','querytool');
-   // dpm($path);
+
     drupal_add_css($path."/css/bootstrap.min.css",array('group' => 999,'weight' => 996));
     drupal_add_css($path."/css/styles.css",array('group' => 999,'weight' => 997));
     drupal_add_css($path."/css/tree.css",array('group' => 999,'weight' => 998));

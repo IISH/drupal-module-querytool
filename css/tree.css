@@ -1,0 +1,79 @@
+#tree{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 799;
+    background-color: rgba(0,0,0,.5);
+}
+
+#tree-container{
+    position: fixed;
+    background-color: #FFF;
+    margin:20px;
+  /*  margin-top:0;*/
+    width: 96%;
+    height: 96%;
+    z-index: 899;
+
+}
+#treeclose{
+    position: fixed;
+    top:20px;
+    right:20px;
+    z-index: 999;
+    font-size: 20px;
+    background-color: #DDD;
+    padding:4px 10px;
+}
+#show-tree{
+    font-size: 20px;
+    right:0;
+    position: absolute;
+    padding:4px 10px;
+    background-color: #DDD;
+}
+
+
+
+
+.node {
+    cursor: pointer;
+}
+
+.overlay{
+    background-color:#EEE;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1px;
+}
+
+.node text {
+    font-size:10px;
+    font-family:sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+.templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+}
+
+.ghostCircle.show{
+    display:block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle{
+    display: none;
+}

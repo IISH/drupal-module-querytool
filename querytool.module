@@ -1,0 +1,223 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function querytool_menu ()
+{
+  $items = array();
+
+  $items['querytool/%'] = array(
+    'title' => 'Topics',
+    'page callback' => 'querytool',
+    'page arguments' => array(1),
+    'access arguments' => array('view published content'),
+  );
+
+  $items['admin/config/system/querytool'] = array(
+    'title' => 'Query Tool',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('querytool_admin_form'),
+    'access arguments' => array('administer querytool'),
+  );
+  $items['admin/config/system/querytool/settings'] = array(
+    'title' => 'Settings',
+    'access arguments' => array('administer querytool'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 1
+  );
+
+  return $items;
+}
+
+
+/**
+ *  Shows the Query Tool Interface
+ */
+function querytool ($arg)
+{
+  return '';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function querytool_theme ()
+{
+  return array(
+    'querytool_page' => array(
+      'template' => 'theme/querytool-page',
+      'render element' => 'page'
+    ),
+    'querytool_html' => array(
+      'template' => 'theme/querytool-html',
+      'render element' => 'html'
+    ),
+  );
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function querytool_js_alter(&$javascript) {
+
+  if (arg(0) == "querytool") {
+
+//    unset($javascript["sites/all/modules/contrib/admin_menu/admin_menu.js"]);
+
+    foreach($javascript as $path=>$file){
+      if(strpos($path,"querytool") == 0 && $file["type"] !== "inline"){
+        unset($javascript[$path]);
+      }
+    }
+
+  }
+}
+
+
+/**
+ * Implements hook_js_alter().
+ */
+function querytool_css_alter(&$css) {
+  if (arg(0) == "querytool") {
+    foreach($css as $path=>$file){
+      if(strpos($path,"querytool") == 0 ){
+     //   unset($css[$path]);
+      //  unset($css[$path]);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function querytool_preprocess_html(&$variables, $hook)
+{
+  if (arg(0) == "querytool") {
+    $variables['theme_hook_suggestions'][] = 'querytool_html';
+
+    $path = drupal_get_path('module','querytool');
+   // dpm($path);
+    drupal_add_css($path."/css/bootstrap.min.css",array('group' => 999,'weight' => 996));
+    drupal_add_css($path."/css/styles.css",array('group' => 999,'weight' => 997));
+    drupal_add_css($path."/css/tree.css",array('group' => 999,'weight' => 998));
+    drupal_add_css($path."/css/multi-select.css",array('group' => 999,'weight' => 999));
+    drupal_add_css("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",array('group' => 999,"type"=>"external",'weight' => 999));
+
+
+    drupal_add_js($path."/js/vendor/jquery-1.12.0.min.js");
+    drupal_add_js($path."/js/vendor/jquery.nicescroll.min.js");
+    drupal_add_js($path."/js/vendor/jquery.multi-select.js");
+    drupal_add_js($path."/js/vendor/jquery.quicksearch.js");
+
+    drupal_add_js($path."/js/vendor/underscore-min.js");
+    drupal_add_js($path."/js/vendor/bootstrap.min.js");
+    drupal_add_js($path."/js/vendor/backbone-min.js");
+    drupal_add_js($path."/js/vendor/d3.min.js");
+
+
+    drupal_add_js($path."/js/general.js");
+    drupal_add_js($path."/js/models/Years.js");
+    drupal_add_js($path."/js/models/Regions.js");
+    drupal_add_js($path."/js/models/Classification.js");
+    drupal_add_js($path."/js/models/QuerySettings.js");
+
+    drupal_add_js($path."/js/collections/ClassListCollection.js");
+
+    drupal_add_js($path."/js/views/QueryModuleView.js");
+    drupal_add_js($path."/js/views/QuerySettingsView.js");
+    drupal_add_js($path."/js/views/TopicSelector.js");
+    drupal_add_js($path."/js/views/RegionSelector.js");
+    drupal_add_js($path."/js/views/YearSelector.js");
+    drupal_add_js($path."/js/views/ClassModeSelector.js");
+    drupal_add_js($path."/js/views/ClassBoxView.js");
+    drupal_add_js($path."/js/views/Connector.js");
+    drupal_add_js($path."/js/views/DataTreeView.js");
+    drupal_add_js($path."/js/views/ResultView.js");
+
+    $term = taxonomy_term_load(arg(1));
+    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+
+    drupal_add_js("var datatype = '".$datatype."';",array('type'=>'inline','scope' => 'footer', 'weight' => 3));
+    drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
+    drupal_add_js($path."/js/dndTree.js", array('scope' => 'footer', 'weight' => 5));
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function querytool_preprocess_page (&$variables, $hook)
+{
+  if (arg(0) == "querytool") {
+    $term = taxonomy_term_load(arg(1));
+    $variables['theme_hook_suggestions'][] = 'querytool_page';
+    $variables['title'] = t($term->name);
+  }
+
+  $variables["url"] = 'test';
+}
+
+/**
+ * Implements hook_form().
+ *
+ * Provides settings form.
+ */
+function querytool_admin_form ($form, &$form_state)
+{
+  $api_url = variable_get('querytool_api_url');
+  $form['querytool_api_url'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $api_url,
+    '#title' => t('Enter base API url'),
+  );
+  if ($api_url) $form['querytool_api_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
+
+  $import_url = variable_get('querytool_import_url');
+  $form['querytool_import_url'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $import_url,
+    '#title' => t('Enter API url for topics'),
+  );
+  if ($import_url) $form['querytool_import_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Save',
+  );
+  return $form;
+}
+
+
+/**
+ * Implements hook_form_submit().
+ *
+ * Stores settings in variables
+ */
+function querytool_admin_form_submit ($form, $form_state)
+{
+  variable_set('querytool_api_url', $form_state['values']['querytool_api_url']);
+  variable_set('querytool_import_url', $form_state['values']['querytool_import_url']);
+
+  $message = "Saved.";
+  drupal_set_message(check_plain($message), 'status');
+}
+
+/**
+ * Implements hook_permission().
+ */
+function querytool_permission ()
+{
+  return array(
+    'administer querytool' => array(
+      'title' => t('Administer Query Tool'),
+    ),
+  );
+}
+
+
+?>

@@ -1,0 +1,190 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function querytool_topics_menu() {
+    $items = array();
+
+    $items['admin/config/system/querytool/import'] = array(
+        'title' => 'Import',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('querytool_topics_import_form'),
+        'access arguments' => array('administer querytool'),
+        'type' => MENU_LOCAL_TASK,
+        'weight'=>2
+    );
+
+    $items['topics'] = array(
+        'title' => 'Topics',
+        'page callback' => 'querytool_topics',
+        'access arguments' => array('view published content'),
+    );
+    return $items;
+}
+
+
+/**
+ * Lists topics
+ */
+function querytool_topics(){
+
+    // TODO: proper templating
+
+    // Adds the library making it available for use.
+    drupal_add_css(drupal_get_path('module', 'querytool') . '/css/topics.css');
+    drupal_add_library('system', 'ui.tabs');
+
+    drupal_add_js('jQuery(document).ready(function () {      jQuery( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    jQuery( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" ); });',   array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+
+    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+    $tree = taxonomy_get_tree($vid,0,null,true);
+
+    $tabs   = "";
+    $pages  = "";
+    $subtopics = "";
+    $i = 0;
+
+    foreach ($tree as $term) {
+
+        $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+        $label   = $datatype.". ".$term->name;
+
+        if($term->depth == 0){
+            // close topic
+            if($i>0){
+                $pages .= $subtopics."</div>";
+                $subtopics = "";
+            }
+            $tabs   .= "<li><a href='#tabs-".$term->tid."'>".$label."</a></li>";
+            $pages  .= "<div id='tabs-".$term->tid."'><h2>".$label."</h2>".$term->description."<br><br><br>";
+        }else{
+            $subtopics .= $datatype.".  <a href='/querytool/".$term->tid."' target='_blank'>".$term->name."</a><br>";
+            if($term->description)  $subtopics .= "<div class='subtopic-description'>".$term->description."</div>";
+            $subtopics .= "<br>";
+        }
+
+        $i++;
+    }
+    // close last topic
+    $pages .= "</div>";
+
+    return "<div id='tabs'><ul>".$tabs."</ul>".$pages."</div>";
+}
+
+/**
+ * Implements hook_form().
+ *
+ * Provides import confirm button.
+ */
+function querytool_topics_import_form($form, &$form_state){
+  //  querytool_topics_import();
+    //dpm($form_state);
+    if(!isset($form_state['storage']['confirm'])) {
+        $form['submit_button'] = array(
+            '#type' => 'submit',
+            '#value' => t('Import topics from API'),
+        );
+    }else{
+        return confirm_form($form,"Import",current_path(),t("Import will import new topics and updates existing topics, are you sure?"));
+    }
+
+    return $form;
+}
+
+/**
+ * Implements hook_form_submit().
+ *
+ * Checks confirmation
+ */
+function querytool_topics_import_form_submit($form, &$form_state){
+
+    if(!isset($form_state['storage']['confirm'])) {
+        $form_state['storage']['confirm'] = TRUE;
+        $form_state['rebuild'] = TRUE;
+    } else {
+        $output = querytool_topics_import();
+        drupal_set_message($output);
+    }
+}
+
+/**
+*   Imports topics, updates existing based on topic_id and adds new ones
+*/
+function querytool_topics_import(){
+
+    // Load topic JSON data
+    $url = variable_get('querytool_import_url');
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    $topics = json_decode($result);
+    $topics = $topics->data;
+
+    // Get vid
+    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+    $tree = taxonomy_get_tree($vid,0,null,true);
+
+    $indexed_terms = array();
+
+    foreach ($tree as $term) {
+        dpm($term);
+       $indexed_terms[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
+       taxonomy_term_delete($term->tid);
+
+    }
+
+    // sort topics on datatype to be sure main topics are loaded first and in right order: "1", "1.01", "1.02" etc...
+    usort($topics, function($a, $b){
+        return strcmp($a->datatype, $b->datatype);
+    });
+
+    $mainterm_ids = array();
+    $output = "";
+    $new = 0;
+    $updated = 0;
+
+    $weight = 0;
+    foreach($topics as $topic) { //foreach element in $arr
+
+        if(!array_key_exists($topic->topic_id,$indexed_terms)){
+            $output .=  $topic->datatype." - ".$topic->topic_name. " inserted<br>";
+
+            $term = (object) array(
+                'name' => $topic->topic_name,
+                'vid' => $vid,
+                'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
+                'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))) ,
+                'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
+                'weight' => $weight
+            );
+            $new++;
+
+            if($topic->topic_root !== 0){
+                $term->parent = $mainterm_ids[$topic->topic_root];
+            }
+
+        }else{
+            $output .=  $topic->datatype." - ".$topic->topic_name. " updated<br>";
+            $term = $indexed_terms[$topic->topic_id];
+            $term->name = $topic->topic_name;
+            $term->weight = $weight;
+            $updated++;
+        }
+
+        taxonomy_term_save($term);
+
+        if($topic->topic_root == 0) $mainterm_ids[$topic->datatype] = $term->tid;
+
+        $weight++;
+    }
+    $output .= $updated." terms updated, ".$new." new terms inserted. ";
+
+    return $output;
+}

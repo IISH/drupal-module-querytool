@@ -1,0 +1,3865 @@
+{
+    "regions": [
+        {
+            "active": 1, 
+            "region_code": "1795_02", 
+            "region_description": "Брацлавская губерния", 
+            "region_id": 2, 
+            "region_name": "Брацлавская губерния", 
+            "region_name_eng": "Bratslavsk governorate", 
+            "region_ord": 179502
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_03", 
+            "region_description": "Виленская губерния", 
+            "region_id": 3, 
+            "region_name": "Виленская губерния", 
+            "region_name_eng": "Vilna governorate", 
+            "region_ord": 179503
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_04", 
+            "region_description": "Владимирская губерния", 
+            "region_id": 4, 
+            "region_name": "Владимирская губерния", 
+            "region_name_eng": "Vladimir governorate", 
+            "region_ord": 179504
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_05", 
+            "region_description": "Вознесенская губерния", 
+            "region_id": 5, 
+            "region_name": "Вознесенская губерния", 
+            "region_name_eng": "Voznesensk governorate", 
+            "region_ord": 179505
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_06", 
+            "region_description": "Вологодская губерния", 
+            "region_id": 6, 
+            "region_name": "Вологодская губерния", 
+            "region_name_eng": "Vologda governorate", 
+            "region_ord": 179506
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_08", 
+            "region_description": "Воронежская губерния", 
+            "region_id": 8, 
+            "region_name": "Воронежская губерния", 
+            "region_name_eng": "Voronezh governorate", 
+            "region_ord": 179508
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_09", 
+            "region_description": "Выборгская губерния", 
+            "region_id": 9, 
+            "region_name": "Выборгская губерния", 
+            "region_name_eng": "Vyborg governorate", 
+            "region_ord": 179509
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_10", 
+            "region_description": "Вятская губерния", 
+            "region_id": 10, 
+            "region_name": "Вятская губерния", 
+            "region_name_eng": "Viatka governorate", 
+            "region_ord": 179510
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_12", 
+            "region_description": "Земля войска Донского", 
+            "region_id": 12, 
+            "region_name": "Земля войска Донского", 
+            "region_name_eng": "Don Cossack host lands", 
+            "region_ord": 179512
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_13", 
+            "region_description": "Иркутская губерния", 
+            "region_id": 13, 
+            "region_name": "Иркутская губерния", 
+            "region_name_eng": "Irkutsk governorate", 
+            "region_ord": 179513
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_14", 
+            "region_description": "Кавказская область Астраханской губернии", 
+            "region_id": 14, 
+            "region_name": "Кавказская область Астраханской губернии", 
+            "region_name_eng": "Caucasus region of Astrakhan governorate", 
+            "region_ord": 179514
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_15", 
+            "region_description": "Казанская губерния", 
+            "region_id": 15, 
+            "region_name": "Казанская губерния", 
+            "region_name_eng": "Kazan governorate", 
+            "region_ord": 179515
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_16", 
+            "region_description": "Калужская губерния", 
+            "region_id": 16, 
+            "region_name": "Калужская губерния", 
+            "region_name_eng": "Kaluga governorate", 
+            "region_ord": 179516
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_17", 
+            "region_description": "Киевская губерния", 
+            "region_id": 17, 
+            "region_name": "Киевская губерния", 
+            "region_name_eng": "Kiev governorate", 
+            "region_ord": 179517
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_18", 
+            "region_description": "Колыванская губерния", 
+            "region_id": 18, 
+            "region_name": "Колыванская губерния", 
+            "region_name_eng": "Kolyvan governorate", 
+            "region_ord": 179518
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_19", 
+            "region_description": "Костромская губерния", 
+            "region_id": 19, 
+            "region_name": "Костромская губерния", 
+            "region_name_eng": "Kostroma governorate", 
+            "region_ord": 179519
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_21", 
+            "region_description": "Курская губерния", 
+            "region_id": 20, 
+            "region_name": "Курская губерния", 
+            "region_name_eng": "Kursk governorate", 
+            "region_ord": 179521
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_22", 
+            "region_description": "Минская губерния", 
+            "region_id": 21, 
+            "region_name": "Минская губерния", 
+            "region_name_eng": "Minsk governorate", 
+            "region_ord": 179522
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_24", 
+            "region_description": "Московская губерния", 
+            "region_id": 23, 
+            "region_name": "Московская губерния", 
+            "region_name_eng": "Moscow governorate", 
+            "region_ord": 179524
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_25", 
+            "region_description": "Нижегородская губерния", 
+            "region_id": 24, 
+            "region_name": "Нижегородская губерния", 
+            "region_name_eng": "Nizhny Novgorod governorate", 
+            "region_ord": 179525
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_26", 
+            "region_description": "Новгородско-Северская губерния", 
+            "region_id": 25, 
+            "region_name": "Новгородско-Северская губерния", 
+            "region_name_eng": "Novgorod-Seversk governorate", 
+            "region_ord": 179526
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_27", 
+            "region_description": "Новгородская губерния", 
+            "region_id": 26, 
+            "region_name": "Новгородская губерния", 
+            "region_name_eng": "Novgorod governorate", 
+            "region_ord": 179527
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_28", 
+            "region_description": "Олонецкая губерния", 
+            "region_id": 27, 
+            "region_name": "Олонецкая губерния", 
+            "region_name_eng": "Olonets governorate", 
+            "region_ord": 179528
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_29", 
+            "region_description": "Орловская губерния", 
+            "region_id": 28, 
+            "region_name": "Орловская губерния", 
+            "region_name_eng": "Orel governorate", 
+            "region_ord": 179529
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_31", 
+            "region_description": "Пермская губерния", 
+            "region_id": 30, 
+            "region_name": "Пермская губерния", 
+            "region_name_eng": "Perm governorate", 
+            "region_ord": 179531
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_32", 
+            "region_description": "Подольская губерния", 
+            "region_id": 31, 
+            "region_name": "Подольская губерния", 
+            "region_name_eng": "Podolsk governorate", 
+            "region_ord": 179532
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_33", 
+            "region_description": "Полоцкая губерния", 
+            "region_id": 32, 
+            "region_name": "Полоцкая губерния", 
+            "region_name_eng": "Polotsk governorate", 
+            "region_ord": 179533
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_34", 
+            "region_description": "Псковская губерния", 
+            "region_id": 33, 
+            "region_name": "Псковская губерния", 
+            "region_name_eng": "Pskov governorate", 
+            "region_ord": 179534
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_35", 
+            "region_description": "Ревельская губерния", 
+            "region_id": 34, 
+            "region_name": "Ревельская губерния", 
+            "region_name_eng": "Reval governorate", 
+            "region_ord": 179535
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_36", 
+            "region_description": "Рижская губерния", 
+            "region_id": 35, 
+            "region_name": "Рижская губерния", 
+            "region_name_eng": "Riga governorate", 
+            "region_ord": 179536
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_38", 
+            "region_description": "Санкт-Петербургская губерния", 
+            "region_id": 37, 
+            "region_name": "Санкт-Петербургская губерния", 
+            "region_name_eng": "St. Petersburg governorate", 
+            "region_ord": 179538
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_39", 
+            "region_description": "Саратовская губерния", 
+            "region_id": 38, 
+            "region_name": "Саратовская губерния", 
+            "region_name_eng": "Saratov governorate", 
+            "region_ord": 179539
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_40", 
+            "region_description": "Симбирская губерния", 
+            "region_id": 39, 
+            "region_name": "Симбирская губерния", 
+            "region_name_eng": "Simbirsk governorate", 
+            "region_ord": 179540
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_41", 
+            "region_description": "Слонимское наместничество", 
+            "region_id": 40, 
+            "region_name": "Слонимское наместничество", 
+            "region_name_eng": "Slonim namestnichestvo", 
+            "region_ord": 179541
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_42", 
+            "region_description": "Смоленская губерния", 
+            "region_id": 41, 
+            "region_name": "Смоленская губерния", 
+            "region_name_eng": "Smolensk governorate", 
+            "region_ord": 179542
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_43", 
+            "region_description": "Тамбовская губерния", 
+            "region_id": 43, 
+            "region_name": "Тамбовская губерния", 
+            "region_name_eng": "Tambov governorate", 
+            "region_ord": 179543
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_44", 
+            "region_description": "Тверская губерния", 
+            "region_id": 44, 
+            "region_name": "Тверская губерния", 
+            "region_name_eng": "Tver governorate", 
+            "region_ord": 179544
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_45", 
+            "region_description": "Тобольская губерния", 
+            "region_id": 45, 
+            "region_name": "Тобольская губерния", 
+            "region_name_eng": "Tobolskk governorate", 
+            "region_ord": 179545
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_46", 
+            "region_description": "Тульская губерния", 
+            "region_id": 46, 
+            "region_name": "Тульская губерния", 
+            "region_name_eng": "Tula governorate", 
+            "region_ord": 179546
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_47", 
+            "region_description": "Уфимское наместничество", 
+            "region_id": 47, 
+            "region_name": "Уфимское наместничество", 
+            "region_name_eng": "Ufa namestnichestvo", 
+            "region_ord": 179547
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_49", 
+            "region_description": "Черниговская губерния", 
+            "region_id": 49, 
+            "region_name": "Черниговская губерния", 
+            "region_name_eng": "Chernigov governorate", 
+            "region_ord": 179549
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_50", 
+            "region_description": "Ярославская губерния", 
+            "region_id": 50, 
+            "region_name": "Ярославская губерния", 
+            "region_name_eng": "Yaroslavl governorate", 
+            "region_ord": 179550
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_51", 
+            "region_description": "Курляндская губерния", 
+            "region_id": 51, 
+            "region_name": "Курляндская губерния", 
+            "region_name_eng": "Kurland governorate", 
+            "region_ord": 179551
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_01", 
+            "region_description": "Або-Бьернеборгская губерния", 
+            "region_id": 52, 
+            "region_name": "Або-Бьернеборгская губерния", 
+            "region_name_eng": "Abo-Björneborg governorate", 
+            "region_ord": 185801
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_02", 
+            "region_description": "Амурская область", 
+            "region_id": 53, 
+            "region_name": "Амурская область", 
+            "region_name_eng": "Amur region", 
+            "region_ord": 185802
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_03", 
+            "region_description": "Архангельская губерния", 
+            "region_id": 54, 
+            "region_name": "Архангельская губерния", 
+            "region_name_eng": "Arkhangelsk governorate", 
+            "region_ord": 185803
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_05", 
+            "region_description": "Бессарабская губерния", 
+            "region_id": 56, 
+            "region_name": "Бессарабская губерния", 
+            "region_name_eng": "Bessarabia governorate", 
+            "region_ord": 185805
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_06", 
+            "region_description": "Вазаская губерния", 
+            "region_id": 57, 
+            "region_name": "Вазаская губерния", 
+            "region_name_eng": "Vasa governorate", 
+            "region_ord": 185806
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_07", 
+            "region_description": "Варшавская губерния", 
+            "region_id": 58, 
+            "region_name": "Варшавская губерния", 
+            "region_name_eng": "Warsaw governorate", 
+            "region_ord": 185807
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_09", 
+            "region_description": "Витебская губерния", 
+            "region_id": 60, 
+            "region_name": "Витебская губерния", 
+            "region_name_eng": "Vitebsk governorate", 
+            "region_ord": 185809
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_10", 
+            "region_description": "Владимирская губерния", 
+            "region_id": 61, 
+            "region_name": "Владимирская губерния", 
+            "region_name_eng": "Vladimir governorate", 
+            "region_ord": 185810
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_11", 
+            "region_description": "Вологодская губерния", 
+            "region_id": 62, 
+            "region_name": "Вологодская губерния", 
+            "region_name_eng": "Vologda governorate", 
+            "region_ord": 185811
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_12", 
+            "region_description": "Волынская губерния", 
+            "region_id": 63, 
+            "region_name": "Волынская губерния", 
+            "region_name_eng": "Volhynia governorate", 
+            "region_ord": 185812
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_14", 
+            "region_description": "Выборгская губерния", 
+            "region_id": 65, 
+            "region_name": "Выборгская губерния", 
+            "region_name_eng": "Vyborg governorate", 
+            "region_ord": 185814
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_15", 
+            "region_description": "Вятская губерния", 
+            "region_id": 66, 
+            "region_name": "Вятская губерния", 
+            "region_name_eng": "Viatka governorate", 
+            "region_ord": 185815
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_16", 
+            "region_description": "Гродненская губерния", 
+            "region_id": 67, 
+            "region_name": "Гродненская губерния", 
+            "region_name_eng": "Grodno governorate", 
+            "region_ord": 185816
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_17", 
+            "region_description": "Дербентская губерния", 
+            "region_id": 68, 
+            "region_name": "Дербентская губерния", 
+            "region_name_eng": "Derbent governorate", 
+            "region_ord": 185817
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_18", 
+            "region_description": "Екатеринославская губерния", 
+            "region_id": 69, 
+            "region_name": "Екатеринославская губерния", 
+            "region_name_eng": "Yekaterinoslav governorate", 
+            "region_ord": 185818
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_19", 
+            "region_description": "Енисейская губерния", 
+            "region_id": 70, 
+            "region_name": "Енисейская губерния", 
+            "region_name_eng": "Enisei governorate", 
+            "region_ord": 185819
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_21", 
+            "region_description": "Иркутская губерния", 
+            "region_id": 72, 
+            "region_name": "Иркутская губерния", 
+            "region_name_eng": "Irkutsk governorate", 
+            "region_ord": 185821
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_22", 
+            "region_description": "Казанская губерния", 
+            "region_id": 73, 
+            "region_name": "Казанская губерния", 
+            "region_name_eng": "Kazan governorate", 
+            "region_ord": 185822
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_23", 
+            "region_description": "Калишская губерния", 
+            "region_id": 74, 
+            "region_name": "Калишская губерния", 
+            "region_name_eng": "Kalisz governorate", 
+            "region_ord": 185823
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_24", 
+            "region_description": "Калужская губерния", 
+            "region_id": 75, 
+            "region_name": "Калужская губерния", 
+            "region_name_eng": "Kaluga governorate", 
+            "region_ord": 185824
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_25", 
+            "region_description": "Келецкая губерния", 
+            "region_id": 76, 
+            "region_name": "Келецкая губерния", 
+            "region_name_eng": "Kielce governorate", 
+            "region_ord": 185825
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_26", 
+            "region_description": "Киевская губерния", 
+            "region_id": 77, 
+            "region_name": "Киевская губерния", 
+            "region_name_eng": "Kiev governorate", 
+            "region_ord": 185826
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_27", 
+            "region_description": "Ковенская губерния", 
+            "region_id": 78, 
+            "region_name": "Ковенская губерния", 
+            "region_name_eng": "Kovno governorate", 
+            "region_ord": 185827
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_29", 
+            "region_description": "Куопиоская губерния", 
+            "region_id": 80, 
+            "region_name": "Куопиоская губерния", 
+            "region_name_eng": "Kuopio governorate", 
+            "region_ord": 185829
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_30", 
+            "region_description": "Курляндская губерния", 
+            "region_id": 81, 
+            "region_name": "Курляндская губерния", 
+            "region_name_eng": "Kurland governorate", 
+            "region_ord": 185830
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_31", 
+            "region_description": "Курская губерния", 
+            "region_id": 82, 
+            "region_name": "Курская губерния", 
+            "region_name_eng": "Kursk governorate", 
+            "region_ord": 185831
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_32", 
+            "region_description": "Кутаисская губерния", 
+            "region_id": 83, 
+            "region_name": "Кутаисская губерния", 
+            "region_name_eng": "Kutaisi governorate", 
+            "region_ord": 185832
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_33", 
+            "region_description": "Лифляндская губерния", 
+            "region_id": 84, 
+            "region_name": "Лифляндская губерния", 
+            "region_name_eng": "Lifland governorate", 
+            "region_ord": 185833
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_34", 
+            "region_description": "Ломжинская губерния", 
+            "region_id": 85, 
+            "region_name": "Ломжинская губерния", 
+            "region_name_eng": "Łomża governorate", 
+            "region_ord": 185834
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_35", 
+            "region_description": "Люблинская губерния", 
+            "region_id": 86, 
+            "region_name": "Люблинская губерния", 
+            "region_name_eng": "Lublin governorate", 
+            "region_ord": 185835
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_36", 
+            "region_description": "Минская губерния", 
+            "region_id": 87, 
+            "region_name": "Минская губерния", 
+            "region_name_eng": "Minsk governorate", 
+            "region_ord": 185836
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_38", 
+            "region_description": "Московская губерния", 
+            "region_id": 89, 
+            "region_name": "Московская губерния", 
+            "region_name_eng": "Moscow governorate", 
+            "region_ord": 185838
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_39", 
+            "region_description": "Нижегородская губерния", 
+            "region_id": 90, 
+            "region_name": "Нижегородская губерния", 
+            "region_name_eng": "Nizhny Novgorod governorate", 
+            "region_ord": 185839
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_40", 
+            "region_description": "Новгородская губерния", 
+            "region_id": 91, 
+            "region_name": "Новгородская губерния", 
+            "region_name_eng": "Novgorod governorate", 
+            "region_ord": 185840
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_41", 
+            "region_description": "Нюландская губерния", 
+            "region_id": 92, 
+            "region_name": "Нюландская губерния", 
+            "region_name_eng": "Nyland governorate", 
+            "region_ord": 185841
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_43", 
+            "region_description": "Область сибирских киргизов", 
+            "region_id": 94, 
+            "region_name": "Область сибирских киргизов", 
+            "region_name_eng": "Siberian Kyrgyz region", 
+            "region_ord": 185843
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_44", 
+            "region_description": "Олонецкая губерния", 
+            "region_id": 95, 
+            "region_name": "Олонецкая губерния", 
+            "region_name_eng": "Olonets governorate", 
+            "region_ord": 185844
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_45", 
+            "region_description": "Оренбургская губерния", 
+            "region_id": 96, 
+            "region_name": "Оренбургская губерния", 
+            "region_name_eng": "Orenburg governorate", 
+            "region_ord": 185845
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_46", 
+            "region_description": "Орловская губерния", 
+            "region_id": 97, 
+            "region_name": "Орловская губерния", 
+            "region_name_eng": "Orel governorate", 
+            "region_ord": 185846
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_47", 
+            "region_description": "Пензенская губерния", 
+            "region_id": 98, 
+            "region_name": "Пензенская губерния", 
+            "region_name_eng": "Penza governorate", 
+            "region_ord": 185847
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_48", 
+            "region_description": "Пермская губерния", 
+            "region_id": 99, 
+            "region_name": "Пермская губерния", 
+            "region_name_eng": "Perm governorate", 
+            "region_ord": 185848
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_49", 
+            "region_description": "Петроковская губерния", 
+            "region_id": 100, 
+            "region_name": "Петроковская губерния", 
+            "region_name_eng": "Piotrków governorate", 
+            "region_ord": 185849
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_50", 
+            "region_description": "Плоцкая губерния", 
+            "region_id": 101, 
+            "region_name": "Плоцкая губерния", 
+            "region_name_eng": "Płock governorate", 
+            "region_ord": 185850
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_52", 
+            "region_description": "Полтавская губерния", 
+            "region_id": 103, 
+            "region_name": "Полтавская губерния", 
+            "region_name_eng": "Poltava governorate", 
+            "region_ord": 185852
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_53", 
+            "region_description": "Приморская область", 
+            "region_id": 104, 
+            "region_name": "Приморская область", 
+            "region_name_eng": "Primorskaya region", 
+            "region_ord": 185853
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_54", 
+            "region_description": "Псковская губерния", 
+            "region_id": 105, 
+            "region_name": "Псковская губерния", 
+            "region_name_eng": "Pskov governorate", 
+            "region_ord": 185854
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_55", 
+            "region_description": "Радомская губерния", 
+            "region_id": 106, 
+            "region_name": "Радомская губерния", 
+            "region_name_eng": "Radom governorate", 
+            "region_ord": 185855
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_56", 
+            "region_description": "Рязанская губерния", 
+            "region_id": 107, 
+            "region_name": "Рязанская губерния", 
+            "region_name_eng": "Ryazan governorate", 
+            "region_ord": 185856
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_57", 
+            "region_description": "Самарская губерния", 
+            "region_id": 108, 
+            "region_name": "Самарская губерния", 
+            "region_name_eng": "Samara governorate", 
+            "region_ord": 185857
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_59", 
+            "region_description": "Санкт-Петербургская губерния", 
+            "region_id": 110, 
+            "region_name": "Санкт-Петербургская губерния", 
+            "region_name_eng": "St. Petersburg governorate", 
+            "region_ord": 185859
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_60", 
+            "region_description": "Саратовская губерния", 
+            "region_id": 111, 
+            "region_name": "Саратовская губерния", 
+            "region_name_eng": "Saratov governorate", 
+            "region_ord": 185860
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_61", 
+            "region_description": "Седлецкая губерния", 
+            "region_id": 112, 
+            "region_name": "Седлецкая губерния", 
+            "region_name_eng": "Siedlce governorate", 
+            "region_ord": 185861
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_62", 
+            "region_description": "Семипалатинская область", 
+            "region_id": 113, 
+            "region_name": "Семипалатинская область", 
+            "region_name_eng": "Semipalatinsk governorate", 
+            "region_ord": 185862
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_63", 
+            "region_description": "Симбирская губерния", 
+            "region_id": 114, 
+            "region_name": "Симбирская губерния", 
+            "region_name_eng": "Simbirsk governorate", 
+            "region_ord": 185863
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_64", 
+            "region_description": "Смоленская губерния", 
+            "region_id": 115, 
+            "region_name": "Смоленская губерния", 
+            "region_name_eng": "Smolensk governorate", 
+            "region_ord": 185864
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_66", 
+            "region_description": "Сувалкская губерния", 
+            "region_id": 117, 
+            "region_name": "Сувалкская губерния", 
+            "region_name_eng": "Suwałki governorate", 
+            "region_ord": 185866
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_93", 
+            "region_description": "Тобольский пеший батальон", 
+            "region_id": 144, 
+            "region_name": "Тобольский пеший батальон", 
+            "region_name_eng": null, 
+            "region_ord": 185893
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_94", 
+            "region_description": "Тобольский конный казачьий полк", 
+            "region_id": 145, 
+            "region_name": "Тобольский конный казачьий полк", 
+            "region_name_eng": null, 
+            "region_ord": 185894
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_95", 
+            "region_description": "Иркутский конный казачьий полк", 
+            "region_id": 146, 
+            "region_name": "Иркутский конный казачьий полк", 
+            "region_name_eng": null, 
+            "region_ord": 185895
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_96", 
+            "region_description": "Енисейский конный казачьий полк", 
+            "region_id": 147, 
+            "region_name": "Енисейский конный казачьий полк", 
+            "region_name_eng": null, 
+            "region_ord": 185896
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_69", 
+            "region_description": "Тамбовская губерния", 
+            "region_id": 120, 
+            "region_name": "Тамбовская губерния", 
+            "region_name_eng": "Tambov governorate", 
+            "region_ord": 185869
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_70", 
+            "region_description": "Тверская губерния", 
+            "region_id": 121, 
+            "region_name": "Тверская губерния", 
+            "region_name_eng": "Tver governorate", 
+            "region_ord": 185870
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_71", 
+            "region_description": "Тифлисская губерния", 
+            "region_id": 122, 
+            "region_name": "Тифлисская губерния", 
+            "region_name_eng": "Tiflis governorate", 
+            "region_ord": 185871
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_72", 
+            "region_description": "Тобольская губерния", 
+            "region_id": 123, 
+            "region_name": "Тобольская губерния", 
+            "region_name_eng": "Tobolsk governorate", 
+            "region_ord": 185872
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_73", 
+            "region_description": "Томская губерния", 
+            "region_id": 124, 
+            "region_name": "Томская губерния", 
+            "region_name_eng": "Tomsk governorate", 
+            "region_ord": 185873
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_74", 
+            "region_description": "Тульская губерния", 
+            "region_id": 125, 
+            "region_name": "Тульская губерния", 
+            "region_name_eng": "Tula governorate", 
+            "region_ord": 185874
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_75", 
+            "region_description": "Улеаборгская губерния", 
+            "region_id": 126, 
+            "region_name": "Улеаборгская губерния", 
+            "region_name_eng": "Oulu governorate", 
+            "region_ord": 185875
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_77", 
+            "region_description": "Херсонская губерния", 
+            "region_id": 128, 
+            "region_name": "Херсонская губерния", 
+            "region_name_eng": "Kherson governorate", 
+            "region_ord": 185877
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_78", 
+            "region_description": "Черниговская губерния", 
+            "region_id": 129, 
+            "region_name": "Черниговская губерния", 
+            "region_name_eng": "Chernigov governorate", 
+            "region_ord": 185878
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_79", 
+            "region_description": "Шемахинская губерния", 
+            "region_id": 130, 
+            "region_name": "Шемахинская губерния", 
+            "region_name_eng": "Shamakha governorate", 
+            "region_ord": 185879
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_80", 
+            "region_description": "Эриванская губерния", 
+            "region_id": 131, 
+            "region_name": "Эриванская губерния", 
+            "region_name_eng": "Erevan governorate", 
+            "region_ord": 185880
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_81", 
+            "region_description": "Эстляндская губерния", 
+            "region_id": 132, 
+            "region_name": "Эстляндская губерния", 
+            "region_name_eng": "Estonia governorate", 
+            "region_ord": 185881
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_82", 
+            "region_description": "Якутская область", 
+            "region_id": 133, 
+            "region_name": "Якутская область", 
+            "region_name_eng": "Yakutsk region", 
+            "region_ord": 185882
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_84", 
+            "region_description": "Земля войска Донского", 
+            "region_id": 135, 
+            "region_name": "Земля войска Донского", 
+            "region_name_eng": "Don Cossack host lands", 
+            "region_ord": 185884
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_85", 
+            "region_description": "Земля Черноморского казачьего войска", 
+            "region_id": 136, 
+            "region_name": "Земля Черноморского казачьего войска", 
+            "region_name_eng": "Black Sea Cossack host lands", 
+            "region_ord": 185885
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_87", 
+            "region_description": "Башкирское казачье войско", 
+            "region_id": 138, 
+            "region_name": "Башкирское казачье войско", 
+            "region_name_eng": "Bashkir Cossack host lands", 
+            "region_ord": 185887
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_88", 
+            "region_description": "Новороссийское казачье войско", 
+            "region_id": 139, 
+            "region_name": "Новороссийское казачье войско", 
+            "region_name_eng": "Novorossiyan Cossack host lands", 
+            "region_ord": 185888
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_89", 
+            "region_description": "Оренбургское казачье войско", 
+            "region_id": 140, 
+            "region_name": "Оренбургское казачье войско", 
+            "region_name_eng": "Orenburg Cossack host lands", 
+            "region_ord": 185889
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_90", 
+            "region_description": "Астраханское казачье войско", 
+            "region_id": 141, 
+            "region_name": "Астраханское казачье войско", 
+            "region_name_eng": "Astrakhan Cossack host lands", 
+            "region_ord": 185890
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_91", 
+            "region_description": "Сибирско-линейное казачье войско", 
+            "region_id": 142, 
+            "region_name": "Сибирско-линейное казачье войско", 
+            "region_name_eng": "Siberian line Cossack host lands", 
+            "region_ord": 185891
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_92", 
+            "region_description": "Забайкальское казачье войско", 
+            "region_id": 143, 
+            "region_name": "Забайкальское казачье войско", 
+            "region_name_eng": "Transbaikal Cossack host lands", 
+            "region_ord": 185892
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_97", 
+            "region_description": "Уральское казачье войско", 
+            "region_id": 148, 
+            "region_name": "Уральское казачье войско", 
+            "region_name_eng": "Ural Cossack host lands", 
+            "region_ord": 185897
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_99", 
+            "region_description": "Греческий балаклавский пехотный батальон", 
+            "region_id": 150, 
+            "region_name": "Греческий балаклавский пехотный батальон", 
+            "region_name_eng": "Greek Battalion of Balaklava", 
+            "region_ord": 185899
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_100", 
+            "region_description": "Амурское казачье войско", 
+            "region_id": 151, 
+            "region_name": "Амурское казачье войско", 
+            "region_name_eng": "Amur Cossack host lands", 
+            "region_ord": 1858100
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_101", 
+            "region_description": "г/г Восточная сибирь", 
+            "region_id": 152, 
+            "region_name": "г/г Восточная сибирь", 
+            "region_name_eng": "Governorate-General Eastern Siberia", 
+            "region_ord": 1858101
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_102", 
+            "region_description": "г/г Западная сибирь", 
+            "region_id": 153, 
+            "region_name": "г/г Западная сибирь", 
+            "region_name_eng": "Governorate-General Western Siberia", 
+            "region_ord": 1858102
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_02", 
+            "region_description": "Акмолинская область", 
+            "region_id": 155, 
+            "region_name": "Акмолинская область", 
+            "region_name_eng": "Akmola region", 
+            "region_ord": 189702
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_03", 
+            "region_description": "Амурская область", 
+            "region_id": 156, 
+            "region_name": "Амурская область", 
+            "region_name_eng": "Amur region", 
+            "region_ord": 189703
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_04", 
+            "region_description": "Архангельская губерния", 
+            "region_id": 157, 
+            "region_name": "Архангельская губерния", 
+            "region_name_eng": "Arkhangelsk governorate", 
+            "region_ord": 189704
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_05", 
+            "region_description": "Астраханская губерния", 
+            "region_id": 158, 
+            "region_name": "Астраханская губерния", 
+            "region_name_eng": "Astrakhan governorate", 
+            "region_ord": 189705
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_06", 
+            "region_description": "Бакинская губерния", 
+            "region_id": 159, 
+            "region_name": "Бакинская губерния", 
+            "region_name_eng": "Baku governorate", 
+            "region_ord": 189706
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_07", 
+            "region_description": "Бессарабская губерния", 
+            "region_id": 160, 
+            "region_name": "Бессарабская губерния", 
+            "region_name_eng": "Bessarabia governorate", 
+            "region_ord": 189707
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_08", 
+            "region_description": "Вазаская губерния", 
+            "region_id": 161, 
+            "region_name": "Вазаская губерния", 
+            "region_name_eng": "Vasa governorate", 
+            "region_ord": 189708
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_09", 
+            "region_description": "Варшавская губерния", 
+            "region_id": 162, 
+            "region_name": "Варшавская губерния", 
+            "region_name_eng": "Warsaw governorate", 
+            "region_ord": 189709
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_10", 
+            "region_description": "Виленская губерния", 
+            "region_id": 163, 
+            "region_name": "Виленская губерния", 
+            "region_name_eng": "Vilna governorate", 
+            "region_ord": 189710
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_12", 
+            "region_description": "Владимирская губерния", 
+            "region_id": 165, 
+            "region_name": "Владимирская губерния", 
+            "region_name_eng": "Vladimir governorate", 
+            "region_ord": 189712
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_13", 
+            "region_description": "Земля войска Донского", 
+            "region_id": 166, 
+            "region_name": "Земля войска Донского", 
+            "region_name_eng": "Don Cossack host lands", 
+            "region_ord": 189713
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_14", 
+            "region_description": "Вологодская губерния", 
+            "region_id": 167, 
+            "region_name": "Вологодская губерния", 
+            "region_name_eng": "Vologda governorate", 
+            "region_ord": 189714
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_15", 
+            "region_description": "Волынская губерния", 
+            "region_id": 168, 
+            "region_name": "Волынская губерния", 
+            "region_name_eng": "Volhynian governorate", 
+            "region_ord": 189715
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_16", 
+            "region_description": "Воронежская губерния", 
+            "region_id": 169, 
+            "region_name": "Воронежская губерния", 
+            "region_name_eng": "Voronezh governorate", 
+            "region_ord": 189716
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_18", 
+            "region_description": "Вятская губерния", 
+            "region_id": 171, 
+            "region_name": "Вятская губерния", 
+            "region_name_eng": "Viatka governorate", 
+            "region_ord": 189718
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_19", 
+            "region_description": "Гродненская губерния", 
+            "region_id": 172, 
+            "region_name": "Гродненская губерния", 
+            "region_name_eng": "Grodno governorate", 
+            "region_ord": 189719
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_20", 
+            "region_description": "Дагестанская область", 
+            "region_id": 173, 
+            "region_name": "Дагестанская область", 
+            "region_name_eng": "Dagestan region", 
+            "region_ord": 189720
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_22", 
+            "region_description": "Елисаветпольская губерния", 
+            "region_id": 175, 
+            "region_name": "Елисаветпольская губерния", 
+            "region_name_eng": "Elisabethpol governorate", 
+            "region_ord": 189722
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_23", 
+            "region_description": "Енисейская губерния", 
+            "region_id": 176, 
+            "region_name": "Енисейская губерния", 
+            "region_name_eng": "Enisei governorate", 
+            "region_ord": 189723
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_24", 
+            "region_description": "Забайкальская область", 
+            "region_id": 177, 
+            "region_name": "Забайкальская область", 
+            "region_name_eng": "Transbaikal region", 
+            "region_ord": 189724
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_25", 
+            "region_description": "Закаспийская область", 
+            "region_id": 178, 
+            "region_name": "Закаспийская область", 
+            "region_name_eng": "Transcaspian region", 
+            "region_ord": 189725
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_27", 
+            "region_description": "Казанская губерния", 
+            "region_id": 180, 
+            "region_name": "Казанская губерния", 
+            "region_name_eng": "Kazan governorate", 
+            "region_ord": 189727
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_28", 
+            "region_description": "Калишская губерния", 
+            "region_id": 181, 
+            "region_name": "Калишская губерния", 
+            "region_name_eng": "Kalisz governorate", 
+            "region_ord": 189728
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_29", 
+            "region_description": "Калужская губерния", 
+            "region_id": 182, 
+            "region_name": "Калужская губерния", 
+            "region_name_eng": "Kaluga governorate", 
+            "region_ord": 189729
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_30", 
+            "region_description": "Карская губерния", 
+            "region_id": 183, 
+            "region_name": "Карская губерния", 
+            "region_name_eng": "Kars governorate", 
+            "region_ord": 189730
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_31", 
+            "region_description": "Келецкая губерния", 
+            "region_id": 184, 
+            "region_name": "Келецкая губерния", 
+            "region_name_eng": "Kielce governorate", 
+            "region_ord": 189731
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_32", 
+            "region_description": "Киевская губерния", 
+            "region_id": 185, 
+            "region_name": "Киевская губерния", 
+            "region_name_eng": "Kiev governorate", 
+            "region_ord": 189732
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_33", 
+            "region_description": "Ковенская губерния", 
+            "region_id": 186, 
+            "region_name": "Ковенская губерния", 
+            "region_name_eng": "Kovno governorate", 
+            "region_ord": 189733
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_35", 
+            "region_description": "Кубанская область", 
+            "region_id": 188, 
+            "region_name": "Кубанская область", 
+            "region_name_eng": "Kuban region", 
+            "region_ord": 189735
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_36", 
+            "region_description": "Куопиоская губерния", 
+            "region_id": 189, 
+            "region_name": "Куопиоская губерния", 
+            "region_name_eng": "Kuopio governorate", 
+            "region_ord": 189736
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_37", 
+            "region_description": "Курляндская губерния", 
+            "region_id": 190, 
+            "region_name": "Курляндская губерния", 
+            "region_name_eng": "Kurland governorate", 
+            "region_ord": 189737
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_38", 
+            "region_description": "Курская губерния", 
+            "region_id": 191, 
+            "region_name": "Курская губерния", 
+            "region_name_eng": "Kursk governorate", 
+            "region_ord": 189738
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_39a", 
+            "region_description": "Кутаисская губерния без Сухумского округа", 
+            "region_id": 193, 
+            "region_name": "Кутаисская губерния без Сухумского округа", 
+            "region_name_eng": "Kutaisi governorate excl. Sukhumi district", 
+            "region_ord": 189739
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_39b", 
+            "region_description": "Сухумский округ Кутаисской губернии", 
+            "region_id": 194, 
+            "region_name": "Сухумский округ Кутаисской губернии", 
+            "region_name_eng": "Sukhumi district of Kutaisi governorate", 
+            "region_ord": 189739
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_40", 
+            "region_description": "Лифляндская губерния", 
+            "region_id": 195, 
+            "region_name": "Лифляндская губерния", 
+            "region_name_eng": "Livonia governorate", 
+            "region_ord": 189740
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_41", 
+            "region_description": "Ломжинская губерния", 
+            "region_id": 196, 
+            "region_name": "Ломжинская губерния", 
+            "region_name_eng": "Łomża governorate", 
+            "region_ord": 189741
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_42", 
+            "region_description": "Люблинская губерния", 
+            "region_id": 197, 
+            "region_name": "Люблинская губерния", 
+            "region_name_eng": "Lublin governorate", 
+            "region_ord": 189742
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_43", 
+            "region_description": "Минская губерния", 
+            "region_id": 198, 
+            "region_name": "Минская губерния", 
+            "region_name_eng": "Minsk governorate", 
+            "region_ord": 189743
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_44", 
+            "region_description": "Могилевская губерния", 
+            "region_id": 199, 
+            "region_name": "Могилевская губерния", 
+            "region_name_eng": "Mogilev governorate", 
+            "region_ord": 189744
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_45", 
+            "region_description": "Московская губерния", 
+            "region_id": 200, 
+            "region_name": "Московская губерния", 
+            "region_name_eng": "Moscow governorate", 
+            "region_ord": 189745
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_46", 
+            "region_description": "Нижегородская губерния", 
+            "region_id": 201, 
+            "region_name": "Нижегородская губерния", 
+            "region_name_eng": "Nizhny Novgorod governorate", 
+            "region_ord": 189746
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_48", 
+            "region_description": "Нюландская губерния", 
+            "region_id": 203, 
+            "region_name": "Нюландская губерния", 
+            "region_name_eng": "Nyland governorate", 
+            "region_ord": 189748
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_49", 
+            "region_description": "Олонецкая губерния", 
+            "region_id": 204, 
+            "region_name": "Олонецкая губерния", 
+            "region_name_eng": "Olonets governorate", 
+            "region_ord": 189749
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_50", 
+            "region_description": "Оренбургская губерния", 
+            "region_id": 205, 
+            "region_name": "Оренбургская губерния", 
+            "region_name_eng": "Orenburg governorate", 
+            "region_ord": 189750
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_51", 
+            "region_description": "Орловская губерния", 
+            "region_id": 206, 
+            "region_name": "Орловская губерния", 
+            "region_name_eng": "Orel governorate", 
+            "region_ord": 189751
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_52", 
+            "region_description": "Остров Сахалин", 
+            "region_id": 207, 
+            "region_name": "Остров Сахалин", 
+            "region_name_eng": "Sakhalin island", 
+            "region_ord": 189752
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_53", 
+            "region_description": "Пензенская губерния", 
+            "region_id": 208, 
+            "region_name": "Пензенская губерния", 
+            "region_name_eng": "Penza governorate", 
+            "region_ord": 189753
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_54", 
+            "region_description": "Пермская губерния", 
+            "region_id": 209, 
+            "region_name": "Пермская губерния", 
+            "region_name_eng": "Perm governorate", 
+            "region_ord": 189754
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_56", 
+            "region_description": "Плоцкая губерния", 
+            "region_id": 211, 
+            "region_name": "Плоцкая губерния", 
+            "region_name_eng": "Płock governorate", 
+            "region_ord": 189756
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_57", 
+            "region_description": "Подольская губерния", 
+            "region_id": 212, 
+            "region_name": "Подольская губерния", 
+            "region_name_eng": "Podolsk governorate", 
+            "region_ord": 189757
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_58", 
+            "region_description": "Полтавская губерния", 
+            "region_id": 213, 
+            "region_name": "Полтавская губерния", 
+            "region_name_eng": "Poltava governorate", 
+            "region_ord": 189758
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_59", 
+            "region_description": "Приморская область", 
+            "region_id": 214, 
+            "region_name": "Приморская область", 
+            "region_name_eng": "Primorskaya region", 
+            "region_ord": 189759
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_60", 
+            "region_description": "Псковская губерния", 
+            "region_id": 215, 
+            "region_name": "Псковская губерния", 
+            "region_name_eng": "Pskov governorate", 
+            "region_ord": 189760
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_61", 
+            "region_description": "Радомская губерния", 
+            "region_id": 216, 
+            "region_name": "Радомская губерния", 
+            "region_name_eng": "Radom governorate", 
+            "region_ord": 189761
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_62", 
+            "region_description": "Рязанская губерния", 
+            "region_id": 217, 
+            "region_name": "Рязанская губерния", 
+            "region_name_eng": "Ryazan governorate", 
+            "region_ord": 189762
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_64", 
+            "region_description": "Самарская губерния", 
+            "region_id": 219, 
+            "region_name": "Самарская губерния", 
+            "region_name_eng": "Samara governorate", 
+            "region_ord": 189764
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_65", 
+            "region_description": "Санкт-Михельская губерния", 
+            "region_id": 220, 
+            "region_name": "Санкт-Михельская губерния", 
+            "region_name_eng": "Mikkeli governorate", 
+            "region_ord": 189765
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_66", 
+            "region_description": "Санкт-Петербургская губерния", 
+            "region_id": 221, 
+            "region_name": "Санкт-Петербургская губерния", 
+            "region_name_eng": "St. Petersburg governorate", 
+            "region_ord": 189766
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_67", 
+            "region_description": "Саратовская губерния", 
+            "region_id": 222, 
+            "region_name": "Саратовская губерния", 
+            "region_name_eng": "Saratov governorate", 
+            "region_ord": 189767
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_68", 
+            "region_description": "Седлецкая губерния", 
+            "region_id": 223, 
+            "region_name": "Седлецкая губерния", 
+            "region_name_eng": "Siedlce governorate", 
+            "region_ord": 189768
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_69", 
+            "region_description": "Семипалатинская область", 
+            "region_id": 224, 
+            "region_name": "Семипалатинская область", 
+            "region_name_eng": "Semipalatinsk governorate", 
+            "region_ord": 189769
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_71", 
+            "region_description": "Симбирская губерния", 
+            "region_id": 226, 
+            "region_name": "Симбирская губерния", 
+            "region_name_eng": "Simbirsk governorate", 
+            "region_ord": 189771
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_72", 
+            "region_description": "Смоленская губерния", 
+            "region_id": 227, 
+            "region_name": "Смоленская губерния", 
+            "region_name_eng": "Smolensk governorate", 
+            "region_ord": 189772
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_73", 
+            "region_description": "Ставропольская губерния", 
+            "region_id": 228, 
+            "region_name": "Ставропольская губерния", 
+            "region_name_eng": "Stavropol governorate", 
+            "region_ord": 189773
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_74", 
+            "region_description": "Сувалкская губерния", 
+            "region_id": 229, 
+            "region_name": "Сувалкская губерния", 
+            "region_name_eng": "Suwałki governorate", 
+            "region_ord": 189774
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_75", 
+            "region_description": "Сырдарьинская область", 
+            "region_id": 230, 
+            "region_name": "Сырдарьинская область", 
+            "region_name_eng": "Syr-Darya region", 
+            "region_ord": 189775
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_79", 
+            "region_description": "Тверская губерния", 
+            "region_id": 234, 
+            "region_name": "Тверская губерния", 
+            "region_name_eng": "Tver governorate", 
+            "region_ord": 189779
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_80", 
+            "region_description": "Терская область", 
+            "region_id": 235, 
+            "region_name": "Терская область", 
+            "region_name_eng": "Terek governorate", 
+            "region_ord": 189780
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_81a", 
+            "region_description": "Тифлисская губерния без Закатальского округа", 
+            "region_id": 237, 
+            "region_name": "Тифлисская губерния без Закатальского округа", 
+            "region_name_eng": "Tiflis governorate excl. Zakatalskii district", 
+            "region_ord": 189781
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_81b", 
+            "region_description": "Закатальский округ Тифлисской губернии", 
+            "region_id": 238, 
+            "region_name": "Закатальский округ Тифлисской губернии", 
+            "region_name_eng": "Zakatalskii district of Tiflis governorate", 
+            "region_ord": 189781
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_82", 
+            "region_description": "Тобольская губерния", 
+            "region_id": 239, 
+            "region_name": "Тобольская губерния", 
+            "region_name_eng": "Tobolsk governorate", 
+            "region_ord": 189782
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_83", 
+            "region_description": "Томская губерния", 
+            "region_id": 240, 
+            "region_name": "Томская губерния", 
+            "region_name_eng": "Tomsk governorate", 
+            "region_ord": 189783
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_84", 
+            "region_description": "Тульская губерния", 
+            "region_id": 241, 
+            "region_name": "Тульская губерния", 
+            "region_name_eng": "Tula governorate", 
+            "region_ord": 189784
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_85", 
+            "region_description": "Тургайская область ", 
+            "region_id": 242, 
+            "region_name": "Тургайская область ", 
+            "region_name_eng": "Turgay region", 
+            "region_ord": 189785
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_86", 
+            "region_description": "Улеаборгская губерния", 
+            "region_id": 243, 
+            "region_name": "Улеаборгская губерния", 
+            "region_name_eng": "Oulu governorate", 
+            "region_ord": 189786
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_87", 
+            "region_description": "Уральская область", 
+            "region_id": 244, 
+            "region_name": "Уральская область", 
+            "region_name_eng": "Ural region", 
+            "region_ord": 189787
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_88", 
+            "region_description": "Уфимская губерния", 
+            "region_id": 245, 
+            "region_name": "Уфимская губерния", 
+            "region_name_eng": "Ufa governorate", 
+            "region_ord": 189788
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_89", 
+            "region_description": "Ферганская область", 
+            "region_id": 246, 
+            "region_name": "Ферганская область", 
+            "region_name_eng": "Fergana governorate", 
+            "region_ord": 189789
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_90", 
+            "region_description": "Харьковская губерния", 
+            "region_id": 247, 
+            "region_name": "Харьковская губерния", 
+            "region_name_eng": "Kharkov governorate", 
+            "region_ord": 189790
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_91", 
+            "region_description": "Херсонская губерния", 
+            "region_id": 248, 
+            "region_name": "Херсонская губерния", 
+            "region_name_eng": "Kherson governorate", 
+            "region_ord": 189791
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_93", 
+            "region_description": "Черноморская губерния", 
+            "region_id": 250, 
+            "region_name": "Черноморская губерния", 
+            "region_name_eng": "Black Sea governorate", 
+            "region_ord": 189793
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_94", 
+            "region_description": "Эриванская губерния", 
+            "region_id": 251, 
+            "region_name": "Эриванская губерния", 
+            "region_name_eng": "Erevan governorate", 
+            "region_ord": 189794
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_95", 
+            "region_description": "Эстляндская губерния", 
+            "region_id": 252, 
+            "region_name": "Эстляндская губерния", 
+            "region_name_eng": "Estonia governorate", 
+            "region_ord": 189795
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_96", 
+            "region_description": "Якутская область", 
+            "region_id": 253, 
+            "region_name": "Якутская область", 
+            "region_name_eng": "Yakutsk region", 
+            "region_ord": 189796
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_97", 
+            "region_description": "Ярославская губерния", 
+            "region_id": 254, 
+            "region_name": "Ярославская губерния", 
+            "region_name_eng": "Yaroslavl governorate", 
+            "region_ord": 189797
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_02", 
+            "region_description": "Башкирская АССР", 
+            "region_id": 255, 
+            "region_name": "Башкирская АССР", 
+            "region_name_eng": "Bashkir ASSR", 
+            "region_ord": 195902
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_03", 
+            "region_description": "Бурятская АССР", 
+            "region_id": 256, 
+            "region_name": "Бурятская АССР", 
+            "region_name_eng": "Buryat ASSR", 
+            "region_ord": 195903
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_05", 
+            "region_description": "Дагестанская АССР", 
+            "region_id": 257, 
+            "region_name": "Дагестанская АССР", 
+            "region_name_eng": "Dagestan ASSR", 
+            "region_ord": 195905
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_07", 
+            "region_description": "Кабардино-Балкарская АССР", 
+            "region_id": 259, 
+            "region_name": "Кабардино-Балкарская АССР", 
+            "region_name_eng": "Kabardino-Balkar ASSR", 
+            "region_ord": 195907
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_08", 
+            "region_description": "Калмыцкая АССР", 
+            "region_id": 260, 
+            "region_name": "Калмыцкая АССР", 
+            "region_name_eng": "Kalmyk ASSR", 
+            "region_ord": 195908
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_10", 
+            "region_description": "Карельская АССР", 
+            "region_id": 261, 
+            "region_name": "Карельская АССР", 
+            "region_name_eng": "Karelian ASSR", 
+            "region_ord": 195910
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_11", 
+            "region_description": "Коми АССР", 
+            "region_id": 262, 
+            "region_name": "Коми АССР", 
+            "region_name_eng": "Komi ASSR", 
+            "region_ord": 195911
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_12", 
+            "region_description": "Марийская АССР", 
+            "region_id": 263, 
+            "region_name": "Марийская АССР", 
+            "region_name_eng": "Mari ASSR", 
+            "region_ord": 195912
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_13", 
+            "region_description": "Мордовская АССР", 
+            "region_id": 264, 
+            "region_name": "Мордовская АССР", 
+            "region_name_eng": "Mordovian ASSR", 
+            "region_ord": 195913
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_14", 
+            "region_description": "Якутская АССР", 
+            "region_id": 265, 
+            "region_name": "Якутская АССР", 
+            "region_name_eng": "Yakut ASSR", 
+            "region_ord": 195914
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_16", 
+            "region_description": "Татарская АССР", 
+            "region_id": 267, 
+            "region_name": "Татарская АССР", 
+            "region_name_eng": "Tatar ASSR", 
+            "region_ord": 195916
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_17", 
+            "region_description": "Тувинская автономная область", 
+            "region_id": 268, 
+            "region_name": "Тувинская автономная область", 
+            "region_name_eng": "Tuvan autonomous region", 
+            "region_ord": 195917
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_18", 
+            "region_description": "Удмуртская АССР", 
+            "region_id": 269, 
+            "region_name": "Удмуртская АССР", 
+            "region_name_eng": "Udmurt ASSR", 
+            "region_ord": 195918
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_21", 
+            "region_description": "Чувашская АССР", 
+            "region_id": 270, 
+            "region_name": "Чувашская АССР", 
+            "region_name_eng": "Chuvash ASSR", 
+            "region_ord": 195921
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_22_04", 
+            "region_description": "Горно-Алтайская автономная область Алтайского края ", 
+            "region_id": 272, 
+            "region_name": "Горно-Алтайская автономная область Алтайского края ", 
+            "region_name_eng": "Gorno-Altai autonomous region of Altai territory", 
+            "region_ord": 19592204
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_23", 
+            "region_description": "Краснодарский край вкл. Адыгейскую АО", 
+            "region_id": 273, 
+            "region_name": "Краснодарский край вкл. Адыгейскую АО", 
+            "region_name_eng": "Krasnodar territory incl. Adyghe autonomous region", 
+            "region_ord": 195923
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_23_01", 
+            "region_description": "Адыгейская автономная область Краснодарского края", 
+            "region_id": 274, 
+            "region_name": "Адыгейская автономная область Краснодарского края", 
+            "region_name_eng": "Adyghe autonomous region of Krasnodar territory", 
+            "region_ord": 19592301
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_24", 
+            "region_description": "Красноярский край вкл. Хакасскую АО", 
+            "region_id": 275, 
+            "region_name": "Красноярский край вкл. Хакасскую АО", 
+            "region_name_eng": "Krasnoiarsk territory incl. Khakas autonomous region", 
+            "region_ord": 195924
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_24_84", 
+            "region_description": "Таймырский (Долгано-Ненецкий) национальный округ Красноярского края", 
+            "region_id": 277, 
+            "region_name": "Таймырский (Долгано-Ненецкий) национальный округ Красноярского края", 
+            "region_name_eng": "Taymyr Dolgano-Nenets national okrug of Krasnoiarsk territory", 
+            "region_ord": 19592484
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_24_88", 
+            "region_description": "Эвенкийский национальный округ Красноярского края", 
+            "region_id": 278, 
+            "region_name": "Эвенкийский национальный округ Красноярского края", 
+            "region_name_eng": "Evenk national okrug of Krasnoiarsk territory", 
+            "region_ord": 19592488
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_25", 
+            "region_description": "Приморский край", 
+            "region_id": 279, 
+            "region_name": "Приморский край", 
+            "region_name_eng": "Primorsky territory", 
+            "region_ord": 195925
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_26_09", 
+            "region_description": "Карачаево-Черкесская автономная область Ставропольского края", 
+            "region_id": 281, 
+            "region_name": "Карачаево-Черкесская автономная область Ставропольского края", 
+            "region_name_eng": "Karachay-Cherkess autonomous region of Stavropol territory", 
+            "region_ord": 19592609
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_27", 
+            "region_description": "Хабаровский край вкл. Еврейскую АО", 
+            "region_id": 282, 
+            "region_name": "Хабаровский край вкл. Еврейскую АО", 
+            "region_name_eng": "Khabarovsk territory incl. Jewish autonomous region", 
+            "region_ord": 195927
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_73", 
+            "region_description": "Ульяновская область", 
+            "region_id": 336, 
+            "region_name": "Ульяновская область", 
+            "region_name_eng": "Ulyanovsk region", 
+            "region_ord": 195973
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_28", 
+            "region_description": "Амурская область", 
+            "region_id": 284, 
+            "region_name": "Амурская область", 
+            "region_name_eng": "Amur region", 
+            "region_ord": 195928
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_29", 
+            "region_description": "Архангельская область", 
+            "region_id": 285, 
+            "region_name": "Архангельская область", 
+            "region_name_eng": "Arkhangelsk region", 
+            "region_ord": 195929
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_29_83", 
+            "region_description": "Ненецкий национальный округ Архангельской области", 
+            "region_id": 286, 
+            "region_name": "Ненецкий национальный округ Архангельской области", 
+            "region_name_eng": "Nenets national district of Arkhangelsk region", 
+            "region_ord": 19592983
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_30", 
+            "region_description": "Астраханская область", 
+            "region_id": 287, 
+            "region_name": "Астраханская область", 
+            "region_name_eng": "Astrakhan region", 
+            "region_ord": 195930
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_31", 
+            "region_description": "Белгородская область", 
+            "region_id": 288, 
+            "region_name": "Белгородская область", 
+            "region_name_eng": "Belgorod region", 
+            "region_ord": 195931
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_32", 
+            "region_description": "Брянская область", 
+            "region_id": 289, 
+            "region_name": "Брянская область", 
+            "region_name_eng": "Briansk region", 
+            "region_ord": 195932
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_33", 
+            "region_description": "Владимирская область", 
+            "region_id": 290, 
+            "region_name": "Владимирская область", 
+            "region_name_eng": "Vladimir region", 
+            "region_ord": 195933
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_34", 
+            "region_description": "Сталинградская область", 
+            "region_id": 291, 
+            "region_name": "Сталинградская область", 
+            "region_name_eng": "Stalingrad region", 
+            "region_ord": 195934
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_35", 
+            "region_description": "Вологодская область", 
+            "region_id": 292, 
+            "region_name": "Вологодская область", 
+            "region_name_eng": "Vologda region", 
+            "region_ord": 195935
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_36", 
+            "region_description": "Воронежская область", 
+            "region_id": 293, 
+            "region_name": "Воронежская область", 
+            "region_name_eng": "Voronezh region", 
+            "region_ord": 195936
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_38", 
+            "region_description": "Иркутская область", 
+            "region_id": 295, 
+            "region_name": "Иркутская область", 
+            "region_name_eng": "Irkutsk region", 
+            "region_ord": 195938
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_39", 
+            "region_description": "Калининградская область", 
+            "region_id": 297, 
+            "region_name": "Калининградская область", 
+            "region_name_eng": "Kaliningrad region", 
+            "region_ord": 195939
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_40", 
+            "region_description": "Калужская область", 
+            "region_id": 298, 
+            "region_name": "Калужская область", 
+            "region_name_eng": "Kaluga region", 
+            "region_ord": 195940
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_41", 
+            "region_description": "Камчатская область", 
+            "region_id": 299, 
+            "region_name": "Камчатская область", 
+            "region_name_eng": "Kamchatka region", 
+            "region_ord": 195941
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_41_82", 
+            "region_description": "Корякский национальный округ Камчатской области", 
+            "region_id": 300, 
+            "region_name": "Корякский национальный округ Камчатской области", 
+            "region_name_eng": "Koryak national district of Kamchatka region", 
+            "region_ord": 19594182
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_42", 
+            "region_description": "Кемеровская область", 
+            "region_id": 301, 
+            "region_name": "Кемеровская область", 
+            "region_name_eng": "Kemerovo region", 
+            "region_ord": 195942
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_43", 
+            "region_description": "Кировская область", 
+            "region_id": 302, 
+            "region_name": "Кировская область", 
+            "region_name_eng": "Kirov region", 
+            "region_ord": 195943
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_44", 
+            "region_description": "Костромская область", 
+            "region_id": 303, 
+            "region_name": "Костромская область", 
+            "region_name_eng": "Kostroma region", 
+            "region_ord": 195944
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_45", 
+            "region_description": "Курганская область", 
+            "region_id": 304, 
+            "region_name": "Курганская область", 
+            "region_name_eng": "Kurgan region", 
+            "region_ord": 195945
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_46", 
+            "region_description": "Курская область", 
+            "region_id": 305, 
+            "region_name": "Курская область", 
+            "region_name_eng": "Kursk region", 
+            "region_ord": 195946
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_47", 
+            "region_description": "Ленинградская область", 
+            "region_id": 306, 
+            "region_name": "Ленинградская область", 
+            "region_name_eng": "Leningrad region", 
+            "region_ord": 195947
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_48", 
+            "region_description": "Липецкая область", 
+            "region_id": 307, 
+            "region_name": "Липецкая область", 
+            "region_name_eng": "Lipetsk region", 
+            "region_ord": 195948
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_49", 
+            "region_description": "Магаданская область вкл. Чукотский НО", 
+            "region_id": 308, 
+            "region_name": "Магаданская область вкл. Чукотский НО", 
+            "region_name_eng": "Magadan region incl. Chukotka national district", 
+            "region_ord": 195949
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_50", 
+            "region_description": "Московская область", 
+            "region_id": 310, 
+            "region_name": "Московская область", 
+            "region_name_eng": "Moscow region", 
+            "region_ord": 195950
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_51", 
+            "region_description": "Мурманская область", 
+            "region_id": 311, 
+            "region_name": "Мурманская область", 
+            "region_name_eng": "Murmansk region", 
+            "region_ord": 195951
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_52", 
+            "region_description": "Горьковская область", 
+            "region_id": 312, 
+            "region_name": "Горьковская область", 
+            "region_name_eng": "Gorky region", 
+            "region_ord": 195952
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_53", 
+            "region_description": "Новгородская область", 
+            "region_id": 313, 
+            "region_name": "Новгородская область", 
+            "region_name_eng": "Novgorod region", 
+            "region_ord": 195953
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_54", 
+            "region_description": "Новосибирская область", 
+            "region_id": 314, 
+            "region_name": "Новосибирская область", 
+            "region_name_eng": "Novosibirsk region", 
+            "region_ord": 195954
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_55", 
+            "region_description": "Омская область", 
+            "region_id": 315, 
+            "region_name": "Омская область", 
+            "region_name_eng": "Omsk region", 
+            "region_ord": 195955
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_56", 
+            "region_description": "Оренбургская область", 
+            "region_id": 316, 
+            "region_name": "Оренбургская область", 
+            "region_name_eng": "Orenburg region", 
+            "region_ord": 195956
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_57", 
+            "region_description": "Орловская область", 
+            "region_id": 317, 
+            "region_name": "Орловская область", 
+            "region_name_eng": "Orel region", 
+            "region_ord": 195957
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_58", 
+            "region_description": "Пензенская область", 
+            "region_id": 318, 
+            "region_name": "Пензенская область", 
+            "region_name_eng": "Penza region", 
+            "region_ord": 195958
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_59", 
+            "region_description": "Пермская область", 
+            "region_id": 319, 
+            "region_name": "Пермская область", 
+            "region_name_eng": "Perm region", 
+            "region_ord": 195959
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_59_81", 
+            "region_description": "Коми-Пермяцкий национальный округ Пермской области", 
+            "region_id": 320, 
+            "region_name": "Коми-Пермяцкий национальный округ Пермской области", 
+            "region_name_eng": "Komi-Permyak national district of Perm region", 
+            "region_ord": 19595981
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_60", 
+            "region_description": "Псковская область", 
+            "region_id": 321, 
+            "region_name": "Псковская область", 
+            "region_name_eng": "Pskov region", 
+            "region_ord": 195960
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_61", 
+            "region_description": "Ростовская область", 
+            "region_id": 322, 
+            "region_name": "Ростовская область", 
+            "region_name_eng": "Rostov region", 
+            "region_ord": 195961
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_62", 
+            "region_description": "Рязанская область", 
+            "region_id": 323, 
+            "region_name": "Рязанская область", 
+            "region_name_eng": "Ryazan region", 
+            "region_ord": 195962
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_63", 
+            "region_description": "Куйбышевская область", 
+            "region_id": 324, 
+            "region_name": "Куйбышевская область", 
+            "region_name_eng": "Kuybyshev region", 
+            "region_ord": 195963
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_64", 
+            "region_description": "Саратовская область", 
+            "region_id": 325, 
+            "region_name": "Саратовская область", 
+            "region_name_eng": "Saratov region", 
+            "region_ord": 195964
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_65", 
+            "region_description": "Сахалинская область", 
+            "region_id": 326, 
+            "region_name": "Сахалинская область", 
+            "region_name_eng": "Sakhalin region", 
+            "region_ord": 195965
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_67", 
+            "region_description": "Смоленская область", 
+            "region_id": 328, 
+            "region_name": "Смоленская область", 
+            "region_name_eng": "Smolensk region", 
+            "region_ord": 195967
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_68", 
+            "region_description": "Тамбовская область", 
+            "region_id": 329, 
+            "region_name": "Тамбовская область", 
+            "region_name_eng": "Tambov region", 
+            "region_ord": 195968
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_69", 
+            "region_description": "Калининская область", 
+            "region_id": 330, 
+            "region_name": "Калининская область", 
+            "region_name_eng": "Kalinin region", 
+            "region_ord": 195969
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_70", 
+            "region_description": "Томская область", 
+            "region_id": 331, 
+            "region_name": "Томская область", 
+            "region_name_eng": "Tomsk region", 
+            "region_ord": 195970
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_71", 
+            "region_description": "Тульская область", 
+            "region_id": 332, 
+            "region_name": "Тульская область", 
+            "region_name_eng": "Tula region", 
+            "region_ord": 195971
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_72", 
+            "region_description": "Тюменская область", 
+            "region_id": 333, 
+            "region_name": "Тюменская область", 
+            "region_name_eng": "Tyumen region", 
+            "region_ord": 195972
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_72_89", 
+            "region_description": "Ямало-Ненецкий национальный округ Тюменской области", 
+            "region_id": 335, 
+            "region_name": "Ямало-Ненецкий национальный округ Тюменской области", 
+            "region_name_eng": "Yamalo-Nenets national district of Tyumen region", 
+            "region_ord": 19597289
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_75", 
+            "region_description": "Читинская область", 
+            "region_id": 338, 
+            "region_name": "Читинская область", 
+            "region_name_eng": "Chita region", 
+            "region_ord": 195975
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_76", 
+            "region_description": "Ярославская область", 
+            "region_id": 340, 
+            "region_name": "Ярославская область", 
+            "region_name_eng": "Yaroslavl region", 
+            "region_ord": 195976
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_01", 
+            "region_description": "Республика Адыгея", 
+            "region_id": 341, 
+            "region_name": "Республика Адыгея", 
+            "region_name_eng": "Republic of Adygea", 
+            "region_ord": 200201
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_02", 
+            "region_description": "Республика Башкортостан", 
+            "region_id": 342, 
+            "region_name": "Республика Башкортостан", 
+            "region_name_eng": "Republic of Bashkortostan", 
+            "region_ord": 200202
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_03", 
+            "region_description": "Республика Бурятия", 
+            "region_id": 343, 
+            "region_name": "Республика Бурятия", 
+            "region_name_eng": "Republic of Buryatia", 
+            "region_ord": 200203
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_04", 
+            "region_description": "Республика Алтай", 
+            "region_id": 344, 
+            "region_name": "Республика Алтай", 
+            "region_name_eng": "Altai Republic", 
+            "region_ord": 200204
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_05", 
+            "region_description": "Республика Дагестан", 
+            "region_id": 345, 
+            "region_name": "Республика Дагестан", 
+            "region_name_eng": "Republic of Dagestan", 
+            "region_ord": 200205
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_06", 
+            "region_description": "Республика Ингушетия", 
+            "region_id": 346, 
+            "region_name": "Республика Ингушетия", 
+            "region_name_eng": "Republic of Ingushetia", 
+            "region_ord": 200206
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_07", 
+            "region_description": "Кабардино-Балкарская Республика", 
+            "region_id": 347, 
+            "region_name": "Кабардино-Балкарская Республика", 
+            "region_name_eng": "Kabardino-Balkar Republic", 
+            "region_ord": 200207
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_08", 
+            "region_description": "Республика Калмыкия", 
+            "region_id": 348, 
+            "region_name": "Республика Калмыкия", 
+            "region_name_eng": "Republic of Kalmykia", 
+            "region_ord": 200208
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_09", 
+            "region_description": "Карачаево-Черкесская Республика", 
+            "region_id": 349, 
+            "region_name": "Карачаево-Черкесская Республика", 
+            "region_name_eng": "Karachay-Cherkess Republic", 
+            "region_ord": 200209
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_10", 
+            "region_description": "Республика Карелия", 
+            "region_id": 350, 
+            "region_name": "Республика Карелия", 
+            "region_name_eng": "Republic of Karelia", 
+            "region_ord": 200210
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_11", 
+            "region_description": "Республика Коми", 
+            "region_id": 351, 
+            "region_name": "Республика Коми", 
+            "region_name_eng": "Komi Republic", 
+            "region_ord": 200211
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_13", 
+            "region_description": "Республика Мордовия", 
+            "region_id": 353, 
+            "region_name": "Республика Мордовия", 
+            "region_name_eng": "Republic of Mordovia", 
+            "region_ord": 200213
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_14", 
+            "region_description": "Республика Саха (Якутия)", 
+            "region_id": 354, 
+            "region_name": "Республика Саха (Якутия)", 
+            "region_name_eng": "Sakha (Yakutia) Republic", 
+            "region_ord": 200214
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_16", 
+            "region_description": "Республика Татарстан", 
+            "region_id": 356, 
+            "region_name": "Республика Татарстан", 
+            "region_name_eng": "Republic of Tatarstan", 
+            "region_ord": 200216
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_17", 
+            "region_description": "Республика Тыва", 
+            "region_id": 357, 
+            "region_name": "Республика Тыва", 
+            "region_name_eng": "Tyva Republic", 
+            "region_ord": 200217
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_18", 
+            "region_description": "Удмуртская Республика", 
+            "region_id": 358, 
+            "region_name": "Удмуртская Республика", 
+            "region_name_eng": "Udmurt Republic", 
+            "region_ord": 200218
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_19", 
+            "region_description": "Республика Хакасия", 
+            "region_id": 359, 
+            "region_name": "Республика Хакасия", 
+            "region_name_eng": "Republic of Khakassia", 
+            "region_ord": 200219
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_20", 
+            "region_description": "Чеченская республика", 
+            "region_id": 360, 
+            "region_name": "Чеченская республика", 
+            "region_name_eng": "Chechen Republic", 
+            "region_ord": 200220
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_21", 
+            "region_description": "Чувашская Республика – Чувашия", 
+            "region_id": 361, 
+            "region_name": "Чувашская Республика – Чувашия", 
+            "region_name_eng": "Chuvash Republic", 
+            "region_ord": 200221
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_22", 
+            "region_description": "Алтайский край", 
+            "region_id": 362, 
+            "region_name": "Алтайский край", 
+            "region_name_eng": "Altai territory", 
+            "region_ord": 200222
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_23", 
+            "region_description": "Краснодарский край", 
+            "region_id": 363, 
+            "region_name": "Краснодарский край", 
+            "region_name_eng": "Krasnodar territory", 
+            "region_ord": 200223
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_24", 
+            "region_description": "Красноярский край", 
+            "region_id": 364, 
+            "region_name": "Красноярский край", 
+            "region_name_eng": "Krasnoiarsk territory", 
+            "region_ord": 200224
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_25", 
+            "region_description": "Приморский край", 
+            "region_id": 365, 
+            "region_name": "Приморский край", 
+            "region_name_eng": "Primorsky territory", 
+            "region_ord": 200225
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_26", 
+            "region_description": "Ставропольский край", 
+            "region_id": 366, 
+            "region_name": "Ставропольский край", 
+            "region_name_eng": "Stavropol territory", 
+            "region_ord": 200226
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_27", 
+            "region_description": "Хабаровский край", 
+            "region_id": 367, 
+            "region_name": "Хабаровский край", 
+            "region_name_eng": "Khabarovsk territory", 
+            "region_ord": 200227
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_28", 
+            "region_description": "Амурская область", 
+            "region_id": 368, 
+            "region_name": "Амурская область", 
+            "region_name_eng": "Amur region", 
+            "region_ord": 200228
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_30", 
+            "region_description": "Астраханская область", 
+            "region_id": 370, 
+            "region_name": "Астраханская область", 
+            "region_name_eng": "Astrakhan region", 
+            "region_ord": 200230
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_31", 
+            "region_description": "Белгородская область", 
+            "region_id": 371, 
+            "region_name": "Белгородская область", 
+            "region_name_eng": "Belgorod region", 
+            "region_ord": 200231
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_32", 
+            "region_description": "Брянская область", 
+            "region_id": 372, 
+            "region_name": "Брянская область", 
+            "region_name_eng": "Briansk region", 
+            "region_ord": 200232
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_33", 
+            "region_description": "Владимирская область", 
+            "region_id": 373, 
+            "region_name": "Владимирская область", 
+            "region_name_eng": "Vladimir region", 
+            "region_ord": 200233
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_34", 
+            "region_description": "Волгоградская область", 
+            "region_id": 374, 
+            "region_name": "Волгоградская область", 
+            "region_name_eng": "Volgograd region", 
+            "region_ord": 200234
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_35", 
+            "region_description": "Вологодская область", 
+            "region_id": 375, 
+            "region_name": "Вологодская область", 
+            "region_name_eng": "Vologda region", 
+            "region_ord": 200235
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_37", 
+            "region_description": "Ивановская область", 
+            "region_id": 377, 
+            "region_name": "Ивановская область", 
+            "region_name_eng": "Ivanov region", 
+            "region_ord": 200237
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_38", 
+            "region_description": "Иркутская область", 
+            "region_id": 378, 
+            "region_name": "Иркутская область", 
+            "region_name_eng": "Irkutsk region", 
+            "region_ord": 200238
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_39", 
+            "region_description": "Калининградская область", 
+            "region_id": 379, 
+            "region_name": "Калининградская область", 
+            "region_name_eng": "Kaliningrad region", 
+            "region_ord": 200239
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_40", 
+            "region_description": "Калужская область", 
+            "region_id": 380, 
+            "region_name": "Калужская область", 
+            "region_name_eng": "Kaluga region", 
+            "region_ord": 200240
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_41", 
+            "region_description": "Камчатская область", 
+            "region_id": 381, 
+            "region_name": "Камчатская область", 
+            "region_name_eng": "Kamchatka region", 
+            "region_ord": 200241
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_42", 
+            "region_description": "Кемеровская область", 
+            "region_id": 382, 
+            "region_name": "Кемеровская область", 
+            "region_name_eng": "Kemerovo region", 
+            "region_ord": 200242
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_43", 
+            "region_description": "Кировская область", 
+            "region_id": 383, 
+            "region_name": "Кировская область", 
+            "region_name_eng": "Kirov region", 
+            "region_ord": 200243
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_45", 
+            "region_description": "Курганская область", 
+            "region_id": 385, 
+            "region_name": "Курганская область", 
+            "region_name_eng": "Kurgan region", 
+            "region_ord": 200245
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_46", 
+            "region_description": "Курская область", 
+            "region_id": 386, 
+            "region_name": "Курская область", 
+            "region_name_eng": "Kursk region", 
+            "region_ord": 200246
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_47", 
+            "region_description": "Ленинградская область", 
+            "region_id": 387, 
+            "region_name": "Ленинградская область", 
+            "region_name_eng": "Leningrad region", 
+            "region_ord": 200247
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_48", 
+            "region_description": "Липецкая область", 
+            "region_id": 388, 
+            "region_name": "Липецкая область", 
+            "region_name_eng": "Lipetsk region", 
+            "region_ord": 200248
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_49", 
+            "region_description": "Магаданская область", 
+            "region_id": 389, 
+            "region_name": "Магаданская область", 
+            "region_name_eng": "Magadan region", 
+            "region_ord": 200249
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_50", 
+            "region_description": "Московская область", 
+            "region_id": 390, 
+            "region_name": "Московская область", 
+            "region_name_eng": "Moscow region", 
+            "region_ord": 200250
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_52", 
+            "region_description": "Нижегородская область", 
+            "region_id": 392, 
+            "region_name": "Нижегородская область", 
+            "region_name_eng": "Nizhny Novgorod region", 
+            "region_ord": 200252
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_53", 
+            "region_description": "Новгородская область", 
+            "region_id": 393, 
+            "region_name": "Новгородская область", 
+            "region_name_eng": "Novgorod region", 
+            "region_ord": 200253
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_54", 
+            "region_description": "Новосибирская область", 
+            "region_id": 394, 
+            "region_name": "Новосибирская область", 
+            "region_name_eng": "Novosibirsk region", 
+            "region_ord": 200254
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_55", 
+            "region_description": "Омская область", 
+            "region_id": 395, 
+            "region_name": "Омская область", 
+            "region_name_eng": "Omsk region", 
+            "region_ord": 200255
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_01", 
+            "region_description": "Архангельская губерния", 
+            "region_id": 1, 
+            "region_name": "Архангельская губерния", 
+            "region_name_eng": "Arkhangelsk governorate", 
+            "region_ord": 179501
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_07", 
+            "region_description": "Волынская губерния", 
+            "region_id": 7, 
+            "region_name": "Волынская губерния", 
+            "region_name_eng": "Volhynian governorate", 
+            "region_ord": 179507
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_11", 
+            "region_description": "Екатеринославское наместничество", 
+            "region_id": 11, 
+            "region_name": "Екатеринославское наместничество", 
+            "region_name_eng": "Yekaterinoslav namestnichestvo", 
+            "region_ord": 179511
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_23", 
+            "region_description": "Могилевская губерния", 
+            "region_id": 22, 
+            "region_name": "Могилевская губерния", 
+            "region_name_eng": "Mogilev governorate", 
+            "region_ord": 179523
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_30", 
+            "region_description": "Пензенская губерния", 
+            "region_id": 29, 
+            "region_name": "Пензенская губерния", 
+            "region_name_eng": "Penza governorate", 
+            "region_ord": 179530
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_37", 
+            "region_description": "Рязанская губерния", 
+            "region_id": 36, 
+            "region_name": "Рязанская губерния", 
+            "region_name_eng": "Ryazan governorate", 
+            "region_ord": 179537
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_20", 
+            "region_description": "Таврическая область", 
+            "region_id": 42, 
+            "region_name": "Таврическая область", 
+            "region_name_eng": "Taurida governorate", 
+            "region_ord": 179520
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1795_48", 
+            "region_description": "Харьковская губерния", 
+            "region_id": 48, 
+            "region_name": "Харьковская губерния", 
+            "region_name_eng": "Kharkov governorate", 
+            "region_ord": 179548
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_04", 
+            "region_description": "Астраханская губерния", 
+            "region_id": 55, 
+            "region_name": "Астраханская губерния", 
+            "region_name_eng": "Astrakhan governorate", 
+            "region_ord": 185804
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_08", 
+            "region_description": "Виленская губерния", 
+            "region_id": 59, 
+            "region_name": "Виленская губерния", 
+            "region_name_eng": "Vilna governorate", 
+            "region_ord": 185808
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_13", 
+            "region_description": "Воронежская губерния", 
+            "region_id": 64, 
+            "region_name": "Воронежская губерния", 
+            "region_name_eng": "Voronezh governorate", 
+            "region_ord": 185813
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_20", 
+            "region_description": "Забайкальская область", 
+            "region_id": 71, 
+            "region_name": "Забайкальская область", 
+            "region_name_eng": "Transbaikal region", 
+            "region_ord": 185820
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_28", 
+            "region_description": "Костромская губерния", 
+            "region_id": 79, 
+            "region_name": "Костромская губерния", 
+            "region_name_eng": "Kostroma governorate", 
+            "region_ord": 185828
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_37", 
+            "region_description": "Могилевская губерния", 
+            "region_id": 88, 
+            "region_name": "Могилевская губерния", 
+            "region_name_eng": "Mogilev governorate", 
+            "region_ord": 185837
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_42", 
+            "region_description": "Область оренбургских киргизов", 
+            "region_id": 93, 
+            "region_name": "Область оренбургских киргизов", 
+            "region_name_eng": "Orenburg Kyrgyz region", 
+            "region_ord": 185842
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_51", 
+            "region_description": "Подольская губерния", 
+            "region_id": 102, 
+            "region_name": "Подольская губерния", 
+            "region_name_eng": "Podolsk governorate", 
+            "region_ord": 185851
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_58", 
+            "region_description": "Санкт-Михельская губерния", 
+            "region_id": 109, 
+            "region_name": "Санкт-Михельская губерния", 
+            "region_name_eng": "Mikkeli governorate", 
+            "region_ord": 185858
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_65", 
+            "region_description": "Ставропольская губерния", 
+            "region_id": 116, 
+            "region_name": "Ставропольская губерния", 
+            "region_name_eng": "Stavropol governorate", 
+            "region_ord": 185865
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_67", 
+            "region_description": "Тавастгусская губерния", 
+            "region_id": 118, 
+            "region_name": "Тавастгусская губерния", 
+            "region_name_eng": "Tavasthus governorate", 
+            "region_ord": 185867
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_57", 
+            "region_description": "Орловская область", 
+            "region_id": 397, 
+            "region_name": "Орловская область", 
+            "region_name_eng": "Orel region", 
+            "region_ord": 200257
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_58", 
+            "region_description": "Пензенская область", 
+            "region_id": 398, 
+            "region_name": "Пензенская область", 
+            "region_name_eng": "Penza region", 
+            "region_ord": 200258
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_59", 
+            "region_description": "Пермская область", 
+            "region_id": 399, 
+            "region_name": "Пермская область", 
+            "region_name_eng": "Perm region", 
+            "region_ord": 200259
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_60", 
+            "region_description": "Псковская область", 
+            "region_id": 400, 
+            "region_name": "Псковская область", 
+            "region_name_eng": "Pskov region", 
+            "region_ord": 200260
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_61", 
+            "region_description": "Ростовская область", 
+            "region_id": 401, 
+            "region_name": "Ростовская область", 
+            "region_name_eng": "Rostov region", 
+            "region_ord": 200261
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_62", 
+            "region_description": "Рязанская область", 
+            "region_id": 402, 
+            "region_name": "Рязанская область", 
+            "region_name_eng": "Ryazan region", 
+            "region_ord": 200262
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_63", 
+            "region_description": "Самарская область", 
+            "region_id": 403, 
+            "region_name": "Самарская область", 
+            "region_name_eng": "Samara region", 
+            "region_ord": 200263
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_65", 
+            "region_description": "Сахалинская область", 
+            "region_id": 405, 
+            "region_name": "Сахалинская область", 
+            "region_name_eng": "Sakhalin region", 
+            "region_ord": 200265
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_66", 
+            "region_description": "Свердловская область", 
+            "region_id": 406, 
+            "region_name": "Свердловская область", 
+            "region_name_eng": "Sverdlovsk region", 
+            "region_ord": 200266
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_67", 
+            "region_description": "Смоленская область", 
+            "region_id": 407, 
+            "region_name": "Смоленская область", 
+            "region_name_eng": "Smolensk region", 
+            "region_ord": 200267
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_68", 
+            "region_description": "Тамбовская область", 
+            "region_id": 408, 
+            "region_name": "Тамбовская область", 
+            "region_name_eng": "Tambov region", 
+            "region_ord": 200268
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_69", 
+            "region_description": "Тверская область", 
+            "region_id": 409, 
+            "region_name": "Тверская область", 
+            "region_name_eng": "Tver region", 
+            "region_ord": 200269
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_70", 
+            "region_description": "Томская область", 
+            "region_id": 410, 
+            "region_name": "Томская область", 
+            "region_name_eng": "Tomsk region", 
+            "region_ord": 200270
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_71", 
+            "region_description": "Тульская область", 
+            "region_id": 411, 
+            "region_name": "Тульская область", 
+            "region_name_eng": "Tula region", 
+            "region_ord": 200271
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_73", 
+            "region_description": "Ульяновская область", 
+            "region_id": 413, 
+            "region_name": "Ульяновская область", 
+            "region_name_eng": "Ulyanovsk region", 
+            "region_ord": 200273
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_74", 
+            "region_description": "Челябинская область", 
+            "region_id": 414, 
+            "region_name": "Челябинская область", 
+            "region_name_eng": "Chelyabinsk region", 
+            "region_ord": 200274
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_75", 
+            "region_description": "Читинская область", 
+            "region_id": 415, 
+            "region_name": "Читинская область", 
+            "region_name_eng": "Chita region", 
+            "region_ord": 200275
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_76", 
+            "region_description": "Ярославская область", 
+            "region_id": 416, 
+            "region_name": "Ярославская область", 
+            "region_name_eng": "Yaroslavl region", 
+            "region_ord": 200276
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_77", 
+            "region_description": "г. Москва", 
+            "region_id": 417, 
+            "region_name": "г. Москва", 
+            "region_name_eng": "Moscow (city)", 
+            "region_ord": 200277
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_79", 
+            "region_description": "Еврейская автономная область", 
+            "region_id": 419, 
+            "region_name": "Еврейская автономная область", 
+            "region_name_eng": "Jewish autonomous region", 
+            "region_ord": 200279
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_80", 
+            "region_description": "Агинский Бурятский автономный округ", 
+            "region_id": 420, 
+            "region_name": "Агинский Бурятский автономный округ", 
+            "region_name_eng": "Agin-Buryat autonomous district", 
+            "region_ord": 200280
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_82", 
+            "region_description": "Корякский автономный округ", 
+            "region_id": 422, 
+            "region_name": "Корякский автономный округ", 
+            "region_name_eng": "Koryak autonomous district", 
+            "region_ord": 200282
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_83", 
+            "region_description": "Ненецкий автономный округ", 
+            "region_id": 423, 
+            "region_name": "Ненецкий автономный округ", 
+            "region_name_eng": "Nenets autonomous district", 
+            "region_ord": 200283
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_84", 
+            "region_description": "Таймырский (Долгано-Ненецкий) автономный округ", 
+            "region_id": 424, 
+            "region_name": "Таймырский (Долгано-Ненецкий) автономный округ", 
+            "region_name_eng": "Taymyr Dolgano-Nenets autonomous district", 
+            "region_ord": 200284
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_85", 
+            "region_description": "Усть-Ордынский Бурятский автономный округ", 
+            "region_id": 425, 
+            "region_name": "Усть-Ордынский Бурятский автономный округ", 
+            "region_name_eng": "Ust-Orda Buryat autonomous district", 
+            "region_ord": 200285
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_86", 
+            "region_description": "Ханты-Мансийский автономный округ", 
+            "region_id": 426, 
+            "region_name": "Ханты-Мансийский автономный округ", 
+            "region_name_eng": "Khanty-Mansi autonomous district", 
+            "region_ord": 200286
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_87", 
+            "region_description": "Чукотский автономный округ", 
+            "region_id": 427, 
+            "region_name": "Чукотский автономный округ", 
+            "region_name_eng": "Chukotka autonomous district", 
+            "region_ord": 200287
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_89", 
+            "region_description": "Ямало-Ненецкий автономный округ", 
+            "region_id": 429, 
+            "region_name": "Ямало-Ненецкий автономный округ", 
+            "region_name_eng": "Yamalo-Nenets autonomous district", 
+            "region_ord": 200289
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_68", 
+            "region_description": "Таврическая губерния", 
+            "region_id": 119, 
+            "region_name": "Таврическая губерния", 
+            "region_name_eng": "Taurida governorate", 
+            "region_ord": 185868
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_76", 
+            "region_description": "Харьковская губерния", 
+            "region_id": 127, 
+            "region_name": "Харьковская губерния", 
+            "region_name_eng": "Kharkov governorate", 
+            "region_ord": 185876
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_83", 
+            "region_description": "Ярославская губерния", 
+            "region_id": 134, 
+            "region_name": "Ярославская губерния", 
+            "region_name_eng": "Yaroslavl governorate", 
+            "region_ord": 185883
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_86", 
+            "region_description": "Кавказское-линейное казачье войско", 
+            "region_id": 137, 
+            "region_name": "Кавказское-линейное казачье войско", 
+            "region_name_eng": "Caucasus Line Cossack host lands", 
+            "region_ord": 185886
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1858_98", 
+            "region_description": "Азовское казачье войско", 
+            "region_id": 149, 
+            "region_name": "Азовское казачье войско", 
+            "region_name_eng": "Azov Cossack host lands", 
+            "region_ord": 185898
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_01", 
+            "region_description": "Або-Бьернеборгская губерния", 
+            "region_id": 154, 
+            "region_name": "Або-Бьернеборгская губерния", 
+            "region_name_eng": "Abo-Björneborg governorate", 
+            "region_ord": 189701
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_11", 
+            "region_description": "Витебская губерния", 
+            "region_id": 164, 
+            "region_name": "Витебская губерния", 
+            "region_name_eng": "Vitebsk governorate", 
+            "region_ord": 189711
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_17", 
+            "region_description": "Выборгская губерния", 
+            "region_id": 170, 
+            "region_name": "Выборгская губерния", 
+            "region_name_eng": "Vyborg governorate", 
+            "region_ord": 189717
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_21", 
+            "region_description": "Екатеринославская губерния", 
+            "region_id": 174, 
+            "region_name": "Екатеринославская губерния", 
+            "region_name_eng": "Ekaterinoslav governorate", 
+            "region_ord": 189721
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_26", 
+            "region_description": "Иркутская губерния", 
+            "region_id": 179, 
+            "region_name": "Иркутская губерния", 
+            "region_name_eng": "Irkutsk governorate", 
+            "region_ord": 189726
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_34", 
+            "region_description": "Костромская губерния", 
+            "region_id": 187, 
+            "region_name": "Костромская губерния", 
+            "region_name_eng": "Kostroma governorate", 
+            "region_ord": 189734
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_39", 
+            "region_description": "Кутаисская  губерния вкл. Сухумский округ", 
+            "region_id": 192, 
+            "region_name": "Кутаисская  губерния вкл. Сухумский округ", 
+            "region_name_eng": "Kutaisi governorate incl. Sukhumi district", 
+            "region_ord": 189739
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_47", 
+            "region_description": "Новгородская губерния", 
+            "region_id": 202, 
+            "region_name": "Новгородская губерния", 
+            "region_name_eng": "Novgorod governorate", 
+            "region_ord": 189747
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_55", 
+            "region_description": "Петроковская губерния", 
+            "region_id": 210, 
+            "region_name": "Петроковская губерния", 
+            "region_name_eng": "Piotrków governorate", 
+            "region_ord": 189755
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_63", 
+            "region_description": "Самаркандская область", 
+            "region_id": 218, 
+            "region_name": "Самаркандская область", 
+            "region_name_eng": "Samarkand governorate", 
+            "region_ord": 189763
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_70", 
+            "region_description": "Семиреченская область", 
+            "region_id": 225, 
+            "region_name": "Семиреченская область", 
+            "region_name_eng": "Semirechye region", 
+            "region_ord": 189770
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_76", 
+            "region_description": "Тавастгусская губерния", 
+            "region_id": 231, 
+            "region_name": "Тавастгусская губерния", 
+            "region_name_eng": "Tavasthus governorate", 
+            "region_ord": 189776
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_77", 
+            "region_description": "Таврическая губерния", 
+            "region_id": 232, 
+            "region_name": "Таврическая губерния", 
+            "region_name_eng": "Taurida governorate", 
+            "region_ord": 189777
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_78", 
+            "region_description": "Тамбовская губерния", 
+            "region_id": 233, 
+            "region_name": "Тамбовская губерния", 
+            "region_name_eng": "Tambov governorate", 
+            "region_ord": 189778
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_81", 
+            "region_description": "Тифлисская губерния вкл. Закатальский округ", 
+            "region_id": 236, 
+            "region_name": "Тифлисская губерния вкл. Закатальский округ", 
+            "region_name_eng": "Tiflis governorate incl. Zakatalskii district", 
+            "region_ord": 189781
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1897_92", 
+            "region_description": "Черниговская губерния", 
+            "region_id": 249, 
+            "region_name": "Черниговская губерния", 
+            "region_name_eng": "Chernigov governorate", 
+            "region_ord": 189792
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_06", 
+            "region_description": "Чечено-Ингушская АССР", 
+            "region_id": 258, 
+            "region_name": "Чечено-Ингушская АССР", 
+            "region_name_eng": "Chechen-Ingush ASSR", 
+            "region_ord": 195906
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_15", 
+            "region_description": "Северо-Осетинская АССР", 
+            "region_id": 266, 
+            "region_name": "Северо-Осетинская АССР", 
+            "region_name_eng": "North Ossetian ASSR", 
+            "region_ord": 195915
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_22", 
+            "region_description": "Алтайский край вкл. Горно-Алтайскую АО", 
+            "region_id": 271, 
+            "region_name": "Алтайский край вкл. Горно-Алтайскую АО", 
+            "region_name_eng": "Altai territory incl. Gorno-Altai autonomous region", 
+            "region_ord": 195922
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_24_19", 
+            "region_description": "Хакасская автономная область Красноярского края", 
+            "region_id": 276, 
+            "region_name": "Хакасская автономная область Красноярского края", 
+            "region_name_eng": "Khakas autonomous region of Krasnoiarsk territory", 
+            "region_ord": 19592419
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_26", 
+            "region_description": "Ставропольский край вкл. Карачаево-Черкесской АО", 
+            "region_id": 280, 
+            "region_name": "Ставропольский край вкл. Карачаево-Черкесской АО", 
+            "region_name_eng": "Stavropol territory incl. Karachay-Cherkess autonomous region", 
+            "region_ord": 195926
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_27_79", 
+            "region_description": "Еврейская автономная область Хабаровского края", 
+            "region_id": 283, 
+            "region_name": "Еврейская автономная область Хабаровского края", 
+            "region_name_eng": "Jewish autonomous region of Khabarovsk territory", 
+            "region_ord": 19592779
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_37", 
+            "region_description": "Ивановская область", 
+            "region_id": 294, 
+            "region_name": "Ивановская область", 
+            "region_name_eng": "Ivanovo region", 
+            "region_ord": 195937
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_38_85", 
+            "region_description": "Усть-Ордынский Бурятский национальный округ Иркутской области", 
+            "region_id": 296, 
+            "region_name": "Усть-Ордынский Бурятский национальный округ Иркутской области", 
+            "region_name_eng": "Ust-Orda Buryat national district of Irkutsk region", 
+            "region_ord": 19593885
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_49_87", 
+            "region_description": "Чукотский национальный округ Магаданской области", 
+            "region_id": 309, 
+            "region_name": "Чукотский национальный округ Магаданской области", 
+            "region_name_eng": "Chukotka national district of Magadan region", 
+            "region_ord": 19594987
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_66", 
+            "region_description": "Свердловская область", 
+            "region_id": 327, 
+            "region_name": "Свердловская область", 
+            "region_name_eng": "Sverdlovsk region", 
+            "region_ord": 195966
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_72_86", 
+            "region_description": "Ханты-Мансийский национальный округ Тюменской области", 
+            "region_id": 334, 
+            "region_name": "Ханты-Мансийский национальный округ Тюменской области", 
+            "region_name_eng": "Khanty-Mansi national district of Tyumen region", 
+            "region_ord": 19597286
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_74", 
+            "region_description": "Челябинская область", 
+            "region_id": 337, 
+            "region_name": "Челябинская область", 
+            "region_name_eng": "Chelyabinsk region", 
+            "region_ord": 195974
+        }, 
+        {
+            "active": 1, 
+            "region_code": "1959_75_80", 
+            "region_description": "Агинский Бурятский национальный округ Читинской области", 
+            "region_id": 339, 
+            "region_name": "Агинский Бурятский национальный округ Читинской области", 
+            "region_name_eng": "Agin-Buryat national district of Chita region", 
+            "region_ord": 19597580
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_12", 
+            "region_description": "Республика Марий Эл", 
+            "region_id": 352, 
+            "region_name": "Республика Марий Эл", 
+            "region_name_eng": "Mari El Republic", 
+            "region_ord": 200212
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_15", 
+            "region_description": "Республика Северная Осетия – Алания", 
+            "region_id": 355, 
+            "region_name": "Республика Северная Осетия – Алания", 
+            "region_name_eng": "Republic of North Ossetia-Alania", 
+            "region_ord": 200215
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_29", 
+            "region_description": "Архангельская область", 
+            "region_id": 369, 
+            "region_name": "Архангельская область", 
+            "region_name_eng": "Arkhangelsk region", 
+            "region_ord": 200229
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_36", 
+            "region_description": "Воронежская область", 
+            "region_id": 376, 
+            "region_name": "Воронежская область", 
+            "region_name_eng": "Voronezh region", 
+            "region_ord": 200236
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_44", 
+            "region_description": "Костромская область", 
+            "region_id": 384, 
+            "region_name": "Костромская область", 
+            "region_name_eng": "Kostroma region", 
+            "region_ord": 200244
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_51", 
+            "region_description": "Мурманская область", 
+            "region_id": 391, 
+            "region_name": "Мурманская область", 
+            "region_name_eng": "Murmansk region", 
+            "region_ord": 200251
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_56", 
+            "region_description": "Оренбургская область", 
+            "region_id": 396, 
+            "region_name": "Оренбургская область", 
+            "region_name_eng": "Orenburg region", 
+            "region_ord": 200256
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_64", 
+            "region_description": "Саратовская область", 
+            "region_id": 404, 
+            "region_name": "Саратовская область", 
+            "region_name_eng": "Saratov region", 
+            "region_ord": 200264
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_72", 
+            "region_description": "Тюменская область", 
+            "region_id": 412, 
+            "region_name": "Тюменская область", 
+            "region_name_eng": "Tyumen region", 
+            "region_ord": 200272
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_78", 
+            "region_description": "г. Санкт-Петербург", 
+            "region_id": 418, 
+            "region_name": "г. Санкт-Петербург", 
+            "region_name_eng": "St. Petersburg (city)", 
+            "region_ord": 200278
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_81", 
+            "region_description": "Коми-Пермяцкий автономный округ", 
+            "region_id": 421, 
+            "region_name": "Коми-Пермяцкий автономный округ", 
+            "region_name_eng": "Komi-Permyak autonomous district", 
+            "region_ord": 200281
+        }, 
+        {
+            "active": 1, 
+            "region_code": "2002_88", 
+            "region_description": "Эвенкийский автономный округ", 
+            "region_id": 428, 
+            "region_name": "Эвенкийский автономный округ", 
+            "region_name_eng": "Evenk autonomous district", 
+            "region_ord": 200288
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+name = Query Tool
+description = Provide interface for building desired datasets.
+core = 7.x
+package = Query Tool
+version = 7.x-1.x-dev

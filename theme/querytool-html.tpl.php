@@ -15,7 +15,7 @@
 
 <head>
   <?php print $head; ?>
-  <title><?php print $head_title; ?></title>
+  <title><?php print $title; ?></title>
 
   <?php if ($default_mobile_metatags): ?>
     <meta name="MobileOptimized" content="width">
@@ -42,12 +42,11 @@
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
 <?php if ($skip_link_text && $skip_link_anchor): ?>
-  <p id="skip-link">
-    <a href="#<?php print $skip_link_anchor; ?>" class="element-invisible element-focusable"><?php print $skip_link_text; ?></a>
-  </p>
+
 <?php endif; ?>
 <?php print $page_top; ?>
 <?php print $page; ?>
 <?php print $page_bottom; ?>
+
 </body>
 </html>

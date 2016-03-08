@@ -1,10 +1,41 @@
 html{
-   margin:20px;
    overflow-x: hidden;
 }
 
+
+#header{
+    position: relative;
+    text-align: center;
+    height:55px;
+    width:100%;
+    padding: 10px 20px;
+    -webkit-box-shadow:  2px 2px 20px -10px rgba(0,0,0,0.5);
+    -moz-box-shadow:  2px 2px 20px -10px rgba(0,0,0,0.5);
+    box-shadow:  2px 2px 20px -10px rgba(0,0,0,0.5);
+    border:1px solid #CCC;
+    background: rgba(46, 109, 164, 0.21);
+}
+
+#header img{
+    height: 35px;
+    width: auto;
+}
+
+#langmenu{
+    position: absolute;
+    top:20px;
+    right:60px;
+}
+
+#close{
+    position: absolute;
+    top:5px;
+    right:20px;
+    font-size: 30px;
+}
+
 h1{
-    margin-top:0;
+    margin-top:0px;
     font-size: 27px;
     color: #666;
 }
@@ -17,16 +48,17 @@ h2{
 }
 
 .step{
+    margin:20px;
     border-left: 4px solid rgba(255, 16, 67, 0.2);
     padding: 0 20px 20px 20px;
-    margin: 20px 0 0 0;
+
+    clear: both;
     /*background-color:rgba(0, 0, 0, 0.03) ;*/
 }
 
-
 /*** YEAR SELECTION ***/
 #yearselection{
-    margin: 20px 0;
+
 }
 
 /*** CLASS MODE SELECTION ***/
@@ -325,8 +357,6 @@ iframe table{
 }
 
 
-
-
 ::-webkit-scrollbar {
     width: 10px;
     background: transparent;
@@ -342,4 +372,33 @@ iframe table{
     border-radius: 10px;
     /*-webkit-box-shadow: inset 0 0 16px rgba(0,0,0,0.5);*/
     background-color: rgba(0,0,0,.3);
+}
+
+.nav-tabs {
+    border-bottom: 0;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover{
+    border:1px solid #FFF;
+    font-weight: 700;
+    color:#f50a41;
+    font-size: 16px;
+    padding-top:8px;
+
+}
+.nav-tabs > li > a:hover{
+    background: #FFF;
+    border:1px solid #FFF;
+
+}
+.nav-tabs a.active{
+    color: #337ab7;
+}
+
+#copyright{
+    border-top: 1px solid #999;
+    margin:20px;
+    font-size: 11px;
+    padding-top:2px;
 }

@@ -1,7 +1,18 @@
+<div id="header">
+  <img src="<?php print $logo; ?>" id="logo" alt="" class="" />
+  <h1><?php print $title; ?></h1>
+
+  <div id="langmenu">
+    choose language
+  </div>
+
+
+  <div id="close">
+    <a href="#" onclick="closeWindow();"><i class="fa fa-times"></i></a>
+  </div>
+</div>
+
 <?php print $messages; ?>
-
-
-<h1><?php print $title; ?></h1>
 
 <div id="mainmessage-container"></div>
 <div id="qsv"></div>
@@ -127,3 +138,8 @@
   <div id="treeoverlay"></div>
   <div id="tree-container"></div>
 </div>
+
+
+
+
+<div id="copyright"><?php print $copyright; ?></div>

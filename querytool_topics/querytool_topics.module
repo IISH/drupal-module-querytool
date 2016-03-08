@@ -36,7 +36,11 @@ function querytool_topics(){
     drupal_add_css(drupal_get_path('module', 'querytool') . '/css/topics.css');
     drupal_add_library('system', 'ui.tabs');
 
-    drupal_add_js('jQuery(document).ready(function () {      jQuery( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+  drupal_add_js(drupal_get_path('module','querytool')."/js/topics.js");
+
+
+
+  drupal_add_js('jQuery(document).ready(function () {      jQuery( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
     jQuery( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" ); });',   array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
 
     $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
@@ -61,7 +65,11 @@ function querytool_topics(){
             $tabs   .= "<li><a href='#tabs-".$term->tid."'>".$label."</a></li>";
             $pages  .= "<div id='tabs-".$term->tid."'><h2>".$label."</h2>".$term->description."<br><br><br>";
         }else{
-            $subtopics .= $datatype.".  <a href='/querytool/".$term->tid."' target='_blank'>".$term->name."</a><br>";
+           // $subtopics .= $datatype.".  <a href='/querytool/".$term->tid."' target='_blank'>".$term->name."</a><br>";
+            $subtopics .= $datatype.".  <a href='#' onClick='openWindow(\"/querytool\",\"".$term->tid."\");' >".$term->name."</a><br>";
+
+
+
             if($term->description)  $subtopics .= "<div class='subtopic-description'>".$term->description."</div>";
             $subtopics .= "<br>";
         }

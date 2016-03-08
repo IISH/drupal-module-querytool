@@ -12,7 +12,7 @@ function querytool_menu ()
     'title' => 'Topics',
     'page callback' => 'querytool',
     'page arguments' => array(1),
-    'access arguments' => array('view published content'),
+    'access callback' => true
   );
 
   $items['admin/config/system/querytool'] = array(
@@ -144,6 +144,8 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js("var datatype = '".$datatype."';",array('type'=>'inline','scope' => 'footer', 'weight' => 3));
     drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
     drupal_add_js($path."/js/dndTree.js", array('scope' => 'footer', 'weight' => 5));
+
+    $variables['title'] = t($term->name);
   }
 
 }
@@ -159,7 +161,7 @@ function querytool_preprocess_page (&$variables, $hook)
     $variables['title'] = t($term->name);
   }
 
-  $variables["url"] = 'test';
+  $variables["copyright"] = variable_get('querytool_copyright');
 }
 
 /**
@@ -169,27 +171,40 @@ function querytool_preprocess_page (&$variables, $hook)
  */
 function querytool_admin_form ($form, &$form_state)
 {
-  $api_url = variable_get('querytool_api_url');
+  $api_url    = variable_get('querytool_api_url','');
+  $import_url = variable_get('querytool_import_url','');
+
   $form['querytool_api_url'] = array(
     '#type' => 'textfield',
     '#default_value' => $api_url,
     '#title' => t('Enter base API url'),
   );
-  if ($api_url) $form['querytool_api_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
 
-  $import_url = variable_get('querytool_import_url');
   $form['querytool_import_url'] = array(
     '#type' => 'textfield',
     '#default_value' => $import_url,
     '#title' => t('Enter API url for topics'),
   );
-  if ($import_url) $form['querytool_import_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
+
+  $form['querytool_copyright'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('querytool_copyright', ''),
+    '#title' => t('Copyright notice'),
+    '#description' => t("The text of the copyright in footer."),
+  );
+
+  // adding view links
+  if ($api_url)     $form['querytool_api_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
+  if ($import_url)  $form['querytool_import_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
+
 
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Save',
   );
   return $form;
+
+  //return system_settings_form($form);
 }
 
 
@@ -202,6 +217,7 @@ function querytool_admin_form_submit ($form, $form_state)
 {
   variable_set('querytool_api_url', $form_state['values']['querytool_api_url']);
   variable_set('querytool_import_url', $form_state['values']['querytool_import_url']);
+  variable_set('querytool_copyright', $form_state['values']['querytool_copyright']);
 
   $message = "Saved.";
   drupal_set_message(check_plain($message), 'status');

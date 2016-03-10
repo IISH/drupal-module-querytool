@@ -3,9 +3,8 @@ var Classification = Backbone.Model.extend({
     classListCollection:null,
 
     url: function() {
-
-        var urlTail = "datatype="+ querySettings.get("datatype");
-        urlTail += "year="+querySettings.get("year");
+       // var urlTail = "datatype="+ querySettings.get("datatype");
+       // urlTail += "year="+querySettings.get("year");
         return querySettings.getClassUrl();
     },
 
@@ -24,7 +23,6 @@ var Classification = Backbone.Model.extend({
 
     updateSelection:function(){
         var selection = new Array();
-
             $.each($(".topic"),function(e){
             if($(this).find(".checked").length >0 ){  //|| $(this).find(" .checked-all").length >0
                 selection.push($(this).attr("id"));
@@ -65,10 +63,11 @@ var Classification = Backbone.Model.extend({
 
             i++;
             // if(i<999){
-
+            console.debug(hclass);
             var hc1  = hclass.histclass1;
             var hc2  = hclass.histclass2;
             var hc3  = hclass.histclass3;
+            var hc4  = hclass.histclass4;
 
             newClass = {};
 
@@ -100,6 +99,17 @@ var Classification = Backbone.Model.extend({
                     //levelData[2].push(newClass);
                 }else{
                     console.log("ERROR: class level doesn't match with Tree level 3; parent item isn't added yet. ",hclass.histclass_id);
+                    return;
+                }
+            }
+
+            if(hc4 !== "0" && !Tree.children[hc1].children[hc2].children[hc3].children[hc4]){
+                if(hclass.level==4){
+                    newClass = {"name": hc4, "parent":"null", hc1:hc1, hc2:hc2, hc3:hc3, hc4:hc4, histclass_id: hclass.histclass_id, level:hclass.level, parent_id: Tree.children[hc1].children[hc2].children[hc3].histclass_id};
+                    Tree.children[hc1].children[hc2].children[hc3].children[hc4] = newClass;
+                    //levelData[2].push(newClass);
+                }else{
+                    console.log("ERROR: class level doesn't match with Tree level 4; parent item isn't added yet. ",hclass.histclass_id);
                     return;
                 }
             }

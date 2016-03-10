@@ -1,7 +1,7 @@
 var QuerySettings = Backbone.Model.extend({
     confirmation:false,
     defaults: {
-        baseUrl:'/sites/all/modules/custom/querytool/json/',
+        baseUrl:'http://ristat.sandbox.socialhistoryservices.org/service/',
         years:[],
         classModes:[],
         datatype:"",
@@ -20,8 +20,8 @@ var QuerySettings = Backbone.Model.extend({
 
     getClassUrl:function(){
         var urlTail = "datatype="+ this.get("datatype");
-        urlTail += "year="+this.get("year");
-        return this.get("baseUrl") +'histclasses.json?'+urlTail;
+        if(this.get("year") !== "") urlTail += "&year="+this.get("year");
+        return this.get("baseUrl") +'classes?'+urlTail;
     },
 
     getPreviewUrl:function(){

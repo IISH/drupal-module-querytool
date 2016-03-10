@@ -145,7 +145,7 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
     drupal_add_js($path."/js/dndTree.js", array('scope' => 'footer', 'weight' => 5));
 
-    $variables['title'] = t($term->name);
+    $variables['title'] = $datatype." - ".t($term->name);
   }
 
 }
@@ -156,9 +156,11 @@ function querytool_preprocess_html(&$variables, $hook)
 function querytool_preprocess_page (&$variables, $hook)
 {
   if (arg(0) == "querytool") {
+
     $term = taxonomy_term_load(arg(1));
+    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
     $variables['theme_hook_suggestions'][] = 'querytool_page';
-    $variables['title'] = t($term->name);
+    $variables['title'] = $datatype." - ".t($term->name);
   }
 
   $variables["copyright"] = variable_get('querytool_copyright');

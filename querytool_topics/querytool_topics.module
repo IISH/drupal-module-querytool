@@ -68,15 +68,15 @@ function querytool_topics(){
            // $subtopics .= $datatype.".  <a href='/querytool/".$term->tid."' target='_blank'>".$term->name."</a><br>";
             $subtopics .= $datatype.".  <a href='#' onClick='openWindow(\"/querytool\",\"".$term->tid."\");' >".$term->name."</a><br>";
 
-
-
             if($term->description)  $subtopics .= "<div class='subtopic-description'>".$term->description."</div>";
             $subtopics .= "<br>";
         }
 
         $i++;
     }
-    // close last topic
+
+    // add last subtopics and close last topic
+    $pages .= $subtopics;
     $pages .= "</div>";
 
     return "<div id='tabs'><ul>".$tabs."</ul>".$pages."</div>";

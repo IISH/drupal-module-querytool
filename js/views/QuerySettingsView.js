@@ -12,7 +12,7 @@ var QuerySettingsView = Backbone.View.extend({
 
         for (var property in object) {
             if (object.hasOwnProperty(property) && excludeProp.indexOf(property) == -1) {
-                if(object[property].constructor === Array){
+                if(object[property] !== null && object[property].constructor === Array){
                     output += property + " : " + object[property].join(", ") + "<br>"
                 }else{
                     output += property + " : " +object[property] + "<br>"

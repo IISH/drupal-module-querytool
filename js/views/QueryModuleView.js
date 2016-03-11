@@ -7,7 +7,6 @@ var QueryModuleView = Backbone.View.extend({
     initialize:function(){
     },
 
-
     updateSteps:function(){
         var step = 1;
 
@@ -16,10 +15,6 @@ var QueryModuleView = Backbone.View.extend({
             step++;
         });
     }
-
-
-
-
 
 });
 

@@ -21,12 +21,14 @@ var QuerySettings = Backbone.Model.extend({
     getClassUrl:function(){
         var urlTail = "datatype="+ this.get("datatype");
         if(this.get("year") !== "") urlTail += "&year="+this.get("year");
-        return this.get("baseUrl") +'classes?'+urlTail;
+      //  return this.get("baseUrl") +'classes?'+urlTail;
+        return this.get("baseUrl") +'histclasses?'+urlTail;
+      //  return "/sites/all/modules/custom/querytool/json/testclasses.json";
     },
 
     getPreviewUrl:function(){
        // datatype=2.01&year=1795"
-        var url = this.get("baseUrl");
+
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
@@ -40,7 +42,14 @@ var QuerySettings = Backbone.Model.extend({
 
         return url;
     },
+    getRegionsUrl:function(){
+        var url = this.get("baseUrl")+'regions';
+        if(this.get("year") !== "")  url += "?basisyear="+this.get("year");
 
+        console.log(":"+ url);
+        return url;
+
+    },
     updateMode:function(value){
 
         var r = true;
@@ -53,8 +62,10 @@ var QuerySettings = Backbone.Model.extend({
             if(value == "modern"){
                 this.set({year:''});
                 $("#yearselection").hide();
+                $("#regionselection").hide();
              }else{
                 $("#yearselection").show();
+                $("#regionselection").show();
             }
 
             querySettingsView.update();
@@ -73,6 +84,7 @@ var QuerySettings = Backbone.Model.extend({
         if(r){
             this.set({year: value});
             querySettingsView.update();
+            regionSelector.render();
             classification.getClasses();
         }else{
             //reset to current value
@@ -80,12 +92,9 @@ var QuerySettings = Backbone.Model.extend({
         }
     },
 
-
     resetYear:function(){
-
         this.set({year: ""});
     },
-
 
     updateClasses:function(selection){
         this.set({selectedclasses:selection});

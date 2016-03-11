@@ -1,13 +1,13 @@
-.ui-tabs-vertical { width: 55em; }
+.ui-tabs-vertical { width: 55em;
+    font-family: Arial, Helvetica, sans-serif;
+}
 .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border:0; }
+/*
 .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; }
 .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
-
-
-
-
+*/
 .ui-widget-content{
     border:0;
 }
@@ -26,36 +26,64 @@
 #tabs li a{
     outline: 0;
 }
-#tabs h2{
-   margin-top:0;
+#tabs h3{
+   margin-top:15px;
 }
 
-
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    border: 1px solid #FFF;
+  /*  border: 1px solid #FFF; */
     background: none;
-    color: #555;
 }
 
 .ui-tabs-vertical .ui-tabs-nav {
-    padding: .2em .1em .2em .2em;
+    padding: 0;
     float: left;
     width: 16em;
 }
 
 .ui-tabs-vertical .ui-tabs-panel {
     padding: 0em;
-    float: right;
+    float: left;
     width: 35em;
+    padding: 0 20px;
+    background-color: rgba(226, 239, 249, 0.7);
+}
+.ui-tabs-vertical .ui-tabs-nav li{
+    margin:0;
 }
 
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active{
-    font-weight: 800;
+    background-color: rgba(226, 239, 249, 0.7);
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active a{
+    color:#ff0033;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a:hover{
+    text-decoration: underline;
+}
+
+.ui-state-focus:focus { outline:1px dotted white !important }
+
+.ui-tabs-panel{
+    min-height: 210px;
 }
 
 
+.ui-tabs-panel a{
+}
+
+.ui-tabs-panel a:link,a:visited{
+     text-decoration: none;
+ }
+.ui-tabs-panel a:hover{
+    text-decoration: underline;
+}
+.ui-tabs-panel a:active{
+    color:#ff0033;
+}
 .subtopic-description{
     margin-top:3px;
-    margin-left: 40px;
+    margin-left: 32px;
     font-size: 12px;
 }

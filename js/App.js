@@ -40,6 +40,9 @@ if(datatype == ""){
     var yearSelector = new YearSelector({model:querySettings});
     yearSelector.render();
 
+
+    console.log("qs", querySettings);
+
     var regionSelector = new RegionSelector();
 
     var topicSelector = new TopicSelector();

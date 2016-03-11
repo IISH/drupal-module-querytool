@@ -17,7 +17,8 @@ var Connector = Backbone.View.extend({
         var nStartY = pos.top  - $("#topic-list-1").position().top-1;
         var nEndY = nStartY+ $(topic).height()*2-1;
 
-        var lineData = [ // top line
+        var lineData = [
+            // top line
             { "x":0 ,"y": nStartY},
             { "x":nWidth*0.4,"y":nStartY},
             { "x":nWidth*0.6,"y":1},

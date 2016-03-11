@@ -156,7 +156,6 @@ function querytool_preprocess_html(&$variables, $hook)
 function querytool_preprocess_page (&$variables, $hook)
 {
   if (arg(0) == "querytool") {
-
     $term = taxonomy_term_load(arg(1));
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
     $variables['theme_hook_suggestions'][] = 'querytool_page';
@@ -179,7 +178,7 @@ function querytool_admin_form ($form, &$form_state)
   $form['querytool_api_url'] = array(
     '#type' => 'textfield',
     '#default_value' => $api_url,
-    '#title' => t('Enter base API url'),
+    '#title' => t('Enter API base url'),
   );
 
   $form['querytool_import_url'] = array(
@@ -196,8 +195,8 @@ function querytool_admin_form ($form, &$form_state)
   );
 
   // adding view links
-  if ($api_url)     $form['querytool_api_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
-  if ($import_url)  $form['querytool_import_url']['#field_suffix'] = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
+  if ($api_url)     $form['querytool_api_url']['#field_suffix']     = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
+  if ($import_url)  $form['querytool_import_url']['#field_suffix']  = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
 
 
   $form['submit'] = array(

@@ -2,18 +2,22 @@ html{
    overflow-x: hidden;
 }
 
-
 #header{
-    position: relative;
+    position: fixed;
+    top:0;
+    left:0;
     text-align: center;
     height:55px;
     width:100%;
     padding: 10px 20px;
-    -webkit-box-shadow:  2px 2px 20px -10px rgba(0,0,0,0.5);
-    -moz-box-shadow:  2px 2px 20px -10px rgba(0,0,0,0.5);
-    box-shadow:  2px 2px 20px -10px rgba(0,0,0,0.5);
+    -webkit-box-shadow:  2px 2px 30px -10px rgba(0,0,0,0.5);
+    -moz-box-shadow:  2px 2px 30px -10px rgba(0,0,0,0.5);
+    box-shadow:  2px 2px 30px -10px rgba(0,0,0,0.5);
     border:1px solid #CCC;
     background: rgba(46, 109, 164, 0.21);
+    background-color: #bedaef;
+    background-color: #d8e5ef;
+    z-index: 999;
 }
 
 #header img{
@@ -41,6 +45,10 @@ h1{
     text-transform: uppercase;
 }
 
+#main{
+    margin-top:80px;
+}
+
 h2{
     color: #f50a41;
     font-size: 21px;
@@ -51,10 +59,17 @@ h2{
 .step{
     margin:20px;
     border-left: 4px solid rgba(255, 16, 67, 0.2);
-    padding: 0 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
 
+    /*border:1px solid #EEE;*/
     clear: both;
     /*background-color:rgba(0, 0, 0, 0.03) ;*/
+
+/*
+    -webkit-box-shadow:  8px 8px 6px  rgba(0,0,0,0.4);
+    -moz-box-shadow:  8px 8px 6px rgba(0,0,0,0.4);
+    box-shadow:  3px 3px 6px rgba(0,0,0,0.3);
+*/
 }
 
 /*** YEAR SELECTION ***/
@@ -378,6 +393,20 @@ iframe table{
 .nav-tabs {
     border-bottom: 0;
 }
+
+
+:focus,
+.ui-state-focus{
+outline:none;
+}
+li:focus{
+    outline: none;
+
+}
+::-moz-focus-inner {
+    border: 0;
+}
+
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover{
@@ -405,3 +434,4 @@ iframe table{
     font-size: 11px;
     padding-top:2px;
 }
+

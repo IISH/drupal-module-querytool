@@ -2,10 +2,7 @@
   <img src="<?php print $logo; ?>" id="logo" alt="" class="" />
   <h1><?php print $title; ?></h1>
 
-  <div id="langmenu">
-    choose language
-  </div>
-
+  <div id="langmenu"></div>
 
   <div id="close">
     <a href="#" onclick="closeWindow();"><i class="fa fa-times"></i></a>
@@ -119,7 +116,7 @@
                        <div class="checkbox-depth" title="(de)selects all underlying items" data-toggle="tooltip" data-placement="top"> </div>
                     <% }; %>
                 </div>
-      <span><%= htmlEncode(topic.name) %></span>
+      <span><%= htmlEncode(topic.histclass_id)+" "+htmlEncode(topic.name) %></span>
     </div>
             <% }); %>
         </div>

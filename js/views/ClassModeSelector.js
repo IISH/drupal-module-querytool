@@ -21,33 +21,8 @@ var ClassModeSelector = Backbone.View.extend({
     },
 
     onModeSelect:function(e){
-
         var val = $('input[name=classmode]:checked').val();
         this.model.updateMode(val);
-
-        /*
-        var r = true;
-
-        // only ask when not empty
-        if(this.model.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
-
-        if(r){
-
-
-            if(val == "modern"){
-                $("#yearselection").hide();
-                querySettings.resetYear();
-            }else{
-                $("#yearselection").show();
-            }
-
-
-
-        }else{
-            // reset to current value
-            $('input[value='+this.model.get('classmode')).prop('checked', true);
-        }
-*/
     },
 
     selectMode:function(mode){

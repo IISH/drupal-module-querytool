@@ -58,18 +58,17 @@ var Classification = Backbone.Model.extend({
 
         // sort classes to be sure 'higher' level classes wil be addded first prior to subclasses
 // var classes = _.sortBy(r.attributes.data, 'class_id');
-        var classes = r.attributes.data;//_.sortBy(r.attributes.data, 'level');
+        var classes = _.sortBy(r.attributes.data, 'levelx');
 
         _.each(classes, function(hclass) {
 
             i++;
             // if(i<999){
-            console.debug(hclass.histclass_id);
+       //     console.debug(hclass);
             var hc1  = hclass.histclass1;
             var hc2  = hclass.histclass2;
             var hc3  = hclass.histclass3;
             var hc4  = hclass.histclass4;
-           // var hcfull = hc1+hc2+hc3;
 
  //temp
 hclass.class_id = hclass.histclass_id;
@@ -81,18 +80,26 @@ hclass.class_id = hclass.histclass_id;
                 // if it is 1st level, add as complete and new object
                 if(hclass.level==1){
                     newClass = {"name": hc1, "parent":"null", children:{}, histclass_id: hclass.class_id, level:hclass.level, parent_id: null};
+
                     Tree.children[hc1] = newClass;
+
+
                 }else{
                     // or add string only to create
-                    console.log("ERROR: class level doesn't match with Tree level 1; created temp one for: ",hclass.histclass_id);
+                    console.log("ERROR: class level doesn't match with Tree level 1; parent items isn't added yet. ",hclass.histclass_id);
                     // add without id
-                    newClass = {"name": hc1, "parent":"null", children:{}, histclass_id: -1, level:1, parent_id: null};
+                    newClass = {"name": hc1, "parent":"null", children:{}, histclass_id: 0, level:1, parent_id: null};
                     Tree.children[hc1] = newClass;
+                    //return;
                 }
             }else{
-                // if string is present check if it has an id, if not, add the id
-                if(Tree.children[hc1].histclass_id == -1 && hclass.level==1){
+                // if string is present check if it has an id, if not, add extra parameters
+                if(Tree.children[hc1].histclass_id == 0 && hclass.level==1){
+                    newClass = {"name": hc1, "parent":"null", children:{}, histclass_id: hclass.class_id, level:hclass.level, parent_id: null};
+
                     Tree.children[hc1].histclass_id = hclass.class_id;
+                    Tree.children[hc1].level = hclass.level;
+
                 }
 
             }
@@ -103,18 +110,9 @@ hclass.class_id = hclass.histclass_id;
                     Tree.children[hc1].children[hc2] = newClass;
                     // levelData[1].push(newClass);
                 }else{
-                    console.log("ERROR: class level doesn't match with Tree level 2; created temp one for: ",hclass.class_id);
-                    // add without id
-                    newClass = {"name": hc2, "parent":"null", children:{}, histclass_id: -1, level:hclass.level, parent_id: Tree.children[hc1].histclass_id};
-                    Tree.children[hc1].children[hc2] = newClass;
-                   // return;
+                    console.log("ERROR: class level doesn't match with Tree level 2; parent item isn't added yet. ",hclass.class_id);
+                    return;
                 }
-            }else{
-                // if string is present check if it has an id, if not, add the id
-                if(Tree.children[hc1].children[hc2].histclass_id == -1 && hclass.level==2){
-                    Tree.children[hc1].children[hc2].histclass_id = hclass.class_id;
-                }
-
             }
 
             if(hc3 !== "0" && !Tree.children[hc1].children[hc2].children[hc3]){
@@ -143,22 +141,17 @@ hclass.class_id = hclass.histclass_id;
         });
 
 
-        function loopChildren(obj,depth,parent_id) {
-
-            console.debug(depth, obj);
+        function loopChildren(obj,depth) {
             var result = "";
             depth++;
 
             var childs = new Array();
 
             $.each(obj, function(k, v) {
-                console.debug("parent_id ",  v.parent_id);
-                v.parent_id = parent_id;
-
                 childs.push(v);
                 if(v.children){
                     // converts object structure to array (for tree)
-                    v.children = loopChildren(v.children,depth,v.histclass_id);
+                    v.children = loopChildren(v.children,depth);
                     v.childCount =  Object.keys(v.children).length;
 
                 }else{
@@ -170,8 +163,8 @@ hclass.class_id = hclass.histclass_id;
             return childs;
         }
 
-console.debug("tree",Tree.children);
-        Tree.children = loopChildren(Tree.children,0,0);
+
+        Tree.children = loopChildren(Tree.children,0);
 
         this.classListCollection = new ClassListCollection();
         this.classListCollection.render(levelData);

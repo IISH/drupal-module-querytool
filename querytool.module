@@ -183,9 +183,9 @@ function querytool_preprocess_page (&$variables, $hook)
     }
 
     if($lang == "en"){
-      $variables['other_lang'] = "ru";
+      $variables['other_lang'] = "/querytool/".arg(1)."/ru";
     }else{
-      $variables['other_lang'] = "en";
+      $variables['other_lang'] = "/querytool/".arg(1)."/ru";
     }
   }
 

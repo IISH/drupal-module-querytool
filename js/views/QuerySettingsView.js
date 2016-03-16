@@ -4,8 +4,14 @@
 
 var QuerySettingsView = Backbone.View.extend({
     el:"#qsv",
-
+    debugmode:false,
     render:function(){
+        if(this.debugmode){
+            this.$el.show();
+        }else{
+            this.$el.hide();
+        }
+
         var output = "<h5>Query parameters</h5>";
         object =this.model.attributes;
         var excludeProp = new Array("classModes","years");

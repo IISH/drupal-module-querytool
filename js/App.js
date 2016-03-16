@@ -1,56 +1,60 @@
 /**
 *   TODO: Integrate in drupal behaviours system
 */
-/*
-$.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-    options.url = '/sites/all/modules/custom/querytool/json/' + options.url;
-});
-*/
+
+datatype = qtSettings.datatype;
 
 
-if(datatype == ""){
-    jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
+ App = function(){
 
-}else{
+    if(datatype == ""){
+        jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
 
-    var modes = [{
-        name:"historical",
-        label: "Historical",
-        description: "A description of what historical means"
-    },{
-        name:"modern",
-        label: "Modern",
-        description: "A description of what modern means"
-    }];
+    }else{
 
-    var querySettings = new QuerySettings();
-    querySettings.set({classModes:modes});
-    querySettings.set({datatype:datatype});
+        var modes = [{
+            name:"historical",
+            label: polyglot.t("historical"),
+            description: polyglot.t("historical-description")
+        },{
+            name:"modern",
+            label: polyglot.t("modern"),
+            description: polyglot.t("modern-description")
+        }];
 
+        window.querySettings = new QuerySettings();
+        window.querySettings.set({baseUrl: qtSettings.baseurl});
+        window.querySettings.set({moduleUrl: qtSettings.moduleurl});
+        window.querySettings.set({classModes:modes});
+        window.querySettings.set({datatype:datatype});
 
-    var queryModuleView = new QueryModuleView();
-    queryModuleView.updateSteps();
+        window.queryModuleView = new QueryModuleView();
+        window.queryModuleView.updateSteps();
 
-    var querySettingsView = new QuerySettingsView({model:querySettings});
-    querySettingsView.render();
+        window.querySettingsView = new QuerySettingsView({model:querySettings});
+        window.querySettingsView.render();
 
-    var classModeSelector = new ClassModeSelector({model:querySettings});
-    classModeSelector.render();
+        window.classModeSelector = new ClassModeSelector({model:querySettings});
+        window.classModeSelector.render();
 
+        window.yearSelector = new YearSelector({model:querySettings});
+        window.yearSelector.render();
 
-    var yearSelector = new YearSelector({model:querySettings});
-    yearSelector.render();
+        window.regionSelector = new RegionSelector();
 
-    var regionSelector = new RegionSelector();
+        window.topicSelector = new TopicSelector();
 
-    var topicSelector = new TopicSelector();
+        window.classification = new Classification();
 
-    var classification = new Classification();
+        window.resultView = new ResultView();
+      //  window.resultView.render();
 
-    var resultView = new ResultView();
+        // Testing
 
-    // Testing
+        //$('input[value=historical]').click();
 
-    //$('input[value=historical]').click();
+    }
 
 }
+
+App();

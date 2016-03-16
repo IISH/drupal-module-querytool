@@ -1,0 +1,1 @@
+window.polyglot = new Polyglot({phrases: phrases});

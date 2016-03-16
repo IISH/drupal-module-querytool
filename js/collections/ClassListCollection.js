@@ -2,7 +2,7 @@
 var ClassListCollection = Backbone.Collection.extend({
 
     render: function(tree){
-        console.log("render new classlistcollection");
+       // console.log("render new classlistcollection");
         var levels = new Array(1,2,3,4);
         var classBox;
 
@@ -23,7 +23,7 @@ var ClassListCollection = Backbone.Collection.extend({
     destroyModels:function(){
 
         this.each(function(model) {
-            console.debug(model);
+
             model.destroy();
         });
     }

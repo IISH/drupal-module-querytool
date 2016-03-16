@@ -1,12 +1,13 @@
 var QuerySettings = Backbone.Model.extend({
     confirmation:false,
     defaults: {
-        baseUrl:'http://ristat.sandbox.socialhistoryservices.org/service/',
+        moduleUrl:'',
+        baseUrl:'',
         years:[],
         classModes:[],
         datatype:"",
         classmode: "historical",
-        year:"",
+        base_year:"",
         selectedclasses:[],
         regions:[]
     },
@@ -20,7 +21,7 @@ var QuerySettings = Backbone.Model.extend({
 
     getClassUrl:function(){
         var urlTail = "datatype="+ this.get("datatype");
-        if(this.get("year") !== "") urlTail += "&year="+this.get("year");
+        if(this.get("base_year") !== "") urlTail += "&base_year="+this.get("base_year");
         if(this.get("mode") !== "") urlTail += "&classification="+this.get("classmode");
       //  return this.get("baseUrl") +'classes?'+urlTail;
         return this.get("baseUrl") +'classes?'+urlTail;
@@ -43,7 +44,7 @@ var QuerySettings = Backbone.Model.extend({
     },
     getRegionsUrl:function(){
         var url = this.get("baseUrl")+'regions';
-        if(this.get("year") !== "")  url += "?basisyear="+this.get("year");
+        if(this.get("year") !== "")  url += "?basisyear="+this.get("base_year");
         return url;
 
     },
@@ -79,13 +80,13 @@ var QuerySettings = Backbone.Model.extend({
       //   var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
         var r = true;
         if(r){
-            this.set({year: value});
+            this.set({base_year: value});
             querySettingsView.update();
             regionSelector.render();
             classification.getClasses();
         }else{
             //reset to current value
-            yearSelector.selectYear(this.get("year"));
+            yearSelector.selectYear(this.get("base_year"));
         }
     },
 
@@ -97,7 +98,4 @@ var QuerySettings = Backbone.Model.extend({
         this.set({selectedclasses:selection});
         querySettingsView.update();
     }
-
-
-
 });

@@ -20,7 +20,7 @@ var ClassBoxView = Backbone.View.extend({
         that.level = level;
 
         // set up template and fill
-        vars = {title:'Level '+level, topics:topics,level:level};
+        vars = {title: polyglot.t("level")+' '+level, topics:topics,level:level};
         tp = $('#topic-list-template').html();
         template = _.template(tp);
         html = template(vars);
@@ -190,7 +190,6 @@ var ClassBoxView = Backbone.View.extend({
         });
     },
 
-
     ocSwitch:function(e){
         var switchBtn = $(e.currentTarget);
         var parent_id = $(switchBtn).attr("data-parent");
@@ -208,7 +207,6 @@ var ClassBoxView = Backbone.View.extend({
         var that = this;
         that.updateCouter();
     },
-
 
     updateCouter:function(){
 

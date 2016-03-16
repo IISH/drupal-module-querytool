@@ -27,8 +27,8 @@ html{
 
 #langmenu{
     position: absolute;
-    top:20px;
-    right:60px;
+    top:17px;
+    left: 95px;
 }
 
 #close{
@@ -72,6 +72,11 @@ h2{
 */
 }
 
+.question-mark{
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 14px;
+}
 /*** YEAR SELECTION ***/
 #yearselection{
 
@@ -283,6 +288,14 @@ Other color scheme
     margin-right:4px;
     */
     opacity: .11;
+}
+
+span.skip-arrow{
+    font-size: 24px;
+    /* padding-top: 10px; */
+    line-height: 0;
+    padding-top: 8px;
+    display: block;
 }
 
 #btn-generate{

@@ -30,9 +30,7 @@ function closeWindow(){
     if (confirm("Close Window?")) {
         close();
     }
-
 }
-
 
 var QueryString = function () {
     // This function is anonymous, is executed immediately and

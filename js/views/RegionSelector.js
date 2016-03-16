@@ -11,13 +11,13 @@ var RegionSelector = Backbone.View.extend({
         var that = this;
 
         //reset
-         this.$el.html("");
+         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
 
         regions.fetch({
 
             success:function(r){
                 var regions = [];
-                var regionsdata = r.attributes.regions;//= _.sortBy(r.attributes, '0');
+                var regionsdata = r.attributes.regions;
 
                 _.each(regionsdata, function(region) {
                     region.label = region.region_name_eng;
@@ -31,10 +31,11 @@ var RegionSelector = Backbone.View.extend({
                 var template = _.template(tp);
                 var html = template(vars);
 
-                that.$el.append(html);
+                that.$el.html(html);
                 that.enableMultiSelect();
             }
         });
+
     },
 
 
@@ -43,8 +44,8 @@ var RegionSelector = Backbone.View.extend({
         var that = this;
 
         $('#regions').multiSelect({
-            selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='search'>",
-            selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='search'>",
+            selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='"+polyglot.t("search")+"'>",
+            selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='"+polyglot.t("search")+"'>",
             afterInit: function(ms){
                 var that = this,
                     $selectableSearch = that.$selectableUl.prev(),
@@ -75,7 +76,6 @@ var RegionSelector = Backbone.View.extend({
                 this.qs1.cache();
                 this.qs2.cache();
                 that.saveRegions();
-                console.log("deslect");
             }
         });
 

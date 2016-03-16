@@ -20,7 +20,7 @@ var ClassModeSelector = Backbone.View.extend({
         'change input':'onModeSelect'
     },
 
-    onModeSelect:function(e){
+    onModeSelect:function(){
         var val = $('input[name=classmode]:checked').val();
         this.model.updateMode(val);
     },

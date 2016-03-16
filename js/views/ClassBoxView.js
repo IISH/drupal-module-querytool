@@ -79,7 +79,7 @@ var ClassBoxView = Backbone.View.extend({
 
             // find childs
             var id = $(topic).closest(".topic").attr("id");
-            var childs =  $(".topic[data-parent="+id+"]");
+            var childs =  $(".topic[data-parent='"+id+"']");
             var that = this;
 
             // show childs or no childs-message
@@ -173,19 +173,19 @@ var ClassBoxView = Backbone.View.extend({
 
     selectNextDepth:function(topicId){
         var that = this;
-        $(".topic[data-parent="+topicId+"] .checkbox").addClass("checked");
-        $(".topic[data-parent="+topicId+"] .checkbox-depth").addClass("checked-depth");
+        $(".topic[data-parent='"+topicId+"'] .checkbox").addClass("checked");
+        $(".topic[data-parent='"+topicId+"'] .checkbox-depth").addClass("checked-depth");
 
-        $.each($(".topic[data-parent="+topicId+"]"),function(e,topic){
+        $.each($(".topic[data-parent='"+topicId+"']"),function(e,topic){
             that.selectNextDepth($(topic).attr("id"));
         });
     },
     deselectNextDepth:function(topicId){
         var that = this;
-        $(".topic[data-parent="+topicId+"] .checkbox").removeClass("checked");
-        $(".topic[data-parent="+topicId+"] .checkbox-depth").removeClass("checked-depth");
+        $(".topic[data-parent='"+topicId+"'] .checkbox").removeClass("checked");
+        $(".topic[data-parent='"+topicId+"'] .checkbox-depth").removeClass("checked-depth");
 
-        $.each($(".topic[data-parent="+topicId+"]"),function(e,topic){
+        $.each($(".topic[data-parent='"+topicId+"']"),function(e,topic){
             that.deselectNextDepth($(topic).attr("id"));
         });
     },
@@ -197,13 +197,13 @@ var ClassBoxView = Backbone.View.extend({
         var list = $(switchBtn).closest(".ts-box").find(".topic-list");
 
         // check if number of visible items is equal to num of children of parent (singel parent only; default state)
-        if($(list).find(".topic:visible").length == $(list).find(".topic[data-parent="+parent_id+"]:visible").length ){
+        if($(list).find(".topic:visible").length == $(list).find(".topic[data-parent='"+parent_id+"']:visible").length ){
             $(switchBtn).attr("data-state","all");
             $(list).find(".checked").closest(".topic").show();
-            $(list).find(".checked").closest(".topic[data-parent!="+parent_id+"]").fadeTo(0,.5);
+            $(list).find(".checked").closest(".topic[data-parent!='"+parent_id+"']").fadeTo(0,.5);
         }else{
             $(switchBtn).attr("data-state","single");
-            $(list).find(".checked").closest(".topic[data-parent!="+parent_id+"]").hide();
+            $(list).find(".checked").closest(".topic[data-parent!='"+parent_id+"']").hide();
         }
         var that = this;
         that.updateCouter();
@@ -211,8 +211,6 @@ var ClassBoxView = Backbone.View.extend({
 
 
     updateCouter:function(){
-
-
 
         var useSwitch = this.useSwitch;
         $.each($(".ts-box"),function(e){

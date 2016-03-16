@@ -37,11 +37,9 @@ if(datatype == ""){
     var classModeSelector = new ClassModeSelector({model:querySettings});
     classModeSelector.render();
 
+
     var yearSelector = new YearSelector({model:querySettings});
     yearSelector.render();
-
-
-    console.log("qs", querySettings);
 
     var regionSelector = new RegionSelector();
 
@@ -50,4 +48,9 @@ if(datatype == ""){
     var classification = new Classification();
 
     var resultView = new ResultView();
+
+    // Testing
+
+    //$('input[value=historical]').click();
+
 }

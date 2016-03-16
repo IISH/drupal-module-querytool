@@ -23,7 +23,10 @@ var YearSelector = Backbone.View.extend({
                 var template = _.template(tp);
                 var html = template(vars);
                 that.$el.append(html);
+
+              //  $(' #1795').click();
             }
+
         });
     },
 

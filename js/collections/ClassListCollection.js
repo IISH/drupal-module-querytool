@@ -5,6 +5,8 @@ var ClassListCollection = Backbone.Collection.extend({
         console.log("render new classlistcollection");
         var levels = new Array(1,2,3,4);
         var classBox;
+
+
         $("#topic-lists").html("");
         var that = this;
 

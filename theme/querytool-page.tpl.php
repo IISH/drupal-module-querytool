@@ -116,7 +116,7 @@
                        <div class="checkbox-depth" title="(de)selects all underlying items" data-toggle="tooltip" data-placement="top"> </div>
                     <% }; %>
                 </div>
-      <span><%= htmlEncode(topic.histclass_id)+" "+htmlEncode(topic.name) %></span>
+      <span><%= htmlEncode(topic.name) %></span>
     </div>
             <% }); %>
         </div>

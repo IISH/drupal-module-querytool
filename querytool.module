@@ -138,15 +138,8 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/views/DataTreeView.js");
     drupal_add_js($path."/js/views/ResultView.js");
 
-
-
-    drupal_add_js($path."/js/views/ResultView.js");
-
-
-
     if(strlen(arg(2)) !== 2){
       $lang = "en";
-
     } else{
       $lang = arg(2);
     }
@@ -185,8 +178,7 @@ function querytool_preprocess_page (&$variables, $hook)
 
     if(strlen(arg(2)) !== 2){
       $lang = "en";
-
-    } else{
+    }else{
       $lang = arg(2);
     }
 

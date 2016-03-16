@@ -102,12 +102,6 @@
   </div>
 </div>
 
-
-
-
-
-
-
 <script type="text/template" id="classmode-template">
     <% _.each(modes, function(mode) { %>
     <div class="mode">

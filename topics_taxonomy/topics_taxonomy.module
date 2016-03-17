@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Topics Taxonomy feature.
+ */
+
+include_once 'topics_taxonomy.features.inc';

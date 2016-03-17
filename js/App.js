@@ -2,59 +2,48 @@
 *   TODO: Integrate in drupal behaviours system
 */
 
-datatype = qtSettings.datatype;
 
+if(qtSettings.datatype == ""){
+    jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
 
- App = function(){
+}else{
 
-    if(datatype == ""){
-        jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
+    var modes = [{
+        name:"historical",
+        label: polyglot.t("historical"),
+        description: polyglot.t("historical-description")
+    },{
+        name:"modern",
+        label: polyglot.t("modern"),
+        description: polyglot.t("modern-description")
+    }];
 
-    }else{
+    var querySettings = new QuerySettings();
+    querySettings.set({baseUrl: qtSettings.baseurl});
+    querySettings.set({moduleUrl: qtSettings.moduleurl});
+    querySettings.set({classModes:modes});
+    querySettings.set({datatype:qtSettings.datatype});
 
-        var modes = [{
-            name:"historical",
-            label: polyglot.t("historical"),
-            description: polyglot.t("historical-description")
-        },{
-            name:"modern",
-            label: polyglot.t("modern"),
-            description: polyglot.t("modern-description")
-        }];
+    var queryModuleView = new QueryModuleView();
+    queryModuleView.updateSteps();
 
-        window.querySettings = new QuerySettings();
-        window.querySettings.set({baseUrl: qtSettings.baseurl});
-        window.querySettings.set({moduleUrl: qtSettings.moduleurl});
-        window.querySettings.set({classModes:modes});
-        window.querySettings.set({datatype:datatype});
+    var querySettingsView = new QuerySettingsView({model:querySettings});
+    querySettingsView.render();
 
-        window.queryModuleView = new QueryModuleView();
-        window.queryModuleView.updateSteps();
+    var classModeSelector = new ClassModeSelector({model:querySettings});
+    classModeSelector.render();
 
-        window.querySettingsView = new QuerySettingsView({model:querySettings});
-        window.querySettingsView.render();
+    var yearSelector = new YearSelector({model:querySettings});
+    yearSelector.render();
 
-        window.classModeSelector = new ClassModeSelector({model:querySettings});
-        window.classModeSelector.render();
+    var regionSelector = new RegionSelector();
 
-        window.yearSelector = new YearSelector({model:querySettings});
-        window.yearSelector.render();
+    var topicSelector = new TopicSelector();
 
-        window.regionSelector = new RegionSelector();
+    var classification = new Classification();
 
-        window.topicSelector = new TopicSelector();
+    var resultView = new ResultView();
 
-        window.classification = new Classification();
-
-        window.resultView = new ResultView();
-      //  window.resultView.render();
-
-        // Testing
-
-        //$('input[value=historical]').click();
-
-    }
 
 }
 
-App();

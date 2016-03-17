@@ -87,3 +87,10 @@
     margin-left: 32px;
     font-size: 12px;
 }
+
+.topic-disable{
+ color:#AAA;
+}
+.topic-title{
+    text-transform: uppercase;
+}

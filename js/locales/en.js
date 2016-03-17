@@ -1,6 +1,5 @@
 var phrases = {
 
-    "lang-switch": "Switch to Russian",
 
     "choose-data-categories": "Choose data categories",
     "historical": "Historical",

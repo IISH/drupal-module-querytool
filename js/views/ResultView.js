@@ -5,14 +5,11 @@ var ResultView = Backbone.Model.extend({
     render:function(){
 
         /*
-        var url = querySettings.getPreviewUrl();
-       $('#preview_url').val(url);
 
-        $('#preview').attr("src",url);
 
         */
 
-        var postUrl = "http://ristat.sandbox.socialhistoryservices.org/service/filter";
+        var postUrl = querySettings.get("baseUrl")+"/filter";
         var postData = {"classification":"historical","datatype":"7.01","histclass1":"неудобная земля"};
 
         postData = JSON.stringify(postData);

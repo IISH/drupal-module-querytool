@@ -176,17 +176,30 @@ function querytool_preprocess_page (&$variables, $hook)
     $variables['theme_hook_suggestions'][] = 'querytool_page';
     $variables['title'] = $datatype." - ".$term->name;
 
-    if(strlen(arg(2)) !== 2){
-      $lang = "en";
-    }else{
-      $lang = arg(2);
-    }
 
-    if($lang == "en"){
-      $variables['other_lang'] = "/querytool/".arg(1)."/ru";
-    }else{
-      $variables['other_lang'] = "/querytool/".arg(1)."/en";
+    $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
+
+
+    $langs = language_list();
+     krsort($langs);
+
+    $langmenu = "";
+
+    foreach($langs as $key=>$lang){
+
+      if($current_lang == $key){
+        $class = 'active';
+      }else{
+        $class = '';
+      }
+
+      $chop = ($key == "ru") ? 4 : 3;
+
+      $langmenu .= "<a class='".$class."' href='/querytool/".arg(1)."/".$key."'>".substr($lang->native,0,$chop)."</a><br>";
+
     }
+    $variables['lang_menu'] = $langmenu;
+
   }
 
   $variables["copyright"] = variable_get('querytool_copyright');

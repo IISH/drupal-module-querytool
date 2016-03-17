@@ -1,9 +1,7 @@
 var phrases = {
 
-    "lang-switch": "Switch to English",
+
    "choose-data-categories": "Выбор категорий данных",
-
-
     "historical": "Исторические",
     "historical-description": "данные приводятся в исходных категориях периода [источника?]",
     "modern": "Современные",

@@ -1,6 +1,9 @@
 <div id="header" xmlns="http://www.w3.org/1999/html">
   <img src="<?php print $logo; ?>" id="logo" alt="" class="" />
-  <div id="langmenu"><a href="<?php print $other_lang; ?>"> <script>document.write(polyglot.t("lang-switch"));</script></a></div>
+  <div id="langmenu">
+    <?php print $lang_menu; ?>
+  </div>
+
   <h1><?php print $title; ?></h1>
 
   <div id="close">
@@ -95,7 +98,7 @@
   <div style="clear:both;"></div>
   <div id="result" class="step">
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("result"));</script> </h2>
-    <input type="text" id="preview_url" style="width:90%;"/>
+
     <iframe id="preview" src=""></iframe>
 
     <button id="btn-download" type="button" class="btn btn-primary"><script>document.write(polyglot.t("download"));</script> </button>

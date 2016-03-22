@@ -6,6 +6,18 @@ function hideTree(){
     $("#tree").hide();
 }
 
+
+$( window ).resize(function() {
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 120},
+        width = $(window).width() - margin.right - margin.left - 70,
+        height = 500 - margin.top - margin.bottom;
+
+    $("#tree-container svg").attr("width",$(window).width()-40);
+    $("#tree-container svg").attr("height",$(window).height()-35);
+});
+
+
 treeJSON = function(treeData) {
 
     // Calculate total nodes, max label length

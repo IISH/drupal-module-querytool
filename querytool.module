@@ -100,6 +100,7 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_css($path."/css/multi-select.css",array('group' => 999,'weight' => 999));
     drupal_add_css("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",array('group' => 999,"type"=>"external",'weight' => 999));
 
+
     drupal_add_js($path."/js/vendor/jquery-1.12.0.min.js");
     drupal_add_js($path."/js/vendor/jquery.nicescroll.min.js");
     drupal_add_js($path."/js/vendor/jquery.multi-select.js");
@@ -116,7 +117,6 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/models/Years.js");
     drupal_add_js($path."/js/models/Regions.js");
     drupal_add_js($path."/js/models/Classification.js");
-
 
     drupal_add_js($path."/js/collections/ClassListCollection.js");
 
@@ -144,6 +144,7 @@ function querytool_preprocess_html(&$variables, $hook)
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
 
     $settings = array(
+                      "lang"=>$lang,
                       "datatype"=>$datatype,
                       "baseurl"=> variable_get('querytool_api_url'),
                       "moduleurl"=> "/".drupal_get_path("module","querytool"));

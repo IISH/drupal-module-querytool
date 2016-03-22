@@ -4,8 +4,6 @@ var Classification = Backbone.Model.extend({
     indexedClasses:[],
 
     url: function() {
-       // var urlTail = "datatype="+ querySettings.get("datatype");
-       // urlTail += "year="+querySettings.get("year");
         return querySettings.getClassUrl();
     },
 

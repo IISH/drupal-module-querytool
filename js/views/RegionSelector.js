@@ -20,7 +20,14 @@ var RegionSelector = Backbone.View.extend({
                 var regionsdata = r.attributes.regions;
 
                 _.each(regionsdata, function(region) {
-                    region.label = region.region_name_eng;
+
+                    if(querySettings.get("lang") == "en"){
+                        region.label = region.region_name_eng;
+                    }else{
+                        region.label = region.region_name;
+                    }
+
+
                     regions.push(region);
                 });
 

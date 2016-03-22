@@ -1,9 +1,9 @@
 var Years = Backbone.Model.extend({
 
-    url: querySettings.getBaseUrl()+'service/years',
     years:[],
 
-    initialize:function(){
+    url: function() {
+        return querySettings.get("baseUrl")+'/years'
     }
 
 });

@@ -23,17 +23,10 @@ var QuerySettings = Backbone.Model.extend({
         var urlTail = "datatype="+ this.get("datatype");
         if(this.get("base_year") !== "") urlTail += "&base_year="+this.get("base_year");
         if(this.get("mode") !== "") urlTail += "&classification="+this.get("classmode");
-      //  return this.get("baseUrl") +'classes?'+urlTail;
         return this.get("baseUrl") +'classes?'+urlTail;
-      //  return "/sites/all/modules/custom/querytool/json/testclasses.json";
     },
 
     getPreviewUrl:function(){
-
-        url += "&regions="+this.get("regions").join(",");
-        url += "&classes="+this.get("selectedclasses").join(",");
-        url += "&year="+this.get("year");
-
         var url = "http://ristat.sandbox.socialhistoryservices.org/cgi-bin/rr/aggregate.cgi?guided=indicators";
         url += "&datatype="+this.get("datatype");
         url += "&regions="+this.get("regions").join(",");

@@ -7,11 +7,11 @@ var RegionSelector = Backbone.View.extend({
 
     render:function(){
         var regions = new Regions();
-       // regions.url = querySettings.getRegionsUrl();
+
         var that = this;
 
         //reset
-         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
+        this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
 
         regions.fetch({
 

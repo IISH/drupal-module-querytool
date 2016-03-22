@@ -1,8 +1,9 @@
 /**
-*   TODO: Integrate in drupal behaviours system
+ *
+ *   Implement marionette radio
 */
 
-
+console.log("app");
 if(qtSettings.datatype == ""){
     jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
 

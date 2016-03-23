@@ -53,6 +53,10 @@ var ClassBoxView = Backbone.View.extend({
         this.$el.find(".topic-list").scroll(function(){
             that.connector.render();
         });
+
+
+        that.updateCouter();
+
         return this;
     },
 
@@ -115,8 +119,10 @@ var ClassBoxView = Backbone.View.extend({
 
         if($(cb).hasClass('checked')){
             $(cb).removeClass('checked');
+            this.checkParentDepthBox(topicId);
         }else{
-            this.selectParent(topicId);
+            this.deselectParent(topicId);
+            this.deselectNextDepth(topicId);
             $(cb).addClass('checked');
         }
 
@@ -124,21 +130,44 @@ var ClassBoxView = Backbone.View.extend({
         var that = this;
 
         if($(cb).hasClass("all")){
+            /*
             if($(cb).hasClass("checked")){
                 $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
             }else{
                 $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
-            }
+            }*/
+
+            $("#"+ tsboxId +" .topic-list  .checkbox:visible").click();
+
         }
         that.updateCouter();
         classification.updateSelection();
     },
 
+    /**
+     * called when single box is being unchecked, checks if depth-box of parent still has to in selected state
+     *
+     * @param topicId
+     */
+    checkParentDepthBox:function(topicId){
+        var singleChecked = $("#"+topicId).closest(".ts-box").find(".checked").length;
+        var depthChecked = $("#"+topicId).closest(".ts-box").find(".checked-depth").length;
+        if(singleChecked+depthChecked == 0){
+            var parentId = $("#"+ topicId).attr("data-parent");
+            $("#"+parentId).find(".checkbox-depth").removeClass("checked-depth");
+        }
+    },
 
-    selectParent:function(topicId){
+    /**
+     * deselects single checkbox of parent item, because aggregation is only possible on lowest selected level
+     * thereby it selects the depth checkbox to indicate a selection is made
+     * @param topicId
+     */
+    deselectParent:function(topicId){
         var parentId = $("#"+ topicId).attr("data-parent");
-        $("#"+parentId).find(".checkbox").addClass("checked");
-        if(parentId !== undefined && parentId !== "null") this.selectParent(parentId);
+        $("#"+parentId).find(".checkbox").removeClass("checked");
+        $("#"+parentId).find(".checkbox-depth").addClass("checked-depth");
+        if(parentId !== undefined && parentId !== "null") this.deselectParent(parentId);
     },
 
     toggleCheckboxDepth: function(e){
@@ -150,7 +179,6 @@ var ClassBoxView = Backbone.View.extend({
 
         var that = this;
         if($(cb).hasClass("checked-depth")){
-            $("#"+topicId).find(".checkbox").addClass("checked");
             that.selectNextDepth(topicId);
         }else{
             that.deselectNextDepth(topicId);
@@ -158,12 +186,14 @@ var ClassBoxView = Backbone.View.extend({
 
         if($(cb).hasClass("all")){
             if($(cb).hasClass("checked-depth")){
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
-                $("#"+ tsboxId +" .topic-list .checkbox:visible").addClass('checked');
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
+             //   $("#"+ tsboxId +" .topic-list .checkbox:visible").addClass('checked');
+                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").not(".checked-depth").click();
             }else{
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").addClass("checked-depth"); // select all first to prevent invert selections
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").hasClass(".checked-depth").click();
+                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible.checked-depth").click();
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").addClass("checked-depth"); // select all first to prevent invert selections
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
             }
         }
 
@@ -171,19 +201,30 @@ var ClassBoxView = Backbone.View.extend({
         classification.updateSelection();
     },
 
+    /**
+     *
+     * Select items at the next depth. Single checkbox if on lowest level, otherwise depth checkbox to select further down
+     * @param topicId
+     */
     selectNextDepth:function(topicId){
         var that = this;
-        $(".topic[data-parent='"+topicId+"'] .checkbox").addClass("checked");
-        $(".topic[data-parent='"+topicId+"'] .checkbox-depth").addClass("checked-depth");
+
+        $("#"+topicId+" .checkbox").removeClass("checked");
 
         $.each($(".topic[data-parent='"+topicId+"']"),function(e,topic){
-            that.selectNextDepth($(topic).attr("id"));
+            if($(topic).find(".checkbox-depth").length == 0){
+                $(topic).find(".checkbox").addClass("checked");
+            }else{
+                $(topic).find(".checkbox-depth").addClass("checked-depth");
+                that.selectNextDepth($(topic).attr("id"));
+            }
         });
     },
     deselectNextDepth:function(topicId){
         var that = this;
         $(".topic[data-parent='"+topicId+"'] .checkbox").removeClass("checked");
         $(".topic[data-parent='"+topicId+"'] .checkbox-depth").removeClass("checked-depth");
+        $("#"+topicId+" .checkbox-depth").removeClass("checked-depth");
 
         $.each($(".topic[data-parent='"+topicId+"']"),function(e,topic){
             that.deselectNextDepth($(topic).attr("id"));

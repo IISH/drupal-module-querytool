@@ -55,10 +55,28 @@ var Classification = Backbone.Model.extend({
         var selectedClasses = new Array();
         var that = this;
 
+        var classMode = querySettings.get("classmode");
+
+
         _.each(indexes, function(index) {
             var selectedClass =  that.indexedClasses[index];
-            selectedClasses.push({histclass1:selectedClass.name});
+            var sClass = {};
+
+            if(classMode == "historical"){
+                sClass.histclass1 = selectedClass.c1;
+                if(selectedClass.level>1) sClass.histclass2 = selectedClass.c2;
+                if(selectedClass.level>2) sClass.histclass3 = selectedClass.c3;
+
+            }else{
+                sClass.class1 = selectedClass.c1;
+                if(selectedClass.level>1) sClass.class2 = selectedClass.c2;
+                if(selectedClass.level>2) sClass.class3 = selectedClass.c3;
+
+            }
+            selectedClasses.push(sClass);
         });
+
+        console.log(selectedClasses);
     },
 
     structurize :function(r){
@@ -105,14 +123,14 @@ var Classification = Backbone.Model.extend({
             newClass = {};
 
             if(!Tree.children[class1]){
-                newClass = {"name": class1, "parent":"null", children:{}, class_id: classIndex,  level:1, parent_id: null};
+                newClass = {"name": class1, "parent":"null", children:{}, class_id: classIndex,  level:1, parent_id: null, c1:class1};
                 Tree.children[class1] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
 
             if(class2 && !Tree.children[class1].children[class2]){
-                newClass = {"name": class2, "parent":"null", children:{}, class_id: classIndex,  level:2, parent_id: Tree.children[class1].class_id};
+                newClass = {"name": class2, "parent":"null", children:{}, class_id: classIndex,  level:2, parent_id: Tree.children[class1].class_id, c1:class1, c2:class2};
                 Tree.children[class1].children[class2] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;

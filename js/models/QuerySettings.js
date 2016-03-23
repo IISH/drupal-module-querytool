@@ -38,7 +38,7 @@ var QuerySettings = Backbone.Model.extend({
     },
     getRegionsUrl:function(){
         var url = this.get("baseUrl")+'regions';
-       // if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
+        if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
         return url;
 
     },

@@ -64,19 +64,21 @@ var Classification = Backbone.Model.extend({
 
             if(classMode == "historical"){
                 sClass.histclass1 = selectedClass.c1;
-                if(selectedClass.level>1) sClass.histclass2 = selectedClass.c2;
-                if(selectedClass.level>2) sClass.histclass3 = selectedClass.c3;
+                if(selectedClass.level>=2) sClass.histclass2 = selectedClass.c2;
+                if(selectedClass.level>=3) sClass.histclass3 = selectedClass.c3;
+                if(selectedClass.level>=4) sClass.histclass4 = selectedClass.c4;
 
             }else{
                 sClass.class1 = selectedClass.c1;
-                if(selectedClass.level>1) sClass.class2 = selectedClass.c2;
-                if(selectedClass.level>2) sClass.class3 = selectedClass.c3;
+                if(selectedClass.level>=2) sClass.class2 = selectedClass.c2;
+                if(selectedClass.level>=3) sClass.class3 = selectedClass.c3;
+                if(selectedClass.level>=4) sClass.class4 = selectedClass.c4;
 
             }
             selectedClasses.push(sClass);
         });
 
-        console.log(selectedClasses);
+        //console.log(selectedClasses);
     },
 
     structurize :function(r){
@@ -95,11 +97,9 @@ var Classification = Backbone.Model.extend({
         // set up object for indexing by name instead of arrays
         var Tree = {children:{}};
         var newClass;
-
         var classes = r.attributes;
-
         var classMode = querySettings.get("classmode");
-        //console.debug("classMode", classMode);
+
         var class1,class2,class3,class4;
 
         _.each(classes, function(hclass) {
@@ -137,15 +137,15 @@ var Classification = Backbone.Model.extend({
             }
 
             if(class3 && !Tree.children[class1].children[class2].children[class3]){
-                newClass = {"name": class3, "parent":"null", children:{}, class_id: classIndex, level:3, parent_id: Tree.children[class1].children[class2].class_id};
+                newClass = {"name": class3, "parent":"null", children:{}, class_id: classIndex, level:3, parent_id: Tree.children[class1].children[class2].class_id, c1:class1, c2:class2, c3:class3, c4:class4};
                 Tree.children[class1].children[class2].children[class3] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
 
             if(class4 && !Tree.children[class1].children[class2].children[class3].children[class4]){
-                newClass = {"name": class4, "parent":"null", children:{}, class_id: classIndex, level:4, parent_id: Tree.children[class1].children[class2].children[class3].class_id};
-                Tree.children[class1].children[class2].children[class3] = newClass;
+                newClass = {"name": class4, "parent":"null", children:{}, class_id: classIndex, level:4, parent_id: Tree.children[class1].children[class2].children[class3].class_id, c1:class1, c2:class2, c3:class3, c4:class4};
+                Tree.children[class1].children[class2].children[class3].children[class4] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }

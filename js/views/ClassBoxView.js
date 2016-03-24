@@ -150,8 +150,9 @@ var ClassBoxView = Backbone.View.extend({
      * @param topicId
      */
     checkParentDepthBox:function(topicId){
-        var singleChecked = $("#"+topicId).closest(".ts-box").find(".checked").length;
-        var depthChecked = $("#"+topicId).closest(".ts-box").find(".checked-depth").length;
+        var singleChecked = $("#"+topicId).closest(".ts-box").find(".topic-list .checked").length;
+        var depthChecked = $("#"+topicId).closest(".ts-box").find(".topic-list .checked-depth").length;
+
         if(singleChecked+depthChecked == 0){
             var parentId = $("#"+ topicId).attr("data-parent");
             $("#"+parentId).find(".checkbox-depth").removeClass("checked-depth");
@@ -180,9 +181,12 @@ var ClassBoxView = Backbone.View.extend({
         var that = this;
         if($(cb).hasClass("checked-depth")){
             that.selectNextDepth(topicId);
+            that.deselectParent(topicId);
         }else{
             that.deselectNextDepth(topicId);
         }
+
+
 
         if($(cb).hasClass("all")){
             if($(cb).hasClass("checked-depth")){
@@ -199,6 +203,8 @@ var ClassBoxView = Backbone.View.extend({
 
         that.updateCouter();
         classification.updateSelection();
+
+        that.checkParentDepthBox(topicId);
     },
 
     /**

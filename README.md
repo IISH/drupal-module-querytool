@@ -14,7 +14,9 @@ version 0.1-dev
 - add / change topics in topics taxonomy: /admin/structure/taxonomy/topics
 - browse to /topics
 
+- enable Taxonomy translation module
+- set multilangual options: /admin/structure/taxonomy/topics/edit choose  "Translate. Different terms will be allowed for each language and they can be translated."
 
 # Todo
-- post and process classes for preview
+
 - implement region translation

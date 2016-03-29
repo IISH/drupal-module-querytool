@@ -32,6 +32,8 @@ function querytool_topics_menu ()
 function querytool_topics ()
 {
 
+  global $language;
+
   // TODO: proper templating
 
   // Adds the library making it available for use.
@@ -44,7 +46,8 @@ function querytool_topics ()
     jQuery( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" ); });', array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
 
   $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
-  $tree = taxonomy_get_tree($vid, 0, null, true);
+
+  $tree = i18n_taxonomy_get_tree($vid, $language->language,0, null, true);
 
   $tabs = "";
   $pages = "";

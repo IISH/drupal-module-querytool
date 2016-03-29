@@ -2,7 +2,7 @@
 var ClassListCollection = Backbone.Collection.extend({
 
     render: function(tree){
-       // console.log("render new classlistcollection");
+
         var levels = new Array(1,2,3,4);
         var classBox;
 

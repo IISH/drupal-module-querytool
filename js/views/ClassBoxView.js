@@ -130,14 +130,17 @@ var ClassBoxView = Backbone.View.extend({
         var that = this;
 
         if($(cb).hasClass("all")){
-            /*
-            if($(cb).hasClass("checked")){
-                $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
-            }else{
-                $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
-            }*/
 
-            $("#"+ tsboxId +" .topic-list  .checkbox:visible").click();
+            if($(cb).hasClass("checked")){
+                $("#"+ tsboxId +" .topic-list  .checkbox:visible").not(".checked").click();
+               // $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
+            }else{
+
+                $("#"+ tsboxId +" .topic-list  .checkbox.checked:visible").click();
+             //   $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
+            }
+
+
 
         }
         that.updateCouter();

@@ -6,7 +6,7 @@
 .ui-tabs-vertical .ui-tabs-nav {
     padding: .2em .1em .2em .2em;
     float: left;
-    width: 12em;
+    width: 20em;
 }
 
 .ui-tabs-vertical .ui-tabs-nav li {
@@ -45,13 +45,13 @@
 .ui-tabs-vertical .ui-tabs-nav {
     padding: 0;
     float: left;
-    width: 16em;
+    width: 20em;
 }
 
 .ui-tabs-vertical .ui-tabs-panel {
     padding: 0em;
     float: left;
-    width: 32em;
+    width: 29em;
     padding: 0 20px;
     margin-left:20px;
 

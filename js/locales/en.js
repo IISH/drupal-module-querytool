@@ -1,6 +1,5 @@
 var phrases = {
 
-
     "choose-data-categories": "Choose data categories",
     "historical": "Historical",
     "historical-description": "Data are expressed in the original categories of the period concerned.",
@@ -29,7 +28,9 @@ var phrases = {
     "deselect-all-depth":"deselect subitems at lower levels",
     "generate":"Generate preview",
 
+    "unit":"Unit",
+    "count":"Count",
+
     "result":"Result",
     "download":"Download table and documentation as a zipfile"
-
 }

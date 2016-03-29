@@ -3,12 +3,18 @@ var Classification = Backbone.Model.extend({
     classListCollection:null,
     indexedClasses:[],
 
+
+    defaults: {
+        selectedClasses:[]
+    },
+
+
     url: function() {
         return querySettings.getClassUrl();
     },
 
     initialize:function(){
-        this.getClasses();
+
     },
 
     getClasses:function(){
@@ -18,7 +24,7 @@ var Classification = Backbone.Model.extend({
         $("#topic-lists").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
         this.fetch({
             success:function(r){
-                that.structurize(r);
+                that.structure(r);
             }
         });
     },
@@ -78,13 +84,14 @@ var Classification = Backbone.Model.extend({
             selectedClasses.push(sClass);
         });
 
-        //console.log(selectedClasses);
+        this.set({selectedClasses:selectedClasses});
     },
 
-    structurize :function(r){
+    structure :function(r){
 
         var that= this;
-        //assign every new class and 'subclasses' an unique index to identify.
+
+        // assign every new class and 'subclasses' an unique index to identify.
         var classIndex = 1;
 
         // init data
@@ -158,7 +165,7 @@ var Classification = Backbone.Model.extend({
             depth++;
 
             $.each(obj, function(k, v) {
-                //console.debug("parent_id ",  v.parent_id);
+
                 v.parent_id = parent_id;
 
                 childs.push(v);

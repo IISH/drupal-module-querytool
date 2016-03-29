@@ -46,5 +46,7 @@ if(qtSettings.datatype == ""){
     var resultView = new ResultView();
 
 
+
+
 }
 

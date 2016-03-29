@@ -29,6 +29,9 @@ var phrases = {
     "deselect-all-depth":"скрыть подкатегории на всех уровнях ниже",
     "generate":"Построить таблицу",
 
+    "unit":"Unit",
+    "count":"Count",
+
     "result":"Результат",
     "download":"Скачать таблицу и документацию в одном архиве zipfile"
 }

@@ -18,6 +18,7 @@ html{
     background-color: #bedaef;
     background-color: #d8e5ef;
     z-index: 699;
+    /* display: none; */
 }
 
 #header img{
@@ -324,6 +325,7 @@ span.skip-arrow{
 
 /* RESULT */
 #btn-download{
+    margin-top:20px;
     display: none;
 }
 
@@ -373,9 +375,8 @@ span.skip-arrow{
 /* RESULT / PREVIEW */
 #preview{
 
-    width:90%;
-    height:500px;
-    border:1px solid #DDD;
+    width:100%;
+
 }
 
 
@@ -455,3 +456,109 @@ li:focus{
     padding-top:2px;
 }
 
+
+
+
+.g_C{
+    height:2em;
+
+}
+
+
+
+#preview{
+    display:none;
+}
+
+#preview table{
+    width: 100%;
+}
+
+
+
+
+.zui-table {
+    border: none;
+    border-right: solid 1px #CCC;
+    border-collapse: separate;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+}
+.zui-table thead th {
+
+
+
+    background: rgba(46, 109, 164, .1);
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+}
+.zui-table tbody td {
+    border-bottom: solid 1px #CCC;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+}
+.zui-wrapper {
+    position: relative;
+}
+.zui-scroller {
+    margin-left: 760px;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding-bottom: 5px;
+    width: 50%;
+    border:1px solid #CCC;
+    border:3px solid #CCC;
+}
+
+.zui-table .zui-sticky-col {
+    position: absolute;
+    top: auto;
+    width: 150px;
+}
+
+.zui-table td, .zui-table th{
+    border-left: solid 1px #CCC;
+}
+
+.zui-table tr th.zui-sticky-col{
+    background: rgba(46, 109, 164, .2);
+
+
+}
+.zui-table .zui-sticky-col{
+    overflow: hidden;
+
+}
+.zui-table tr .zui-sticky-col:nth-child(1) {
+    left:0px;
+}
+.zui-table tr .zui-sticky-col:nth-child(2) {
+    left:150px;
+}
+.zui-table tr .zui-sticky-col:nth-child(3) {
+    left:300px;
+}
+.zui-table tr .zui-sticky-col:nth-child(4) {
+    left:450px;
+}
+.zui-table tr .zui-sticky-col:nth-child(5) {
+    left:600px;
+    width: 100px;
+}
+.zui-table tr .zui-sticky-col:nth-child(6) {
+    left:700px;
+    width: 60px;
+}
+
+
+
+.step{
+    display: none;
+}
+.step:nth-child(1){
+    display: block;
+}

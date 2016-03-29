@@ -99,7 +99,6 @@ var RegionSelector = Backbone.View.extend({
 
     },
     saveRegions:function(){
-        querySettings.set({"regions":$('#regions').val()});
-        querySettingsView.update();
+        querySettings.updateRegions($('#regions').val())
     }
 });

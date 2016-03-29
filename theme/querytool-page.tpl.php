@@ -93,17 +93,29 @@
       </div>
     </div>
   </div>
-  </div>
 
-  <div style="clear:both;"></div>
+
   <div id="result" class="step">
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("result"));</script> </h2>
 
-    <iframe id="preview" src=""></iframe>
+    <div id="preview">
+
+      <div class="zui-wrapper">
+        <div class="zui-scroller">
+        </div>
+      </div>
+
+    </div>
 
     <button id="btn-download" type="button" class="btn btn-primary"><script>document.write(polyglot.t("download"));</script> </button>
   </div>
+
+
 </div>
+
+
+
+<!-- UNDERSCORE TEMPLATES -->
 
 <script type="text/template" id="classmode-template">
     <% _.each(modes, function(mode) { %>

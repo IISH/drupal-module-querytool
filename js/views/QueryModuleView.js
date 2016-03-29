@@ -14,6 +14,13 @@ var QueryModuleView = Backbone.View.extend({
             $(this).html(step+". ");
             step++;
         });
+    },
+
+    showNextStep:function(stepnum){
+
+
+        $(".step:nth-child("+stepnum+")").show();
+        this.updateSteps();
     }
 
 });

@@ -1,19 +1,16 @@
 var QuerySettings = Backbone.Model.extend({
     confirmation:false,
     defaults: {
-        moduleUrl:'',
-        baseUrl:'',
+        moduleUrl:"",
+        baseUrl:"",
         years:[],
         classModes:[],
         datatype:"",
-        classmode: "historical",
+        classmode: "",
         base_year:"",
         selectedclasses:[],
         regions:[],
         lang:""
-    },
-
-    initialize:function(){
     },
 
     getBaseUrl:function(){
@@ -52,12 +49,14 @@ var QuerySettings = Backbone.Model.extend({
             this.set({classmode: value, selectedclasses:[]});
 
             if(value == "modern"){
-                this.set({year:''});
+                this.set({base_year:''});
                 $("#yearselection").hide();
                 $("#regionselection").hide();
+                queryModuleView.showNextStep(3);
              }else{
-                $("#yearselection").show();
-                $("#regionselection").show();
+             //   $("#yearselection").show();
+           //     $("#regionselection").show();
+                queryModuleView.showNextStep(2);
             }
 
             querySettingsView.update();
@@ -67,7 +66,7 @@ var QuerySettings = Backbone.Model.extend({
             classModeSelector.selectMode(this.get("classmode"));
         }
 
-        queryModuleView.updateSteps();
+
     },
 
     updateYear:function(value){
@@ -78,10 +77,18 @@ var QuerySettings = Backbone.Model.extend({
             querySettingsView.update();
             regionSelector.render();
             classification.getClasses();
+            queryModuleView.showNextStep(3);
         }else{
             //reset to current value
             yearSelector.selectYear(this.get("base_year"));
         }
+
+    },
+
+    updateRegions:function(regions){
+        this.set({"regions":regions});
+        querySettingsView.update();
+        queryModuleView.showNextStep(4);
     },
 
     resetYear:function(){

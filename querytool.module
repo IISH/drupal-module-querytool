@@ -131,6 +131,10 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/views/DataTreeView.js");
     drupal_add_js($path."/js/views/ResultView.js");
 
+    drupal_add_js($path."/js/vendor/grid/Grid.js",array("scope"=>"footer"));
+    drupal_add_css($path."/js/vendor/grid/Grid.css");
+
+
     if(strlen(arg(2)) !== 2){
       $lang = "en";
     } else{

@@ -1,9 +1,8 @@
 # drupal-module-querytool
 This module provides an interface for researchers who want to request a specific dataset.
-The can build a query to compose a dataset bases on datatype, classification type, year, region and multiple indicators.
+They can build a query to compose a dataset based on datatype, classification type, year, region and multiple indicators.
 
-
-version 0.1-dev
+version 0.2-dev
 
 # Installation
 - enable module querytool, querytool_topics and topics_taxonomy
@@ -14,9 +13,7 @@ version 0.1-dev
 - add / change topics in topics taxonomy: /admin/structure/taxonomy/topics
 - browse to /topics
 
-- enable Taxonomy translation module
+- enable Taxonomy translation module: /admin/modules
 - set multilangual options: /admin/structure/taxonomy/topics/edit choose  "Translate. Different terms will be allowed for each language and they can be translated."
 
 # Todo
-
-- implement region translation

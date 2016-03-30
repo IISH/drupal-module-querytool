@@ -10,19 +10,19 @@ var Connector = Backbone.View.extend({
         this.$el.html("");
 
         var pos = $(topic).position();
-        var nHeight = $("#topic-list-1").height();
+        var nHeight = $("#topic-list-1").height()+2;
         var nScrollTop = $("#topic-list-1").scrollTop();
         var nWidth = 40;
 
         var nStartY = pos.top  - $("#topic-list-1").position().top-1;
-        var nEndY = nStartY+ $(topic).height()*2-1;
+        var nEndY = nStartY+ $(topic).height()*2;
 
         var lineData = [
             // top line
             { "x":0 ,"y": nStartY},
             { "x":nWidth*0.4,"y":nStartY},
-            { "x":nWidth*0.6,"y":1},
-            { "x": nWidth,  "y": 1},
+            { "x":nWidth*0.6,"y":0},
+            { "x": nWidth,  "y": 0},
             // bottom line
             { "x": nWidth, "y":nHeight},
             { "x": nWidth*0.6, "y":nHeight},

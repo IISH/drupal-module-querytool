@@ -32,5 +32,6 @@ var phrases = {
     "count":"Count",
 
     "result":"Result",
-    "download":"Download table and documentation as a zipfile"
+    "download":"Download table and documentation as a zipfile",
+    "nopreview": "No preview available for modern datacategories."
 }

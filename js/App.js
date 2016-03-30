@@ -3,6 +3,11 @@
  *   Implement marionette radio
 */
 
+var debugmode = qtSettings.debugmode;
+
+
+
+
 if(qtSettings.datatype == ""){
     jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
 
@@ -24,6 +29,7 @@ if(qtSettings.datatype == ""){
     querySettings.set({classModes:modes});
     querySettings.set({datatype:qtSettings.datatype});
     querySettings.set({lang:qtSettings.lang});
+    querySettings.set({debugmode:qtSettings.debugmode});
 
     var queryModuleView = new QueryModuleView();
     queryModuleView.updateSteps();

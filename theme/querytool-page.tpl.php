@@ -99,7 +99,7 @@
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("result"));</script> </h2>
 
     <div id="preview">
-
+      <div id="preview-message"></div>
       <div class="zui-wrapper">
         <div class="zui-scroller">
         </div>
@@ -207,4 +207,5 @@
   <div id="tree-container"></div>
 </div>
 
+<div style="clear: both;"></div>
 <div id="copyright"><?php print $copyright; ?></div>

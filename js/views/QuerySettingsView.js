@@ -4,9 +4,10 @@
 
 var QuerySettingsView = Backbone.View.extend({
     el:"#qsv",
-    debugmode:false,
+
     render:function(){
-        if(this.debugmode){
+
+        if(querySettings.get("debugmode")){
             this.$el.show();
         }else{
             this.$el.hide();

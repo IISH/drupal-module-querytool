@@ -5,6 +5,10 @@
 var QueryModuleView = Backbone.View.extend({
 
     initialize:function(){
+
+        if(querySettings.get("debugmode")){
+            this.$el.show();
+        }
     },
 
     updateSteps:function(){
@@ -17,12 +21,9 @@ var QueryModuleView = Backbone.View.extend({
     },
 
     showNextStep:function(stepnum){
-
-
         $(".step:nth-child("+stepnum+")").show();
         this.updateSteps();
     }
-
 });
 
 

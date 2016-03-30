@@ -286,17 +286,19 @@ Other color scheme
 }
 
 .connector{
-  /*  background: transparent url('../img/accolade.png') no-repeat;*/
     background-size:100% 100%;
     width:40px;
     float:right;
     height: 100%;
-   /*
-    margin-left:4px;
-    margin-right:4px;
-    */
-    opacity: .11;
+    opacity: .2;
 }
+#connector2{
+    opacity: .3;
+}
+#connector3{
+    opacity: .4;
+}
+
 
 span.skip-arrow{
     font-size: 24px;
@@ -485,9 +487,6 @@ li:focus{
     font: normal 13px Arial, sans-serif;
 }
 .zui-table thead th {
-
-
-
     background: rgba(46, 109, 164, .1);
     padding: 10px;
     text-align: left;
@@ -505,6 +504,7 @@ li:focus{
     position: relative;
 }
 .zui-scroller {
+    display: none;
     margin-left: 760px;
     overflow-x: scroll;
     overflow-y: visible;

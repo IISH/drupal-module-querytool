@@ -34,14 +34,11 @@ function querytool_topics ()
 
   global $language;
 
-  // TODO: proper templating
-
   // Adds the library making it available for use.
   drupal_add_css(drupal_get_path('module', 'querytool') . '/css/topics.css');
   drupal_add_library('system', 'ui.tabs');
 
   drupal_add_js(drupal_get_path('module', 'querytool') . "/js/topics.js");
-
   drupal_add_js('jQuery(document).ready(function () {      jQuery( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
     jQuery( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" ); });', array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
 
@@ -106,7 +103,6 @@ function querytool_topics ()
  */
 function querytool_topics_import_form ($form, &$form_state)
 {
-
   if (!isset($form_state['storage']['confirm'])) {
     $form['submit_button'] = array(
       '#type' => 'submit',
@@ -126,7 +122,6 @@ function querytool_topics_import_form ($form, &$form_state)
  */
 function querytool_topics_import_form_submit ($form, &$form_state)
 {
-
   if (!isset($form_state['storage']['confirm'])) {
     $form_state['storage']['confirm'] = TRUE;
     $form_state['rebuild'] = TRUE;
@@ -149,9 +144,7 @@ function querytool_topics_import ()
   foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
     taxonomy_term_delete($term->tid);
     $d++;
-
   }
-
 
   // Load topic JSON data
   $url = variable_get('querytool_import_url');

@@ -53,7 +53,7 @@ var QuerySettings = Backbone.Model.extend({
                 this.set({base_year:''});
                 $("#yearselection").hide();
                 $("#regionselection").hide();
-                queryModuleView.showNextStep(3);
+                queryModuleView.showNextStep(4);
              }else{
              //   $("#yearselection").show();
            //     $("#regionselection").show();

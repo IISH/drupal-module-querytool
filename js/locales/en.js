@@ -1,3 +1,6 @@
+/**
+ * English translation file for Query Tool
+ */
 var phrases = {
 
     "choose-data-categories": "Choose data categories",
@@ -33,5 +36,5 @@ var phrases = {
 
     "result":"Result",
     "download":"Download table and documentation as a zipfile",
-    "nopreview": "No preview available for modern datacategories."
+    "nopreview": "No preview available for queries in modern categories: results include all available years and all available regions for the requested indicators."
 }

@@ -1,6 +1,7 @@
+/**
+* Russian translation file for Query Tool
+*/
 var phrases = {
-
-
    "choose-data-categories": "Выбор категорий данных",
     "historical": "Исторические",
     "historical-description": "данные приводятся в исходных категориях периода [источника?]",
@@ -29,10 +30,10 @@ var phrases = {
     "deselect-all-depth":"скрыть подкатегории на всех уровнях ниже",
     "generate":"Построить таблицу",
 
-    "unit":"Unit",
-    "count":"Count",
+    "unit":"Ед. изм",
+    "count":"Наличие",
 
     "result":"Результат",
     "download":"Скачать таблицу и документацию в одном архиве zipfile",
-    "nopreview": "No preview available for modern datacategories"
+    "nopreview": "Предварительный просмотр результата не доступен для запросов в современных категориях: результат включает все годы и все регионы для которых запрашиваемые показателы имеются в базе данных."
 }

@@ -136,10 +136,8 @@ var ResultView = Backbone.Model.extend({
 
         table += "</tr></thead><tbody>";
 
-
         // displaying data
         _.each(data, function(item) {
-
 
             table += "<tr>"
 
@@ -154,7 +152,7 @@ var ResultView = Backbone.Model.extend({
             }
 
             table += "<td class='zui-sticky-col'>" + item.value_unit +  "</td>";
-            table += "<td class='zui-sticky-col'>" + item.territories.length +  "</td>";
+            table += "<td class='zui-sticky-col'>" + item.territories.length +  " / " +regions.length+ "</td>";
 
             // output regions
             _.each(regions, function(region) {
@@ -164,20 +162,14 @@ var ResultView = Backbone.Model.extend({
                 if(item_region  == undefined ){
                     table += "<td> &nbsp; </td>";
                 }else{
-
                     table += "<td>" + item_region.value +  "</td>";
                 }
-
             });
 
             table += "</tr>"
         });
 
-
-
-
         table += "</tbody></table>"
-
 
         $("#preview .zui-scroller").html(table);
 
@@ -185,10 +177,8 @@ var ResultView = Backbone.Model.extend({
             container: '#preview'
         });
 
-
         $("#preview .zui-scroller").css("width",$(window).width() *.95-760);
         $("#preview .zui-scroller").show();
-
     },
 
     /**
@@ -204,5 +194,4 @@ var ResultView = Backbone.Model.extend({
             $('#btn-download').hide();
         }
     }
-
 });

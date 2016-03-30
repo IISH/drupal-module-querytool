@@ -21,6 +21,7 @@ var QuerySettings = Backbone.Model.extend({
         var urlTail = "datatype="+ this.get("datatype");
         if(this.get("base_year") !== "" && this.get("classmode") == "historical") urlTail += "&base_year="+this.get("base_year");
         if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
+        urlTail += "&language="+this.get("lang");
         return this.get("baseUrl") +'classes?'+urlTail;
     },
 

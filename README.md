@@ -11,9 +11,10 @@ version 0.2-dev
     - define API import url for topics
 - import topics at /admin/config/system/querytool/import
 - add / change topics in topics taxonomy: /admin/structure/taxonomy/topics
+- enable, as desired, topics by selecting the "enable" checkbox for each topic and language, this will make the topic clickable to open up the querytool
 - browse to /topics
-
 - enable Taxonomy translation module: /admin/modules
 - set multilangual options: /admin/structure/taxonomy/topics/edit choose  "Translate. Different terms will be allowed for each language and they can be translated."
 
 # Todo
+- implement depth checkbox for level 4

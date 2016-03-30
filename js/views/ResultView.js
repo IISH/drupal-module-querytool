@@ -1,8 +1,10 @@
 var ResultView = Backbone.Model.extend({
 
-    el:"#regioncontainer",
+    el:"#preview",
 
     render:function(){
+
+        $("html, body").animate({ scrollTop: $("#preview").offset().top }, 1000);
 
         var that = this;
         var postUrl = querySettings.get("baseUrl")+"aggregate";

@@ -51,7 +51,6 @@ var ResultView = Backbone.Model.extend({
                     that.structuringData(response.data);
                 }else{
                     $("#preview-message").html(polyglot.t("nopreview"));
-
                 }
                 $("#preview").show();
                 that.setDownloadBtn(response.url);
@@ -126,8 +125,8 @@ var ResultView = Backbone.Model.extend({
             table += "<th class='zui-sticky-col'>"+ polyglot.t("level")+ " "  + l + "</th>";
         }
 
-        table += "<th class='zui-sticky-col'>Unit</th>";
-        table += "<th class='zui-sticky-col'>Count</th>";
+        table += "<th class='zui-sticky-col'>"+ polyglot.t("unit")+ "</th>";
+        table += "<th class='zui-sticky-col'>"+ polyglot.t("count")+ "</th>";
 
         // adding regions
         _.each(regions, function(region) {

@@ -36,7 +36,6 @@ var ResultView = Backbone.Model.extend({
         $.ajax({
             url: postUrl,
             method: 'post',
-
             data: JSON.stringify(postData),
 
             beforeSend: function (request) {
@@ -185,7 +184,9 @@ var ResultView = Backbone.Model.extend({
      */
     setDownloadBtn:function(url){
         if(url){
+            $('#btn-download').unbind("click");
             $('#btn-download').show();
+
             $('#btn-download').click(function(){
                 window.open(url);
             });

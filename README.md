@@ -6,6 +6,7 @@ version 0.2-dev
 
 # Installation
 - enable module querytool, querytool_topics and topics_taxonomy
+- set permissions for Topics Taxonomy for those who must admin these terms: /admin/people/permissions
 - browse to /admin/config/system/querytool
     - define base url of API
     - define API import url for topics

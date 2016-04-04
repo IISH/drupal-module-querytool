@@ -67,7 +67,6 @@ var TopicSelector = Backbone.View.extend({
         resultView.render();
         queryModuleView.showNextStep(5);
 
-
         $("#result").show();
     }
 

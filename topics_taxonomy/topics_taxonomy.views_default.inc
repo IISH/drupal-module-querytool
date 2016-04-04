@@ -43,6 +43,18 @@ function topics_taxonomy_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'If you want to enable/disable multiple topics at once:
+1) select the topics
+2) Choose operation: modify entity values
+3) Press \'execute\'
+4) check or uncheck \'Enable\'
+5) check or uncheck the second \'Enable\' 
+';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   /* Field: Bulk operations: Taxonomy term */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'taxonomy_term_data';
@@ -78,6 +90,15 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Field: Taxonomy term: Enable */
+  $handler->display->display_options['fields']['field_enable']['id'] = 'field_enable';
+  $handler->display->display_options['fields']['field_enable']['table'] = 'field_data_field_enable';
+  $handler->display->display_options['fields']['field_enable']['field'] = 'field_enable';
+  $handler->display->display_options['fields']['field_enable']['label'] = 'Enable (1=yes)';
+  /* Sort criterion: Taxonomy term: Datatype (field_datatype) */
+  $handler->display->display_options['sorts']['field_datatype_value']['id'] = 'field_datatype_value';
+  $handler->display->display_options['sorts']['field_datatype_value']['table'] = 'field_data_field_datatype';
+  $handler->display->display_options['sorts']['field_datatype_value']['field'] = 'field_datatype_value';
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -104,10 +125,18 @@ function topics_taxonomy_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('If you want to enable/disable multiple topics at once:
+1) select the topics
+2) Choose operation: modify entity values
+3) Press \'execute\'
+4) check or uncheck \'Enable\'
+5) check or uncheck the second \'Enable\' 
+'),
     t('Taxonomy term'),
     t('- Choose an operation -'),
     t('Datatype'),
     t('Name'),
+    t('Enable (1=yes)'),
     t('Page'),
   );
   $export['edit_topics'] = $view;

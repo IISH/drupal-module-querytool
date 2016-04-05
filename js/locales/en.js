@@ -1,7 +1,14 @@
 /**
  * English translation file for Query Tool
+ *
+ * version 0.2
+ *
+ * Update version number when you make changes please.
  */
 var phrases = {
+
+
+    "documentation": "Documentation",
 
     "choose-data-categories": "Choose data categories",
     "historical": "Historical",
@@ -31,6 +38,7 @@ var phrases = {
     "deselect-all-depth":"deselect subitems at lower levels",
     "generate":"Generate preview",
 
+    "noresult":"Your selection doesn't contain data, please extend your selection with extra indicators and/or regions",
     "unit":"Unit",
     "count":"Count",
 

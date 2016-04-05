@@ -120,33 +120,100 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_css($path."/js/vendor/grid/Grid.css");
 
 
-    if(strlen(arg(2)) !== 2){
-      $lang = "en";
-    } else{
-      $lang = arg(2);
+    // define language
+    global $language;
+
+    $lang_code = arg(2);
+
+    if($language->language !== $lang_code){
+      $lang = $lang_code;
+      $langs = language_list();
+
+      foreach($langs as $key=>$lang_obj){
+        if($lang == $key){
+          $language = $lang_obj;
+        }
+      }
+    }else{
+      $lang = $language->language;
     }
 
-    drupal_add_js($path."/js/locales/".$lang.".js");
-    drupal_add_js($path."/js/polyglot.init.js");
+    // get term
+    $datatype = str_replace("-",".",arg(1));
+    $term = _querytool_get_term($datatype,$lang);
+    $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
+    $files = _querytool_get_files($root);
 
-    $term = taxonomy_term_load(arg(1));
-    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+    $variables['title'] = $datatype." - ".$term->name;
 
     $settings = array("lang"      =>$lang,
                       "datatype"  =>$datatype,
                       "baseurl"   => variable_get('querytool_api_url'),
                       "moduleurl" => "/".drupal_get_path("module","querytool"),
-                      "debugmode" =>variable_get('querytool_debugmode'));
+                      "debugmode" =>variable_get('querytool_debugmode'),
+                      "files" =>$files,
+                      );
 
     $js_settings =  json_encode($settings);
 
+    drupal_add_js($path."/js/locales/".$lang.".js");
+    drupal_add_js($path."/js/polyglot.init.js");
     drupal_add_js("var qtSettings = ".$js_settings.";",array('type'=>'inline','scope' => 'footer', 'weight' => 3));
     drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
     drupal_add_js($path."/js/dndTree.js", array('scope' => 'footer', 'weight' => 5));
-
-    $variables['title'] = $datatype." - ".$term->name;
   }
 
+}
+
+/**
+ *   Get term by datatype given in url eg: "1-01"
+ */
+function _querytool_get_term($datatype, $lang)
+{
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('bundle', 'topics')
+    ->fieldCondition('field_datatype', 'value', $datatype, '=')
+    ->propertyCondition('language', $lang, '=');
+  $result = $query->execute();
+  $values = array_values($result["taxonomy_term"]);
+  $first = array_shift($values);
+
+  $term = taxonomy_term_load($first->tid);
+
+  return $term;
+
+}
+
+/**
+*   Gets files of main topic
+ */
+function _querytool_get_files ($root_id)
+{
+  global $language;
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+        ->entityCondition('bundle', 'topics')
+        ->fieldCondition('field_datatype', 'value', $root_id, '=')
+        ->propertyCondition('language', $language->language, '=');
+
+  $result = $query->execute();
+  $values = array_values($result["taxonomy_term"]);
+  $first = array_shift($values);
+
+  $term = taxonomy_term_load($first->tid);
+
+  $files = array();
+  if($term->field_documentation){
+    $documentation = $term->field_documentation[LANGUAGE_NONE];
+
+    foreach($documentation as $file){
+      $files[$file["filename"]] = file_create_url($file["uri"]);
+    }
+  }
+  return $files;
 }
 
 /**
@@ -155,33 +222,28 @@ function querytool_preprocess_html(&$variables, $hook)
 function querytool_preprocess_page (&$variables, $hook)
 {
   if (arg(0) == "querytool") {
-    $term = taxonomy_term_load(arg(1));
+    $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
+    $datatype = str_replace("-",".",arg(1));
+    $term = _querytool_get_term($datatype,$current_lang);
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
     $variables['theme_hook_suggestions'][] = 'querytool_page';
     $variables['title'] = $datatype." - ".$term->name;
 
-    $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
-
     $langs = language_list();
-     krsort($langs);
+    krsort($langs);
 
     $langmenu = "";
 
     foreach($langs as $key=>$lang){
-
       if($current_lang == $key){
         $class = 'active';
       }else{
         $class = '';
       }
-
       $chop = ($key == "ru") ? 4 : 3;
-
       $langmenu .= "<a class='".$class."' href='/querytool/".arg(1)."/".$key."'>".substr($lang->native,0,$chop)."</a><br>";
-
     }
     $variables['lang_menu'] = $langmenu;
-
   }
 
   $variables["copyright"] = variable_get('querytool_copyright');
@@ -196,7 +258,7 @@ function querytool_admin_form ($form, &$form_state)
 {
   $api_url    = variable_get('querytool_api_url','');
   $import_url = variable_get('querytool_import_url','');
-  $debugmode = variable_get('querytool_debugmode','');
+  $debugmode  = variable_get('querytool_debugmode','');
 
   $form['querytool_api_url'] = array(
     '#type' => 'textfield',
@@ -227,7 +289,6 @@ function querytool_admin_form ($form, &$form_state)
   // adding view links
   if ($api_url)     $form['querytool_api_url']['#field_suffix']     = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
   if ($import_url)  $form['querytool_import_url']['#field_suffix']  = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
-
 
   return system_settings_form($form);
 }

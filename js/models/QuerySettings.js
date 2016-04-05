@@ -55,8 +55,6 @@ var QuerySettings = Backbone.Model.extend({
                 $("#regionselection").hide();
                 queryModuleView.showNextStep(4);
              }else{
-             //   $("#yearselection").show();
-           //     $("#regionselection").show();
                 queryModuleView.showNextStep(2);
             }
 
@@ -79,6 +77,7 @@ var QuerySettings = Backbone.Model.extend({
             regionSelector.render();
             classification.getClasses();
             queryModuleView.showNextStep(3);
+            topicSelector.setDocumentationLink();
         }else{
             //reset to current value
             yearSelector.selectYear(this.get("base_year"));
@@ -90,6 +89,7 @@ var QuerySettings = Backbone.Model.extend({
         this.set({"regions":regions});
         querySettingsView.update();
         queryModuleView.showNextStep(4);
+
     },
 
     resetYear:function(){

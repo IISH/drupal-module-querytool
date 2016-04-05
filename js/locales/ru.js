@@ -1,8 +1,15 @@
 /**
-* Russian translation file for Query Tool
+ * Russian translation file for Query Tool
+ *
+ * version 0.2
+ *
+ * Update version number when you make changes please.
 */
 var phrases = {
-   "choose-data-categories": "Выбор категорий данных",
+
+    "documentation": "Документация",
+
+    "choose-data-categories": "Выбор категорий данных",
     "historical": "Исторические",
     "historical-description": "данные приводятся в исходных категориях периода [источника?]",
     "modern": "Современные",
@@ -30,8 +37,10 @@ var phrases = {
     "deselect-all-depth":"скрыть подкатегории на всех уровнях ниже",
     "generate":"Построить таблицу",
 
+    "noresult":"(ru) Your selection doesn't contain data, please extend your selection with extra indicators and/or regions",
     "unit":"Ед. изм",
     "count":"Наличие",
+
 
     "result":"Результат",
     "download":"Скачать таблицу и документацию в одном архиве zipfile",

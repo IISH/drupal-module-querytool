@@ -27,7 +27,6 @@ var RegionSelector = Backbone.View.extend({
                         region.label = region.region_name;
                     }
 
-
                     regions.push(region);
                 });
 

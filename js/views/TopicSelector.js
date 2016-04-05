@@ -9,6 +9,7 @@ var TopicSelector = Backbone.View.extend({
     mouseDirection:"v",
 
     initialize: function() {
+
         $(window).on("resize", this.setMainSize);
         this.setMainSize();
 
@@ -44,6 +45,23 @@ var TopicSelector = Backbone.View.extend({
             that.timerCount++;
         }, 500);
 
+    },
+
+    setDocumentationLink:function(){
+
+        var matched_files = "";
+        var yearMatch = querySettings.get("base_year");
+
+        $("#topicselection .documentation").html("");
+
+        $.each( querySettings.get("files"), function( index, value ){
+           if(index.indexOf(yearMatch) > 0){
+               matched_files += "- <a href='"+value+"' target='_blank'>"+index+"</a><br>";
+            }
+        });
+
+        if(matched_files !== "") matched_files = "<b>"+polyglot.t("documentation")+"</b><br>"+ matched_files;
+        $("#topicselection .documentation").html(matched_files);
     },
 
     setMainSize:function(){

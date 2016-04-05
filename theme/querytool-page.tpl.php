@@ -32,7 +32,10 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
           </div>
-          <div class="modal-body"> <script>document.write(polyglot.t("data-categories-info"));</script> </div>
+          <div class="modal-body">
+            <script>document.write(polyglot.t("data-categories-info"));</script>
+            <div class="documentation">...</div>
+          </div>
         </div>
       </div>
     </div>
@@ -78,6 +81,7 @@
     <a href="#" onclick="showTree();" id="show-tree"><i class="fa fa-sitemap"></i></a>
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("choose-indicators"));</script>
       <a href="#" class="question-mark" data-toggle="modal"  data-target="#step4expl"><i class="fa fa-question-circle"></i></a></h2>
+    <div class="documentation"></div>
     <div id="topic-lists"></div>
 
     <div style="clear:both;"></div>

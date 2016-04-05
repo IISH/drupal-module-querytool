@@ -68,12 +68,10 @@ function querytool_topics ()
       if ($term->description !== null) $pages .= $term->description . "<br><br><br>";
 
     } else {
-
-
       $enable = (count($term->field_enable) >0 && $term->field_enable[LANGUAGE_NONE][0]['value'] == 1);
 
       if($enable){
-        $link = "<a href='#' onClick='openWindow(\"/querytool\",\"" . $term->tid . "\");' >".$term->name." </a>";
+        $link = "<a href='#' onClick='openWindow(\"/querytool\",\"" .str_replace(".","-",$datatype) . "/".$language->language."\");' >".$term->name." </a>";
         $subtopics .= "<div class='topic'><div class='topic-title'>".$datatype . ". ".$link."</div>";
         if ($term->description) $subtopics .= "<div class='subtopic-description'>" . $term->description . "</div>";
         $subtopics .="</div>";
@@ -115,6 +113,7 @@ function querytool_topics_import_form ($form, &$form_state)
   return $form;
 }
 
+
 /**
  * Implements hook_form_submit().
  *
@@ -138,13 +137,14 @@ function querytool_topics_import_form_submit ($form, &$form_state)
 function querytool_topics_import ()
 {
 
+  /*
   $d = 0;
-
   $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
   foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
     taxonomy_term_delete($term->tid);
     $d++;
   }
+  */
 
   // Load topic JSON data
   $url = variable_get('querytool_import_url');

@@ -123,6 +123,16 @@ var ResultView = Backbone.Model.extend({
         var classWidth = (hHeadingWidth-150)/levels;
         var table = "";
 
+        var dataWidth = $(window).width() *.95-800;
+        $("#preview .zui-scroller").css("width",dataWidth);
+        if(regions.length<10){
+            var regionWidth = dataWidth/regions.length;
+        }else{
+            var regionWidth = 100;
+        }
+       
+
+
         table += "<table class='zui-table'>";
         table += "<thead><tr>"
 
@@ -136,7 +146,8 @@ var ResultView = Backbone.Model.extend({
 
         // adding regions
         _.each(regions, function(region) {
-            table += "<th>" + region.label +  "</th>";
+            // min-width:100px; width: "+(100/regions.length) +"%;
+            table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
         });
 
         table += "</tr></thead><tbody>";

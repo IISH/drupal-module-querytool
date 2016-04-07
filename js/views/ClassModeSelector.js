@@ -29,15 +29,15 @@ var ClassModeSelector = Backbone.View.extend({
             modes.push(value.name);
         });
 
-        $.each( querySettings.get("files"), function( index, value ){
+        $.each( querySettings.get("files"), function( filename, filepath ){
             $.each(modes,function(i,v){
-                if(index.toLocaleLowerCase().indexOf(v) > 0){
-                    matched_files += "- <a href='"+value+"' target='_blank'>"+index+"</a><br>";
+                if(filename.toLocaleLowerCase().indexOf(v) > 0){
+                    matched_files += "<a href='"+filepath+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ filename.substr(filename.indexOf(".")+1)  +")<br>";
                 }
             });
         });
 
-        if(matched_files !== "") matched_files = "<br><b>"+polyglot.t("documentation")+"</b><br>"+ matched_files;
+        if(matched_files !== "") matched_files = "<br>"+ matched_files;
         $("#classmodeselection .documentation").html(matched_files);
     },
 

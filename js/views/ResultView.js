@@ -157,8 +157,8 @@ var ResultView = Backbone.Model.extend({
 
                 var item_region = _.findWhere(item.territories, {ter_code:region.ter_code})
 
-                if(item_region  == undefined ){
-                    table += "<td> &nbsp; </td>";
+                if(item_region  == undefined || item_region.value=="."){
+                    table += "<td> "+polyglot.t("na")+" </td>";
                 }else{
                     table += "<td>" + item_region.value +  "</td>";
                 }

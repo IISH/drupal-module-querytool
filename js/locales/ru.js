@@ -40,7 +40,7 @@ var phrases = {
     "noresult":"(ru) Your selection doesn't contain data, please extend your selection with extra indicators and/or regions",
     "unit":"Ед. изм",
     "count":"Наличие",
-
+    "na":"нет данных",
 
     "result":"Результат",
     "download":"Скачать таблицу и документацию в одном архиве zipfile",

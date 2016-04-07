@@ -107,22 +107,27 @@ var Classification = Backbone.Model.extend({
         var classes = r.attributes;
         var classMode = querySettings.get("classmode");
 
+
+        //console.log(classMode);
         var class1,class2,class3,class4;
 
         _.each(classes, function(hclass) {
-            if(classMode == "historical"){
-                class1  = hclass.histclass1;
-                class2  = hclass.histclass2;
-                class3  = hclass.histclass3;
-                class4  = hclass.histclass4;
-            }else{
+            if(classMode == "modern"){
                 class1  = hclass.class1;
                 class2  = hclass.class2;
                 class3  = hclass.class3;
                 class4  = hclass.class4;
+
+            }else{
+                class1  = hclass.histclass1;
+                class2  = hclass.histclass2;
+                class3  = hclass.histclass3;
+                class4  = hclass.histclass4;
             }
 
             var tid = "";
+
+
 
             // redefine level
             hclass.level = parseInt(hclass.levels);
@@ -183,6 +188,8 @@ var Classification = Backbone.Model.extend({
         }
 
         Tree.children = loopChildren(Tree.children,0,0);
+
+        //console.debug(levelData);
 
         this.indexedClasses = indexedClasses;
         this.classListCollection = new ClassListCollection();

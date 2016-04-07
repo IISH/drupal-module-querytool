@@ -1,8 +1,6 @@
 /**
  *   The ClassBoxView generates a list of topics for a specific level
  */
-
-
 var ClassBoxView = Backbone.View.extend({
 
     connector:      null,
@@ -36,7 +34,7 @@ var ClassBoxView = Backbone.View.extend({
             }
         });
 
-        // Addding tooltip for explenation
+        // Addding tooltip for explanation
         $('[data-toggle="tooltip"]').tooltip({
             container: '#main'
         });
@@ -54,9 +52,7 @@ var ClassBoxView = Backbone.View.extend({
             that.connector.render();
         });
 
-
-        that.updateCouter();
-
+        this.updateCouter();
         return this;
     },
 
@@ -93,10 +89,12 @@ var ClassBoxView = Backbone.View.extend({
             $(topic).closest(".ts-box").next().find(".switch").attr("data-parent",id);
             $(topic).addClass("focus");
 
-            that.updateCouter();
+
             that.connector.render(topic);
             currentFocussed = topic;
         }
+        this.updateCouter();
+
     },
 
     // disables window scroll when reaching scroll-end of scrollable div (topic lists)
@@ -189,8 +187,6 @@ var ClassBoxView = Backbone.View.extend({
             that.deselectNextDepth(topicId);
         }
 
-
-
         if($(cb).hasClass("all")){
             if($(cb).hasClass("checked-depth")){
              //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
@@ -259,7 +255,7 @@ var ClassBoxView = Backbone.View.extend({
     },
 
     updateCouter:function(){
-
+    
         var useSwitch = this.useSwitch;
         $.each($(".ts-box"),function(e){
             var count = 0;

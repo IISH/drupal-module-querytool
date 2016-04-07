@@ -54,13 +54,17 @@ var TopicSelector = Backbone.View.extend({
 
         $("#topicselection .documentation").html("");
 
-        $.each( querySettings.get("files"), function( index, value ){
-           if(index.indexOf(yearMatch) > 0){
-               matched_files += "- <a href='"+value+"' target='_blank'>"+index+"</a><br>";
+        $.each( querySettings.get("files"),function( filename, filepath ){
+           if(filename.indexOf(yearMatch) > 0){
+               matched_files += "<a href='"+filepath+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ filename.substr(filename.indexOf(".")+1)  +")<br>";
             }
         });
 
-        if(matched_files !== "") matched_files = "<b>"+polyglot.t("documentation")+"</b><br>"+ matched_files;
+
+
+
+        if(matched_files !== "") matched_files = "<br>"+ matched_files;
+
         $("#topicselection .documentation").html(matched_files);
     },
 

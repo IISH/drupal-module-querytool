@@ -41,6 +41,7 @@ var phrases = {
     "noresult":"Your selection doesn't contain data, please extend your selection with extra indicators and/or regions",
     "unit":"Unit",
     "count":"Count",
+    "na":"NA",
 
     "result":"Result",
     "download":"Download table and documentation as a zipfile",

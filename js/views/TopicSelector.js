@@ -60,11 +60,6 @@ var TopicSelector = Backbone.View.extend({
             }
         });
 
-
-
-
-        if(matched_files !== "") matched_files = "<br>"+ matched_files;
-
         $("#topicselection .documentation").html(matched_files);
     },
 

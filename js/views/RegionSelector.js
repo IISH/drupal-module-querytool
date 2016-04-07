@@ -1,6 +1,9 @@
 var RegionSelector = Backbone.View.extend({
 
     el:"#regioncontainer",
+    region_objects: {},
+    selected_region_codes:[],
+
     initialize:function(){
         this.render();
     },
@@ -10,14 +13,17 @@ var RegionSelector = Backbone.View.extend({
 
         var that = this;
 
+
         //reset
         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
 
         regions.fetch({
 
             success:function(r){
+
                 var regions = [];
                 var regionsdata = r.attributes.regions;
+                var region_objects = {};
 
                 _.each(regionsdata, function(region) {
 
@@ -27,7 +33,9 @@ var RegionSelector = Backbone.View.extend({
                         region.label = region.region_name;
                     }
 
+                    region_objects[region.region_code] = region;
                     regions.push(region);
+
                 });
 
                 regions =  _.sortBy(regions, 'label');
@@ -39,6 +47,10 @@ var RegionSelector = Backbone.View.extend({
 
                 that.$el.html(html);
                 that.enableMultiSelect();
+
+
+                that.region_objects = region_objects;
+
             }
         });
 
@@ -98,6 +110,23 @@ var RegionSelector = Backbone.View.extend({
 
     },
     saveRegions:function(){
+        this.selected_region_codes = $('#regions').val();
         querySettings.updateRegions($('#regions').val())
+
+    },
+
+    getSelectedRegions:function(){
+
+       var selectedRegions = [];
+       var selectedRegion_codes = this.selected_region_codes;
+       var allRegions = this.region_objects;
+
+        _.each(allRegions, function(region) {
+            if(selectedRegion_codes.indexOf(region.region_code) !== -1) selectedRegions.push(region);
+        });
+
+        selectedRegions = _.sortBy(selectedRegions, function(o) { return o.label; })
+
+        return selectedRegions;
     }
 });

@@ -63,10 +63,9 @@ var ResultView = Backbone.Model.extend({
         var sData = {};
         var key;
         var newRecord;
-
         var regions = [];
         var region;
-
+        var maxDepth = 1;
         var that = this;
         _.each(data, function(record) {
 
@@ -75,8 +74,11 @@ var ResultView = Backbone.Model.extend({
             for (var property in record.histclases) {
                 if (record.histclases ) {
                     path += record.histclases[property];
+
                 }
             }
+            var depth = Object.keys(record.histclases).length;
+            if(depth > maxDepth) maxDepth = depth;
 
             key = "class"+that.hashCode(path);
 
@@ -100,7 +102,7 @@ var ResultView = Backbone.Model.extend({
 
         regions = _.sortBy(regions, function(o) { return o.ter_code; })
 
-        this.buildTable(sData, regions);
+        this.buildTable(sData, maxDepth);
     },
 
 
@@ -111,25 +113,30 @@ var ResultView = Backbone.Model.extend({
     /**
      *  Builds preview table
      */
-    buildTable:function(data, regions){
+    buildTable:function(data, maxDepth){
 
-       // var regions = querySettings.get("regions");
+        // getting all selected regions
+        regions = regionSelector.getSelectedRegions();
+
+        var hHeadingWidth = 800;
+        var levels = maxDepth;// maxDepth;
+        var classWidth = (hHeadingWidth-150)/levels;
         var table = "";
 
         table += "<table class='zui-table'>";
         table += "<thead><tr>"
 
         // adding levels
-        for(var l = 1; l <= 4; l++){
-            table += "<th class='zui-sticky-col'>"+ polyglot.t("level")+ " "  + l + "</th>";
+        for(var l = 1; l <= levels; l++){
+            table += "<th class='zui-sticky-col' style='width: "+classWidth+"px; left:"+((l-1)*classWidth)+"px'>"+ polyglot.t("level")+ " "  + l + "</th>";
         }
 
-        table += "<th class='zui-sticky-col'>"+ polyglot.t("unit")+ "</th>";
-        table += "<th class='zui-sticky-col'>"+ polyglot.t("count")+ "</th>";
+        table += "<th class='zui-sticky-col' style='width: 80px; left:650px;'>"+ polyglot.t("unit")+ "</th>";
+        table += "<th class='zui-sticky-col' style='width: 70px; left:730px;'>"+ polyglot.t("count")+ "</th>";
 
         // adding regions
         _.each(regions, function(region) {
-            table += "<th>" + region.territory +  "</th>";
+            table += "<th>" + region.label +  "</th>";
         });
 
         table += "</tr></thead><tbody>";
@@ -139,23 +146,23 @@ var ResultView = Backbone.Model.extend({
 
             table += "<tr>"
 
-            for(var l = 1; l <= 4; l++){
+            for(var l = 1; l <= levels; l++){
 
                 if(item.histclases["histclass"+l]){
                    var classname = item.histclases["histclass"+l];
                 }else{
                     var classname = "&nbsp;";
                 }
-                table += "<td class='zui-sticky-col'> <span data-toggle='tooltip' title='"+classname+"'>"+classname  + "</span></td>";
+                table += "<td class='zui-sticky-col' style='width: "+classWidth+"px; left:"+((l-1)*classWidth)+"px;'> <span data-toggle='tooltip' title='"+classname+"'>"+classname  + "</span></td>";
             }
 
-            table += "<td class='zui-sticky-col'>" + item.value_unit +  "</td>";
-            table += "<td class='zui-sticky-col'>" + item.territories.length +  " / " +regions.length+ "</td>";
+            table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + item.value_unit +  "</td>";
+            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + item.territories.length +  " / " +regions.length+ "</td>";
 
             // output regions
             _.each(regions, function(region) {
 
-                var item_region = _.findWhere(item.territories, {ter_code:region.ter_code})
+                var item_region = _.findWhere(item.territories, {ter_code:region.region_code})
 
                 if(item_region  == undefined || item_region.value=="."){
                     table += "<td> "+polyglot.t("na")+" </td>";

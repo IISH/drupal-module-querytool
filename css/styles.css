@@ -502,7 +502,7 @@ li:focus{
 }
 .zui-scroller {
     display: none;
-    margin-left: 760px;
+    margin-left: 800px;
     overflow-x: scroll;
     overflow-y: visible;
     padding-bottom: 5px;
@@ -514,7 +514,7 @@ li:focus{
 .zui-table .zui-sticky-col {
     position: absolute;
     top: auto;
-    width: 150px;
+
 }
 
 .zui-table td, .zui-table th{
@@ -529,26 +529,6 @@ li:focus{
 .zui-table .zui-sticky-col{
     overflow: hidden;
 
-}
-.zui-table tr .zui-sticky-col:nth-child(1) {
-    left:0px;
-}
-.zui-table tr .zui-sticky-col:nth-child(2) {
-    left:150px;
-}
-.zui-table tr .zui-sticky-col:nth-child(3) {
-    left:300px;
-}
-.zui-table tr .zui-sticky-col:nth-child(4) {
-    left:450px;
-}
-.zui-table tr .zui-sticky-col:nth-child(5) {
-    left:600px;
-    width: 100px;
-}
-.zui-table tr .zui-sticky-col:nth-child(6) {
-    left:700px;
-    width: 60px;
 }
 
 

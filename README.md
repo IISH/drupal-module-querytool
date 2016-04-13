@@ -2,7 +2,7 @@
 This module provides an interface for researchers who want to request a specific dataset.
 They can build a query to compose a dataset based on datatype, classification type, year, region and multiple indicators.
 
-version 0.2-dev
+version 0.3-dev
 
 # Installation
 - enable module querytool, querytool_topics and topics_taxonomy
@@ -19,3 +19,4 @@ version 0.2-dev
 
 # Todo
 - implement depth checkbox for level 4
+- show only available years (no API support yet)

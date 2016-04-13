@@ -130,7 +130,7 @@ var ResultView = Backbone.Model.extend({
         }else{
             var regionWidth = 100;
         }
-       
+
 
 
         table += "<table class='zui-table'>";

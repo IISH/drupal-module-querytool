@@ -127,8 +127,6 @@ var Classification = Backbone.Model.extend({
 
             var tid = "";
 
-
-
             // redefine level
             hclass.level = parseInt(hclass.levels);
 

@@ -133,11 +133,15 @@
 
 .topic-doc{
     margin:10px;
-    padding:0 20px;
+    padding:0 20px 20px 20px;
     float:left;
-    min-height:230px;
-    min-width:190px;
+    min-height:150px;
+    min-width:26%;
     -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
+}
+
+.topic-doc h3{
+    text-transform: uppercase;
 }

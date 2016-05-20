@@ -59,36 +59,63 @@ function querytool_block_view($delta = '') {
     $url = variable_get('querytool_api_url','')."documentation?lang=".$language->language;
     $files = json_decode(file_get_contents($url), TRUE);
 
+    // Match general files
+    $common_files = [];
+    foreach ($files as $file) {
+      if (strpos($file['name'], "Introduction") !== false ||
+          strpos($file['name'], "GovReports") !== false ||
+          strpos($file['name'], "regions") !== false ) {
+            $common_files[] =l($file['name'],$file['url'],array('target'=>'_blank'));
+      }
+    }
+    $label = t("General files");
+    $output .= theme('topic',array("label"=>$label,"links"=>$common_files));
 
-    $rows = array();
 
-    //load terms
+    // load terms and match specific files
     $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
     $tree = i18n_taxonomy_get_tree($vid, $language->language,0, 1, true);
-
 
     foreach ($tree as $term) {
       $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
       $label = $datatype . ". " . $term->name;
-      $output .= "<div class='topic-doc'><h3>".$label."</h3>";
-     // $rows[] = array($label," ");
-
+      $links = [];
       foreach ($files as $file) {
-        if (strpos($file['name'], $datatype."_00_info") !== false) {
-          $output .= l($file['name'],$file['url'],array('target'=>'_blank'))."<br>";
-          //$rows[] = array("",l($file['name'],$file['url'],array('target'=>'_blank')));
+        if (strpos($file['name'], $datatype."_00") !== false) {
+          $links[] =l($file['name'],$file['url'],array('target'=>'_blank'));
         }
       }
-      $output .= "</div>";
+      $output .= theme('topic',array("label"=>$label,"links"=>$links));
     }
-
-   // $output  .= theme('table', array( 'rows' => $rows));
 
       $block['subject'] = '';
       $block['content'] = $output;
   }
 
   return $block;
+}
+
+
+function querytool_topics_theme($existing, $type, $theme, $path) {
+  return array(
+    'topic' => array(
+      'render element' => 'element',
+    )
+  );
+}
+
+
+function theme_topic($variables) {
+
+  $output = "";
+  $output .= "<div class='topic-doc'><h3>".$variables["label"]."</h3>";
+
+  foreach ($variables["links"] as $link) {
+      $output .= $link."<br>";
+  }
+
+  $output .= "</div>";
+  return $output;
 }
 
 

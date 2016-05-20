@@ -19,25 +19,8 @@ var ClassModeSelector = Backbone.View.extend({
     },
 
     setDocumentationLink:function(){
-
-        var matched_files = "";
-        $("#classmodeselection .documentation").html("");
-
-        var modes = [];
-        $.each(this.model.get("classModes"), function( index, value ){
-            modes.push(value.name);
-        });
-
-        $.each( querySettings.get("files"), function( filename, filepath ){
-            $.each(modes,function(i,v){
-                if(filename.toLocaleLowerCase().indexOf(v) > 0){
-                    matched_files += "<a href='"+filepath+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ filename.substr(filename.indexOf(".")+1)  +")<br>";
-                }
-            });
-        });
-
-        if(matched_files !== "") matched_files = "<br>"+ matched_files;
-        $("#classmodeselection .documentation").html(matched_files);
+        var matched_files = documentation.getLinks("Classification");
+        $("#classmodeselection .documentation").html("<br>"+ matched_files);
     },
 
     events:{

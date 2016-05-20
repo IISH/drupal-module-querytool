@@ -62,6 +62,7 @@
   <div id="regionselection" class="step">
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("choose-regions"));</script>
       <a href="#" class="question-mark" data-toggle="modal"  data-target="#step3expl"><i class="fa fa-question-circle"></i></a></h2>
+    <div class="documentation"></div>
     <div id="regioncontainer"> </div>
 
     <div class="modal fade" id="step3expl" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

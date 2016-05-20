@@ -1,16 +1,29 @@
 /**
  *
- *   Implement marionette radio?
+ *   App.js
+ *   Initializing views and models
+ *
+ *   QuerySettings functions as main central model
 */
 var debugmode = qtSettings.debugmode;
 
 
+// defined in init()
+var querySettings;
+var documentation;
 
-if(qtSettings.datatype == ""){
-    jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
+// defined in build()
+var queryModuleView;
+var querySettingsView;
+var classModeSelector;
+var yearSelector;
+var regionSelector;
+var topicSelector;
+var classification;
+var resultView;
 
-}else{
 
+function init(){
     var modes = [{
         name:"historical",
         label: polyglot.t("historical"),
@@ -21,7 +34,7 @@ if(qtSettings.datatype == ""){
         description: polyglot.t("modern-description")
     }];
 
-    var querySettings = new QuerySettings();
+    querySettings = new QuerySettings();
     querySettings.set({baseUrl: qtSettings.baseurl});
     querySettings.set({moduleUrl: qtSettings.moduleurl});
     querySettings.set({classModes:modes});
@@ -31,34 +44,41 @@ if(qtSettings.datatype == ""){
     querySettings.set({files:qtSettings.files});
 
     /* Getting documentation */
-    var Documentation = Backbone.Model.extend({ url: querySettings.getDocumentationUrl()});
-    var documentation = new Documentation();
-    documentation.fetch({
-        success: this.processFiles
-    });
+    documentation = new Documentation();
+    documentation.getFiles();
+}
 
-    var queryModuleView = new QueryModuleView();
+
+
+/**
+ * called by Documentation
+ */
+function build(){
+
+    queryModuleView = new QueryModuleView();
     queryModuleView.updateSteps();
 
-    var querySettingsView = new QuerySettingsView({model:querySettings});
+    querySettingsView = new QuerySettingsView({model:querySettings});
     querySettingsView.render();
 
-    var classModeSelector = new ClassModeSelector({model:querySettings});
+    classModeSelector = new ClassModeSelector({model:querySettings});
     classModeSelector.render();
 
-    var yearSelector = new YearSelector({model:querySettings});
+    yearSelector = new YearSelector({model:querySettings});
     yearSelector.render();
 
-    var regionSelector = new RegionSelector();
-
-    var topicSelector = new TopicSelector();
-
-    var classification = new Classification();
-
-    var resultView = new ResultView();
+    regionSelector  = new RegionSelector();
+    topicSelector   = new TopicSelector();
+    classification  = new Classification();
+    resultView      = new ResultView();
+}
 
 
 
 
+if(qtSettings.datatype == ""){
+    jQuery("#mainmessage-container").html('<div class="alert alert-danger" role="alert">Oops! No topic given. Close window and reopen via link please.</div>');
+}else{
+    init();
 }
 

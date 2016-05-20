@@ -8,11 +8,11 @@ var RegionSelector = Backbone.View.extend({
         this.render();
     },
 
+
+
     render:function(){
         var regions = new Regions();
-
         var that = this;
-
 
         //reset
         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
@@ -46,14 +46,17 @@ var RegionSelector = Backbone.View.extend({
                 var html = template(vars);
 
                 that.$el.html(html);
+                that.setDocumentationLink();
                 that.enableMultiSelect();
-
-
                 that.region_objects = region_objects;
-
             }
         });
 
+    },
+
+    setDocumentationLink:function(){
+        matched_files = documentation.getLinks("regions");
+        $("#regionselection .documentation").html(matched_files);
     },
 
 

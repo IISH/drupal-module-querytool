@@ -336,6 +336,11 @@ span.skip-arrow{
 #regionselection{
     padding-bottom: 50px;
 }
+
+#regionselection .documentation{
+    margin-bottom:6px;
+}
+
 .ms-container {
    width:50%;
     min-width: 700px;

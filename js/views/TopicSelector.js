@@ -44,22 +44,10 @@ var TopicSelector = Backbone.View.extend({
         setInterval(function(){
             that.timerCount++;
         }, 500);
-
     },
 
     setDocumentationLink:function(){
-
-        var matched_files = "";
-        var yearMatch = querySettings.get("base_year");
-
-        $("#topicselection .documentation").html("");
-
-        $.each( querySettings.get("files"),function( filename, filepath ){
-           if(filename.indexOf(yearMatch) > 0){
-               matched_files += "<a href='"+filepath+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ filename.substr(filename.indexOf(".")+1)  +")<br>";
-            }
-        });
-
+        matched_files = documentation.getLinks(querySettings.get("base_year"));
         $("#topicselection .documentation").html(matched_files);
     },
 

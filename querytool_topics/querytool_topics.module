@@ -26,6 +26,81 @@ function querytool_topics_menu ()
 }
 
 
+
+/**
+ *  Implements hook_block_info()
+ */
+function querytool_block_info() {
+  $blocks['topics'] = array(
+    'info' => t('Data topics with documentation links.'),
+    'region' => "sidebar_first",
+    'cache' => DRUPAL_NO_CACHE
+  );
+
+  return $blocks;
+}
+
+
+/**
+ *  Implements hook_block_view()
+ *
+ *
+ */
+function querytool_block_view($delta = '') {
+
+  $block = array();
+
+  if($delta == "topics"){
+
+    global $language;
+    $output = "";
+
+    // Load documentation files
+    $url = variable_get('querytool_api_url','')."documentation?lang=".$language->language;
+    $files = json_decode(file_get_contents($url), TRUE);
+
+
+    $rows = array();
+
+    //load terms
+    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+    $tree = i18n_taxonomy_get_tree($vid, $language->language,0, 1, true);
+
+
+    foreach ($tree as $term) {
+      $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+      $label = $datatype . ". " . $term->name;
+      $output .= "<div class='topic-doc'><h3>".$label."</h3>";
+     // $rows[] = array($label," ");
+
+      foreach ($files as $file) {
+        if (strpos($file['name'], $datatype."_00_info") !== false) {
+          $output .= l($file['name'],$file['url'],array('target'=>'_blank'))."<br>";
+          //$rows[] = array("",l($file['name'],$file['url'],array('target'=>'_blank')));
+        }
+      }
+      $output .= "</div>";
+    }
+
+   // $output  .= theme('table', array( 'rows' => $rows));
+
+      $block['subject'] = '';
+      $block['content'] = $output;
+  }
+
+  return $block;
+}
+
+
+
+/**
+ * Implement hook_init()
+ */
+function querytool_init(){
+  drupal_add_css(drupal_get_path('module', 'querytool_topics') . '/querytool_topics.css');
+
+}
+
 /**
  * Lists topics
  */
@@ -36,7 +111,7 @@ function querytool_topics ()
 
   // Adds the library making it available for use.
   drupal_add_library('system', 'ui.tabs');
-  drupal_add_css(drupal_get_path('module', 'querytool_topics') . '/querytool_topics.css');
+
   drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_topics.js", array('scope' => 'footer', 'weight' => 5));
 
   $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;

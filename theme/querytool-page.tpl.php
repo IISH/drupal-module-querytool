@@ -62,7 +62,7 @@
   <div id="regionselection" class="step">
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("choose-regions"));</script>
       <a href="#" class="question-mark" data-toggle="modal"  data-target="#step3expl"><i class="fa fa-question-circle"></i></a></h2>
-    <div class="documentation"></div>
+
     <div id="regioncontainer"> </div>
 
     <div class="modal fade" id="step3expl" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -71,7 +71,10 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
           </div>
-          <div class="modal-body"><script>document.write(polyglot.t("regions-info"));</script> </div>
+          <div class="modal-body">
+            <script>document.write(polyglot.t("regions-info"));</script><br><br>
+            <div class="documentation"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -82,7 +85,7 @@
     <a href="#" onclick="showTree();" id="show-tree"><i class="fa fa-sitemap"></i></a>
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("choose-indicators"));</script>
       <a href="#" class="question-mark" data-toggle="modal"  data-target="#step4expl"><i class="fa fa-question-circle"></i></a></h2>
-    <div class="documentation"></div>
+
     <div id="topic-lists"></div>
 
     <div style="clear:both;"></div>
@@ -93,7 +96,10 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
           </div>
-          <div class="modal-body"><script>document.write(polyglot.t("indicators-info"));</script> </div>
+          <div class="modal-body"><script>document.write(polyglot.t("indicators-info"));</script><br>
+            <br>
+            <div class="documentation"></div>
+          </div>
         </div>
       </div>
     </div>

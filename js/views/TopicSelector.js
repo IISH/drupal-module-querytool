@@ -17,7 +17,6 @@ var TopicSelector = Backbone.View.extend({
         var PrevY = 0;
         var difX;
         var difY;
-
         var that = this;
         var tc = 0;
 
@@ -74,5 +73,4 @@ var TopicSelector = Backbone.View.extend({
 
         $("#result").show();
     }
-
 });

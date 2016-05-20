@@ -43,9 +43,10 @@ var QuerySettings = Backbone.Model.extend({
 
     getDocumentationUrl:function(){
         var url = this.get("baseUrl")+'documentation';
-       // if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
+        var topic = this.get("datatype").split(".")[0];
+        url += "?topic="+topic;
+        url += "&lang="+this.get("lang");
         return url;
-
     },
 
     updateMode:function(value){
@@ -90,7 +91,6 @@ var QuerySettings = Backbone.Model.extend({
             //reset to current value
             yearSelector.selectYear(this.get("base_year"));
         }
-
     },
 
     updateRegions:function(regions){

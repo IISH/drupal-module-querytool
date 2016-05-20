@@ -69,7 +69,6 @@ function querytool_js_alter(&$javascript) {
   }
 }
 
-
 /**
  * Implements hook_preprocess_html().
  */
@@ -99,6 +98,7 @@ function querytool_preprocess_html(&$variables, $hook)
 
     drupal_add_js($path."/js/models/QuerySettings.js");
     drupal_add_js($path."/js/general.js");
+    drupal_add_js($path."/js/models/Documentation.js");
     drupal_add_js($path."/js/models/Years.js");
     drupal_add_js($path."/js/models/Regions.js");
     drupal_add_js($path."/js/models/Classification.js");
@@ -160,7 +160,7 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/polyglot.init.js");
     drupal_add_js("var qtSettings = ".$js_settings.";",array('type'=>'inline','scope' => 'footer', 'weight' => 3));
     drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
-    drupal_add_js($path."/js/dndTree.js", array('scope' => 'footer', 'weight' => 5));
+    drupal_add_js($path."/js/Tree.js", array('scope' => 'footer', 'weight' => 5));
   }
 
 }
@@ -183,7 +183,6 @@ function _querytool_get_term($datatype, $lang)
   $term = taxonomy_term_load($first->tid);
 
   return $term;
-
 }
 
 /**

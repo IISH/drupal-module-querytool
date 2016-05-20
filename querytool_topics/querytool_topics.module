@@ -35,12 +35,9 @@ function querytool_topics ()
   global $language;
 
   // Adds the library making it available for use.
-  drupal_add_css(drupal_get_path('module', 'querytool') . '/css/topics.css');
   drupal_add_library('system', 'ui.tabs');
-
-  drupal_add_js(drupal_get_path('module', 'querytool') . "/js/topics.js");
-  drupal_add_js('jQuery(document).ready(function () {      jQuery( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-    jQuery( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" ); });', array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+  drupal_add_css(drupal_get_path('module', 'querytool_topics') . '/querytool_topics.css');
+  drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_topics.js", array('scope' => 'footer', 'weight' => 5));
 
   $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
 

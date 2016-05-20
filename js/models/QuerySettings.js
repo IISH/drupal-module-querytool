@@ -40,6 +40,14 @@ var QuerySettings = Backbone.Model.extend({
         return url;
 
     },
+
+    getDocumentationUrl:function(){
+        var url = this.get("baseUrl")+'documentation';
+       // if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
+        return url;
+
+    },
+
     updateMode:function(value){
 
         var r = true;

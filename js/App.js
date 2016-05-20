@@ -1,8 +1,7 @@
 /**
  *
- *   Implement marionette radio
+ *   Implement marionette radio?
 */
-
 var debugmode = qtSettings.debugmode;
 
 
@@ -30,6 +29,13 @@ if(qtSettings.datatype == ""){
     querySettings.set({lang:qtSettings.lang});
     querySettings.set({debugmode:qtSettings.debugmode});
     querySettings.set({files:qtSettings.files});
+
+    /* Getting documentation */
+    var Documentation = Backbone.Model.extend({ url: querySettings.getDocumentationUrl()});
+    var documentation = new Documentation();
+    documentation.fetch({
+        success: this.processFiles
+    });
 
     var queryModuleView = new QueryModuleView();
     queryModuleView.updateSteps();

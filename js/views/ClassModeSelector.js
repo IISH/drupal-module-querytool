@@ -1,5 +1,6 @@
 /**
- *   Provides radio buttons for modes and saves selection to querysettings
+ *   ClassModeSelector; first step in interface
+ *   Provides radio buttons for classification modes and saves selection to querysettings object
  */
 
 var ClassModeSelector = Backbone.View.extend({
@@ -7,8 +8,6 @@ var ClassModeSelector = Backbone.View.extend({
     el:"#classmodes",
 
     render:function(){
-
-
         var modes = this.model.get("classModes");
         var that = this;
         var vars = {modes:modes};

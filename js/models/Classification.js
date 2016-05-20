@@ -3,19 +3,14 @@ var Classification = Backbone.Model.extend({
     classListCollection:null,
     indexedClasses:[],
 
-
     defaults: {
         selectedClasses:[]
     },
-
 
     url: function() {
         return querySettings.getClassUrl();
     },
 
-    initialize:function(){
-
-    },
 
     getClasses:function(){
         this.clear();
@@ -38,8 +33,6 @@ var Classification = Backbone.Model.extend({
                 indexes.push($(this).attr("id"));
             }
         });
-
-
 
         querySettings.updateClasses(indexes);
         this.getClassesByIndex(indexes);

@@ -56,7 +56,7 @@ var QuerySettings = Backbone.Model.extend({
     updateMode:function(value){
         var r = true;
 
-        if(this.get("confirmmode") && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
+        if(this.get("confirmmode") && this.get('classmode') !=="") r = confirm(polyglot.t("switch-mode-confirm"));
 
         if(r){
             this.set({classmode: value, selectedclasses:[]});
@@ -82,7 +82,7 @@ var QuerySettings = Backbone.Model.extend({
 
         var r = true;
 
-        if(this.get("confirmmode") && (this.get('base_year') !== ""))  var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
+        if(this.get("confirmmode") && (this.get('base_year') !== ""))  var  r = confirm(polyglot.t("switch-year-confirm"));
 
         if(r){
             this.set({base_year: value});

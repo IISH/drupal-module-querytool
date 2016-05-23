@@ -16,7 +16,7 @@ version 0.3-dev
 - browse to /topics
 - enable Taxonomy translation module: /admin/modules
 - set multilangual options: /admin/structure/taxonomy/topics/edit choose  "Translate. Different terms will be allowed for each language and they can be translated."
+- set proper position of topics page in menu: /admin/structure/menu/manage/navigation
 
 # Todo
 - implement depth checkbox for level 4
-- show only available years (no API support yet)

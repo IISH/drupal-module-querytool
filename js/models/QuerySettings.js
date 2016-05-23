@@ -1,5 +1,5 @@
 var QuerySettings = Backbone.Model.extend({
-    confirmation:false,
+
     defaults: {
         moduleUrl:"",
         baseUrl:"",
@@ -55,7 +55,9 @@ var QuerySettings = Backbone.Model.extend({
 
     updateMode:function(value){
         var r = true;
-       //if(this.confirmation && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
+
+        if(this.get("confirmmode") && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
+
         if(r){
             this.set({classmode: value, selectedclasses:[]});
 
@@ -78,9 +80,10 @@ var QuerySettings = Backbone.Model.extend({
 
     updateYear:function(value){
 
-        console.log(this.get("confirmmode"));
-      //   var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
         var r = true;
+
+        if(this.get("confirmmode") && (this.get('base_year') !== ""))  var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
+
         if(r){
             this.set({base_year: value});
             querySettingsView.update();

@@ -48,7 +48,7 @@ var QuerySettings = Backbone.Model.extend({
     getDocumentationUrl:function(){
         var url = this.get("baseUrl")+'documentation';
         var topic = this.get("datatype").split(".")[0];
-        url += "?topic="+topic;
+        url += "?datatype="+topic;
         url += "&lang="+this.get("lang");
         return url;
     },

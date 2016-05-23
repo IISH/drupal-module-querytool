@@ -51,7 +51,6 @@ function init(){
 }
 
 
-
 /**
  * called by Documentation
  */
@@ -74,8 +73,6 @@ function build(){
     classification  = new Classification();
     resultView      = new ResultView();
 }
-
-
 
 
 if(qtSettings.datatype == ""){

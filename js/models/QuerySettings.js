@@ -38,7 +38,11 @@ var QuerySettings = Backbone.Model.extend({
         var url = this.get("baseUrl")+'regions';
         if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
         return url;
+    },
 
+    getYearsUrl:function(){
+        var url = this.get("baseUrl")+"years?datatype="+this.get("datatype");
+        return url;
     },
 
     getDocumentationUrl:function(){
@@ -50,11 +54,8 @@ var QuerySettings = Backbone.Model.extend({
     },
 
     updateMode:function(value){
-
         var r = true;
-
-       ///if(this.confirmation && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
-
+       //if(this.confirmation && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
         if(r){
             this.set({classmode: value, selectedclasses:[]});
 
@@ -73,11 +74,11 @@ var QuerySettings = Backbone.Model.extend({
             //reset to current value
             classModeSelector.selectMode(this.get("classmode"));
         }
-
-
     },
 
     updateYear:function(value){
+
+        console.log(this.get("confirmmode"));
       //   var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
         var r = true;
         if(r){
@@ -97,7 +98,6 @@ var QuerySettings = Backbone.Model.extend({
         this.set({"regions":regions});
         querySettingsView.update();
         queryModuleView.showNextStep(4);
-
     },
 
     resetYear:function(){

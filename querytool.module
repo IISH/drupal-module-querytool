@@ -151,6 +151,7 @@ function querytool_preprocess_html(&$variables, $hook)
                       "baseurl"   => variable_get('querytool_api_url'),
                       "moduleurl" => "/".drupal_get_path("module","querytool"),
                       "debugmode" =>variable_get('querytool_debugmode'),
+                      "confirmmode" =>variable_get('querytool_confirmmode'),
                       "files" =>$files,
                       );
 
@@ -258,6 +259,7 @@ function querytool_admin_form ($form, &$form_state)
   $api_url    = variable_get('querytool_api_url','');
   $import_url = variable_get('querytool_import_url','');
   $debugmode  = variable_get('querytool_debugmode','');
+  $confirmmode  = variable_get('querytool_confirmmode','');
 
   $form['querytool_api_url'] = array(
     '#type' => 'textfield',
@@ -276,6 +278,13 @@ function querytool_admin_form ($form, &$form_state)
     '#default_value' => $debugmode,
     '#title' => t('Debug mode'),
     '#description' => t("Will show some extra info for developers."),
+  );
+
+  $form['querytool_confirmmode'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => $confirmmode,
+    '#title' => t('Confirm mode'),
+    '#description' => t("Enabled, the user most confirm when changing major settings in the interface, to make him conscious about losing made selections. "),
   );
 
   $form['querytool_copyright'] = array(

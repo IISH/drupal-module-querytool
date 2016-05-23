@@ -1,4 +1,4 @@
-/*
+/**
  *   Provides tabs for each year
  */
 var YearSelector = Backbone.View.extend({
@@ -13,10 +13,13 @@ var YearSelector = Backbone.View.extend({
 
             success:function(r){
                 var years = [];
-                var yearsdata = _.sortBy(r.attributes, '0');
+                var yearsdata = _.sortBy(r.attributes, '1');
 
                 _.each(yearsdata, function(yeardata) {
-                    years.push(yeardata[0]);
+                    var year = {};
+                    year.datacount = yeardata[0];
+                    year.num = yeardata[1];
+                    years.push(year);
                 });
                 var vars = {years:years};
                 var tp   = $('#years-template').html();
@@ -24,7 +27,6 @@ var YearSelector = Backbone.View.extend({
                 var html = template(vars);
                 that.$el.append(html);
             }
-
         });
     },
 

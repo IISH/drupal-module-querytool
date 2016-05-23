@@ -68,11 +68,9 @@ h2{
     margin:20px;
     border-left: 4px solid rgba(255, 16, 67, 0.2);
     padding: 0px 20px 20px 20px;
-
     /*border:1px solid #EEE;*/
     clear: both;
     /*background-color:rgba(0, 0, 0, 0.03) ;*/
-
 /*
     -webkit-box-shadow:  8px 8px 6px  rgba(0,0,0,0.4);
     -moz-box-shadow:  8px 8px 6px rgba(0,0,0,0.4);
@@ -89,6 +87,12 @@ h2{
 #yearselection{
 
 }
+
+.year-unavailable{
+    padding: 11px 15px;
+    color:#AAA;
+}
+
 
 /*** CLASS MODE SELECTION ***/
 #classmodeselection input{

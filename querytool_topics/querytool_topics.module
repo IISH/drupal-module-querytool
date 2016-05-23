@@ -26,7 +26,6 @@ function querytool_topics_menu ()
 }
 
 
-
 /**
  *  Implements hook_block_info()
  */
@@ -44,7 +43,7 @@ function querytool_block_info() {
 /**
  *  Implements hook_block_view()
  *
- *
+ *  Loads documentation file URLs
  */
 function querytool_block_view($delta = '') {
 
@@ -53,46 +52,75 @@ function querytool_block_view($delta = '') {
   if($delta == "topics"){
 
     global $language;
-    $output = "";
 
-    // Load documentation files
     $url = variable_get('querytool_api_url','')."documentation?lang=".$language->language;
-    $files = json_decode(file_get_contents($url), TRUE);
+    $data = file_get_contents($url);
 
-    // Match general files
-    $common_files = [];
-    foreach ($files as $file) {
-      if (strpos($file['name'], "Introduction") !== false ||
-          strpos($file['name'], "GovReports") !== false ||
-          strpos($file['name'], "regions") !== false ) {
-            $common_files[] =l($file['name'],$file['url'],array('target'=>'_blank'));
-      }
-    }
-    $label = t("General files");
-    $output .= theme('topic',array("label"=>$label,"links"=>$common_files));
-
-
-    // load terms and match specific files
-    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
-    $tree = i18n_taxonomy_get_tree($vid, $language->language,0, 1, true);
-
-    foreach ($tree as $term) {
-      $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
-      $label = $datatype . ". " . $term->name;
-      $links = [];
-      foreach ($files as $file) {
-        if (strpos($file['name'], $datatype."_00") !== false) {
-          $links[] =l($file['name'],$file['url'],array('target'=>'_blank'));
-        }
-      }
-      $output .= theme('topic',array("label"=>$label,"links"=>$links));
+    if($data){
+      $files = json_decode($data, TRUE);
+      $output = _querytool_topics_general_docs($files);
+      $output .= _querytool_topics_topic_docs($files);
+    }else{
+      $output = t("Error parsing documentation data. Please contact us.");
     }
 
-      $block['subject'] = '';
-      $block['content'] = $output;
+    $block['content'] = $output;
   }
 
   return $block;
+}
+
+/**
+ * Match general files, set up 3 sets for ordering
+ * @param $files
+ * @return string
+ */
+function _querytool_topics_general_docs($files){
+  global $language;
+
+  $common_files1 = [];
+  $common_files2 = [];
+  $common_files3 = [];
+  foreach ($files as $file) {
+    if (strpos($file['name'], "Introduction") !== false){
+      $common_files1[] =l($file['name'],$file['url'],array('target'=>'_blank'));
+    }
+    if (strpos($file['name'], "regions") !== false){
+      $common_files2[] =l($file['name'],$file['url'],array('target'=>'_blank'));
+    }
+    if (strpos($file['name'], "GovReports") !== false){
+      $common_files3[] =l($file['name'],$file['url'],array('target'=>'_blank'));
+    }
+  }
+  $common_files = array_merge($common_files1,$common_files2,$common_files3);
+  $label = ($language->language == "ru") ? t("Общая документация") : t("General documentation") ;
+  return theme('topic',array("label"=>$label,"links"=>$common_files));
+}
+
+/**
+ *  Match files on datatype
+ * @param $files
+ */
+function _querytool_topics_topic_docs($files){
+  global $language;
+
+  $output = "";
+  // load terms and match specific files
+  $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+  $tree = i18n_taxonomy_get_tree($vid, $language->language,0, 1, true);
+
+  foreach ($tree as $term) {
+    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+    $label = $datatype . ". " . $term->name;
+    $links = [];
+    foreach ($files as $file) {
+      if (strpos($file['name'], $datatype."_00") !== false) {
+        $links[] =l($file['name'],$file['url'],array('target'=>'_blank'));
+      }
+    }
+    $output .= theme('topic',array("label"=>$label,"links"=>$links));
+  }
+  return $output;
 }
 
 

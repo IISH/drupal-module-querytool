@@ -140,16 +140,25 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-        <% _.each(years, function(year) { %>
-        <li role="presentation"><a href="#<%= htmlEncode(year) %>" aria-controls="<%= htmlEncode(year) %>" id="<%= htmlEncode(year) %>" role="tab" data-toggle="tab"><%= htmlEncode(year) %></a></li>
-        <% }); %>
+        <% _.each(years, function(year){
+          if(year.datacount == 0){  %>
+        <li role="presentation"><div class="year-unavailable"><%= htmlEncode(year.num) %></div></li>
+        <% }else{ %>
+        <li role="presentation"><a href="#<%= htmlEncode(year.datacount) %>" aria-controls="<%= htmlEncode(year.datacount) %>" id="<%= htmlEncode(year.num) %>" role="tab" data-toggle="tab"><%= htmlEncode(year.num) %></a></li>
+         <%} }); %>
     </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-        <% _.each(years, function(year) { %>
-        <div role="tabpanel" class="tab-pane" id="<%= htmlEncode(year) %>"></div>
-        <% }); %>
+        <% _.each(years, function(year) {
+
+            if(year.datacount == 0){  %>
+              <div role="tabpanel" class="tab-pane" id="hoi <%= htmlEncode(year.num) %>"></div>
+            <% }else{ %>
+              <div role="tabpanel" class="tab-pane" id="<%= htmlEncode(year.num) %>"></div>
+              <% }
+
+         }); %>
     </div>
 </script>
 

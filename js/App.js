@@ -4,9 +4,10 @@
  *   Initializing views and models
  *
  *   QuerySettings functions as main central model
+ *   qtSettings is an object render by the module.
+ *
 */
 var debugmode = qtSettings.debugmode;
-
 
 // defined in init()
 var querySettings;
@@ -41,6 +42,7 @@ function init(){
     querySettings.set({datatype:qtSettings.datatype});
     querySettings.set({lang:qtSettings.lang});
     querySettings.set({debugmode:qtSettings.debugmode});
+    querySettings.set({confirmmode:qtSettings.confirmmode});
     querySettings.set({files:qtSettings.files});
 
     /* Getting documentation */

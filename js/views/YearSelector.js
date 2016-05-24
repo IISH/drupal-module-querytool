@@ -17,7 +17,7 @@ var YearSelector = Backbone.View.extend({
                 yearsdata = r.attributes;
 
                 _.each(yearsdata, function(k, v) {
-                    console.debug(k, v);
+                   // console.debug(k, v);
                     var year = {};
                     year.datacount = k;
                     year.num = v;

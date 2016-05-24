@@ -1,7 +1,7 @@
 /**
  * Russian translation file for Query Tool
  *
- * version 0.2
+ * version 0.3
  *
  * Update version number when you make changes please.
 */

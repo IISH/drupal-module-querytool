@@ -13,12 +13,14 @@ var YearSelector = Backbone.View.extend({
 
             success:function(r){
                 var years = [];
-                var yearsdata = _.sortBy(r.attributes, '1');
+              //  var yearsdata = _.sortBy(r.attributes, '1');
+                yearsdata = r.attributes;
 
-                _.each(yearsdata, function(yeardata) {
+                _.each(yearsdata, function(k, v) {
+                    console.debug(k, v);
                     var year = {};
-                    year.datacount = yeardata[0];
-                    year.num = yeardata[1];
+                    year.datacount = k;
+                    year.num = v;
                     years.push(year);
                 });
                 var vars = {years:years};

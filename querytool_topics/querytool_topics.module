@@ -81,6 +81,7 @@ function _querytool_topics_general_docs($files){
   $common_files1 = [];
   $common_files2 = [];
   $common_files3 = [];
+
   foreach ($files as $file) {
     if (strpos($file['name'], "Introduction") !== false){
       $common_files1[] =l($file['name'],$file['url'],array('target'=>'_blank'));
@@ -161,7 +162,6 @@ function querytool_init(){
  */
 function querytool_topics ()
 {
-
   global $language;
 
   // Adds the library making it available for use.

@@ -7,7 +7,7 @@ var ResultView = Backbone.Model.extend({
         $("html, body").animate({ scrollTop: $("#result").offset().top + 100  }, 1000);
 
         var that = this;
-        var postUrl = querySettings.get("baseUrl")+"aggregate";
+        var postUrl = querySettings.get("baseUrl")+"aggregation";
         var postData = {"classification":   querySettings.get("classmode"),
                         "datatype":         querySettings.get("datatype"),
                         "language":         querySettings.get("lang"),
@@ -82,7 +82,7 @@ var ResultView = Backbone.Model.extend({
 
             key = "class"+that.hashCode(path);
 
-            region = {ter_code:record.ter_code, territory:record.territory, value:record.value};
+            region = {ter_code:record.ter_code, territory:record.territory, value:record.total};
 
             if(sData[key]){
                 sData[key].territories.push(region);

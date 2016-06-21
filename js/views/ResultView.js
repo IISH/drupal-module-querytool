@@ -15,7 +15,7 @@ var ResultView = Backbone.Model.extend({
 
         // add year
         if( querySettings.get("classmode") == "historical" && querySettings.get("base_year") !== ""){
-            postData.year = querySettings.get("base_year");
+            postData.base_year = querySettings.get("base_year");
         }
 
         // add regions
@@ -71,13 +71,13 @@ var ResultView = Backbone.Model.extend({
 
             // key
             path = "";
-            for (var property in record.histclases) {
-                if (record.histclases ) {
-                    path += record.histclases[property];
+            for (var property in record.path) {
+                if (record.path ) {
+                    path += record.path[property];
 
                 }
             }
-            var depth = Object.keys(record.histclases).length;
+            var depth = Object.keys(record.path).length;
             if(depth > maxDepth) maxDepth = depth;
 
             key = "class"+that.hashCode(path);
@@ -159,8 +159,8 @@ var ResultView = Backbone.Model.extend({
 
             for(var l = 1; l <= levels; l++){
 
-                if(item.histclases["histclass"+l]){
-                   var classname = item.histclases["histclass"+l];
+                if(item.path["histclass"+l]){
+                   var classname = item.path["histclass"+l];
                 }else{
                     var classname = "&nbsp;";
                 }

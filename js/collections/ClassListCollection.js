@@ -3,7 +3,7 @@ var ClassListCollection = Backbone.Collection.extend({
 
     render: function(tree){
 
-        var levels = new Array(1,2,3,4);
+        var levels = new Array(1,2,3,4,5,6);
         var classBox;
 
 
@@ -12,6 +12,7 @@ var ClassListCollection = Backbone.Collection.extend({
 
         _.each(levels,function(level){
             // create div for holding the views
+
             $("#topic-lists").append('<div class="ts-box" id="ts-box-'+level+'"></div>');
             classBox = new ClassBoxView({el:$("#ts-box-"+level)});
             classBox.render(level,tree[level-1]);
@@ -23,7 +24,6 @@ var ClassListCollection = Backbone.Collection.extend({
     destroyModels:function(){
 
         this.each(function(model) {
-
             model.destroy();
         });
     }

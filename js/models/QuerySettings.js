@@ -18,11 +18,18 @@ var QuerySettings = Backbone.Model.extend({
     },
 
     getClassUrl:function(){
-        var urlTail = "datatype="+ this.get("datatype");
+        var urlTail = "";
+
+        if(this.get("classmode") == "modern"){
+            urlTail += "classes?";
+        }else{
+            urlTail += "histclasses?";
+        }
+        urlTail += "datatype="+ this.get("datatype");
         if(this.get("base_year") !== "" && this.get("classmode") == "historical") urlTail += "&base_year="+this.get("base_year");
-        if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
+       // if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
         urlTail += "&language="+this.get("lang");
-        return this.get("baseUrl") +'classes?'+urlTail;
+        return this.get("baseUrl") +urlTail;
     },
 
     getPreviewUrl:function(){
@@ -31,7 +38,7 @@ var QuerySettings = Backbone.Model.extend({
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
-
+        console.debug(url);
         return url;
     },
     getRegionsUrl:function(){

@@ -11,19 +11,6 @@ var Classification = Backbone.Model.extend({
         return querySettings.getClassUrl();
     },
 
-
-    getClasses:function(){
-        this.clear();
-        var that = this;
-
-        $("#topic-lists").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
-        this.fetch({
-            success:function(r){
-                that.structure(r);
-            }
-        });
-    },
-
     updateSelection:function(){
         var indexes = new Array();
         var path = "";
@@ -66,12 +53,16 @@ var Classification = Backbone.Model.extend({
                 if(selectedClass.level>=2) sClass.histclass2 = selectedClass.c2;
                 if(selectedClass.level>=3) sClass.histclass3 = selectedClass.c3;
                 if(selectedClass.level>=4) sClass.histclass4 = selectedClass.c4;
+                if(selectedClass.level>=5) sClass.histclass5 = selectedClass.c5;
+                if(selectedClass.level>=6) sClass.histclass6 = selectedClass.c6;
 
             }else{
                 sClass.class1 = selectedClass.c1;
                 if(selectedClass.level>=2) sClass.class2 = selectedClass.c2;
                 if(selectedClass.level>=3) sClass.class3 = selectedClass.c3;
                 if(selectedClass.level>=4) sClass.class4 = selectedClass.c4;
+                if(selectedClass.level>=5) sClass.class5 = selectedClass.c5;
+                if(selectedClass.level>=6) sClass.class6 = selectedClass.c6;
 
             }
             selectedClasses.push(sClass);
@@ -80,6 +71,32 @@ var Classification = Backbone.Model.extend({
         this.set({selectedClasses:selectedClasses});
     },
 
+    /**
+     * returns selected classes
+     */
+    getSelection:function(){
+       var selection = this.get("selectedClasses");
+       return selection;
+    },
+
+    /**
+     * Loads classes data from server
+     */
+    getClasses:function(){
+        this.clear();
+        var that = this;
+
+        $("#topic-lists").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
+        this.fetch({
+            success:function(r){
+                that.structure(r);
+            }
+        });
+    },
+
+    /**
+     * Structures / indexes data and prepares data for tree
+     */
     structure :function(r){
 
         var that= this;
@@ -90,19 +107,18 @@ var Classification = Backbone.Model.extend({
         // init data
         var indexedClasses = new Array();
         var levelData = new Array();
-        for(var j =0;j<5;j++){
+        for(var j =0;j<=6;j++){
             levelData[j] = new Array();
         }
 
         // set up object for indexing by name instead of arrays
         var Tree = {children:{}};
         var newClass;
+
         var classes = r.attributes;
         var classMode = querySettings.get("classmode");
 
-
-        //console.log(classMode);
-        var class1,class2,class3,class4;
+        var class1,class2,class3,class4,class5,class6;
 
         _.each(classes, function(hclass) {
             if(classMode == "modern"){
@@ -110,18 +126,22 @@ var Classification = Backbone.Model.extend({
                 class2  = hclass.class2;
                 class3  = hclass.class3;
                 class4  = hclass.class4;
+                class5  = hclass.class5;
+                class6  = hclass.class6;
 
             }else{
                 class1  = hclass.histclass1;
                 class2  = hclass.histclass2;
                 class3  = hclass.histclass3;
                 class4  = hclass.histclass4;
+                class5  = hclass.histclass5;
+                class6  = hclass.histclass6;
             }
 
             var tid = "";
 
             // redefine level
-            hclass.level = parseInt(hclass.levels);
+         //   hclass.level = parseInt(hclass.levels);
 
             newClass = {};
 
@@ -152,7 +172,26 @@ var Classification = Backbone.Model.extend({
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
+
+            if(class5 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5]){
+                newClass = {"name": class5, "parent":"null", children:{}, class_id: classIndex, level:5, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5};
+                Tree.children[class1].children[class2].children[class3].children[class4].children[class5] = newClass;
+                indexedClasses[classIndex] = newClass
+                classIndex++;
+            }
+
+            if(class6 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6]){
+                newClass = {"name": class6, "parent":"null", children:{}, class_id: classIndex, level:6, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].children[class5].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5,c6:class6};
+                Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6] = newClass;
+                indexedClasses[classIndex] = newClass
+                classIndex++;
+            }
+
+
+
         });
+
+
 
 
         function loopChildren(obj,depth,parent_id) {
@@ -179,33 +218,16 @@ var Classification = Backbone.Model.extend({
         }
 
         Tree.children = loopChildren(Tree.children,0,0);
+        var datatreeview = new DataTreeView();
+        datatreeview.render(Tree);
 
-        //console.debug(levelData);
 
         this.indexedClasses = indexedClasses;
         this.classListCollection = new ClassListCollection();
         this.classListCollection.render(levelData);
 
 
-        /*
-         var TreeData = new Array();
-         TreeData.push({
-         "name": "Start",
-         "parent": "null",
-         "children": new Array()
-         });
 
-         TreeData[0].children.testkey = { name: "test", "parent":"null" };
-         */
-
-        // TEMP FOR TEST
-/*
-        $("#ts-box-1 .topic:nth-child(-n+10)").hide();
-        $("#2980 .checkbox-depth").click();
-        $("#2993 .checkbox-depth").click();
-*/
-        var datatreeview = new DataTreeView();
-        datatreeview.render(Tree);
     }
 
 });

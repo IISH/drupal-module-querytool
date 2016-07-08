@@ -125,7 +125,6 @@ div.mode{
     overflow: hidden;
 }
 
-
 #topic-lists{
 }
 
@@ -136,9 +135,16 @@ div.mode{
 
 .ts-box{
     float:left;
-    width:25%;
+    width:25%; /* 4*/
+
+    /* width: 16.5%; */
     font-size: 13px;
 }
+
+.ts-box:nth-child(n+5){
+  display:none;
+}
+
 
 
 .topic-list-container{
@@ -151,7 +157,7 @@ div.mode{
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    border:1px solid #BBB;
+
     -webkit-box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
     box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);

@@ -249,6 +249,29 @@ function querytool_preprocess_page (&$variables, $hook)
   $variables["copyright"] = variable_get('querytool_copyright');
 }
 
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds all roots (all languages) te parent box
+ */
+function querytool_form_alter(&$form, &$form_state, $form_id){
+
+  if($form_id == "taxonomy_form_term"){
+    $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
+    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+    $options = array(array_shift($form['relations']['parent']['#options']));
+    foreach ($terms as $term) {
+      $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
+      $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+      if($root == '0') $options[$term->tid]=$datatype.". ".$term->name;
+    }
+    $form['relations']['parent']['#options'] =$options;
+  }
+}
+
+
+
 /**
  * Implements hook_form().
  *

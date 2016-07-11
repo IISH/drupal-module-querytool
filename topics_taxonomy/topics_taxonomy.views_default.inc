@@ -100,12 +100,6 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['edit_term']['id'] = 'edit_term';
   $handler->display->display_options['fields']['edit_term']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['edit_term']['field'] = 'edit_term';
-  /* Field: Taxonomy term: Documentation files */
-  $handler->display->display_options['fields']['field_documentation']['id'] = 'field_documentation';
-  $handler->display->display_options['fields']['field_documentation']['table'] = 'field_data_field_documentation';
-  $handler->display->display_options['fields']['field_documentation']['field'] = 'field_documentation';
-  $handler->display->display_options['fields']['field_documentation']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_documentation']['delta_offset'] = '0';
   /* Sort criterion: Taxonomy term: Datatype (field_datatype) */
   $handler->display->display_options['sorts']['field_datatype_value']['id'] = 'field_datatype_value';
   $handler->display->display_options['sorts']['field_datatype_value']['table'] = 'field_data_field_datatype';
@@ -149,7 +143,6 @@ function topics_taxonomy_views_default_views() {
     t('Name'),
     t('Enable (1=yes)'),
     t('Term edit link'),
-    t('Documentation files'),
     t('Page'),
   );
   $export['edit_topics'] = $view;

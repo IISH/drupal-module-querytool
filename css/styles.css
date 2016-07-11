@@ -125,8 +125,6 @@ div.mode{
     overflow: hidden;
 }
 
-#topic-lists{
-}
 
 .selected-info{
     color: #AAA;
@@ -136,8 +134,7 @@ div.mode{
 .ts-box{
     float:left;
     width:25%; /* 4*/
-
-    /* width: 16.5%; */
+    /* width: 16.5%; /* 6 */
     font-size: 13px;
 }
 
@@ -153,7 +150,6 @@ div.mode{
 }
 .topic-list{
   /* padding: 10px;*/
-
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;

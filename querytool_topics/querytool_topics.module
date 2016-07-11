@@ -264,14 +264,12 @@ function querytool_topics_import_form_submit ($form, &$form_state)
 function querytool_topics_import ()
 {
 
-
   $d = 0;
   $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
   foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
     taxonomy_term_delete($term->tid);
     $d++;
   }
-
 
   // Load topic JSON data
   $url = variable_get('querytool_import_url');

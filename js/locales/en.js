@@ -34,6 +34,8 @@ var phrases = {
     "of": "of",
     "selected": "selected",
     "no-subitems": "no subitems available",
+    "single-checkbox-aggregated":"(de)selects this topic as aggregated value",
+    "single-checkbox-depth":"(de)selects all underlying items",
     "select-all-as-aggregated":"select all as aggregated at this level",
     "deselect-all-as-aggregated":"deselect all as aggregated at this level",
     "select-all-depth":"select all with subitems, aggregated at the lowest level",

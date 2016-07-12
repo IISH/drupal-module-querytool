@@ -198,9 +198,9 @@
                  title="<%= htmlEncode(topic.name) %>"
                  data-placement="top">
                 <div class="checkboxes">
-                  <div class="checkbox" title="(de)selects this topic as aggregated value" data-toggle="tooltip"  data-placement="top"></div>
+                  <div class="checkbox" title="<%= polyglot.t("single-checkbox-aggregated") %>" data-toggle="tooltip"  data-placement="top"></div>
                   <% if(topic.childCount > 0) { %>
-                     <div class="checkbox-depth" title="(de)selects all underlying items" data-toggle="tooltip" data-placement="top"> </div>
+                     <div class="checkbox-depth" title="<%= polyglot.t("single-checkbox-depth") %>" data-toggle="tooltip" data-placement="top"> </div>
                   <% }; %>
                 </div>
                   <% if(topic.name !==".") { %>

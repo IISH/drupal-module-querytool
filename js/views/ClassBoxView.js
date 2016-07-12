@@ -91,9 +91,12 @@ var ClassBoxView = Backbone.View.extend({
             $(topic).closest(".ts-box").next().find(".switch").attr("data-parent",id);
             $(topic).addClass("focus");
 
-
-            console.debug(childs);
-            if(childs.length > 0 || this.level < 4)   that.connector.render(topic);
+            if(childs.length > 0 || this.level < 4){
+                that.connector.render(topic);
+                $("#connector"+ this.level).show();
+            }else{
+                $("#connector"+ this.level).hide();
+            }
 
 
             currentFocussed = topic;

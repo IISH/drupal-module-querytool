@@ -16,7 +16,7 @@ var phrases = {
     "historical-description": "Data are expressed in the original categories of the period concerned.",
     "modern": "Modern",
     "modern-description": "Data are expressed in modern categories and classifications, directly comparable over time.",
-    "data-categories-info": "Data in the Electronic Repository are available in two formats - in their 'historical classification', i.e. expressed in the categories used at the time as found in the source, and in a 'modern classification', i.e. expressed and recalculated into categories from modern taxonomies and classifications. The two formats serve different purposes. The historical classification is closest to the source, although unified and systematised, and generally offers a greater level of detail. The modern classification usually distinguishes between a smaller number of categories, but is 100% comparable over time, as well as to other countries and regions when internationally accepted taxonomies have been used. <br>For more information, cf. ",
+    "data-categories-info": "Data in the Electronic Repository are available in two formats - in their 'historical classification', i.e. expressed in the categories used at the time as found in the source, and in a 'modern classification', i.e. expressed and recalculated into categories from modern taxonomies and classifications. The two formats serve different purposes. The historical classification is closest to the source, although unified and systematised, and generally offers a greater level of detail. The modern classification usually distinguishes between a smaller number of categories, but is 100% comparable over time, as well as to other countries and regions when internationally accepted taxonomies have been used. <br><br>For more information, cf. ",
     "switch-mode-confirm":"Switching mode will reset the screen and all custom selections, are you sure?",
 
     "choose-year": "Choose year",
@@ -24,7 +24,7 @@ var phrases = {
     "switch-year-confirm":"Switching year will reset the screen and all your selections, are you sure?",
 
     "choose-regions": "Choose regions",
-    "regions-info": "The Electronic Repository offers data only for the regions which are part of the modern-day Russian Federation (2002). However, for some years and some topics data are also available for other regions of the Russian Empire/Soviet-Union. <br>For more information, cf.:",
+    "regions-info": "The Electronic Repository offers data only for the regions which are part of the modern-day Russian Federation (2002). However, for some years and some topics data are also available for other regions of the Russian Empire/Soviet-Union. <br><br>For more information, cf.:",
     "select-all": "select all",
     "deselect-all": "deselect all",
     "search": "search",

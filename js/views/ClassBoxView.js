@@ -1,13 +1,12 @@
 /**
  *   The ClassBoxView generates a list of topics for a specific level
  */
-
-
 var ClassBoxView = Backbone.View.extend({
 
     connector:      null,
     currentFocussed:null,
     useSwitch:      false,
+    level:null,
 
     render:function(level,topics){
 
@@ -17,6 +16,7 @@ var ClassBoxView = Backbone.View.extend({
         var vars;
         var topics;
 
+        this.level = level;
         that.level = level;
 
         // set up template and fill
@@ -36,7 +36,7 @@ var ClassBoxView = Backbone.View.extend({
             }
         });
 
-        // Addding tooltip for explenation
+        // Adding tooltip for explanation
         $('[data-toggle="tooltip"]').tooltip({
             container: '#main'
         });
@@ -53,12 +53,14 @@ var ClassBoxView = Backbone.View.extend({
         this.$el.find(".topic-list").scroll(function(){
             that.connector.render();
         });
+
+        this.updateCouter();
         return this;
     },
 
     events:{
         'mouseenter .topic'         :'omeTopicLink',
-        'mouseenter  .topic-list'   :'disableWindowScroll',
+        'mouseenter .topic-list'    :'disableWindowScroll',
         'mouseleave .topic-list'    :'enableWindowScroll',
         'click .checkbox'           :'toggleCheckbox',
         'click .checkbox-depth'     :'toggleCheckboxDepth',
@@ -89,10 +91,18 @@ var ClassBoxView = Backbone.View.extend({
             $(topic).closest(".ts-box").next().find(".switch").attr("data-parent",id);
             $(topic).addClass("focus");
 
-            that.updateCouter();
-            that.connector.render(topic);
+            if(childs.length > 0 || this.level < 4){
+                that.connector.render(topic);
+                $("#connector"+ this.level).show();
+            }else{
+                $("#connector"+ this.level).hide();
+            }
+
+
             currentFocussed = topic;
         }
+        this.updateCouter();
+
     },
 
     // disables window scroll when reaching scroll-end of scrollable div (topic lists)
@@ -115,8 +125,10 @@ var ClassBoxView = Backbone.View.extend({
 
         if($(cb).hasClass('checked')){
             $(cb).removeClass('checked');
+            this.checkParentDepthBox(topicId);
         }else{
-            this.selectParent(topicId);
+            this.deselectParent(topicId);
+            this.deselectNextDepth(topicId);
             $(cb).addClass('checked');
         }
 
@@ -124,21 +136,48 @@ var ClassBoxView = Backbone.View.extend({
         var that = this;
 
         if($(cb).hasClass("all")){
+
             if($(cb).hasClass("checked")){
-                $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
+                $("#"+ tsboxId +" .topic-list  .checkbox:visible").not(".checked").click();
+               // $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
             }else{
-                $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
+
+                $("#"+ tsboxId +" .topic-list  .checkbox.checked:visible").click();
+             //   $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
             }
+
+
+
         }
         that.updateCouter();
         classification.updateSelection();
     },
 
+    /**
+     * called when single box is being unchecked, checks if depth-box of parent still has to in selected state
+     *
+     * @param topicId
+     */
+    checkParentDepthBox:function(topicId){
+        var singleChecked = $("#"+topicId).closest(".ts-box").find(".topic-list .checked").length;
+        var depthChecked = $("#"+topicId).closest(".ts-box").find(".topic-list .checked-depth").length;
 
-    selectParent:function(topicId){
+        if(singleChecked+depthChecked == 0){
+            var parentId = $("#"+ topicId).attr("data-parent");
+            $("#"+parentId).find(".checkbox-depth").removeClass("checked-depth");
+        }
+    },
+
+    /**
+     * deselects single checkbox of parent item, because aggregation is only possible on lowest selected level
+     * thereby it selects the depth checkbox to indicate a selection is made
+     * @param topicId
+     */
+    deselectParent:function(topicId){
         var parentId = $("#"+ topicId).attr("data-parent");
-        $("#"+parentId).find(".checkbox").addClass("checked");
-        if(parentId !== undefined && parentId !== "null") this.selectParent(parentId);
+        $("#"+parentId).find(".checkbox").removeClass("checked");
+        $("#"+parentId).find(".checkbox-depth").addClass("checked-depth");
+        if(parentId !== undefined && parentId !== "null") this.deselectParent(parentId);
     },
 
     toggleCheckboxDepth: function(e){
@@ -150,40 +189,55 @@ var ClassBoxView = Backbone.View.extend({
 
         var that = this;
         if($(cb).hasClass("checked-depth")){
-            $("#"+topicId).find(".checkbox").addClass("checked");
             that.selectNextDepth(topicId);
+            that.deselectParent(topicId);
         }else{
             that.deselectNextDepth(topicId);
         }
 
         if($(cb).hasClass("all")){
             if($(cb).hasClass("checked-depth")){
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
-                $("#"+ tsboxId +" .topic-list .checkbox:visible").addClass('checked');
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
+             //   $("#"+ tsboxId +" .topic-list .checkbox:visible").addClass('checked');
+                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").not(".checked-depth").click();
             }else{
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").addClass("checked-depth"); // select all first to prevent invert selections
-                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").hasClass(".checked-depth").click();
+                $("#"+ tsboxId +" .topic-list .checkbox-depth:visible.checked-depth").click();
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").addClass("checked-depth"); // select all first to prevent invert selections
+             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
             }
         }
 
         that.updateCouter();
         classification.updateSelection();
+
+        that.checkParentDepthBox(topicId);
     },
 
+    /**
+     *
+     * Select items at the next depth. Single checkbox if on lowest level, otherwise depth checkbox to select further down
+     * @param topicId
+     */
     selectNextDepth:function(topicId){
         var that = this;
-        $(".topic[data-parent='"+topicId+"'] .checkbox").addClass("checked");
-        $(".topic[data-parent='"+topicId+"'] .checkbox-depth").addClass("checked-depth");
+
+        $("#"+topicId+" .checkbox").removeClass("checked");
 
         $.each($(".topic[data-parent='"+topicId+"']"),function(e,topic){
-            that.selectNextDepth($(topic).attr("id"));
+            if($(topic).find(".checkbox-depth").length == 0){
+                $(topic).find(".checkbox").addClass("checked");
+            }else{
+                $(topic).find(".checkbox-depth").addClass("checked-depth");
+                that.selectNextDepth($(topic).attr("id"));
+            }
         });
     },
     deselectNextDepth:function(topicId){
         var that = this;
         $(".topic[data-parent='"+topicId+"'] .checkbox").removeClass("checked");
         $(".topic[data-parent='"+topicId+"'] .checkbox-depth").removeClass("checked-depth");
+        $("#"+topicId+" .checkbox-depth").removeClass("checked-depth");
 
         $.each($(".topic[data-parent='"+topicId+"']"),function(e,topic){
             that.deselectNextDepth($(topic).attr("id"));
@@ -209,7 +263,7 @@ var ClassBoxView = Backbone.View.extend({
     },
 
     updateCouter:function(){
-
+    
         var useSwitch = this.useSwitch;
         $.each($(".ts-box"),function(e){
             var count = 0;

@@ -1,26 +1,33 @@
 var RegionSelector = Backbone.View.extend({
 
     el:"#regioncontainer",
-    initialize:function(){
-        this.render();
-    },
+    region_objects: {},
+    selected_region_codes:[],
 
     render:function(){
         var regions = new Regions();
-       // regions.url = querySettings.getRegionsUrl();
         var that = this;
-
         //reset
-         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
+        $("#regionselection").show();
+        this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
 
         regions.fetch({
 
             success:function(r){
+
                 var regions = [];
                 var regionsdata = r.attributes.regions;
+                var region_objects = {};
 
                 _.each(regionsdata, function(region) {
-                    region.label = region.region_name_eng;
+
+                    if(querySettings.get("lang") == "en"){
+                        region.label = region.region_name_eng;
+                    }else{
+                        region.label = region.region_name;
+                    }
+
+                    region_objects[region.region_code] = region;
                     regions.push(region);
                 });
 
@@ -32,10 +39,17 @@ var RegionSelector = Backbone.View.extend({
                 var html = template(vars);
 
                 that.$el.html(html);
+                that.setDocumentationLink();
                 that.enableMultiSelect();
+                that.region_objects = region_objects;
             }
         });
 
+    },
+
+    setDocumentationLink:function(){
+        matched_files = documentation.getLinks("regions");
+        $("#regionselection .documentation").html(matched_files);
     },
 
 
@@ -92,7 +106,22 @@ var RegionSelector = Backbone.View.extend({
 
     },
     saveRegions:function(){
-        querySettings.set({"regions":$('#regions').val()});
-        querySettingsView.update();
+        this.selected_region_codes = $('#regions').val();
+        querySettings.updateRegions($('#regions').val())
+    },
+
+    getSelectedRegions:function(){
+
+        var selectedRegions = [];
+        var selectedRegion_codes = this.selected_region_codes;
+        var allRegions = this.region_objects;
+
+        _.each(allRegions, function(region) {
+            if(selectedRegion_codes.indexOf(region.region_code) !== -1) selectedRegions.push(region);
+        });
+
+        selectedRegions = _.sortBy(selectedRegions, function(o) { return o.label; })
+
+        return selectedRegions;
     }
 });

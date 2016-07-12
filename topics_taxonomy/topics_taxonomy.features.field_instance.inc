@@ -44,6 +44,43 @@ function topics_taxonomy_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-topics-field_documentation'.
+  $field_instances['taxonomy_term-topics-field_documentation'] = array(
+    'bundle' => 'topics',
+    'deleted' => 0,
+    'description' => 'Here you can add documentation files. They will shown in the interface if the filename contains a year that is known by the API, for example "xxxxxx_1795.doc".
+When a file must show up in the datacategories help popup, the filename must contain a data-category name, for example: "xxxxxx_modern.doc" (case-insensitive).',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_documentation',
+    'label' => 'Documentation files',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'documentation',
+      'file_extensions' => 'doc pdf',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-topics-field_enable'.
   $field_instances['taxonomy_term-topics-field_enable'] = array(
     'bundle' => 'topics',
@@ -164,7 +201,10 @@ function topics_taxonomy_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Datatype');
+  t('Documentation files');
   t('Enable');
+  t('Here you can add documentation files. They will shown in the interface if the filename contains a year that is known by the API, for example "xxxxxx_1795.doc".
+When a file must show up in the datacategories help popup, the filename must contain a data-category name, for example: "xxxxxx_modern.doc" (case-insensitive).');
   t('If enable, the user can open up the querytool from the topics page.');
   t('Root ID');
   t('Topic ID');

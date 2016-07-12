@@ -4,6 +4,9 @@
 
 var DataTreeView =  Backbone.View.extend({
     render:function(data){
+
+        $("#tree-container").html("");
+
         var TreeData = new Array();
         TreeData.push({
             "name": "Start",

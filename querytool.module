@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Implements hook_menu().
  */
@@ -61,35 +60,14 @@ function querytool_theme ()
  * Implements hook_js_alter().
  */
 function querytool_js_alter(&$javascript) {
-
   if (arg(0) == "querytool") {
-
-//    unset($javascript["sites/all/modules/contrib/admin_menu/admin_menu.js"]);
-
     foreach($javascript as $path=>$file){
       if(strpos($path,"querytool") == 0 && $file["type"] !== "inline"){
         unset($javascript[$path]);
       }
     }
-
   }
 }
-
-
-/**
- * Implements hook_js_alter().
- */
-function querytool_css_alter(&$css) {
-  if (arg(0) == "querytool") {
-    foreach($css as $path=>$file){
-      if(strpos($path,"querytool") == 0 ){
-     //   unset($css[$path]);
-      //  unset($css[$path]);
-      }
-    }
-  }
-}
-
 
 /**
  * Implements hook_preprocess_html().
@@ -107,7 +85,6 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_css($path."/css/multi-select.css",array('group' => 999,'weight' => 999));
     drupal_add_css("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",array('group' => 999,"type"=>"external",'weight' => 999));
 
-
     drupal_add_js($path."/js/vendor/jquery-1.12.0.min.js");
     drupal_add_js($path."/js/vendor/jquery.nicescroll.min.js");
     drupal_add_js($path."/js/vendor/jquery.multi-select.js");
@@ -119,11 +96,12 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/vendor/d3.min.js");
     drupal_add_js($path."/js/vendor/polyglot.min.js");
 
+    drupal_add_js($path."/js/models/QuerySettings.js");
     drupal_add_js($path."/js/general.js");
+    drupal_add_js($path."/js/models/Documentation.js");
     drupal_add_js($path."/js/models/Years.js");
     drupal_add_js($path."/js/models/Regions.js");
     drupal_add_js($path."/js/models/Classification.js");
-    drupal_add_js($path."/js/models/QuerySettings.js");
 
     drupal_add_js($path."/js/collections/ClassListCollection.js");
 
@@ -138,31 +116,104 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_js($path."/js/views/DataTreeView.js");
     drupal_add_js($path."/js/views/ResultView.js");
 
-    if(strlen(arg(2)) !== 2){
-      $lang = "en";
-    } else{
-      $lang = arg(2);
+    drupal_add_js($path."/js/vendor/grid/Grid.js",array("scope"=>"footer"));
+    drupal_add_css($path."/js/vendor/grid/Grid.css");
+
+
+    // define language
+    global $language;
+
+    $lang_code = arg(2);
+
+    if($language->language !== $lang_code){
+      $lang = $lang_code;
+      $langs = language_list();
+
+      foreach($langs as $key=>$lang_obj){
+        if($lang == $key){
+          $language = $lang_obj;
+        }
+      }
+    }else{
+      $lang = $language->language;
     }
-    drupal_add_js($path."/js/locales/".$lang.".js");
-    drupal_add_js($path."/js/polyglot.init.js");
 
-    $term = taxonomy_term_load(arg(1));
-    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
-
-    $settings = array(
-                      "datatype"=>$datatype,
-                      "baseurl"=> variable_get('querytool_api_url'),
-                      "moduleurl"=> "/".drupal_get_path("module","querytool"));
-    $js_settings =  json_encode($settings);
-
-
-    drupal_add_js("var qtSettings = ".$js_settings.";",array('type'=>'inline','scope' => 'footer', 'weight' => 3));
-    drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
-    drupal_add_js($path."/js/dndTree.js", array('scope' => 'footer', 'weight' => 5));
+    // get term
+    $datatype = str_replace("-",".",arg(1));
+    $term = _querytool_get_term($datatype,$lang);
+    $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
+    $files = _querytool_get_files($root);
 
     $variables['title'] = $datatype." - ".$term->name;
+
+    $settings = array("lang"      =>$lang,
+                      "datatype"  =>$datatype,
+                      "baseurl"   => variable_get('querytool_api_url'),
+                      "moduleurl" => "/".drupal_get_path("module","querytool"),
+                      "debugmode" =>variable_get('querytool_debugmode'),
+                      "confirmmode" =>variable_get('querytool_confirmmode'),
+                      "files" =>$files,
+                      );
+
+    $js_settings =  json_encode($settings);
+
+    drupal_add_js($path."/js/locales/".$lang.".js");
+    drupal_add_js($path."/js/polyglot.init.js");
+    drupal_add_js("var qtSettings = ".$js_settings.";",array('type'=>'inline','scope' => 'footer', 'weight' => 3));
+    drupal_add_js($path."/js/App.js", array('scope' => 'footer', 'weight' => 4));
+    drupal_add_js($path."/js/Tree.js", array('scope' => 'footer', 'weight' => 5));
   }
 
+}
+
+/**
+ *   Get term by datatype given in url eg: "1-01"
+ */
+function _querytool_get_term($datatype, $lang)
+{
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'taxonomy_term')
+    ->entityCondition('bundle', 'topics')
+    ->fieldCondition('field_datatype', 'value', $datatype, '=')
+    ->propertyCondition('language', $lang, '=');
+  $result = $query->execute();
+  $values = array_values($result["taxonomy_term"]);
+  $first = array_shift($values);
+
+  $term = taxonomy_term_load($first->tid);
+
+  return $term;
+}
+
+/**
+*   Gets files of main topic
+ */
+function _querytool_get_files ($root_id)
+{
+  global $language;
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'taxonomy_term')
+        ->entityCondition('bundle', 'topics')
+        ->fieldCondition('field_datatype', 'value', $root_id, '=')
+        ->propertyCondition('language', $language->language, '=');
+
+  $result = $query->execute();
+  $values = array_values($result["taxonomy_term"]);
+  $first = array_shift($values);
+
+  $term = taxonomy_term_load($first->tid);
+
+  $files = array();
+  if($term->field_documentation){
+    $documentation = $term->field_documentation[LANGUAGE_NONE];
+
+    foreach($documentation as $file){
+      $files[$file["filename"]] = file_create_url($file["uri"]);
+    }
+  }
+  return $files;
 }
 
 /**
@@ -171,39 +222,55 @@ function querytool_preprocess_html(&$variables, $hook)
 function querytool_preprocess_page (&$variables, $hook)
 {
   if (arg(0) == "querytool") {
-    $term = taxonomy_term_load(arg(1));
+    $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
+    $datatype = str_replace("-",".",arg(1));
+    $term = _querytool_get_term($datatype,$current_lang);
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
     $variables['theme_hook_suggestions'][] = 'querytool_page';
     $variables['title'] = $datatype." - ".$term->name;
 
-
-    $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
-
-
     $langs = language_list();
-     krsort($langs);
+    krsort($langs);
 
     $langmenu = "";
 
     foreach($langs as $key=>$lang){
-
       if($current_lang == $key){
         $class = 'active';
       }else{
         $class = '';
       }
-
       $chop = ($key == "ru") ? 4 : 3;
-
       $langmenu .= "<a class='".$class."' href='/querytool/".arg(1)."/".$key."'>".substr($lang->native,0,$chop)."</a><br>";
-
     }
     $variables['lang_menu'] = $langmenu;
-
   }
 
   $variables["copyright"] = variable_get('querytool_copyright');
 }
+
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Adds all roots (all languages) te parent box
+ */
+function querytool_form_alter(&$form, &$form_state, $form_id){
+
+  if($form_id == "taxonomy_form_term"){
+    $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
+    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+    $options = array(array_shift($form['relations']['parent']['#options']));
+    foreach ($terms as $term) {
+      $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
+      $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+      if($root == '0') $options[$term->tid]=$datatype.". ".$term->name;
+    }
+    $form['relations']['parent']['#options'] =$options;
+  }
+}
+
+
 
 /**
  * Implements hook_form().
@@ -214,6 +281,8 @@ function querytool_admin_form ($form, &$form_state)
 {
   $api_url    = variable_get('querytool_api_url','');
   $import_url = variable_get('querytool_import_url','');
+  $debugmode  = variable_get('querytool_debugmode','');
+  $confirmmode  = variable_get('querytool_confirmmode','');
 
   $form['querytool_api_url'] = array(
     '#type' => 'textfield',
@@ -224,7 +293,21 @@ function querytool_admin_form ($form, &$form_state)
   $form['querytool_import_url'] = array(
     '#type' => 'textfield',
     '#default_value' => $import_url,
-    '#title' => t('Enter API url for topics'),
+    '#title' => t('Enter API url to import topics from.'),
+  );
+
+  $form['querytool_debugmode'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => $debugmode,
+    '#title' => t('Debug mode'),
+    '#description' => t("Will show some extra info for developers."),
+  );
+
+  $form['querytool_confirmmode'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => $confirmmode,
+    '#title' => t('Confirm mode'),
+    '#description' => t("Enabled, the user most confirm when changing major settings in the interface, to make him conscious about losing made selections. "),
   );
 
   $form['querytool_copyright'] = array(
@@ -238,31 +321,9 @@ function querytool_admin_form ($form, &$form_state)
   if ($api_url)     $form['querytool_api_url']['#field_suffix']     = t('<a href="@url" target="_blank">view</a>', array('@url' => $api_url));
   if ($import_url)  $form['querytool_import_url']['#field_suffix']  = t('<a href="@url" target="_blank">view</a>', array('@url' => $import_url));
 
-
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => 'Save',
-  );
-  return $form;
-
-  //return system_settings_form($form);
+  return system_settings_form($form);
 }
 
-
-/**
- * Implements hook_form_submit().
- *
- * Stores settings in variables
- */
-function querytool_admin_form_submit ($form, $form_state)
-{
-  variable_set('querytool_api_url', $form_state['values']['querytool_api_url']);
-  variable_set('querytool_import_url', $form_state['values']['querytool_import_url']);
-  variable_set('querytool_copyright', $form_state['values']['querytool_copyright']);
-
-  $message = "Saved.";
-  drupal_set_message(check_plain($message), 'status');
-}
 
 /**
  * Implements hook_permission().

@@ -1,18 +1,16 @@
 var QuerySettings = Backbone.Model.extend({
-    confirmation:false,
+
     defaults: {
-        moduleUrl:'',
-        baseUrl:'',
+        moduleUrl:"",
+        baseUrl:"",
         years:[],
         classModes:[],
         datatype:"",
-        classmode: "historical",
+        classmode: "",
         base_year:"",
         selectedclasses:[],
-        regions:[]
-    },
-
-    initialize:function(){
+        regions:[],
+        lang:""
     },
 
     getBaseUrl:function(){
@@ -20,74 +18,100 @@ var QuerySettings = Backbone.Model.extend({
     },
 
     getClassUrl:function(){
-        var urlTail = "datatype="+ this.get("datatype");
-        if(this.get("base_year") !== "") urlTail += "&base_year="+this.get("base_year");
-        if(this.get("mode") !== "") urlTail += "&classification="+this.get("classmode");
-      //  return this.get("baseUrl") +'classes?'+urlTail;
-        return this.get("baseUrl") +'classes?'+urlTail;
-      //  return "/sites/all/modules/custom/querytool/json/testclasses.json";
+        var urlTail = "";
+
+        if(this.get("classmode") == "modern"){
+            urlTail += "classes?";
+        }else{
+            urlTail += "histclasses?";
+        }
+        urlTail += "datatype="+ this.get("datatype");
+        if(this.get("base_year") !== "" && this.get("classmode") == "historical") urlTail += "&base_year="+this.get("base_year");
+       // if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
+        urlTail += "&language="+this.get("lang");
+        return this.get("baseUrl") +urlTail;
     },
 
     getPreviewUrl:function(){
-
-        url += "&regions="+this.get("regions").join(",");
-        url += "&classes="+this.get("selectedclasses").join(",");
-        url += "&year="+this.get("year");
-
         var url = "http://ristat.sandbox.socialhistoryservices.org/cgi-bin/rr/aggregate.cgi?guided=indicators";
         url += "&datatype="+this.get("datatype");
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
-
+        //console.debug(url);
         return url;
     },
     getRegionsUrl:function(){
         var url = this.get("baseUrl")+'regions';
-        if(this.get("year") !== "")  url += "?basisyear="+this.get("base_year");
+        if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
         return url;
-
     },
-    updateMode:function(value){
 
+    getYearsUrl:function(){
+        var url = this.get("baseUrl")+"years?datatype="+this.get("datatype");
+       // var url = this.get("moduleUrl")+"/json-example/years.json";
+        return url;
+    },
+
+    getDocumentationUrl:function(){
+        var url = this.get("baseUrl")+'documentation';
+        var topic = this.get("datatype").split(".")[0];
+        url += "?datatype="+topic;
+        url += "&lang="+this.get("lang");
+        return url;
+    },
+
+    updateMode:function(value){
         var r = true;
 
-       ///if(this.confirmation && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
+        if(this.get("confirmmode") && this.get('classmode') !=="") r = confirm(polyglot.t("switch-mode-confirm"));
 
         if(r){
             this.set({classmode: value, selectedclasses:[]});
 
             if(value == "modern"){
-                this.set({year:''});
+                this.set({base_year:''});
                 $("#yearselection").hide();
                 $("#regionselection").hide();
-             }else{
-                $("#yearselection").show();
-                $("#regionselection").show();
-            }
+                queryModuleView.showNextStep(4);
+                classification.getClasses();
 
+             }else if(value == "historical"){
+                $("#topicselection").hide();
+                queryModuleView.showNextStep(2);
+                classification.reset();
+            }
             querySettingsView.update();
-            classification.getClasses();
+
         }else{
             //reset to current value
             classModeSelector.selectMode(this.get("classmode"));
         }
-
-        queryModuleView.updateSteps();
     },
 
     updateYear:function(value){
-      //   var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
+
         var r = true;
+
+        if(this.get("confirmmode") && (this.get('base_year') !== ""))  var  r = confirm(polyglot.t("switch-year-confirm"));
+
         if(r){
             this.set({base_year: value});
             querySettingsView.update();
             regionSelector.render();
             classification.getClasses();
+            queryModuleView.showNextStep(3);
+            topicSelector.setDocumentationLink();
         }else{
             //reset to current value
             yearSelector.selectYear(this.get("base_year"));
         }
+    },
+
+    updateRegions:function(regions){
+        this.set({"regions":regions});
+        querySettingsView.update();
+        queryModuleView.showNextStep(4);
     },
 
     resetYear:function(){

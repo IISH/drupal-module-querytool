@@ -18,6 +18,7 @@ html{
     background-color: #bedaef;
     background-color: #d8e5ef;
     z-index: 699;
+    /* display: none; */
 }
 
 #header img{
@@ -67,11 +68,9 @@ h2{
     margin:20px;
     border-left: 4px solid rgba(255, 16, 67, 0.2);
     padding: 0px 20px 20px 20px;
-
     /*border:1px solid #EEE;*/
     clear: both;
     /*background-color:rgba(0, 0, 0, 0.03) ;*/
-
 /*
     -webkit-box-shadow:  8px 8px 6px  rgba(0,0,0,0.4);
     -moz-box-shadow:  8px 8px 6px rgba(0,0,0,0.4);
@@ -88,6 +87,12 @@ h2{
 #yearselection{
 
 }
+
+.year-unavailable{
+    padding: 11px 15px;
+    color:#AAA;
+}
+
 
 /*** CLASS MODE SELECTION ***/
 #classmodeselection input{
@@ -121,9 +126,6 @@ div.mode{
 }
 
 
-#topic-lists{
-}
-
 .selected-info{
     color: #AAA;
     margin-bottom:10px;
@@ -131,9 +133,15 @@ div.mode{
 
 .ts-box{
     float:left;
-    width:25%;
+    width:25%; /* 4*/
+    /* width: 16.5%; /* 6 */
     font-size: 13px;
 }
+
+.ts-box:nth-child(n+5){
+  display:none;
+}
+
 
 
 .topic-list-container{
@@ -142,11 +150,10 @@ div.mode{
 }
 .topic-list{
   /* padding: 10px;*/
-
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    border:1px solid #BBB;
+
     -webkit-box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
     box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
@@ -285,17 +292,19 @@ Other color scheme
 }
 
 .connector{
-  /*  background: transparent url('../img/accolade.png') no-repeat;*/
     background-size:100% 100%;
     width:40px;
     float:right;
     height: 100%;
-   /*
-    margin-left:4px;
-    margin-right:4px;
-    */
-    opacity: .11;
+    opacity: .2;
 }
+#connector2{
+    opacity: .3;
+}
+#connector3{
+    opacity: .4;
+}
+
 
 span.skip-arrow{
     font-size: 24px;
@@ -324,6 +333,7 @@ span.skip-arrow{
 
 /* RESULT */
 #btn-download{
+    margin-top:20px;
     display: none;
 }
 
@@ -332,6 +342,11 @@ span.skip-arrow{
 #regionselection{
     padding-bottom: 50px;
 }
+
+#regionselection .documentation{
+    margin-bottom:6px;
+}
+
 .ms-container {
    width:50%;
     min-width: 700px;
@@ -373,9 +388,8 @@ span.skip-arrow{
 /* RESULT / PREVIEW */
 #preview{
 
-    width:90%;
-    height:500px;
-    border:1px solid #DDD;
+    width:100%;
+
 }
 
 
@@ -455,3 +469,92 @@ li:focus{
     padding-top:2px;
 }
 
+
+
+
+.g_C{
+    height:2em;
+
+}
+
+
+
+#preview{
+    display:none;
+}
+
+#preview table{
+    width: 100%;
+}
+
+.zui-table {
+    border: none;
+    border-right: solid 1px #CCC;
+    border-collapse: separate;
+    border-spacing: 0;
+    font: normal 13px Arial, sans-serif;
+}
+.zui-table thead th {
+    background: rgba(46, 109, 164, .1);
+    padding: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+}
+.zui-table tbody td {
+    border-bottom: solid 1px #CCC;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    white-space: nowrap;
+}
+.zui-wrapper {
+    position: relative;
+}
+.zui-scroller {
+    display: none;
+    margin-left: 800px;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding-bottom: 5px;
+    width: 50%;
+    border:1px solid #CCC;
+    border:3px solid #CCC;
+}
+
+.zui-table .zui-sticky-col {
+    position: absolute;
+    top: auto;
+
+}
+
+.zui-table td, .zui-table th{
+    border-left: solid 1px #CCC;
+}
+
+.zui-table tr th.zui-sticky-col{
+    background: rgba(46, 109, 164, .2);
+
+
+}
+.zui-table .zui-sticky-col{
+    overflow: hidden;
+
+}
+
+.zui-table thead th.region{
+padding-right:0;
+}
+
+.region-holder{
+
+    overflow: hidden;
+}
+
+
+.step{
+    display: none;
+}
+.step:nth-child(1){
+    display: block;
+}

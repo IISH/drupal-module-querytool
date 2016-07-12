@@ -32,7 +32,10 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
           </div>
-          <div class="modal-body"> <script>document.write(polyglot.t("data-categories-info"));</script> </div>
+          <div class="modal-body">
+            <script>document.write(polyglot.t("data-categories-info"));</script>
+            <div class="documentation">...</div>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +62,7 @@
   <div id="regionselection" class="step">
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("choose-regions"));</script>
       <a href="#" class="question-mark" data-toggle="modal"  data-target="#step3expl"><i class="fa fa-question-circle"></i></a></h2>
+
     <div id="regioncontainer"> </div>
 
     <div class="modal fade" id="step3expl" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -67,7 +71,10 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
           </div>
-          <div class="modal-body"><script>document.write(polyglot.t("regions-info"));</script> </div>
+          <div class="modal-body">
+            <script>document.write(polyglot.t("regions-info"));</script><br><br>
+            <div class="documentation"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -78,6 +85,7 @@
     <a href="#" onclick="showTree();" id="show-tree"><i class="fa fa-sitemap"></i></a>
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("choose-indicators"));</script>
       <a href="#" class="question-mark" data-toggle="modal"  data-target="#step4expl"><i class="fa fa-question-circle"></i></a></h2>
+
     <div id="topic-lists"></div>
 
     <div style="clear:both;"></div>
@@ -88,22 +96,37 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
           </div>
-          <div class="modal-body"><script>document.write(polyglot.t("indicators-info"));</script> </div>
+          <div class="modal-body"><script>document.write(polyglot.t("indicators-info"));</script><br>
+            <br>
+            <div class="documentation"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
 
-  <div style="clear:both;"></div>
+
   <div id="result" class="step">
     <h2><span class="stepnum"></span><script>document.write(polyglot.t("result"));</script> </h2>
 
-    <iframe id="preview" src=""></iframe>
+    <div id="preview">
+      <div id="preview-message"></div>
+      <div class="zui-wrapper">
+        <div class="zui-scroller">
+        </div>
+      </div>
+
+    </div>
 
     <button id="btn-download" type="button" class="btn btn-primary"><script>document.write(polyglot.t("download"));</script> </button>
   </div>
+
+
 </div>
+
+
+
+<!-- UNDERSCORE TEMPLATES -->
 
 <script type="text/template" id="classmode-template">
     <% _.each(modes, function(mode) { %>
@@ -117,16 +140,25 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-        <% _.each(years, function(year) { %>
-        <li role="presentation"><a href="#<%= htmlEncode(year) %>" aria-controls="<%= htmlEncode(year) %>" id="<%= htmlEncode(year) %>" role="tab" data-toggle="tab"><%= htmlEncode(year) %></a></li>
-        <% }); %>
+        <% _.each(years, function(year){
+          if(year.datacount == 0){  %>
+        <li role="presentation"><div class="year-unavailable"><%= htmlEncode(year.num) %></div></li>
+        <% }else{ %>
+        <li role="presentation"><a href="#<%= htmlEncode(year.datacount) %>" aria-controls="<%= htmlEncode(year.datacount) %>" id="<%= htmlEncode(year.num) %>" role="tab" data-toggle="tab"><%= htmlEncode(year.num) %></a></li>
+         <%} }); %>
     </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-        <% _.each(years, function(year) { %>
-        <div role="tabpanel" class="tab-pane" id="<%= htmlEncode(year) %>"></div>
-        <% }); %>
+        <% _.each(years, function(year) {
+
+            if(year.datacount == 0){  %>
+              <div role="tabpanel" class="tab-pane" id="hoi <%= htmlEncode(year.num) %>"></div>
+            <% }else{ %>
+              <div role="tabpanel" class="tab-pane" id="<%= htmlEncode(year.num) %>"></div>
+              <% }
+
+         }); %>
     </div>
 </script>
 
@@ -166,11 +198,11 @@
                  title="<%= htmlEncode(topic.name) %>"
                  data-placement="top">
                 <div class="checkboxes">
-                  <div class="checkbox" title="(de)selects this topic as aggregated value" data-toggle="tooltip"  data-placement="top"></div>
-                              <% if(topic.childCount > 0) { %>
-                                 <div class="checkbox-depth" title="(de)selects all underlying items" data-toggle="tooltip" data-placement="top"> </div>
-                              <% }; %>
-                          </div>
+                  <div class="checkbox" title="<%= polyglot.t("single-checkbox-aggregated") %>" data-toggle="tooltip"  data-placement="top"></div>
+                  <% if(topic.childCount > 0) { %>
+                     <div class="checkbox-depth" title="<%= polyglot.t("single-checkbox-depth") %>" data-toggle="tooltip" data-placement="top"> </div>
+                  <% }; %>
+                </div>
                   <% if(topic.name !==".") { %>
                         <span><%= htmlEncode(topic.name) %></span>
                   <% }else{ %>
@@ -195,4 +227,5 @@
   <div id="tree-container"></div>
 </div>
 
+<div style="clear: both;"></div>
 <div id="copyright"><?php print $copyright; ?></div>

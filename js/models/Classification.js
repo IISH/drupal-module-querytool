@@ -2,27 +2,10 @@ var Classification = Backbone.Model.extend({
 
     classListCollection:null,
     indexedClasses:[],
+    defaults: {  selectedClasses:[] },
 
     url: function() {
-       // var urlTail = "datatype="+ querySettings.get("datatype");
-       // urlTail += "year="+querySettings.get("year");
         return querySettings.getClassUrl();
-    },
-
-    initialize:function(){
-        this.getClasses();
-    },
-
-    getClasses:function(){
-        this.clear();
-        var that = this;
-
-        $("#topic-lists").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
-        this.fetch({
-            success:function(r){
-                that.structurize(r);
-            }
-        });
     },
 
     updateSelection:function(){
@@ -34,8 +17,6 @@ var Classification = Backbone.Model.extend({
                 indexes.push($(this).attr("id"));
             }
         });
-
-
 
         querySettings.updateClasses(indexes);
         this.getClassesByIndex(indexes);
@@ -56,23 +37,75 @@ var Classification = Backbone.Model.extend({
 
         var selectedClasses = new Array();
         var that = this;
+        var classMode = querySettings.get("classmode");
 
         _.each(indexes, function(index) {
             var selectedClass =  that.indexedClasses[index];
-            selectedClasses.push({histclass1:selectedClass.name});
+            var sClass = {};
+
+            if(classMode == "historical"){
+                sClass.histclass1 = selectedClass.c1;
+                if(selectedClass.level>=2) sClass.histclass2 = selectedClass.c2;
+                if(selectedClass.level>=3) sClass.histclass3 = selectedClass.c3;
+                if(selectedClass.level>=4) sClass.histclass4 = selectedClass.c4;
+                if(selectedClass.level>=5) sClass.histclass5 = selectedClass.c5;
+                if(selectedClass.level>=6) sClass.histclass6 = selectedClass.c6;
+
+            }else{
+                sClass.class1 = selectedClass.c1;
+                if(selectedClass.level>=2) sClass.class2 = selectedClass.c2;
+                if(selectedClass.level>=3) sClass.class3 = selectedClass.c3;
+                if(selectedClass.level>=4) sClass.class4 = selectedClass.c4;
+                if(selectedClass.level>=5) sClass.class5 = selectedClass.c5;
+                if(selectedClass.level>=6) sClass.class6 = selectedClass.c6;
+
+            }
+            selectedClasses.push(sClass);
+        });
+
+        this.set({selectedClasses:selectedClasses});
+    },
+
+    /**
+     * returns selected classes
+     */
+    getSelection:function(){
+       return this.get("selectedClasses");
+    },
+
+    reset:function(){
+        this.clear();
+
+    },
+
+    /**
+     * Loads classes data from server
+     */
+    getClasses:function(){
+        var that = this;
+        this.reset();
+        $("#topic-lists").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
+        this.fetch({
+            success:function(r){
+                that.structure(r);
+            }
         });
     },
 
-    structurize :function(r){
+    /**
+     * Structures / indexes data and prepares data for tree
+     */
+    structure :function(r){
 
         var that= this;
-        //assign every new class and 'subclasses' an unique index to identify.
+
+        // assign every new class and 'subclasses' an unique index to identify.
         var classIndex = 1;
 
         // init data
         var indexedClasses = new Array();
         var levelData = new Array();
-        for(var j =0;j<5;j++){
+        for(var j =0;j<=6;j++){
             levelData[j] = new Array();
         }
 
@@ -81,59 +114,76 @@ var Classification = Backbone.Model.extend({
         var newClass;
 
         var classes = r.attributes;
-
         var classMode = querySettings.get("classmode");
-        //console.debug("classMode", classMode);
-        var class1,class2,class3,class4;
+
+        var class1,class2,class3,class4,class5,class6;
 
         _.each(classes, function(hclass) {
-            if(classMode == "historical"){
-                class1  = hclass.histclass1;
-                class2  = hclass.histclass2;
-                class3  = hclass.histclass3;
-                class4  = hclass.histclass4;
-            }else{
+            if(classMode == "modern"){
                 class1  = hclass.class1;
                 class2  = hclass.class2;
                 class3  = hclass.class3;
                 class4  = hclass.class4;
+                class5  = hclass.class5;
+                class6  = hclass.class6;
+            }else{
+                class1  = hclass.histclass1;
+                class2  = hclass.histclass2;
+                class3  = hclass.histclass3;
+                class4  = hclass.histclass4;
+                class5  = hclass.histclass5;
+                class6  = hclass.histclass6;
             }
-
-            var tid = "";
-
-            // redefine level
-            hclass.level = parseInt(hclass.levels);
 
             newClass = {};
 
             if(!Tree.children[class1]){
-                newClass = {"name": class1, "parent":"null", children:{}, class_id: classIndex,  level:1, parent_id: null};
+                newClass = {"name": class1, "parent":"null", children:{}, class_id: classIndex,  level:1, parent_id: null, c1:class1};
                 Tree.children[class1] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
 
             if(class2 && !Tree.children[class1].children[class2]){
-                newClass = {"name": class2, "parent":"null", children:{}, class_id: classIndex,  level:2, parent_id: Tree.children[class1].class_id};
+                newClass = {"name": class2, "parent":"null", children:{}, class_id: classIndex,  level:2, parent_id: Tree.children[class1].class_id, c1:class1, c2:class2};
                 Tree.children[class1].children[class2] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
 
             if(class3 && !Tree.children[class1].children[class2].children[class3]){
-                newClass = {"name": class3, "parent":"null", children:{}, class_id: classIndex, level:3, parent_id: Tree.children[class1].children[class2].class_id};
+                newClass = {"name": class3, "parent":"null", children:{}, class_id: classIndex, level:3, parent_id: Tree.children[class1].children[class2].class_id, c1:class1, c2:class2, c3:class3, c4:class4};
                 Tree.children[class1].children[class2].children[class3] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
 
             if(class4 && !Tree.children[class1].children[class2].children[class3].children[class4]){
-                newClass = {"name": class4, "parent":"null", children:{}, class_id: classIndex, level:4, parent_id: Tree.children[class1].children[class2].children[class3].class_id};
-                Tree.children[class1].children[class2].children[class3] = newClass;
+                newClass = {"name": class4, "parent":"null", children:{}, class_id: classIndex, level:4, parent_id: Tree.children[class1].children[class2].children[class3].class_id, c1:class1, c2:class2, c3:class3, c4:class4};
+                Tree.children[class1].children[class2].children[class3].children[class4] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
+
+            if(class5 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5]){
+                newClass = {"name": class5, "parent":"null", children:{}, class_id: classIndex, level:5, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5};
+                Tree.children[class1].children[class2].children[class3].children[class4].children[class5] = newClass;
+                indexedClasses[classIndex] = newClass
+                classIndex++;
+            }
+
+            if(class6 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6]){
+                newClass = {"name": class6, "parent":"null", children:{}, class_id: classIndex, level:6, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].children[class5].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5,c6:class6};
+                Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6] = newClass;
+                indexedClasses[classIndex] = newClass
+                classIndex++;
+            }
+
+
+
         });
+
+
 
 
         function loopChildren(obj,depth,parent_id) {
@@ -142,7 +192,7 @@ var Classification = Backbone.Model.extend({
             depth++;
 
             $.each(obj, function(k, v) {
-                //console.debug("parent_id ",  v.parent_id);
+
                 v.parent_id = parent_id;
 
                 childs.push(v);
@@ -160,31 +210,13 @@ var Classification = Backbone.Model.extend({
         }
 
         Tree.children = loopChildren(Tree.children,0,0);
+        var datatreeview = new DataTreeView();
+        datatreeview.render(Tree);
+
 
         this.indexedClasses = indexedClasses;
         this.classListCollection = new ClassListCollection();
         this.classListCollection.render(levelData);
-
-
-        /*
-         var TreeData = new Array();
-         TreeData.push({
-         "name": "Start",
-         "parent": "null",
-         "children": new Array()
-         });
-
-         TreeData[0].children.testkey = { name: "test", "parent":"null" };
-         */
-
-        // TEMP FOR TEST
-/*
-        $("#ts-box-1 .topic:nth-child(-n+10)").hide();
-        $("#2980 .checkbox-depth").click();
-        $("#2993 .checkbox-depth").click();
-*/
-        var datatreeview = new DataTreeView();
-        datatreeview.render(Tree);
     }
 
 });

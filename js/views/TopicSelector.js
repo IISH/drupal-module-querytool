@@ -9,6 +9,7 @@ var TopicSelector = Backbone.View.extend({
     mouseDirection:"v",
 
     initialize: function() {
+
         $(window).on("resize", this.setMainSize);
         this.setMainSize();
 
@@ -16,7 +17,6 @@ var TopicSelector = Backbone.View.extend({
         var PrevY = 0;
         var difX;
         var difY;
-
         var that = this;
         var tc = 0;
 
@@ -43,7 +43,11 @@ var TopicSelector = Backbone.View.extend({
         setInterval(function(){
             that.timerCount++;
         }, 500);
+    },
 
+    setDocumentationLink:function(){
+        matched_files = documentation.getLinks(querySettings.get("base_year"));
+        $("#topicselection .documentation").html(matched_files);
     },
 
     setMainSize:function(){
@@ -65,6 +69,7 @@ var TopicSelector = Backbone.View.extend({
     },
     generate:function(e){
         resultView.render();
-    }
+        queryModuleView.showNextStep(5);
 
+    }
 });

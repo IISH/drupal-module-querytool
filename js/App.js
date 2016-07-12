@@ -81,3 +81,9 @@ if(qtSettings.datatype == ""){
     init();
 }
 
+
+function closeWindow(){
+    if (confirm(polyglot.t("close-window-confirm"))) {
+        close();
+    }
+}

@@ -7,6 +7,8 @@
 */
 var phrases = {
 
+    "close-window-confirm":"Подтвердите, что Вы заканчиваете работу с данной выборкой.",
+
     "documentation": "Документация",
 
     "choose-data-categories": "Выбор категорий данных",

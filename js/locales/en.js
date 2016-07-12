@@ -7,6 +7,7 @@
  */
 var phrases = {
 
+    "close-window-confirm":"Closing the window will end your query for this topic.\nAre you sure?",
 
     "documentation": "Documentation",
 

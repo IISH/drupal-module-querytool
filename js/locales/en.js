@@ -1,7 +1,7 @@
 /**
  * English translation file for Query Tool
  *
- * version 0.2
+ * version 0.4
  *
  * Update version number when you make changes please.
  */
@@ -19,7 +19,7 @@ var phrases = {
     "switch-mode-confirm":"Switching mode will reset the screen and all custom selections, are you sure?",
 
     "choose-year": "Choose year",
-    "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: https://ristat.org/datasets/indicators",
+    "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: <a href='https://ristat.org/datasets/indicators' target='_blank'>https://ristat.org/datasets/indicators</a>",
     "switch-year-confirm":"Switching year will reset the screen and all your selections, are you sure?",
 
     "choose-regions": "Choose regions",

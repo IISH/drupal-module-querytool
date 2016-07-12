@@ -6,6 +6,7 @@ var ClassBoxView = Backbone.View.extend({
     connector:      null,
     currentFocussed:null,
     useSwitch:      false,
+    level:null,
 
     render:function(level,topics){
 
@@ -15,6 +16,7 @@ var ClassBoxView = Backbone.View.extend({
         var vars;
         var topics;
 
+        this.level = level;
         that.level = level;
 
         // set up template and fill
@@ -58,7 +60,7 @@ var ClassBoxView = Backbone.View.extend({
 
     events:{
         'mouseenter .topic'         :'omeTopicLink',
-        'mouseenter  .topic-list'   :'disableWindowScroll',
+        'mouseenter .topic-list'    :'disableWindowScroll',
         'mouseleave .topic-list'    :'enableWindowScroll',
         'click .checkbox'           :'toggleCheckbox',
         'click .checkbox-depth'     :'toggleCheckboxDepth',
@@ -90,7 +92,10 @@ var ClassBoxView = Backbone.View.extend({
             $(topic).addClass("focus");
 
 
-            that.connector.render(topic);
+            console.debug(childs);
+            if(childs.length > 0 || this.level < 4)   that.connector.render(topic);
+
+
             currentFocussed = topic;
         }
         this.updateCouter();

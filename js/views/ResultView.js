@@ -117,19 +117,17 @@ var ResultView = Backbone.Model.extend({
         regions = regionSelector.getSelectedRegions();
 
         var hHeadingWidth = 800;
-        var levels = maxDepth;// maxDepth;
+        var levels = maxDepth;
         var classWidth = (hHeadingWidth-150)/levels;
         var table = "";
-
-        var dataWidth = $(window).width() *.95-800;
+        var regionScrollerWidth = $(window).width() *.95-hHeadingWidth;
+        var dataWidth = $(window).width() -hHeadingWidth;
         $("#preview .zui-scroller").css("width",dataWidth);
-        if(regions.length<10){
-            var regionWidth = dataWidth/regions.length;
+        if(regions.length<6){
+            var regionWidth = regionScrollerWidth-20/regions.length;
         }else{
             var regionWidth = 100;
         }
-
-
 
         table += "<table class='zui-table'>";
         table += "<thead><tr>"
@@ -191,7 +189,7 @@ var ResultView = Backbone.Model.extend({
             container: '#preview'
         });
 
-        $("#preview .zui-scroller").css("width",$(window).width() *.95-760);
+        $("#preview .zui-scroller").css("width",regionScrollerWidth);
         $("#preview .zui-scroller").show();
     },
 
@@ -202,7 +200,6 @@ var ResultView = Backbone.Model.extend({
         if(url){
             $('#btn-download').unbind("click");
             $('#btn-download').show();
-
             $('#btn-download').click(function(){
                 window.open(url);
             });

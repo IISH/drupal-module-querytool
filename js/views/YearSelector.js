@@ -10,7 +10,6 @@ var YearSelector = Backbone.View.extend({
         var that = this;
 
         years.fetch({
-
             success:function(r){
                 var years = [];
                 yearsdata = r.attributes;

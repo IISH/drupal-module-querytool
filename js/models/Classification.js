@@ -2,10 +2,7 @@ var Classification = Backbone.Model.extend({
 
     classListCollection:null,
     indexedClasses:[],
-
-    defaults: {
-        selectedClasses:[]
-    },
+    defaults: {  selectedClasses:[] },
 
     url: function() {
         return querySettings.getClassUrl();
@@ -40,9 +37,7 @@ var Classification = Backbone.Model.extend({
 
         var selectedClasses = new Array();
         var that = this;
-
         var classMode = querySettings.get("classmode");
-
 
         _.each(indexes, function(index) {
             var selectedClass =  that.indexedClasses[index];
@@ -75,17 +70,20 @@ var Classification = Backbone.Model.extend({
      * returns selected classes
      */
     getSelection:function(){
-       var selection = this.get("selectedClasses");
-       return selection;
+       return this.get("selectedClasses");
+    },
+
+    reset:function(){
+        this.clear();
+
     },
 
     /**
      * Loads classes data from server
      */
     getClasses:function(){
-        this.clear();
         var that = this;
-
+        this.reset();
         $("#topic-lists").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
         this.fetch({
             success:function(r){
@@ -128,7 +126,6 @@ var Classification = Backbone.Model.extend({
                 class4  = hclass.class4;
                 class5  = hclass.class5;
                 class6  = hclass.class6;
-
             }else{
                 class1  = hclass.histclass1;
                 class2  = hclass.histclass2;
@@ -137,11 +134,6 @@ var Classification = Backbone.Model.extend({
                 class5  = hclass.histclass5;
                 class6  = hclass.histclass6;
             }
-
-            var tid = "";
-
-            // redefine level
-         //   hclass.level = parseInt(hclass.levels);
 
             newClass = {};
 
@@ -225,9 +217,6 @@ var Classification = Backbone.Model.extend({
         this.indexedClasses = indexedClasses;
         this.classListCollection = new ClassListCollection();
         this.classListCollection.render(levelData);
-
-
-
     }
 
 });

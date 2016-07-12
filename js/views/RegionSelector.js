@@ -4,14 +4,11 @@ var RegionSelector = Backbone.View.extend({
     region_objects: {},
     selected_region_codes:[],
 
-    initialize:function(){
-        this.render();
-    },
-
     render:function(){
         var regions = new Regions();
         var that = this;
         //reset
+        $("#regionselection").show();
         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
 
         regions.fetch({

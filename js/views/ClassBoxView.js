@@ -34,7 +34,7 @@ var ClassBoxView = Backbone.View.extend({
             }
         });
 
-        // Addding tooltip for explanation
+        // Adding tooltip for explanation
         $('[data-toggle="tooltip"]').tooltip({
             container: '#main'
         });

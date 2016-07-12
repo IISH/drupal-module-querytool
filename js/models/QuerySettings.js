@@ -38,7 +38,7 @@ var QuerySettings = Backbone.Model.extend({
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
-        console.debug(url);
+        //console.debug(url);
         return url;
     },
     getRegionsUrl:function(){
@@ -74,12 +74,15 @@ var QuerySettings = Backbone.Model.extend({
                 $("#yearselection").hide();
                 $("#regionselection").hide();
                 queryModuleView.showNextStep(4);
-             }else{
-                queryModuleView.showNextStep(2);
-            }
+                classification.getClasses();
 
+             }else if(value == "historical"){
+                $("#topicselection").hide();
+                queryModuleView.showNextStep(2);
+                classification.reset();
+            }
             querySettingsView.update();
-            classification.getClasses();
+
         }else{
             //reset to current value
             classModeSelector.selectMode(this.get("classmode"));

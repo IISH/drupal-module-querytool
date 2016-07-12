@@ -1,7 +1,7 @@
 /**
  * English translation file for Query Tool
  *
- * version 0.4
+ * version 0.5
  *
  * Update version number when you make changes please.
  */

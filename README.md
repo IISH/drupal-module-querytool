@@ -12,6 +12,9 @@ version 1.0
     - define API import url for topics (for example: http://data.sandbox.socialhistoryservices.org/service/topics)
     - check confirm mode if desired
     - add a copyright notice
+- enable Taxonomy translation module: /admin/modules
+- set multilangual options: /admin/structure/taxonomy/topics/edit choose "Translate. Different terms will be allowed for each language and they can be translated."
+- set proper position of topics page in menu: /admin/structure/menu/manage/navigation
 - import topics at /admin/config/system/querytool/import
 - add / change topics in topics taxonomy: /admin/structure/taxonomy/topics or at: /admin/edit-topics (edit multiple topics at once)
 - enable, as desired, topics by selecting the "enable" checkbox for each topic and language, this will make the topic clickable to open up the querytool

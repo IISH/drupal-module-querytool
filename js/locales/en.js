@@ -19,11 +19,11 @@ var phrases = {
     "switch-mode-confirm":"Switching mode will reset the screen and all custom selections, are you sure?",
 
     "choose-year": "Choose year",
-    "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: https://ristat.org/datasets/indicators.",
+    "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: https://ristat.org/datasets/indicators",
     "switch-year-confirm":"Switching year will reset the screen and all your selections, are you sure?",
 
     "choose-regions": "Choose regions",
-    "regions-info": "The Electronic Repository offers data only for the regions which are part of the modern-day Russian Federation (2002). However, for some years and some topics data are also available for other regions of the Russian Empire/Soviet-Union.",
+    "regions-info": "The Electronic Repository offers data only for the regions which are part of the modern-day Russian Federation (2002). However, for some years and some topics data are also available for other regions of the Russian Empire/Soviet-Union. For more information, cf.:",
     "select-all": "select all",
     "deselect-all": "deselect all",
     "search": "search",

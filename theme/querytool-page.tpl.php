@@ -136,8 +136,8 @@
     <% }); %>
 </script>
 
-<script type="text/template" id="years-template">
 
+<script type="text/template" id="years-template">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
         <% _.each(years, function(year){
@@ -147,7 +147,6 @@
         <li role="presentation"><a href="#<%= htmlEncode(year.datacount) %>" aria-controls="<%= htmlEncode(year.datacount) %>" id="<%= htmlEncode(year.num) %>" role="tab" data-toggle="tab"><%= htmlEncode(year.num) %></a></li>
          <%} }); %>
     </ul>
-
   <!-- Tab panes -->
   <div class="tab-content">
         <% _.each(years, function(year) {
@@ -162,6 +161,7 @@
     </div>
 </script>
 
+
 <script type="text/template" id="regions-template">
   <select multiple="multiple" id="regions" name="regions[]">
         <% _.each(regions, function(region) { %>
@@ -172,8 +172,8 @@
     <a href='#' id='select-all'><%= polyglot.t("select-all") %> </a>
     <a href='#' id='deselect-all'><%= polyglot.t("deselect-all") %> </a>
   </div>
-
 </script>
+
 
 <script type="text/template" id="topic-list-template">
 
@@ -198,7 +198,12 @@
                  title="<%= htmlEncode(topic.name) %>"
                  data-placement="top">
                 <div class="checkboxes">
-                  <div class="checkbox" title="<%= polyglot.t("single-checkbox-aggregated") %>" data-toggle="tooltip"  data-placement="top"></div>
+                    <% if(topic.name !==".") { %>
+                        <div class="checkbox" title="<%= polyglot.t("single-checkbox-aggregated") %>" data-toggle="tooltip"  data-placement="top"></div>
+                    <% }else{ %>
+                        <div class="checkbox-spacer"></div>
+                    <% }; %>
+
                   <% if(topic.childCount > 0) { %>
                      <div class="checkbox-depth" title="<%= polyglot.t("single-checkbox-depth") %>" data-toggle="tooltip" data-placement="top"> </div>
                   <% }; %>
@@ -212,12 +217,12 @@
             <% }); %>
         </div>
   </div>
-
   <div class="all">
     <div><div class="checkbox all" title="<%= polyglot.t("select-all-as-aggregated") %>" data-toggle="tooltip"></div> <%= polyglot.t("select-all-as-aggregated") %></div><br>
     <div> <div class="checkbox-depth all" title="<%= polyglot.t("select-all-depth") %>" data-toggle="tooltip"></div> <%= polyglot.t("select-all-depth") %></div>
   </div>
 </script>
+
 
 <div id="tree">
   <div id="treeclose">

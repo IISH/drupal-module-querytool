@@ -7,6 +7,7 @@
  *   qtSettings is an object render by the module.
  *
 */
+
 var debugmode = qtSettings.debugmode;
 
 // defined in init()

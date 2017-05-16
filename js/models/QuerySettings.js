@@ -38,7 +38,6 @@ var QuerySettings = Backbone.Model.extend({
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
-        //console.debug(url);
         return url;
     },
     getRegionsUrl:function(){

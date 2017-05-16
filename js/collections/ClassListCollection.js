@@ -16,7 +16,6 @@ var ClassListCollection = Backbone.Collection.extend({
             $("#topic-lists").append('<div class="ts-box" id="ts-box-'+level+'"></div>');
             classBox = new ClassBoxView({el:$("#ts-box-"+level)});
             classBox.render(level,tree[level-1]);
-
             that.add(classBox);
         });
         return this;
@@ -27,6 +26,4 @@ var ClassListCollection = Backbone.Collection.extend({
             model.destroy();
         });
     }
-
-
 });

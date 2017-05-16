@@ -22,3 +22,24 @@ version 1.0
 - position the Documentation block 'Data topics with documentation links.' as desired: /admin/structure/block
 
 # Todo
+
+
+
+# Filename matching patterns for documentation
+
+Documentation files wil be loaded from the API.
+
+Block with general documentation will match files with the name containing  one of these strings:
+"Introduction", "regions", "GovReports"
+Files wile appear in this order.
+
+Blocks with documentation per topic will match files containing the datatype main number, followed by a dash and two zeroes ( x_00 ):
+For example "somename_1_00_language-code.pdf" appears at topic with datatype 1. 
+
+Every file should have the language shortname: "EN" for English or "RUS" for Russian.
+
+
+
+
+           
+     

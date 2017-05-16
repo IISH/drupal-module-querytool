@@ -13,7 +13,7 @@ var Classification = Backbone.Model.extend({
         var path = "";
         var that = this;
         $.each($(".topic"),function(e){
-            if($(this).find(".checked").length >0 ){  //|| $(this).find(" .checked-all").length >0
+            if($(this).find(".checked").length >0 ){
                 indexes.push($(this).attr("id"));
             }
         });
@@ -178,9 +178,6 @@ var Classification = Backbone.Model.extend({
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
-
-
-
         });
 
 
@@ -192,7 +189,6 @@ var Classification = Backbone.Model.extend({
             depth++;
 
             $.each(obj, function(k, v) {
-
                 v.parent_id = parent_id;
 
                 childs.push(v);

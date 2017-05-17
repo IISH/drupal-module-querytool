@@ -55,7 +55,6 @@ function querytool_block_info()
  */
 function querytool_block_view($delta = '')
 {
-
     $block = array();
 
     if ($delta == "topics") {
@@ -252,7 +251,6 @@ function querytool_catalog_form($form, &$form_state) {
 
     global $language;
 
-
     drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_catalog.js", array('scope' => 'footer', 'weight' => 5));
 
     $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
@@ -286,8 +284,9 @@ function querytool_catalog_form($form, &$form_state) {
     foreach ($tree as $term) {
 
         $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
-        $label = $datatype . ". " . $term->name;
 
+        $label = $datatype . ". " . $term->name;
+        $datatype = str_replace(".","_",$datatype);
         $root_id = $term->field_root_id[LANGUAGE_NONE][0]['value'];
 
         // render main topics
@@ -339,6 +338,7 @@ function querytool_catalog_form($form, &$form_state) {
             );
 
             $topic_years = isset($term->field_available_years[LANGUAGE_NONE][0]['value']) ? $term->field_available_years[LANGUAGE_NONE][0]['value'] : '';
+
             foreach ($years as $year) {
 
                 $form['topic_'.$root]['topic_'.$datatype][$datatype."_".$year] = array(
@@ -347,6 +347,7 @@ function querytool_catalog_form($form, &$form_state) {
                     '#prefix' => '<div class="catalog-checkbox">',
                     '#suffix' => '</div>',
                 );
+
 
                     if(strpos($topic_years,$year) === false){
                         $form['topic_'.$root]['topic_'.$datatype][$datatype."_".$year] = array(
@@ -369,6 +370,7 @@ function querytool_catalog_form($form, &$form_state) {
 
     }
 
+    //$form['#action'] = url('http://external.url.where.i.have.no.control');
 
     // Submit Button
     $form['submit'] = array(
@@ -378,6 +380,43 @@ function querytool_catalog_form($form, &$form_state) {
 
     return $form;
 }
+
+
+/**
+ * Implements hook_form_submit().
+ *
+ */
+function querytool_catalog_form_submit($form, &$form_state)
+{
+
+    global $language;
+
+    $post_data = array("lang"=>$language->language);
+    $subtopics = array();
+
+    foreach ($form_state['values'] as $key=>$value){
+        //only include selected items having 2 dashes: means it is a subtopic
+       if($value == 1 && substr_count($key,"_") ==2) $subtopics[] = $key;
+    }
+    $post_data['subtopics'] = $subtopics;
+
+    $api_url = variable_get('querytool_api_url');
+    $api_url .= "filecatalog";
+
+    // use of drupal_http_request
+    $url = url('http://external.url.where.i.have.no.control');
+    $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+    $data = http_build_query($post_data, '', '&');
+    drupal_set_message($data);
+    $form_state['rebuild'] = TRUE;
+
+
+    // the actual sending of the data
+//    $response = drupal_http_request($url, array($headers, 'POST', $data)); // <----- this does not "send" user to http://external.url.where.i.have.no.control
+
+
+}
+
 
 
 
@@ -487,12 +526,16 @@ function querytool_topics_import($form, $form_state)
         if (!array_key_exists($topic->topic_id, $indexed_terms)) {
             $output .= $topic->datatype . " - " . $topic->topic_name . " inserted<br>";
 
+            $years = array_keys(get_object_vars($topic->byear_counts));
+            $years_str = implode(",",$years);
+
             $term = (object)array(
                 'name' => $topic->topic_name,
                 'vid' => $vid,
                 'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
                 'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))),
                 'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
+                'field_available_years' => array(LANGUAGE_NONE => array(array('value' => $years_str))),
                 'weight' => $weight,
                 'language' => 'en'
             );
@@ -503,6 +546,7 @@ function querytool_topics_import($form, $form_state)
                 'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
                 'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))),
                 'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
+                'field_available_years' => array(LANGUAGE_NONE => array(array('value' => $years_str))),
                 'weight' => $weight + 100,
                 'language' => 'ru'
             );

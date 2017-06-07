@@ -174,7 +174,7 @@ function querytool_topics_theme($existing, $type, $theme, $path)
  */
 function theme_topic($variables)
 {
-  $output = "<div class='topic-doc'><h3>" . $variables["label"] . ".</h3>";
+  $output = "<div class='topic-doc'><h3>" . $variables["label"] . "</h3>";
 
   foreach ($variables["links"] as $link) {
     $output .= $link . "<br>";
@@ -415,21 +415,23 @@ function querytool_catalog_form_submit($form, &$form_state)
   }
   $post_data['subtopics'] = $subtopics;
 
-  $api_url = variable_get('querytool_api_url');
-  $api_url .= "filecatalog";
 
+
+  //http://data.sandbox.socialhistoryservices.org/service/filecatalogdata?lang=en&subtopics%5B0%5D=1_01_1795
   // use of drupal_http_request
-  $url = url('http://external.url.where.i.have.no.control');
+  $url = url(variable_get('querytool_api_url')."filecatalogdata");
   $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
   $data = http_build_query($post_data, '', '&');
+
   drupal_set_message($data);
-  $form_state['rebuild'] = TRUE;
+
 
 
   // the actual sending of the data
-//    $response = drupal_http_request($url, array($headers, 'POST', $data)); // <----- this does not "send" user to http://external.url.where.i.have.no.control
+  $response = drupal_http_request($url, array($headers, 'POST', $data));
 
-
+    dpm($response);
+  $form_state['rebuild'] = TRUE;
 }
 
 

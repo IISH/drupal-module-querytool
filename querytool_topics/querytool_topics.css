@@ -133,10 +133,10 @@
 
 .topic-doc{
     margin:10px;
-    padding:0 20px 20px 20px;
+    padding:0 10px 10px 10px;
     float:left;
     min-height:150px;
-    min-width:26%;
+    min-width:28%;
     -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
@@ -144,10 +144,8 @@
 
 .topic-doc h3{
     text-transform: uppercase;
+    margin-top:10px;
 }
-
-
-
 
 
 
@@ -245,6 +243,7 @@ form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbo
 
 #edit-topic-all .catalog-topic{
     border-bottom:0;
+    z-index: 12;
 }
 
 .catalog-checkbox.unavailabe{

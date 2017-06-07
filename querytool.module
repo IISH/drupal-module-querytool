@@ -52,14 +52,13 @@ function querytool_helpcontent()
 function querytool_menu()
 {
   $items = array();
-  /*
+
   $items['querytool/%'] = array(
     'title' => 'Topics',
     'page callback' => 'querytool',
     'page arguments' => array(1),
     'access callback' => true
   );
-  */
 
   $items['admin/config/system/querytool'] = array(
     'title' => 'Query Tool',
@@ -143,12 +142,10 @@ function querytool_download_form($form, &$form_state, $filename)
 /**
  *  Shows the Query Tool Interface
  */
-/*
 function querytool($arg)
 {
   return '';
 }
-*/
 
 
 /**

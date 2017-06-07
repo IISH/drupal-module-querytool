@@ -53,7 +53,10 @@ var ResultView = Backbone.Model.extend({
 
                 //get only filename or key to pass to license page
                 var aUrl = response.url.split("?");
-                var url = "/"+querySettings.get("lang")+"/download/"+aUrl[1];
+                var url = "/download/"+aUrl[1];
+                if(querySettings.get("lang") == "ru"){
+                    url ="/ru"+ url;
+                }
                 that.setDownloadBtn(url);
             }
         });

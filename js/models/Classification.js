@@ -117,8 +117,10 @@ var Classification = Backbone.Model.extend({
         var classMode = querySettings.get("classmode");
 
         var class1,class2,class3,class4,class5,class6;
+        var invalidMessageDisplayed = false;
 
         _.each(classes, function(hclass) {
+
             if(classMode == "modern"){
                 class1  = hclass.class1;
                 class2  = hclass.class2;
@@ -136,6 +138,12 @@ var Classification = Backbone.Model.extend({
             }
 
             newClass = {};
+
+            // check if first class exists
+            if(class1 == undefined && !invalidMessageDisplayed){
+                invalidMessageDisplayed = true;
+               alert('Sorry, invalid indicator detected, please contact us.');
+            }
 
             if(!Tree.children[class1]){
                 newClass = {"name": class1, "parent":"null", children:{}, class_id: classIndex,  level:1, parent_id: null, c1:class1};
@@ -178,9 +186,8 @@ var Classification = Backbone.Model.extend({
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
+
         });
-
-
 
 
         function loopChildren(obj,depth,parent_id) {

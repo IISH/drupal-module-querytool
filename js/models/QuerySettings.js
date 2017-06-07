@@ -3,6 +3,7 @@ var QuerySettings = Backbone.Model.extend({
     defaults: {
         moduleUrl:"",
         baseUrl:"",
+        downloadUrl:"",
         years:[],
         classModes:[],
         datatype:"",
@@ -15,6 +16,10 @@ var QuerySettings = Backbone.Model.extend({
 
     getBaseUrl:function(){
         return this.baseUrl;
+    },
+
+    getDownloadUrl:function(){
+        return this.downloadUrl;
     },
 
     getClassUrl:function(){

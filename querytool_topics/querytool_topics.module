@@ -6,30 +6,30 @@
  */
 function querytool_topics_menu()
 {
-    $items = array();
+  $items = array();
 
-    $items['admin/config/system/querytool/import'] = array(
-        'title' => 'Import',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('querytool_topics_import_form'),
-        'access arguments' => array('administer querytool'),
-        'type' => MENU_LOCAL_TASK,
-        'weight' => 2
-    );
+  $items['admin/config/system/querytool/import'] = array(
+    'title' => 'Import',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('querytool_topics_import_form'),
+    'access arguments' => array('administer querytool'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2
+  );
 
-    $items['topics'] = array(
-        'title' => 'Topics',
-        'page callback' => 'querytool_topics',
-        'access callback' => TRUE,
-    );
+  $items['topics'] = array(
+    'title' => 'Topics',
+    'page callback' => 'querytool_topics',
+    'access callback' => TRUE,
+  );
 
-    $items['catalog'] = array(
-        'title' => 'Topics',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('querytool_catalog_form'),
-        'access callback' => TRUE,
-    );
-    return $items;
+  $items['catalog'] = array(
+    'title' => 'File catalogue',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('querytool_catalog_form'),
+    'access callback' => TRUE,
+  );
+  return $items;
 }
 
 
@@ -38,13 +38,20 @@ function querytool_topics_menu()
  */
 function querytool_block_info()
 {
-    $blocks['topics'] = array(
-        'info' => t('Data topics with documentation links.'),
-        'region' => "sidebar_first",
-        'cache' => DRUPAL_NO_CACHE
-    );
+  $blocks['topics'] = array(
+    'info' => t('Data topics with documentation links.'),
+    'region' => "sidebar_first",
+    'cache' => DRUPAL_NO_CACHE
+  );
 
-    return $blocks;
+  $blocks['catalog'] = array(
+    'info' => t('Catalog form'),
+    'region' => "sidebar_first",
+    'cache' => DRUPAL_NO_CACHE
+  );
+
+
+  return $blocks;
 }
 
 
@@ -55,57 +62,66 @@ function querytool_block_info()
  */
 function querytool_block_view($delta = '')
 {
-    $block = array();
+  $block = array();
 
-    if ($delta == "topics") {
+  if ($delta == "topics") {
 
-        global $language;
+    global $language;
 
-        $url = variable_get('querytool_api_url', '') . "documentation?lang=" . $language->language;
+    $url = variable_get('querytool_api_url', '') . "documentation?lang=" . $language->language;
 
-        $data = file_get_contents($url);
+    $data = file_get_contents($url);
 
-        if ($data) {
-            $files = json_decode($data, TRUE);
-            $output = _querytool_topics_general_docs($files);
-            $output .= _querytool_topics_topic_docs($files);
-        } else {
-            $output = t("Error parsing documentation data. Please contact us.");
-        }
-
-        $block['content'] = $output;
+    if ($data) {
+      $files = json_decode($data, TRUE);
+      $output = _querytool_topics_general_docs($files);
+      $output .= _querytool_topics_topic_docs($files);
+    } else {
+      $output = t("Error parsing documentation data. Please contact us.");
     }
 
-    return $block;
+    $block['content'] = $output;
+  }
+
+  if ($delta == "catalog") {
+    $block['content'] = drupal_get_form('querytool_catalog_form');
+  }
+
+  return $block;
 }
 
 /**
- * Match general files, set up 3 sets for ordering
+ * Match general files, set up 4 sets for ordering
  * @param $files
  * @return string
  */
 function _querytool_topics_general_docs($files)
 {
-    global $language;
+  global $language;
 
-    $common_files1 = [];
-    $common_files2 = [];
-    $common_files3 = [];
+  $common_files1 = [];
+  $common_files2 = [];
+  $common_files3 = [];
+  $common_files4 = [];
 
-    foreach ($files as $file) {
-        if (strpos($file['name'], "Introduction") !== false) {
-            $common_files1[] = l($file['name'], $file['url'], array('target' => '_blank'));
-        }
-        if (strpos($file['name'], "regions") !== false) {
-            $common_files2[] = l($file['name'], $file['url'], array('target' => '_blank'));
-        }
-        if (strpos($file['name'], "GovReports") !== false) {
-            $common_files3[] = l($file['name'], $file['url'], array('target' => '_blank'));
-        }
+  foreach ($files as $file) {
+    if (strpos($file['name'], "Introduction") !== false) {
+      $common_files1[] = l($file['name'], $file['url'], array('target' => '_blank'));
     }
-    $common_files = array_merge($common_files1, $common_files2, $common_files3);
-    $label = ($language->language == "ru") ? t("Общая документация") : t("General documentation");
-    return theme('topic', array("label" => $label, "links" => $common_files));
+    if (strpos($file['name'], "regions") !== false) {
+      $common_files2[] = l($file['name'], $file['url'], array('target' => '_blank'));
+    }
+    if (strpos($file['name'], "GovReports") !== false) {
+      $common_files3[] = l($file['name'], $file['url'], array('target' => '_blank'));
+    }
+    if (strpos($file['name'], "Classification") !== false && strpos($file['name'], "Modern_Classification") == false ) {
+      $common_files4[] = l($file['name'], $file['url'], array('target' => '_blank'));
+    }
+  }
+
+  $common_files = array_merge($common_files1, $common_files2, $common_files3,$common_files4);
+  $label = ($language->language == "ru") ? t("Общая документация") : t("General documentation");
+  return theme('topic', array("label" => $label, "links" => $common_files));
 }
 
 /**
@@ -114,25 +130,25 @@ function _querytool_topics_general_docs($files)
  */
 function _querytool_topics_topic_docs($files)
 {
-    global $language;
+  global $language;
 
-    $output = "";
-    // load terms and match specific files
-    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
-    $tree = i18n_taxonomy_get_tree($vid, $language->language, 0, 1, true);
+  $output = "";
+  // load terms and match specific files
+  $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+  $tree = i18n_taxonomy_get_tree($vid, $language->language, 0, 1, true);
 
-    foreach ($tree as $term) {
-        $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
-        $label = $datatype . ". " . $term->name;
-        $links = [];
-        foreach ($files as $file) {
-            if (strpos($file['name'], $datatype . "_00") !== false) {
-                $links[] = l($file['name'], $file['url'], array('target' => '_blank'));
-            }
-        }
-        $output .= theme('topic', array("label" => $label, "links" => $links));
+  foreach ($tree as $term) {
+    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+    $label = $datatype . ". " . $term->name;
+    $links = [];
+    foreach ($files as $file) {
+      if (strpos($file['name'], $datatype . "_00") !== false) {
+        $links[] = l($file['name'], $file['url'], array('target' => '_blank'));
+      }
     }
-    return $output;
+    $output .= theme('topic', array("label" => $label, "links" => $links));
+  }
+  return $output;
 }
 
 
@@ -141,11 +157,11 @@ function _querytool_topics_topic_docs($files)
  */
 function querytool_topics_theme($existing, $type, $theme, $path)
 {
-    return array(
-        'topic' => array(
-            'render element' => 'element',
-        )
-    );
+  return array(
+    'topic' => array(
+      'render element' => 'element',
+    )
+  );
 }
 
 
@@ -158,16 +174,14 @@ function querytool_topics_theme($existing, $type, $theme, $path)
  */
 function theme_topic($variables)
 {
+  $output = "<div class='topic-doc'><h3>" . $variables["label"] . ".</h3>";
 
-    $output = "";
-    $output .= "<div class='topic-doc'><h3>" . $variables["label"] . ".</h3>";
+  foreach ($variables["links"] as $link) {
+    $output .= $link . "<br>";
+  }
 
-    foreach ($variables["links"] as $link) {
-        $output .= $link . "<br>";
-    }
-
-    $output .= "</div>";
-    return $output;
+  $output .= "</div>";
+  return $output;
 }
 
 
@@ -176,7 +190,7 @@ function theme_topic($variables)
  */
 function querytool_init()
 {
-    drupal_add_css(drupal_get_path('module', 'querytool_topics') . '/querytool_topics.css');
+  drupal_add_css(drupal_get_path('module', 'querytool_topics') . '/querytool_topics.css');
 }
 
 /**
@@ -184,201 +198,202 @@ function querytool_init()
  */
 function querytool_topics()
 {
-    global $language;
+  global $language;
 
-    // Adds the library making it available for use.
-    drupal_add_library('system', 'ui.tabs');
-    drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_topics.js", array('scope' => 'footer', 'weight' => 5));
+  // Adds the library making it available for use.
+  drupal_add_library('system', 'ui.tabs');
+  drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_topics.js", array('scope' => 'footer', 'weight' => 5));
 
-    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+  $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
 
-    $tree = i18n_taxonomy_get_tree($vid, $language->language, 0, null, true);
+  $tree = i18n_taxonomy_get_tree($vid, $language->language, 0, null, true);
 
-    $tabs = "";
-    $pages = "";
-    $subtopics = "";
-    $i = 0;
+  $tabs = "";
+  $pages = "";
+  $subtopics = "";
+  $i = 0;
 
-    foreach ($tree as $term) {
+  foreach ($tree as $term) {
 
-        $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
-        $label = $datatype . ". " . $term->name;
+    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+    $label = $datatype . ". " . $term->name;
 
-        if ($term->depth == 0) {
-            // close topic
-            if ($i > 0) {
-                $pages .= $subtopics . "</div>";
-                $subtopics = "";
-            }
-            $tabs .= "<li><a href='#tabs-" . $term->tid . "'>" . $label . "</a></li>";
-            $pages .= "<div id='tabs-" . $term->tid . "'><h3>" . $label . "</h3>";
+    if ($term->depth == 0) {
+      // close topic
+      if ($i > 0) {
+        $pages .= $subtopics . "</div>";
+        $subtopics = "";
+      }
+      $tabs .= "<li><a href='#tabs-" . $term->tid . "'>" . $label . "</a></li>";
+      $pages .= "<div id='tabs-" . $term->tid . "'><h3>" . $label . "</h3>";
 
-            if ($term->description !== null) $pages .= $term->description . "<br><br><br>";
+      if ($term->description !== null) $pages .= $term->description . "<br><br><br>";
 
-        } else {
-            $enable = (count($term->field_enable) > 0 && $term->field_enable[LANGUAGE_NONE][0]['value'] == 1);
+    } else {
+      $enable = (count($term->field_enable) > 0 && $term->field_enable[LANGUAGE_NONE][0]['value'] == 1);
 
-            if ($enable) {
-                $link = "<a href='#' onClick='openWindow(\"/querytool\",\"" . str_replace(".", "-", $datatype) . "/" . $language->language . "\");' >" . $term->name . " </a>";
-                $subtopics .= "<div class='topic'><div class='topic-title'>" . $datatype . ". " . $link . "</div>";
-                if ($term->description) $subtopics .= "<div class='subtopic-description'>" . $term->description . "</div>";
-                $subtopics .= "</div>";
-            } else {
-                $subtopics .= "<div class='topic topic-disable'><div class='topic-title'>" . $datatype . ". " . $term->name . " - N/A</div>";
-                if ($term->description) $subtopics .= "<div class='subtopic-description'>" . $term->description . "</div>";
-                $subtopics .= "</div>";
-            }
+      if ($enable) {
+        $link = "<a href='#' onClick='openWindow(\"/querytool\",\"" . str_replace(".", "-", $datatype) . "/" . $language->language . "\");' >" . $term->name . " </a>";
+        $subtopics .= "<div class='topic'><div class='topic-title'>" . $datatype . ". " . $link . "</div>";
+        if ($term->description) $subtopics .= "<div class='subtopic-description'>" . $term->description . "</div>";
+        $subtopics .= "</div>";
+      } else {
+        $subtopics .= "<div class='topic topic-disable'><div class='topic-title'>" . $datatype . ". " . $term->name . " - N/A</div>";
+        if ($term->description) $subtopics .= "<div class='subtopic-description'>" . $term->description . "</div>";
+        $subtopics .= "</div>";
+      }
 
-            $subtopics .= "<br>";
-        }
-
-        $i++;
+      $subtopics .= "<br>";
     }
 
-    // add last subtopics and close last topic
-    $pages .= $subtopics;
-    $pages .= "</div>";
+    $i++;
+  }
 
-    return "<div id='tabs'><ul>" . $tabs . "</ul>" . $pages . "</div>";
+  // add last subtopics and close last topic
+  $pages .= $subtopics;
+  $pages .= "</div>";
+
+  return "<div id='tabs'><ul>" . $tabs . "</ul>" . $pages . "</div>";
 }
-
 
 
 /**
  * Lists topics as a form to compose custom data catalog
  */
-function querytool_catalog_form($form, &$form_state) {
+function querytool_catalog_form($form, &$form_state)
+{
 
-    global $language;
+  global $language;
 
-    drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_catalog.js", array('scope' => 'footer', 'weight' => 5));
+  drupal_add_js(drupal_get_path('module', 'querytool_topics') . "/querytool_catalog.js", array('scope' => 'footer', 'weight' => 5));
 
-    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
-    $tree = i18n_taxonomy_get_tree($vid, $language->language, 0, null, true);
+  $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+  $tree = i18n_taxonomy_get_tree($vid, $language->language, 0, null, true);
 
-    // @todo make dynamic import of years via API
-    $years = array('1795','1858','1897','1959','2002');
+  // @todo make dynamic import of years via API
+  $years = array('1795', '1858', '1897', '1959', '2002');
 
-    $form['topic_all'] = array(
+  $form['topic_all'] = array(
+    '#type' => 'fieldset',
+    '#title' => t(''),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['topic_all']['all_markup'] = array(
+    '#markup' => '',
+    '#prefix' => '<div class="catalog-topic">',
+    '#suffix' => '</div>',
+  );
+
+  foreach ($years as $year) {
+    $form['topic_all']["all_" . $year . ''] = array(
+      '#markup' => "",
+      '#prefix' => '<div class="catalog-checkbox topic">' . $year,
+      '#suffix' => '</div>',
+    );
+  }
+
+
+  foreach ($tree as $term) {
+
+    $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
+
+    $label = $datatype . ". " . $term->name;
+    $datatype = str_replace(".", "_", $datatype);
+    $root_id = $term->field_root_id[LANGUAGE_NONE][0]['value'];
+
+    // render main topics
+    if ($root_id == '0') {
+
+      $form['topic_' . $datatype] = array(
         '#type' => 'fieldset',
-        '#title' => t(''),
         '#collapsible' => FALSE,
         '#collapsed' => FALSE,
-    );
+        '#attributes' => array(
+          'class' => array('topic')
+        )
+      );
 
-    $form['topic_all']['all_markup'] = array(
-        '#markup' => '',
+      $form['topic_' . $datatype]['all'] = array(
+        '#type' => 'fieldset',
+        '#collapsible' => FALSE,
+        '#collapsed' => FALSE,
+      );
+
+      $form['topic_' . $datatype]['all'][$datatype . '_markup'] = array(
+        '#markup' => t($label),
         '#prefix' => '<div class="catalog-topic">',
         '#suffix' => '</div>',
-    );
+      );
 
-    foreach ($years as $year) {
-        $form['topic_all']["all_".$year.''] = array(
-            '#markup' => "",
-            '#prefix' => '<div class="catalog-checkbox topic">'.$year,
-            '#suffix' => '</div>',
+      foreach ($years as $year) {
+        $form['topic_' . $datatype]['all'][$datatype . "_" . $year . ''] = array(
+          '#type' => "checkbox",
+          '#theme_wrappers' => array(), // remove the wrapper
+          '#prefix' => '<div class="catalog-checkbox">',
+          '#suffix' => '<span></span></div>',
         );
-    }
+      }
+
+    } else {
+      // render subtopics
+      $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
+
+      $form['topic_' . $root]['topic_' . $datatype] = array(
+        '#type' => 'fieldset',
+        '#collapsible' => FALSE,
+        '#collapsed' => FALSE,
+      );
+
+      $form['topic_' . $root]['topic_' . $datatype][$datatype . '_markup'] = array(
+        '#markup' => t($label),
+        '#prefix' => '<div class="catalog-subtopic">',
+        '#suffix' => '</div>',
+      );
+
+      $topic_years = isset($term->field_available_years[LANGUAGE_NONE][0]['value']) ? $term->field_available_years[LANGUAGE_NONE][0]['value'] : '';
+
+      foreach ($years as $year) {
+
+        $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
+          '#type' => "checkbox",
+          '#disabled' => true,
+          '#prefix' => '<div class="catalog-checkbox">',
+          '#suffix' => '</div>',
+        );
 
 
-    foreach ($tree as $term) {
-
-        $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
-
-        $label = $datatype . ". " . $term->name;
-        $datatype = str_replace(".","_",$datatype);
-        $root_id = $term->field_root_id[LANGUAGE_NONE][0]['value'];
-
-        // render main topics
-        if ($root_id == '0') {
-
-            $form['topic_'.$datatype] = array(
-                '#type' => 'fieldset',
-                '#collapsible' => FALSE,
-                '#collapsed' => FALSE,
-                '#attributes' => array(
-                    'class' => array('topic')
-                )
-            );
-
-            $form['topic_'.$datatype]['all'] = array(
-                '#type' => 'fieldset',
-                '#collapsible' => FALSE,
-                '#collapsed' => FALSE,
-            );
-
-            $form['topic_'.$datatype]['all'][$datatype.'_markup'] = array(
-                '#markup' =>  t($label),
-                '#prefix' => '<div class="catalog-topic">',
-                '#suffix' => '</div>',
-            );
-
-            foreach ($years as $year) {
-                $form['topic_'.$datatype]['all'][$datatype."_".$year.''] = array(
-                    '#type' => "checkbox",
-                    '#prefix' => '<div class="catalog-checkbox topic">',
-                    '#suffix' => '</div>',
-                );
-            }
-
+        if (strpos($topic_years, $year) === false) {
+          $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
+            '#type' => "markup",
+            '#markup' => 'x',
+            '#prefix' => '<div class="catalog-checkbox unavailabe">',
+            '#suffix' => '</div>',
+          );
         } else {
-            // render subtopics
-            $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
-
-            $form['topic_'.$root]['topic_'.$datatype] = array(
-                '#type' => 'fieldset',
-                '#collapsible' => FALSE,
-                '#collapsed' => FALSE,
-            );
-
-            $form['topic_'.$root]['topic_'.$datatype][$datatype.'_markup'] = array(
-                '#markup' => t($label),
-                '#prefix' => '<div class="catalog-subtopic">',
-                '#suffix' => '</div>',
-            );
-
-            $topic_years = isset($term->field_available_years[LANGUAGE_NONE][0]['value']) ? $term->field_available_years[LANGUAGE_NONE][0]['value'] : '';
-
-            foreach ($years as $year) {
-
-                $form['topic_'.$root]['topic_'.$datatype][$datatype."_".$year] = array(
-                    '#type' => "checkbox",
-                    '#disabled'=>true,
-                    '#prefix' => '<div class="catalog-checkbox">',
-                    '#suffix' => '</div>',
-                );
-
-
-                    if(strpos($topic_years,$year) === false){
-                        $form['topic_'.$root]['topic_'.$datatype][$datatype."_".$year] = array(
-                            '#type' => "markup",
-                            '#markup'=>'x',
-                            '#prefix' => '<div class="catalog-checkbox unavailabe">',
-                            '#suffix' => '</div>',
-                        );
-                    }else{
-                        $form['topic_'.$root]['topic_'.$datatype][$datatype."_".$year] = array(
-                            '#type' => "checkbox",
-                            '#prefix' => '<div class="catalog-checkbox">',
-                            '#suffix' => '</div>',
-                        );
-                    }
-            }
-
+          $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
+            '#type' => "checkbox",
+            '#theme_wrappers' => array(), // remove the wrapper
+            '#prefix' => '<div class="catalog-checkbox">',
+            '#suffix' => '<span></span></div>',
+          );
         }
-
+      }
 
     }
+  }
 
-    //$form['#action'] = url('http://external.url.where.i.have.no.control');
+  // Submit Button
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Download table and documentation as a zipfile'),
+    '#attributes' => array(
+      'class' => array('btn', 'btn-primary')
+    )
+  );
 
-    // Submit Button
-    $form['submit'] = array(
-        '#type' => 'submit',
-        '#value' => t('Get data!'),
-    );
-
-    return $form;
+  return $form;
 }
 
 
@@ -389,35 +404,33 @@ function querytool_catalog_form($form, &$form_state) {
 function querytool_catalog_form_submit($form, &$form_state)
 {
 
-    global $language;
+  global $language;
 
-    $post_data = array("lang"=>$language->language);
-    $subtopics = array();
+  $post_data = array("lang" => $language->language);
+  $subtopics = array();
 
-    foreach ($form_state['values'] as $key=>$value){
-        //only include selected items having 2 dashes: means it is a subtopic
-       if($value == 1 && substr_count($key,"_") ==2) $subtopics[] = $key;
-    }
-    $post_data['subtopics'] = $subtopics;
+  foreach ($form_state['values'] as $key => $value) {
+    //only include selected items having 2 dashes: means it is a subtopic
+    if ($value == 1 && substr_count($key, "_") == 2) $subtopics[] = $key;
+  }
+  $post_data['subtopics'] = $subtopics;
 
-    $api_url = variable_get('querytool_api_url');
-    $api_url .= "filecatalog";
+  $api_url = variable_get('querytool_api_url');
+  $api_url .= "filecatalog";
 
-    // use of drupal_http_request
-    $url = url('http://external.url.where.i.have.no.control');
-    $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
-    $data = http_build_query($post_data, '', '&');
-    drupal_set_message($data);
-    $form_state['rebuild'] = TRUE;
+  // use of drupal_http_request
+  $url = url('http://external.url.where.i.have.no.control');
+  $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+  $data = http_build_query($post_data, '', '&');
+  drupal_set_message($data);
+  $form_state['rebuild'] = TRUE;
 
 
-    // the actual sending of the data
+  // the actual sending of the data
 //    $response = drupal_http_request($url, array($headers, 'POST', $data)); // <----- this does not "send" user to http://external.url.where.i.have.no.control
 
 
 }
-
-
 
 
 /**
@@ -427,22 +440,22 @@ function querytool_catalog_form_submit($form, &$form_state)
  */
 function querytool_topics_import_form($form, &$form_state)
 {
-    if (!isset($form_state['storage']['confirm'])) {
+  if (!isset($form_state['storage']['confirm'])) {
 
-        $form['delete_topics'] = array(
-            '#type' => 'checkbox',
-            '#title' => t('Delete'),
-            '#description' => t('Check this if you want to delete all existing topics prior to importing. All modifications made to the topics will be lost.'),
-        );
-        $form['submit_button'] = array(
-            '#type' => 'submit',
-            '#value' => t('Import topics from API'),
-        );
-    } else {
-        return confirm_form($form, "Import", current_path(), t("Import will overwrite all custom title, descriptions and settings, are you sure?"));
-    }
+    $form['delete_topics'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Delete'),
+      '#description' => t('Check this if you want to delete all existing topics prior to importing. All modifications made to the topics will be lost.'),
+    );
+    $form['submit_button'] = array(
+      '#type' => 'submit',
+      '#value' => t('Import topics from API'),
+    );
+  } else {
+    return confirm_form($form, "Import", current_path(), t("Import will overwrite all custom title, descriptions and settings, are you sure?"));
+  }
 
-    return $form;
+  return $form;
 }
 
 
@@ -453,14 +466,14 @@ function querytool_topics_import_form($form, &$form_state)
  */
 function querytool_topics_import_form_submit($form, &$form_state)
 {
-    if (!isset($form_state['storage']['confirm'])) {
-        $form_state['storage']['confirm'] = TRUE;
-        $form_state['rebuild'] = TRUE;
-        $form_state['storage']['values'] = $form_state['values'];
-    } else {
-        $output = querytool_topics_import($form, $form_state);
-        drupal_set_message($output);
-    }
+  if (!isset($form_state['storage']['confirm'])) {
+    $form_state['storage']['confirm'] = TRUE;
+    $form_state['rebuild'] = TRUE;
+    $form_state['storage']['values'] = $form_state['values'];
+  } else {
+    $output = querytool_topics_import($form, $form_state);
+    drupal_set_message($output);
+  }
 }
 
 
@@ -470,118 +483,118 @@ function querytool_topics_import_form_submit($form, &$form_state)
 function querytool_topics_import($form, $form_state)
 {
 
-    $output = "";
+  $output = "";
 
-    if ($form_state['storage']['values']['delete_topics'] == 1) {
-        $d = 0;
-        $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
-        foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
-            taxonomy_term_delete($term->tid);
-            $d++;
-        }
-        $output .= $d . " topics deleted. (all languages)<br>";
+  if ($form_state['storage']['values']['delete_topics'] == 1) {
+    $d = 0;
+    $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
+    foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
+      taxonomy_term_delete($term->tid);
+      $d++;
+    }
+    $output .= $d . " topics deleted. (all languages)<br>";
+  }
+
+  // Load topic JSON data
+  $url = variable_get('querytool_import_url');
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_URL, $url);
+  $result = curl_exec($ch);
+  curl_close($ch);
+
+  // converts to JSON and sort topics on datatype to be sure main topics are loaded first and in right order: "1", "1.01", "1.02" etc...
+  $topics = json_decode($result);
+  $topics = $topics->data;
+  usort($topics, function ($a, $b) {
+    return strcmp($a->datatype, $b->datatype);
+  });
+
+  // Get taxonomy topics tree and create index to compare with new topics
+  $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
+  $tree = taxonomy_get_tree($vid, 0, null, true);
+  $indexed_terms = array();
+  $indexed_terms_ru = array();
+
+  foreach ($tree as $term) {
+    if ($term->language == "en") {
+      $indexed_terms[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
+    } else if ($term->language == "ru") {
+      $indexed_terms_ru[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
+    }
+  }
+
+  $mainterm_ids = array();
+  $mainterm_ids_ru = array();
+
+  $new = 0;
+  $updated = 0;
+  $weight = 0;
+
+  // loop through topics, insert new ones, updates exsiting ones
+  foreach ($topics as $topic) { //foreach element in $arr
+
+    if (!array_key_exists($topic->topic_id, $indexed_terms)) {
+      $output .= $topic->datatype . " - " . $topic->topic_name . " inserted<br>";
+
+      $years = array_keys(get_object_vars($topic->byear_counts));
+      $years_str = implode(",", $years);
+
+      $term = (object)array(
+        'name' => $topic->topic_name,
+        'vid' => $vid,
+        'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
+        'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))),
+        'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
+        'field_available_years' => array(LANGUAGE_NONE => array(array('value' => $years_str))),
+        'weight' => $weight,
+        'language' => 'en'
+      );
+
+      $term_ru = (object)array(
+        'name' => $topic->topic_name_rus,
+        'vid' => $vid,
+        'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
+        'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))),
+        'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
+        'field_available_years' => array(LANGUAGE_NONE => array(array('value' => $years_str))),
+        'weight' => $weight + 100,
+        'language' => 'ru'
+      );
+
+      $new++;
+
+      if ($topic->topic_root !== 0) {
+        $term->parent = $mainterm_ids[$topic->topic_root];
+        $term_ru->parent = $mainterm_ids_ru[$topic->topic_root];
+      }
+
+    } else {
+
+      $term = $indexed_terms[$topic->topic_id];
+      $term->name = $topic->topic_name;
+
+      $term_ru = $indexed_terms_ru[$topic->topic_id];
+      $term_ru->name = $topic->topic_name_rus;
+
+      $output .= $topic->datatype . " - " . $topic->topic_name . " updated<br>";
+
+      $updated++;
     }
 
-    // Load topic JSON data
-    $url = variable_get('querytool_import_url');
+    taxonomy_term_save($term);
+    taxonomy_term_save($term_ru);
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $result = curl_exec($ch);
-    curl_close($ch);
-
-    // converts to JSON and sort topics on datatype to be sure main topics are loaded first and in right order: "1", "1.01", "1.02" etc...
-    $topics = json_decode($result);
-    $topics = $topics->data;
-    usort($topics, function ($a, $b) {
-        return strcmp($a->datatype, $b->datatype);
-    });
-
-    // Get taxonomy topics tree and create index to compare with new topics
-    $vid = taxonomy_vocabulary_machine_name_load('topics')->vid;
-    $tree = taxonomy_get_tree($vid, 0, null, true);
-    $indexed_terms = array();
-    $indexed_terms_ru = array();
-
-    foreach ($tree as $term) {
-        if ($term->language == "en") {
-            $indexed_terms[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
-        } else if ($term->language == "ru") {
-            $indexed_terms_ru[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
-        }
+    if ($topic->topic_root == 0) {
+      $mainterm_ids[$topic->datatype] = $term->tid;
+      $mainterm_ids_ru[$topic->datatype] = $term_ru->tid;
     }
 
-    $mainterm_ids = array();
-    $mainterm_ids_ru = array();
+    $weight++;
+  }
+  $output .= $new . " terms inserted. ";
 
-    $new = 0;
-    $updated = 0;
-    $weight = 0;
-
-    // loop through topics, insert new ones, updates exsiting ones
-    foreach ($topics as $topic) { //foreach element in $arr
-
-        if (!array_key_exists($topic->topic_id, $indexed_terms)) {
-            $output .= $topic->datatype . " - " . $topic->topic_name . " inserted<br>";
-
-            $years = array_keys(get_object_vars($topic->byear_counts));
-            $years_str = implode(",",$years);
-
-            $term = (object)array(
-                'name' => $topic->topic_name,
-                'vid' => $vid,
-                'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
-                'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))),
-                'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
-                'field_available_years' => array(LANGUAGE_NONE => array(array('value' => $years_str))),
-                'weight' => $weight,
-                'language' => 'en'
-            );
-
-            $term_ru = (object)array(
-                'name' => $topic->topic_name_rus,
-                'vid' => $vid,
-                'field_datatype' => array(LANGUAGE_NONE => array(array('value' => $topic->datatype))),
-                'field_topic_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_id))),
-                'field_root_id' => array(LANGUAGE_NONE => array(array('value' => $topic->topic_root))),
-                'field_available_years' => array(LANGUAGE_NONE => array(array('value' => $years_str))),
-                'weight' => $weight + 100,
-                'language' => 'ru'
-            );
-
-            $new++;
-
-            if ($topic->topic_root !== 0) {
-                $term->parent = $mainterm_ids[$topic->topic_root];
-                $term_ru->parent = $mainterm_ids_ru[$topic->topic_root];
-            }
-
-        } else {
-
-            $term = $indexed_terms[$topic->topic_id];
-            $term->name = $topic->topic_name;
-
-            $term_ru = $indexed_terms_ru[$topic->topic_id];
-            $term_ru->name = $topic->topic_name_rus;
-
-            $output .= $topic->datatype . " - " . $topic->topic_name . " updated<br>";
-
-            $updated++;
-        }
-
-        taxonomy_term_save($term);
-        taxonomy_term_save($term_ru);
-
-        if ($topic->topic_root == 0) {
-            $mainterm_ids[$topic->datatype] = $term->tid;
-            $mainterm_ids_ru[$topic->datatype] = $term_ru->tid;
-        }
-
-        $weight++;
-    }
-    $output .= $new . " terms inserted. ";
-
-    return $output;
+  return $output;
 }

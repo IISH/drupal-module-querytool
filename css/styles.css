@@ -106,7 +106,7 @@ h2{
 }
 
 #classmodeselection label{
-    float:left;
+   // float:left;
     margin-right:4px;
 }
 
@@ -566,8 +566,10 @@ padding-right:0;
 .step{
     display: none;
 }
-.step:nth-child(1){
-    display: block;
+
+
+
+#init-loader{
+    margin:20px;
+    margin-top:0;
 }
-
-

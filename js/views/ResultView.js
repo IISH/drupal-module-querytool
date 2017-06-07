@@ -50,7 +50,11 @@ var ResultView = Backbone.Model.extend({
                     $("#preview-message").html(polyglot.t("nopreview"));
                 }
                 $("#preview").show();
-                that.setDownloadBtn(response.url);
+
+                //get only filename or key to pass to license page
+                var aUrl = response.url.split("?");
+                var url = "/download/"+aUrl[1];
+                that.setDownloadBtn(url);
             }
         });
     },

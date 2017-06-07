@@ -23,14 +23,14 @@ version 1.0
 
 # Todo
 
-
+None yet.
 
 # Filename matching patterns for documentation
 
 Documentation files wil be loaded from the API.
 
 Block with general documentation will match files with the name containing  one of these strings:
-"Introduction", "regions", "GovReports"
+"Introduction", "regions", "GovReports", "Classification" (But not "Modern_Classification")
 Files wile appear in this order.
 
 Blocks with documentation per topic will match files containing the datatype main number, followed by a dash and two zeroes ( x_00 ):

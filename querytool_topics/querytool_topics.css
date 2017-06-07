@@ -177,6 +177,8 @@
     border-bottom:1px solid #CCC;
     padding: 4px 8px;
     width:30px;
+    height: 16px;
+
     text-align: center;
 }
 
@@ -247,4 +249,43 @@ form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbo
 
 .catalog-checkbox.unavailabe{
     color: #AAA;
+}
+
+
+.catalog-checkbox{
+    position: relative;
+}
+.catalog-checkbox input {
+
+    position: absolute;
+    top:7px;
+    left:35%;
+    z-index: -9999;
+    opacity: 0.01;
+    z-index: 10;
+}
+
+.catalog-checkbox span {
+    pointer-events : none;
+    width: 18px;
+    height: 18px;
+
+    z-index: 9;
+    position: absolute;
+    top:4px;
+    left:35%;
+    background: transparent  url(/sites/all/modules/custom/querytool/img/check-off.png) no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.catalog-checkbox input:checked + span {
+    background: transparent  url(/sites/all/modules/custom/querytool/img/check-on.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fieldset-wrapper .form-wrapper:nth-child(1) .catalog-checkbox{
+
+    height: 18px;
+    margin-top:8px;
 }

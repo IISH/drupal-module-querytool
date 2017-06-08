@@ -211,6 +211,7 @@ form#querytool-catalog-form fieldset{
 }
 form#querytool-catalog-form fieldset#edit-topic-all{
     margin-top:0;
+    z-index: 20;
 }
 
 

@@ -28,7 +28,6 @@ var resultView;
 function init(){
 
     $("#init-loader").html("<img src='"+qtSettings.moduleurl+"/img/loader.gif'>");
-    //$("#init-loader").html("<img src='"+qtSettings.moduleurl+"/img/loader.gif'>");
 
     var modes = [{
         name:"historical",
@@ -55,7 +54,6 @@ function init(){
     documentation = new Documentation();
     documentation.getFiles();
 
-   // build();
 }
 
 

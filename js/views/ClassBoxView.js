@@ -318,7 +318,6 @@ var ClassBoxView = Backbone.View.extend({
                     modeSwitch.hide();
                 }
             }
-
         });
 
         topicSelector.update();

@@ -18,6 +18,19 @@ var Classification = Backbone.Model.extend({
             }
         });
 
+/*
+        $.each($(".topic [data-level=1]] .checked-depth"),function(e){
+
+            $(this).closest(".topic").attr("id");
+
+            /*
+            if($(this).find(".checked").length >0 ){
+                indexes.push($(this).attr("id"));
+            }
+            */
+    //    });
+
+
         querySettings.updateClasses(indexes);
         this.getClassesByIndex(indexes);
     },
@@ -191,7 +204,6 @@ var Classification = Backbone.Model.extend({
 
 
         function loopChildren(obj,depth,parent_id) {
-            var result = "";
             var childs = new Array();
             depth++;
 

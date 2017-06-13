@@ -53,7 +53,6 @@ var QuerySettings = Backbone.Model.extend({
 
     getYearsUrl:function(){
         var url = this.get("baseUrl")+"years?datatype="+this.get("datatype");
-       // var url = this.get("moduleUrl")+"/json-example/years.json";
         return url;
     },
 

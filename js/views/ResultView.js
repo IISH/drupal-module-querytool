@@ -52,8 +52,10 @@ var ResultView = Backbone.Model.extend({
                 $("#preview").show();
 
                 //get only filename or key to pass to license page
-                var aUrl = response.url.split("?");
-                var url = "/download/"+aUrl[1];
+                var aUrl = response.url.split("=");
+                var url = "/download/download/key/"+aUrl[1];
+                console.debug(response.url);
+                console.debug(url);
                 if(querySettings.get("lang") == "ru"){
                     url ="/ru"+ url;
                 }
@@ -79,7 +81,6 @@ var ResultView = Backbone.Model.extend({
             for (var property in record.path) {
                 if (record.path ) {
                     path += record.path[property];
-
                 }
             }
             var depth = Object.keys(record.path).length;

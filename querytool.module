@@ -80,10 +80,10 @@ function querytool_menu()
     'weight' => 2
   );
 
-  $items['download/%'] = array(
+  $items['download/%/%/%'] = array(
     'title' => 'Download',
     'page callback' => 'querytool_download_page',
-    'page arguments' => array(1),
+    'page arguments' => array(1,2,3),
     'access arguments' => array('access content'),
 
   );
@@ -94,50 +94,21 @@ function querytool_menu()
 /**
  *  Download form for confirmation.
  */
-function querytool_download_page($filename)
+function querytool_download_page($endpoint,$key,$filename)
 {
   global $language;
 
-  $url = variable_get('querytool_download_url') . "?" . $filename;
+  $url = variable_get('querytool_api_url') .$endpoint."?".$key."=".$filename;
   $license = variable_get('querytool_lisenceinfo_' . $language->language);
 
   $decline_msg = t("You have accept in order to download the data.");
-  $agree = l('Accept',$url,array("attributes"=>array('class' => 'btn btn-primary')));
-  $decline = l('Decline','#',array("attributes"=>array('class' => 'disagree', 'onClick' => 'alert("'.$decline_msg.'")')));
+  $agree = l('Accept',$url, array("attributes"=>array('class' => 'btn btn-primary')));
+  $decline = l('Decline',null,array("attributes"=>array('class' => 'disagree', 'onClick' => 'alert("'.$decline_msg.'")')));
 
   return $license['value'].$agree.$decline;
 }
 
 
-/**
- *  Download form for confirmation.
- */
-function querytool_download_form($form, &$form_state, $filename)
-{
-  global $language;
-
-  $url = variable_get('querytool_download_url') . "?" . $filename;
-  $license = variable_get('querytool_lisenceinfo_' . $language->language);
-
-  $form['#action'] = $url;
-  $form['#method'] = 'post';
-  $form['license']['#markup'] = $license['value'];
-  $form['license']['#markup'] .= "<a href='" . $url . "'>" . $url . "</a>";
-  /*
-  $form['download'] = array(
-    '#type' => 'button',
-    '#attributes' => array('onClick' => 'window.open(\"' . $url . '\")', 'class' => array('btn', 'btn-primary')),
-    '#value' => t('Download'),
-  );
-
-   $form['submit_button'] = array(
-     '#type' => 'submit',
-     '#value' => t('I agree'),
-   );
- */
-  return $form;
-
-}
 
 /**
  *  Shows the Query Tool Interface

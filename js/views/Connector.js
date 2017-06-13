@@ -1,7 +1,6 @@
 /**
  *   Draws connection shape between boxes
  */
-
 var Connector = Backbone.View.extend({
 
     render:function(){

@@ -11,7 +11,6 @@ var ResultView = Backbone.Model.extend({
         var postData = {"classification":   querySettings.get("classmode"),
                         "datatype":         querySettings.get("datatype"),
                         "language":         querySettings.get("lang"),
-                      //  "path":             classification.get("selectedClasses")};
                         "path":             classification.getSelection()};
 
         // add year
@@ -59,6 +58,7 @@ var ResultView = Backbone.Model.extend({
                 if(querySettings.get("lang") == "ru"){
                     url ="/ru"+ url;
                 }
+
                 that.setDownloadBtn(url);
             }
         });

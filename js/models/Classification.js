@@ -10,29 +10,26 @@ var Classification = Backbone.Model.extend({
 
     updateSelection:function(){
         var indexes = new Array();
-        var path = "";
-        var that = this;
+        var index;
+
         $.each($(".topic"),function(e){
+
             if($(this).find(".checked").length >0 ){
-                indexes.push($(this).attr("id"));
+                index = {};
+                index.id = $(this).attr("id");
+                indexes.push(index);
+
+            }else if($(this).attr("data-level") == '4' && $(this).find(".checked-depth").length >0 ){
+                index = {};
+                index.id = $(this).attr("id");
+                index.subclasses = true;
+                indexes.push(index);
             }
         });
 
-/*
-        $.each($(".topic [data-level=1]] .checked-depth"),function(e){
-
-            $(this).closest(".topic").attr("id");
-
-            /*
-            if($(this).find(".checked").length >0 ){
-                indexes.push($(this).attr("id"));
-            }
-            */
-    //    });
-
 
         querySettings.updateClasses(indexes);
-        this.getClassesByIndex(indexes);
+        this.setClassesByIndex(indexes);
     },
 
     getTopicPath:function(id,path){
@@ -46,14 +43,14 @@ var Classification = Backbone.Model.extend({
         return path;
     },
 
-    getClassesByIndex:function(indexes){
+    setClassesByIndex:function(indexes){
 
         var selectedClasses = new Array();
         var that = this;
         var classMode = querySettings.get("classmode");
 
-        _.each(indexes, function(index) {
-            var selectedClass =  that.indexedClasses[index];
+        _.each(indexes, function(indexItem, key) {
+            var selectedClass =  that.indexedClasses[indexItem.id];
             var sClass = {};
 
             if(classMode == "historical"){
@@ -61,23 +58,29 @@ var Classification = Backbone.Model.extend({
                 if(selectedClass.level>=2) sClass.histclass2 = selectedClass.c2;
                 if(selectedClass.level>=3) sClass.histclass3 = selectedClass.c3;
                 if(selectedClass.level>=4) sClass.histclass4 = selectedClass.c4;
-                if(selectedClass.level>=5) sClass.histclass5 = selectedClass.c5;
-                if(selectedClass.level>=6) sClass.histclass6 = selectedClass.c6;
+             //   if(selectedClass.level>=5) sClass.histclass5 = selectedClass.c5;
+              //  if(selectedClass.level>=6) sClass.histclass6 = selectedClass.c6;
 
             }else{
                 sClass.class1 = selectedClass.c1;
                 if(selectedClass.level>=2) sClass.class2 = selectedClass.c2;
                 if(selectedClass.level>=3) sClass.class3 = selectedClass.c3;
                 if(selectedClass.level>=4) sClass.class4 = selectedClass.c4;
-                if(selectedClass.level>=5) sClass.class5 = selectedClass.c5;
-                if(selectedClass.level>=6) sClass.class6 = selectedClass.c6;
-
+            //    if(selectedClass.level>=5) sClass.class5 = selectedClass.c5;
+            //    if(selectedClass.level>=6) sClass.class6 = selectedClass.c6;
             }
+
+            if(indexItem.subclasses){
+                sClass.subclasses = true;
+            }
+
             selectedClasses.push(sClass);
         });
 
+
         this.set({selectedClasses:selectedClasses});
     },
+
 
     /**
      * returns selected classes
@@ -118,7 +121,7 @@ var Classification = Backbone.Model.extend({
         // init data
         var indexedClasses = new Array();
         var levelData = new Array();
-        for(var j =0;j<=6;j++){
+        for(var j =0;j<5;j++){
             levelData[j] = new Array();
         }
 
@@ -129,7 +132,7 @@ var Classification = Backbone.Model.extend({
         var classes = r.attributes;
         var classMode = querySettings.get("classmode");
 
-        var class1,class2,class3,class4,class5,class6;
+        var class1,class2,class3,class4,class5;//,class6;
         var invalidMessageDisplayed = false;
 
         _.each(classes, function(hclass) {
@@ -140,14 +143,14 @@ var Classification = Backbone.Model.extend({
                 class3  = hclass.class3;
                 class4  = hclass.class4;
                 class5  = hclass.class5;
-                class6  = hclass.class6;
+           //     class6  = hclass.class6;
             }else{
                 class1  = hclass.histclass1;
                 class2  = hclass.histclass2;
                 class3  = hclass.histclass3;
                 class4  = hclass.histclass4;
                 class5  = hclass.histclass5;
-                class6  = hclass.histclass6;
+            //    class6  = hclass.histclass6;
             }
 
             newClass = {};
@@ -186,26 +189,34 @@ var Classification = Backbone.Model.extend({
                 classIndex++;
             }
 
+
+            // add level 5 to determine if there has to ba an aggregation option (double checkbox)
             if(class5 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5]){
                 newClass = {"name": class5, "parent":"null", children:{}, class_id: classIndex, level:5, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5};
                 Tree.children[class1].children[class2].children[class3].children[class4].children[class5] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
-
+            /*
             if(class6 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6]){
                 newClass = {"name": class6, "parent":"null", children:{}, class_id: classIndex, level:6, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].children[class5].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5,c6:class6};
                 Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6] = newClass;
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
-
+            */
         });
+
+        var maxInterfaceDepth = 5; // starts with 0
 
 
         function loopChildren(obj,depth,parent_id) {
             var childs = new Array();
             depth++;
+
+            if(depth > maxInterfaceDepth){
+                return childs;
+            }
 
             $.each(obj, function(k, v) {
                 v.parent_id = parent_id;

@@ -59,7 +59,7 @@ var TopicSelector = Backbone.View.extend({
     },
 
     update:function(){
-        var checked =  $("#topicselection .checked").length;
+        var checked =  $("#topicselection .checked").length + $("#topicselection #ts-box-4 .checked-depth").length;
         if(checked > 0){
             $("#btn-generate").show();
 

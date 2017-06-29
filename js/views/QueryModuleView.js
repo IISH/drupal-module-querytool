@@ -20,6 +20,9 @@ var QueryModuleView = Backbone.View.extend({
         });
     },
 
+    hideNextSteps:function(stepnum){
+        $("#main > div.step:nth-child(n+"+stepnum+")").hide();
+    },
     showNextStep:function(stepnum){
         $("#main > div.step:nth-child("+stepnum+")").show();
         this.updateSteps();

@@ -491,7 +491,7 @@ li:focus{
 
 
 #preview{
-    display:none;
+    /*display:none;*/
 }
 
 #preview table{

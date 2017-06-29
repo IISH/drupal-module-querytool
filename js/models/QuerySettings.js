@@ -103,6 +103,7 @@ var QuerySettings = Backbone.Model.extend({
             querySettingsView.update();
             regionSelector.render();
             classification.getClasses();
+            queryModuleView.hideNextSteps(3)
             queryModuleView.showNextStep(3);
             topicSelector.setDocumentationLink();
         }else{

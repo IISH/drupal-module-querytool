@@ -7,6 +7,7 @@
  *   qtSettings is an object render by the module.
  *
 */
+
 var debugmode = qtSettings.debugmode;
 
 // defined in init()
@@ -25,6 +26,9 @@ var resultView;
 
 
 function init(){
+
+    $("#init-loader").html("<img src='"+qtSettings.moduleurl+"/img/loader.gif'>");
+
     var modes = [{
         name:"historical",
         label: polyglot.t("historical"),
@@ -37,6 +41,7 @@ function init(){
 
     querySettings = new QuerySettings();
     querySettings.set({baseUrl: qtSettings.baseurl});
+    querySettings.set({downloadUrl: qtSettings.downloadurl});
     querySettings.set({moduleUrl: qtSettings.moduleurl});
     querySettings.set({classModes:modes});
     querySettings.set({datatype:qtSettings.datatype});
@@ -48,6 +53,7 @@ function init(){
     /* Getting documentation */
     documentation = new Documentation();
     documentation.getFiles();
+
 }
 
 
@@ -55,6 +61,8 @@ function init(){
  * called by Documentation
  */
 function build(){
+
+    $("#init-loader").html("");
 
     queryModuleView = new QueryModuleView();
     queryModuleView.updateSteps();

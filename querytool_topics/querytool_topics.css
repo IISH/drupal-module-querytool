@@ -133,10 +133,10 @@
 
 .topic-doc{
     margin:10px;
-    padding:0 20px 20px 20px;
+    padding:0 10px 10px 10px;
     float:left;
     min-height:150px;
-    min-width:26%;
+    min-width:28%;
     -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
@@ -144,4 +144,148 @@
 
 .topic-doc h3{
     text-transform: uppercase;
+    margin-top:10px;
+}
+
+
+
+/* CATALOG */
+
+.catalog-topic{
+    clear:both;
+    width:300px;
+    border-bottom:2px solid #CCC;
+
+    padding: 4px 8px;
+    font-weight: bold;
+    float:left;
+    margin-top:10px;
+}
+
+.catalog-subtopic{
+    clear:both;
+    float:left;
+    width:300px;
+    border-bottom:1px solid #CCC;
+    padding: 4px 8px;
+}
+
+.catalog-checkbox{
+    float:left;
+    border-bottom:1px solid #CCC;
+    padding: 4px 8px;
+    width:30px;
+    height: 16px;
+
+    text-align: center;
+}
+
+.catalog-checkbox.topic{
+    margin-top:10px;
+}
+
+
+.catalog-checkbox .form-item{
+   margin:0
+}
+
+form#querytool-catalog-form{
+    margin-top:40px;
+}
+form#querytool-catalog-form .form-submit{
+    clear:both;
+    display: block;
+    float:left;
+    margin-top:20px;
+}
+
+form#querytool-catalog-form fieldset{
+   border:none;
+    margin-top:20px;
+
+    background-color: #FFF;
+    -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
+    width:560px;
+}
+form#querytool-catalog-form fieldset#edit-topic-all{
+    margin-top:0;
+    z-index: 20;
+}
+
+
+form#querytool-catalog-form fieldset fieldset{
+    border:none;
+    margin:0px;
+    padding:0;
+    background-color: #FFF;
+    -webkit-box-shadow:  none;
+    -moz-box-shadow: none;
+    box-shadow:  none;
+    width:auto;
+}
+
+
+form#querytool-catalog-form fieldset:first-child .catalog-checkbox{
+    border-bottom:2px solid #CCC;
+}
+form#querytool-catalog-form fieldset#edit-topic-all  .catalog-checkbox{
+    border-bottom:0;
+}
+
+
+form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-subtopic{
+    border-bottom: 0;
+}
+form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbox{
+    border-bottom: 0;
+}
+
+#edit-topic-all .catalog-topic{
+    border-bottom:0;
+    z-index: 12;
+}
+
+.catalog-checkbox.unavailabe{
+    color: #AAA;
+}
+
+
+.catalog-checkbox{
+    position: relative;
+}
+.catalog-checkbox input {
+
+    position: absolute;
+    top:7px;
+    left:35%;
+    z-index: -9999;
+    opacity: 0.01;
+    z-index: 10;
+}
+
+.catalog-checkbox span {
+    pointer-events : none;
+    width: 18px;
+    height: 18px;
+
+    z-index: 9;
+    position: absolute;
+    top:4px;
+    left:35%;
+    background: transparent  url(/sites/all/modules/custom/querytool/img/check-off.png) no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.catalog-checkbox input:checked + span {
+    background: transparent  url(/sites/all/modules/custom/querytool/img/check-on.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fieldset-wrapper .form-wrapper:nth-child(1) .catalog-checkbox{
+
+    height: 18px;
+    margin-top:8px;
 }

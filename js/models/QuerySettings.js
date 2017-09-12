@@ -3,6 +3,7 @@ var QuerySettings = Backbone.Model.extend({
     defaults: {
         moduleUrl:"",
         baseUrl:"",
+        downloadUrl:"",
         years:[],
         classModes:[],
         datatype:"",
@@ -15,6 +16,10 @@ var QuerySettings = Backbone.Model.extend({
 
     getBaseUrl:function(){
         return this.baseUrl;
+    },
+
+    getDownloadUrl:function(){
+        return this.downloadUrl;
     },
 
     getClassUrl:function(){
@@ -38,7 +43,6 @@ var QuerySettings = Backbone.Model.extend({
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
-        //console.debug(url);
         return url;
     },
     getRegionsUrl:function(){
@@ -49,7 +53,6 @@ var QuerySettings = Backbone.Model.extend({
 
     getYearsUrl:function(){
         var url = this.get("baseUrl")+"years?datatype="+this.get("datatype");
-       // var url = this.get("moduleUrl")+"/json-example/years.json";
         return url;
     },
 
@@ -100,6 +103,7 @@ var QuerySettings = Backbone.Model.extend({
             querySettingsView.update();
             regionSelector.render();
             classification.getClasses();
+            queryModuleView.hideNextSteps(3)
             queryModuleView.showNextStep(3);
             topicSelector.setDocumentationLink();
         }else{

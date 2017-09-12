@@ -2,6 +2,10 @@ html{
    overflow-x: hidden;
 }
 
+body{
+    padding-top: 80px;
+}
+
 #header{
     position: fixed;
     top:0;
@@ -54,7 +58,7 @@ h1{
 }
 
 #main{
-    margin-top:80px;
+
 }
 
 h2{
@@ -102,7 +106,7 @@ h2{
 }
 
 #classmodeselection label{
-    float:left;
+   // float:left;
     margin-right:4px;
 }
 
@@ -279,6 +283,13 @@ Other color scheme
 .checked-depth{
     background: transparent url('../img/check-all-on.png') no-repeat; /* 80% 50% */
     background-size:100% 100% ;
+}
+
+.checkbox-spacer{
+    display: inline-block;
+    width: 18px;
+    height: 10px;
+    float: left;
 }
 
 
@@ -480,7 +491,7 @@ li:focus{
 
 
 #preview{
-    display:none;
+    /*display:none;*/
 }
 
 #preview table{
@@ -555,6 +566,10 @@ padding-right:0;
 .step{
     display: none;
 }
-.step:nth-child(1){
-    display: block;
+
+
+
+#init-loader{
+    margin:20px;
+    margin-top:0;
 }

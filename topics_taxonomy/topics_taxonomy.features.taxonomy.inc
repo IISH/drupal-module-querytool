@@ -13,7 +13,7 @@ function topics_taxonomy_taxonomy_default_vocabularies() {
       'name' => 'Topics',
       'machine_name' => 'topics',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'language' => 'und',

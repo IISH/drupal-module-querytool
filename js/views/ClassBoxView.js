@@ -98,7 +98,6 @@ var ClassBoxView = Backbone.View.extend({
                 $("#connector"+ this.level).hide();
             }
 
-
             currentFocussed = topic;
         }
         this.updateCouter();
@@ -139,14 +138,15 @@ var ClassBoxView = Backbone.View.extend({
 
             if($(cb).hasClass("checked")){
                 $("#"+ tsboxId +" .topic-list  .checkbox:visible").not(".checked").click();
-               // $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
+                var totalVisible = $("#"+ tsboxId +" .topic-list .topic:visible").length;
+
+                // Show a warning when not all items have a single checkbox (happens when indicator is a dot, see template)
+                if($("#"+ tsboxId +" .topic-list  .checkbox:visible").length < totalVisible) {
+                    alert("some indicator(s) cannot be aggregated at this level");
+                }
             }else{
-
                 $("#"+ tsboxId +" .topic-list  .checkbox.checked:visible").click();
-             //   $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
             }
-
-
 
         }
         that.updateCouter();
@@ -197,20 +197,14 @@ var ClassBoxView = Backbone.View.extend({
 
         if($(cb).hasClass("all")){
             if($(cb).hasClass("checked-depth")){
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
-             //   $("#"+ tsboxId +" .topic-list .checkbox:visible").addClass('checked');
                 $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").not(".checked-depth").click();
             }else{
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").hasClass(".checked-depth").click();
                 $("#"+ tsboxId +" .topic-list .checkbox-depth:visible.checked-depth").click();
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").addClass("checked-depth"); // select all first to prevent invert selections
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
             }
         }
 
         that.updateCouter();
         classification.updateSelection();
-
         that.checkParentDepthBox(topicId);
     },
 
@@ -233,6 +227,7 @@ var ClassBoxView = Backbone.View.extend({
             }
         });
     },
+
     deselectNextDepth:function(topicId){
         var that = this;
         $(".topic[data-parent='"+topicId+"'] .checkbox").removeClass("checked");
@@ -323,7 +318,6 @@ var ClassBoxView = Backbone.View.extend({
                     modeSwitch.hide();
                 }
             }
-
         });
 
         topicSelector.update();

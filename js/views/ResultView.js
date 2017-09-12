@@ -11,7 +11,6 @@ var ResultView = Backbone.Model.extend({
         var postData = {"classification":   querySettings.get("classmode"),
                         "datatype":         querySettings.get("datatype"),
                         "language":         querySettings.get("lang"),
-                      //  "path":             classification.get("selectedClasses")};
                         "path":             classification.getSelection()};
 
         // add year
@@ -43,14 +42,25 @@ var ResultView = Backbone.Model.extend({
             dataType: 'json',
             success: function (response) {
 
-                $("#preview-message").html("");
                 if(querySettings.get("classmode") == "historical"){
                     that.structuringData(response.data);
                 }else{
                     $("#preview-message").html(polyglot.t("nopreview"));
                 }
                 $("#preview").show();
-                that.setDownloadBtn(response.url);
+
+                //get only filename or key to pass to license page
+                var aUrl = response.url.split("=");
+                var url = "/download/download/key/"+aUrl[1];
+
+                if(querySettings.get("lang") == "ru"){
+                    url ="/ru"+ url;
+                }
+
+                that.setDownloadBtn(url);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $("#preview-message").html("Oops, something went wrong, please try again or contact us.");
             }
         });
     },
@@ -72,7 +82,6 @@ var ResultView = Backbone.Model.extend({
             for (var property in record.path) {
                 if (record.path ) {
                     path += record.path[property];
-
                 }
             }
             var depth = Object.keys(record.path).length;
@@ -145,6 +154,9 @@ var ResultView = Backbone.Model.extend({
             // min-width:100px; width: "+(100/regions.length) +"%;
             table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
         });
+        if(regions.length == 0){
+            table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title=''>You haven't selected any regions.</span></div></th>";
+        }
 
         table += "</tr></thead><tbody>";
 
@@ -163,7 +175,13 @@ var ResultView = Backbone.Model.extend({
                 table += "<td class='zui-sticky-col' style='width: "+classWidth+"px; left:"+((l-1)*classWidth)+"px;'> <span data-toggle='tooltip' title='"+classname+"'>"+classname  + "</span></td>";
             }
 
-            table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + item.value_unit +  "</td>";
+            if(item.value_unit){
+                unit = item.value_unit;
+            }else{
+                unit = "&nbsp;";
+            }
+
+            table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + unit +  " </td>";
             table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + item.territories.length +  " / " +regions.length+ "</td>";
 
             // output regions
@@ -177,12 +195,15 @@ var ResultView = Backbone.Model.extend({
                     table += "<td>" + item_region.value +  "</td>";
                 }
             });
+            if(regions.length == 0){
+                table += "<td>no data.</td>";
+            }
 
             table += "</tr>"
         });
 
         table += "</tbody></table>"
-
+        $("#preview-message").html("");
         $("#preview .zui-scroller").html(table);
 
         $('[data-toggle="tooltip"]').tooltip({

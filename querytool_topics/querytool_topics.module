@@ -380,7 +380,6 @@ function querytool_catalog_form($form, &$form_state)
           );
         }
       }
-
     }
   }
 

@@ -113,8 +113,6 @@ var Classification = Backbone.Model.extend({
      */
     structure :function(r){
 
-        var that= this;
-
         // assign every new class and 'subclasses' an unique index to identify.
         var classIndex = 1;
 

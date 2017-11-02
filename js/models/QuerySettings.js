@@ -76,6 +76,7 @@ var QuerySettings = Backbone.Model.extend({
                 this.set({base_year:''});
                 $("#yearselection").hide();
                 $("#regionselection").hide();
+                $("#result").hide();
                 queryModuleView.showNextStep(4);
                 classification.getClasses();
 

@@ -14,15 +14,19 @@ var ResultView = Backbone.Model.extend({
                         "path":             classification.getSelection()};
 
         // add year
-        if( querySettings.get("classmode") == "historical" && querySettings.get("base_year") !== ""){
-            postData.base_year = querySettings.get("base_year");
+        if( querySettings.get("classmode") == "historical"){
+
+            if( querySettings.get("base_year") !== ""){
+                postData.base_year = querySettings.get("base_year");
+            }
+
+            // add regions
+            var regions = querySettings.get("regions");
+            if(regions !== null && regions.length >0){
+                postData.ter_code = regions;
+            }
         }
 
-        // add regions
-        var regions = querySettings.get("regions");
-        if(regions !== null && regions.length >0){
-            postData.ter_code = regions;
-        }
 
         // reset
         $("#preview-message").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
@@ -89,7 +93,7 @@ var ResultView = Backbone.Model.extend({
 
             key = "class"+that.hashCode(path);
 
-            region = {ter_code:record.ter_code, territory:record.territory, value:record.total};
+            region = {ter_code:record.ter_code, territory:record.territory, value:  record.total};
 
             if(sData[key]){
                 sData[key].territories.push(region);

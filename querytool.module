@@ -166,7 +166,7 @@ function querytool_preprocess_html(&$variables, $hook)
     $variables['theme_hook_suggestions'][] = 'querytool_html';
 
     $path = drupal_get_path('module', 'querytool');
-
+    $variables["querytool_path"] = $path;
     drupal_add_css($path . "/css/bootstrap.min.css", array('group' => 999, 'weight' => 996));
     drupal_add_css($path . "/css/styles.css", array('group' => 999, 'weight' => 997));
     drupal_add_css($path . "/css/tree.css", array('group' => 999, 'weight' => 998));
@@ -269,7 +269,6 @@ function _querytool_get_term($datatype, $lang)
   $result = $query->execute();
   $values = array_values($result["taxonomy_term"]);
   $first = array_shift($values);
-
   $term = taxonomy_term_load($first->tid);
 
   return $term;
@@ -304,6 +303,7 @@ function _querytool_get_files($root_id)
   }
   return $files;
 }
+
 
 /**
  * Implements hook_preprocess_page().

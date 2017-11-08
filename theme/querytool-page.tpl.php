@@ -124,7 +124,6 @@
     </div>
   </div>
 
-
   <div id="result" class="step">
     <h2><span class="stepnum"></span>
       <label></label>
@@ -140,7 +139,6 @@
     <button id="btn-download" type="button" class="btn btn-primary"></button>
       <script>$('#btn-download').html(polyglot.t("download"));</script>
   </div>
-
 
 </div>
 

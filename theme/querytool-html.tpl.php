@@ -41,6 +41,23 @@
   <?php endif; ?>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
+<div class="hidden">
+    <script type="text/javascript">
+        <!--//--><![CDATA[//><!--
+        var images = new Array()
+        function preload() {
+            for (i = 0; i < preload.arguments.length; i++) {
+                images[i] = new Image()
+                images[i].src = preload.arguments[i]
+            }
+        }
+        preload(
+            "<?php print $querytool_path; ?>/img/check-all-on.png",
+            "<?php print $querytool_path; ?>/img/check-on.png"
+        )
+        //--><!]]>
+    </script>
+</div>
 <?php if ($skip_link_text && $skip_link_anchor): ?>
 
 <?php endif; ?>

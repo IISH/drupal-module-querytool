@@ -18,7 +18,6 @@ var Classification = Backbone.Model.extend({
                 index = {};
                 index.id = $(this).attr("id");
                 indexes.push(index);
-
             }else if($(this).attr("data-level") == '4' && $(this).find(".checked-depth").length >0 ){
                 index = {};
                 index.id = $(this).attr("id");
@@ -236,7 +235,6 @@ var Classification = Backbone.Model.extend({
         Tree.children = loopChildren(Tree.children,0,0);
         var datatreeview = new DataTreeView();
         datatreeview.render(Tree);
-
 
         this.indexedClasses = indexedClasses;
         this.classListCollection = new ClassListCollection();

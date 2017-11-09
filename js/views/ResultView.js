@@ -38,12 +38,10 @@ var ResultView = Backbone.Model.extend({
             url: postUrl,
             method: 'post',
             data: JSON.stringify(postData),
-
+            dataType: 'json',
             beforeSend: function (request) {
                 request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
             },
-
-            dataType: 'json',
             success: function (response) {
 
                 if(querySettings.get("classmode") == "historical"){
@@ -64,7 +62,7 @@ var ResultView = Backbone.Model.extend({
                 that.setDownloadBtn(url);
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                $("#preview-message").html("Oops, something went wrong, please try again or contact us.");
+                $("#preview-message").html("Sorry, something went wrong, please try again or contact us.");
             }
         });
     },
@@ -113,7 +111,7 @@ var ResultView = Backbone.Model.extend({
 
         });
 
-        regions = _.sortBy(regions, function(o) { return o.ter_code; })
+        //regions = _.sortBy(regions, function(o) { return o.ter_code; })
 
         this.buildTable(sData, maxDepth);
     },
@@ -130,7 +128,7 @@ var ResultView = Backbone.Model.extend({
     buildTable:function(data, maxDepth){
 
         // getting all selected regions
-        regions = regionSelector.getSelectedRegions();
+        var regions = regionSelector.getSelectedRegions();
 
         var hHeadingWidth = 800;
         var levels = maxDepth;
@@ -139,8 +137,8 @@ var ResultView = Backbone.Model.extend({
         var regionScrollerWidth = $(window).width() *.95-hHeadingWidth;
         var dataWidth = $(window).width() -hHeadingWidth;
         $("#preview .zui-scroller").css("width",dataWidth);
-        if(regions.length<6){
-            var regionWidth = regionScrollerWidth-20/regions.length;
+        if(regions.length<=6){
+            var regionWidth = (regionScrollerWidth-80)/regions.length;
         }else{
             var regionWidth = 100;
         }

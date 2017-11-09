@@ -52,8 +52,8 @@
             }
         }
         preload(
-            "<?php print $querytool_path; ?>/img/check-all-on.png",
-            "<?php print $querytool_path; ?>/img/check-on.png"
+            "/<?php print $querytool_path; ?>/img/check-all-on.png"
+            ,"/<?php print $querytool_path; ?>/img/check-on.png"
         )
         //--><!]]>
     </script>

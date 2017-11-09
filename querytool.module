@@ -212,6 +212,9 @@ function querytool_preprocess_html(&$variables, $hook)
     global $language;
 
     $lang_code = arg(2);
+    if(!isset($lang_code)){
+      $lang_code = $language->language;
+    }
 
     if ($language->language !== $lang_code) {
       $lang = $lang_code;
@@ -227,6 +230,7 @@ function querytool_preprocess_html(&$variables, $hook)
     }
 
     // get term
+
     $datatype = str_replace("-", ".", arg(1));
     $term = _querytool_get_term($datatype, $lang);
     $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
@@ -235,14 +239,20 @@ function querytool_preprocess_html(&$variables, $hook)
     $variables['title'] = $datatype . " - " . $term->name;
 
     $settings = array("lang" => $lang,
-      "datatype" => $datatype,
-      "baseurl" => variable_get('querytool_api_url'),
-      "downloadurl" => variable_get('querytool_download_url'),
-      "moduleurl" => "/" . drupal_get_path("module", "querytool"),
-      "debugmode" => variable_get('querytool_debugmode'),
-      "confirmmode" => variable_get('querytool_confirmmode'),
-      "files" => $files,
-    );
+                      "datatype" => $datatype,
+                      "baseurl" => variable_get('querytool_api_url'),
+                      "downloadurl" => variable_get('querytool_download_url'),
+                      "moduleurl" => "/" . drupal_get_path("module", "querytool"),
+                      "debugmode" => variable_get('querytool_debugmode'),
+                      "confirmmode" => variable_get('querytool_confirmmode'),
+                      "files" => $files,
+                      );
+
+    $classmode = arg(3);
+    if(isset($classmode)){
+      $settings["classmode"] = $classmode;
+    }
+
 
     $js_settings = json_encode($settings);
 
@@ -267,6 +277,7 @@ function _querytool_get_term($datatype, $lang)
     ->fieldCondition('field_datatype', 'value', $datatype, '=')
     ->propertyCondition('language', $lang, '=');
   $result = $query->execute();
+
   $values = array_values($result["taxonomy_term"]);
   $first = array_shift($values);
   $term = taxonomy_term_load($first->tid);

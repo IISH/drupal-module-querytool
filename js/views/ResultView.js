@@ -79,6 +79,7 @@ var ResultView = Backbone.Model.extend({
         var region;
         var maxDepth = 1;
         var that = this;
+
         _.each(data, function(record) {
 
             // key
@@ -93,14 +94,15 @@ var ResultView = Backbone.Model.extend({
 
             key = "class"+that.hashCode(path);
 
-            region = {ter_code:record.ter_code, territory:record.territory, value:  record.total};
-
-            if(sData[key]){
-                sData[key].territories.push(region);
-            }else{
+            if(!sData[key]){
                 newRecord = record;
-                newRecord.territories = [region];
+                newRecord.territories = [];
                 sData[key] = newRecord;
+            }
+
+            if(record.ter_code !== ""){
+                region = {ter_code:record.ter_code, territory:record.territory, value:  record.total};
+                sData[key].territories.push(region);
             }
 
             var fw = _.findWhere(regions, {ter_code:record.ter_code});
@@ -120,6 +122,7 @@ var ResultView = Backbone.Model.extend({
     hashCode: function(s){
         return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
     },
+
 
     /**
      *  Builds preview table
@@ -155,7 +158,6 @@ var ResultView = Backbone.Model.extend({
 
         // adding regions
         _.each(regions, function(region) {
-            // min-width:100px; width: "+(100/regions.length) +"%;
             table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
         });
         if(regions.length == 0){

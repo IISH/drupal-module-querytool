@@ -13,7 +13,7 @@ var Connector = Backbone.View.extend({
         var nScrollTop = $("#topic-list-1").scrollTop();
         var nWidth = 40;
 
-        if( pos.top){
+        if(pos && pos.top){
             var nStartY = pos.top  - $("#topic-list-1").position().top-1;
         }else{
             var nStartY = 0;

@@ -134,6 +134,9 @@ div.mode{
 .topic-list-container{
     height:250px;
     margin-bottom: 10px;
+
+    height: 268px;
+    overflow: hidden;
 }
 .topic-list{
 
@@ -184,9 +187,6 @@ div.mode{
 
 .topic.focus{
     background-color: rgba(255,0,0,.1);
-}
-
-.tooltip.in {
 }
 
 .tooltip.top .tooltip-inner {
@@ -268,7 +268,7 @@ div.mode{
 
 .connector{
     background-size:100% 100%;
-    width:40px;
+    width:39px;
     float:right;
     height: 100%;
     opacity: .2;

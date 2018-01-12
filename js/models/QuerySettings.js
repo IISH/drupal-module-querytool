@@ -81,7 +81,9 @@ var QuerySettings = Backbone.Model.extend({
                 classification.getClasses();
 
              }else if(value == "historical"){
+                $("#regionselection").hide();
                 $("#topicselection").hide();
+                $("#result").hide();
                 queryModuleView.showNextStep(2);
                 classification.reset();
             }

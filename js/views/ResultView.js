@@ -34,14 +34,15 @@ var ResultView = Backbone.Model.extend({
         $("#preview .zui-scroller").hide();
 
         // send request
-        $.ajax({
+        $.post({
             url: postUrl,
-            method: 'post',
+            type: 'post',
             data: JSON.stringify(postData),
             dataType: 'json',
-            beforeSend: function (request) {
-                request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-            },
+            contentType: "application/json",
+            // beforeSend: function (request) {
+            //     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+            // },
             success: function (response) {
 
                 if(querySettings.get("classmode") == "historical"){
@@ -185,8 +186,13 @@ var ResultView = Backbone.Model.extend({
                 unit = "&nbsp;";
             }
 
+            var not_na = 0;
+            $.each(item.territories,function(index){
+              if(item.territories[index].value !== 'na') not_na++;
+            })
+
             table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + unit +  " </td>";
-            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + item.territories.length +  " / " +regions.length+ "</td>";
+            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + not_na +  " / " +regions.length+ "</td>";
 
             // output regions
             _.each(regions, function(region) {

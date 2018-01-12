@@ -60,8 +60,8 @@ var ClassBoxView = Backbone.View.extend({
 
     events:{
         'mouseenter .topic'         :'omeTopicLink',
-        'mouseenter .topic-list'    :'disableWindowScroll',
-        'mouseleave .topic-list'    :'enableWindowScroll',
+       // 'mouseenter .topic-list'    :'disableWindowScroll',
+       // 'mouseleave .topic-list'    :'enableWindowScroll',
         'click .checkbox'           :'toggleCheckbox',
         'click .checkbox-depth'     :'toggleCheckboxDepth',
         'click .switch'             :'ocSwitch'

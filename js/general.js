@@ -7,6 +7,11 @@ function htmlDecode(value){
     return $('<div/>').html(value).text();
 }
 
+function strEscape(value){
+    return value.replace(/["']/g, "&#39;");
+}
+
+
 
 $.fn.serializeObject = function() {
     var o = {};

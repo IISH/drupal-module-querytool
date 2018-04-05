@@ -173,7 +173,7 @@ var ResultView = Backbone.Model.extend({
             for(var l = 1; l <= levels; l++){
 
                 if(item.path["histclass"+l]){
-                   var classname = item.path["histclass"+l];
+                   var classname = strEscape(item.path["histclass"+l]);
                 }else{
                     var classname = "&nbsp;";
                 }

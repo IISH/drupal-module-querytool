@@ -32,11 +32,13 @@ function init(){
     var modes = [{
         name:"historical",
         label: polyglot.t("historical"),
-        description: polyglot.t("historical-description")
+        description: polyglot.t("historical-description"),
+        enabled: true
     },{
         name:"modern",
         label: polyglot.t("modern"),
-        description: polyglot.t("modern-description")
+        description: polyglot.t("modern-description"),
+        enabled: true
     }];
 
     querySettings = new QuerySettings();

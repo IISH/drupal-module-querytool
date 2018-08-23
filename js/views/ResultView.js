@@ -137,13 +137,17 @@ var ResultView = Backbone.Model.extend({
         var table = "";
         var regionScrollerWidth = $(window).width() *.95-hHeadingWidth;
         var dataWidth = $(window).width() -hHeadingWidth;
-        $("#preview .zui-scroller").css("width",dataWidth);
-        if(regions.length<=6){
-            var regionWidth = (regionScrollerWidth-80)/regions.length;
+        var regionWidth = Math.floor((regionScrollerWidth)/regions.length);
+
+        if(regionWidth<100){
+            regionWidth = 100;
+            $("#preview .zui-scroller").addClass('scrollBar');
         }else{
-            var regionWidth = 100;
+            $("#preview .zui-scroller").removeClass('scrollBar');
         }
 
+
+        $("#preview .zui-scroller").css("width",dataWidth);
         table += "<table class='zui-table'>";
         table += "<thead><tr>"
 
@@ -157,10 +161,10 @@ var ResultView = Backbone.Model.extend({
 
         // adding regions
         _.each(regions, function(region) {
-            table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
+            table += "<th class='region' width='"+regionWidth+"'><div class='region-holder'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
         });
         if(regions.length == 0){
-            table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title=''>You haven't selected any regions.</span></div></th>";
+            table += "<th class='region'><div class='region-holder'><span data-toggle='tooltip' title=''>You haven't selected any regions.</span></div></th>";
         }
 
         table += "</tr></thead><tbody>";
@@ -202,7 +206,7 @@ var ResultView = Backbone.Model.extend({
                 if(item_region  == undefined || item_region.value=="."){
                     table += "<td> "+polyglot.t("na")+" </td>";
                 }else{
-                    table += "<td>" + item_region.value +  "</td>";
+                    table += "<td><span data-toggle='tooltip' title='"+   item_region.value +"'>" + item_region.value + "</span></td>";
                 }
             });
             if(regions.length == 0){

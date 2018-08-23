@@ -11,11 +11,38 @@ var ClassModeSelector = Backbone.View.extend({
         var modes = this.model.get("classModes");
         var that = this;
         var vars = {modes:modes};
-        var tp   = $('#classmode-template').html();
-        var template = _.template(tp);
-        var html = template(vars);
-        that.$el.append(html);
-        this.setDocumentationLink();
+        var url = querySettings.getYearsUrl()+"&classification=modern";
+
+        $.getJSON(url,function(data){
+
+            var modernAvailable = false;
+
+            $.each( data, function( key, val ) {
+               if(val !== 0) modernAvailable = true;
+            });
+
+            if(!modernAvailable){
+                $.each( modes, function( key, mode ) {
+                    if(mode.name == 'modern'){
+                        mode.label = polyglot.t("no-modern");
+                        mode.description = '';
+                        mode.enabled = false;
+                    }
+                });
+            }
+
+            var tp   = $('#classmode-template').html();
+            var template = _.template(tp);
+            var html = template(vars);
+            that.$el.append(html);
+            that.setDocumentationLink();
+
+            // when modern is disabled, select historical
+            if(!modernAvailable) {
+                $("input#classmode:not([disabled])").first().attr('checked','checked');
+                that.onModeSelect();
+            }
+        })
     },
 
     setDocumentationLink:function(){

@@ -523,3 +523,7 @@ li:focus{
     margin:20px;
     margin-top:0;
 }
+
+.disabled{
+    opacity: .6;
+}

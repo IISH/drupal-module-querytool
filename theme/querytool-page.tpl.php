@@ -149,7 +149,11 @@
 <script type="text/template" id="classmode-template">
     <% _.each(modes, function(mode) { %>
     <div class="mode">
-        <input type="radio" name="classmode" <%= (mode.attr) %> id="classmode" value="<%= htmlEncode(mode.name) %>"> <label><%= htmlEncode(mode.label) %></label> - <span class="description"><%= htmlEncode(mode.description) %></span>
+        <% if(!mode.enabled){ %>
+        <input type="radio" name="classmode" id="classmode" value="<%= htmlEncode(mode.name) %>" disabled> <label class="disabled"><%= htmlEncode(mode.label) %></label></span>
+        <% }else{ %>
+        <input type="radio" name="classmode" id="classmode" value="<%= htmlEncode(mode.name) %>"> <label><%= htmlEncode(mode.label) %></label> - <span class="description"><%= htmlEncode(mode.description) %></span>
+        <% } %>
     </div>
     <% }); %>
 </script>

@@ -443,6 +443,7 @@ li:focus{
 
 #preview table{
     width: 100%;
+    table-layout: fixed;
 }
 
 .zui-table {
@@ -458,6 +459,7 @@ li:focus{
     text-align: left;
     text-shadow: 1px 1px 1px #fff;
     white-space: nowrap;
+    overflow: hidden;
 }
 .zui-table tbody td {
     border-bottom: solid 1px #CCC;
@@ -465,6 +467,7 @@ li:focus{
     padding: 10px;
     text-shadow: 1px 1px 1px #fff;
     white-space: nowrap;
+    overflow: hidden;
 }
 .zui-wrapper {
     position: relative;
@@ -472,12 +475,16 @@ li:focus{
 .zui-scroller {
     display: none;
     margin-left: 800px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: visible;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
     width: 50%;
     border:1px solid #CCC;
     border:3px solid #CCC;
+}
+.zui-scroller.scrollBar {
+    overflow-x:scroll;
+    padding-bottom: 15px;
 }
 
 .zui-table .zui-sticky-col {

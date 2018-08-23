@@ -295,6 +295,7 @@ function querytool_catalog_form($form, &$form_state)
   }
 
 
+
   foreach ($tree as $term) {
 
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];

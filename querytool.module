@@ -297,8 +297,11 @@ function _querytool_get_files($root_id)
     ->entityCondition('bundle', 'topics')
     ->fieldCondition('field_datatype', 'value', $root_id, '=')
     ->propertyCondition('language', $language->language, '=');
-
   $result = $query->execute();
+
+  if(empty($result["taxonomy_term"])){
+    return array();
+  }
   $values = array_values($result["taxonomy_term"]);
   $first = array_shift($values);
 

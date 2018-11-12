@@ -91,7 +91,8 @@ var ResultView = Backbone.Model.extend({
             var depth = Object.keys(record.path).length;
             if(depth > maxDepth) maxDepth = depth;
 
-            key = "class"+that.hashCode(path);
+            // create unique key with unit distinction
+            key = "class"+that.hashCode(path)+record.value_unit;
 
             if(!sData[key]){
                 newRecord = record;

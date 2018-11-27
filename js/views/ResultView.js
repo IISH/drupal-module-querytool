@@ -68,7 +68,9 @@ var ResultView = Backbone.Model.extend({
         });
     },
 
-
+    /**
+     * Prepares JSON data to view in table
+     */
     structuringData: function(data){
 
         var sData = {};
@@ -100,6 +102,7 @@ var ResultView = Backbone.Model.extend({
                 sData[key] = newRecord;
             }
 
+            // TODO: loop regions in record
             if(record.ter_code !== ""){
                 region = {ter_code:record.ter_code, territory:record.territory, value:  record.total};
                 sData[key].territories.push(region);
@@ -191,13 +194,14 @@ var ResultView = Backbone.Model.extend({
                 unit = "&nbsp;";
             }
 
-            var not_na = 0;
+            // check how many territories have a valid number (so not 'na' or 'cannot aggregate at this level')
+            var validCount = 0;
             $.each(item.territories,function(index){
-              if(item.territories[index].value !== 'na') not_na++;
+              if(typeof item.territories[index].value == 'number') validCount++;
             })
 
             table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + unit +  " </td>";
-            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + not_na +  " / " +regions.length+ "</td>";
+            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + validCount +  " / " +regions.length+ "</td>";
 
             // output regions
             _.each(regions, function(region) {

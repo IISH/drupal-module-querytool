@@ -98,7 +98,7 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Field: Taxonomy term: Enable */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_enable']['id'] = 'field_enable';
   $handler->display->display_options['fields']['field_enable']['table'] = 'field_data_field_enable';
   $handler->display->display_options['fields']['field_enable']['field'] = 'field_enable';

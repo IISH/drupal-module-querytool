@@ -230,7 +230,8 @@ function querytool_topics()
       if ($term->description !== null) $pages .= $term->description . "<br><br><br>";
 
     } else {
-      $enable = (count($term->field_enable) > 0 && $term->field_enable[LANGUAGE_NONE][0]['value'] == 1);
+
+      $enable = !empty($term->field_available_years[LANGUAGE_NONE][0]['value']) && (empty($term->field_disable[LANGUAGE_NONE][0]['value']));
 
       if ($enable) {
         $link = "<a href='#' onClick='openWindow(\"/querytool\",\"" . str_replace(".", "-", $datatype) . "/" . $language->language . "\");' >" . $term->name . " </a>";
@@ -354,6 +355,7 @@ function querytool_catalog_form($form, &$form_state)
       );
 
       $topic_years = isset($term->field_available_years[LANGUAGE_NONE][0]['value']) ? $term->field_available_years[LANGUAGE_NONE][0]['value'] : '';
+      $disable = !(empty($term->field_disable[LANGUAGE_NONE][0]['value']));
 
       foreach ($years as $year) {
 
@@ -365,7 +367,7 @@ function querytool_catalog_form($form, &$form_state)
         );
 
 
-        if (strpos($topic_years, $year) === false) {
+        if (strpos($topic_years, $year) === false || $disable) {
           $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
             '#type' => "markup",
             '#markup' => 'x',
@@ -477,7 +479,14 @@ function querytool_topics_import_form_submit($form, &$form_state)
     $form_state['rebuild'] = TRUE;
     $form_state['storage']['values'] = $form_state['values'];
   } else {
-    $output = querytool_topics_import($form, $form_state);
+
+    if($form_state['storage']['values']['delete_topics'] == 1){
+      $delete = true;
+    }else{
+      $delete = false;
+    }
+
+    $output = querytool_topics_import($delete);
     drupal_set_message($output);
   }
 }
@@ -486,12 +495,12 @@ function querytool_topics_import_form_submit($form, &$form_state)
 /**
  *   Imports topics, updates existing based on topic_id and adds new ones
  */
-function querytool_topics_import($form, $form_state)
+function querytool_topics_import($delete = FALSE, $output_terms = true)
 {
 
   $output = "";
 
-  if ($form_state['storage']['values']['delete_topics'] == 1) {
+  if ($delete) {
     $d = 0;
     $vocabulary = taxonomy_vocabulary_machine_name_load('topics');
     foreach (taxonomy_get_tree($vocabulary->vid) as $term) {
@@ -511,6 +520,10 @@ function querytool_topics_import($form, $form_state)
   $result = curl_exec ($ch);
   curl_close($ch);
 
+  // test with local file
+  //  $path = drupal_get_path('module','querytool');
+  //  $result = file_get_contents($path."/json-example/topics.json");
+
   // converts to JSON and sort topics on datatype to be sure main topics are loaded first and in right order: "1", "1.01", "1.02" etc...
   $topics = json_decode($result);
   $topics = $topics->data;
@@ -525,10 +538,11 @@ function querytool_topics_import($form, $form_state)
   $indexed_terms_ru = array();
 
   foreach ($tree as $term) {
+    $topic_id = $term->field_topic_id[LANGUAGE_NONE][0]['value'];
     if ($term->language == "en") {
-      $indexed_terms[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
+      $indexed_terms[$topic_id] = $term;
     } else if ($term->language == "ru") {
-      $indexed_terms_ru[$term->field_topic_id[LANGUAGE_NONE][0]['value']] = $term;
+      $indexed_terms_ru[$topic_id] = $term;
     }
   }
 
@@ -543,7 +557,10 @@ function querytool_topics_import($form, $form_state)
   foreach ($topics as $topic) { //foreach element in $arr
 
     if (!array_key_exists($topic->topic_id, $indexed_terms)) {
-      $output .= $topic->datatype . " - " . $topic->topic_name . " inserted<br>";
+
+      if($output_terms){
+        $output .= $topic->datatype . " - " . $topic->topic_name . " inserted<br>";
+      }
 
       $years = array_keys(get_object_vars($topic->byear_counts));
       $years_str = implode(",", $years);
@@ -572,7 +589,7 @@ function querytool_topics_import($form, $form_state)
 
       $new++;
 
-      if ($topic->topic_root !== 0) {
+      if ($topic->topic_root !== '0') {
         $term->parent = $mainterm_ids[$topic->topic_root];
         $term_ru->parent = $mainterm_ids_ru[$topic->topic_root];
       }
@@ -585,7 +602,9 @@ function querytool_topics_import($form, $form_state)
       $term_ru = $indexed_terms_ru[$topic->topic_id];
       $term_ru->name = $topic->topic_name_rus;
 
-      $output .= $topic->datatype . " - " . $topic->topic_name . " updated<br>";
+      if($output_terms){
+        $output .= $topic->datatype . " - " . $topic->topic_name . " updated<br>";
+      }
 
       $updated++;
     }
@@ -601,6 +620,16 @@ function querytool_topics_import($form, $form_state)
     $weight++;
   }
   $output .= $new . " terms inserted. ";
+  $output .= $updated . " terms updated. ";
 
   return $output;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function querytool_topics_cron()
+{
+  $output = querytool_topics_import(false, false);
+  watchdog('querytool_topics',$output);
 }

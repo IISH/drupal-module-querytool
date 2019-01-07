@@ -135,6 +135,7 @@
         <div class="zui-scroller"></div>
       </div>
     </div>
+      <div id="loadtime"></div>
 
     <button id="btn-download" type="button" class="btn btn-primary"></button>
       <script>$('#btn-download').html(polyglot.t("download"));</script>

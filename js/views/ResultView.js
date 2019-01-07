@@ -1,17 +1,23 @@
 var ResultView = Backbone.Model.extend({
 
     el:"#preview",
+    loadTime: 0,
 
     render:function(){
         $("#result").show();
         $("html, body").animate({ scrollTop: $("#result").offset().top + 100  }, 1000);
 
+        var testMode = false;
         var that = this;
         var postUrl = querySettings.get("baseUrl")+"aggregation";
         var postData = {"classification":   querySettings.get("classmode"),
                         "datatype":         querySettings.get("datatype"),
                         "language":         querySettings.get("lang"),
                         "path":             classification.getSelection()};
+
+        if(testMode){
+            postUrl = "/sites/all/modules/custom/querytool/json-example/resultview-new-data-structure.json";
+        }
 
         // add year
         if( querySettings.get("classmode") == "historical"){
@@ -27,11 +33,12 @@ var ResultView = Backbone.Model.extend({
             }
         }
 
-
         // reset
         $("#preview-message").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
         $("#preview .zui-scroller").html("");
         $("#preview .zui-scroller").hide();
+
+        loadTime = performance.now();
 
         // send request
         $.post({
@@ -80,6 +87,7 @@ var ResultView = Backbone.Model.extend({
         var region;
         var maxDepth = 1;
         var that = this;
+        var fw;
 
         _.each(data, function(record) {
 
@@ -102,21 +110,35 @@ var ResultView = Backbone.Model.extend({
                 sData[key] = newRecord;
             }
 
-            // TODO: loop regions in record
+            // Supports old data structure with only 1 ter_code in record
             if(record.ter_code !== ""){
                 region = {ter_code:record.ter_code, territory:record.territory, value:  record.total};
                 sData[key].territories.push(region);
+
+                // fw = _.findWhere(regions, {ter_code:record.ter_code});
+                // if(fw == undefined ){
+                //     regions.push(region);
+                // }
             }
 
-            var fw = _.findWhere(regions, {ter_code:record.ter_code});
+            // New datastructure provides multiple ter_codes in record
+            if(record.ter_codes !== undefined){
 
-            if(fw  == undefined ){
-                regions.push(region);
+                for(var i = 0; i < record.ter_codes.length; i++) {
+                    var regionItem = record.ter_codes[i];
+                    region = {ter_code:regionItem.ter_code, value:  regionItem.total};
+                    sData[key].territories.push(region);
+
+                    // fw = _.findWhere(regions, {ter_code:regionItem.ter_code});
+                    // if(fw  == undefined ){
+                    //     regions.push(region);
+                    // }
+                }
             }
 
         });
 
-        //regions = _.sortBy(regions, function(o) { return o.ter_code; })
+        // regions = _.sortBy(regions, function(o) { return o.ter_code; })
 
         this.buildTable(sData, maxDepth);
     },
@@ -221,7 +243,8 @@ var ResultView = Backbone.Model.extend({
             table += "</tr>"
         });
 
-        table += "</tbody></table>"
+        table += "</tbody></table>";
+
         $("#preview-message").html("");
         $("#preview .zui-scroller").html(table);
 
@@ -231,6 +254,8 @@ var ResultView = Backbone.Model.extend({
 
         $("#preview .zui-scroller").css("width",regionScrollerWidth);
         $("#preview .zui-scroller").show();
+
+        this.showLoadTime();
     },
 
     /**
@@ -245,6 +270,22 @@ var ResultView = Backbone.Model.extend({
             });
         }else{
             $('#btn-download').hide();
+        }
+    },
+
+    /**
+     * Show load time for logged in users
+     */
+     showLoadTime:function(){
+        if(qtSettings.user_logged_in == true){
+            loadTime = Math.round(performance.now() - loadTime);
+            loadTimeDisplay = '';
+            if(loadTime < 1000){
+                loadTimeDisplay = (loadTime) + ' milliseconds';
+            }else{
+                loadTimeDisplay = (Math.round(loadTime/100)/10)  + ' seconds';
+            }
+            $("#loadtime").html('Generated in '+ loadTimeDisplay );
         }
     }
 });

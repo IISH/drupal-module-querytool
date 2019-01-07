@@ -246,6 +246,7 @@ function querytool_preprocess_html(&$variables, $hook)
                       "debugmode" => variable_get('querytool_debugmode'),
                       "confirmmode" => variable_get('querytool_confirmmode'),
                       "files" => $files,
+                      "user_logged_in" => user_is_logged_in(),
                       );
 
     $classmode = arg(3);

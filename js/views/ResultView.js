@@ -19,6 +19,13 @@ var ResultView = Backbone.Model.extend({
             postUrl = "/sites/all/modules/custom/querytool/json-example/resultview-new-data-structure.json";
         }
 
+        // add data structure mode
+        if($("input[name='use-old-datamode']:checked").length > 0){
+            postData.Method = "old";
+        }else{
+            postData.Method = "new";
+        }
+
         // add year
         if( querySettings.get("classmode") == "historical"){
 

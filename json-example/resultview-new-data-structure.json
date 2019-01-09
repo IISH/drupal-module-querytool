@@ -1,0 +1,81 @@
+{
+  "language": "en",
+  "classification": "historical",
+  "datatype": "1.03",
+  "base_year": "1858",
+  "url": "http://ristat-new.sandbox.socialhistoryservices.org/service/download?key=en-h-1.03-1858-36fbaac7-6f8c-48a3-822f-f3796f6d5778",
+  "data": [
+    {
+      "path": {
+        "histclass1": "in towns, minor towns, settlements, suburbs, etc.",
+        "histclass2": "<5000 inhabitants",
+        "histclass3": "Female"
+      },
+      "value_unit": "persons",
+      "ter_codes" : [
+        {
+          "ter_code": "1858_38",
+          "total": 10827.0
+        },
+        {
+          "ter_code": "1858_59",
+          "total": 7141.0
+        }
+      ]
+    },
+    {
+      "path": {
+        "histclass1": "in towns, minor towns, settlements, suburbs, etc.",
+        "histclass2": "<5000 inhabitants",
+        "histclass3": "Male"
+      },
+      "value_unit": "persons",
+      "ter_codes" : [
+        {
+          "ter_code": "1858_38",
+          "total": 11941.0
+        },
+        {
+          "ter_code": "1858_59",
+          "total": 12555.0
+        }
+      ]
+    },
+    {
+      "path": {
+        "histclass1": "in towns, minor towns, settlements, suburbs, etc.",
+        "histclass2": "â‰¥5000 inhabitants",
+        "histclass3": "Female"
+      },
+      "value_unit": "persons",
+      "ter_codes" : [
+        {
+          "ter_code": "1858_38",
+          "total": 163201.0
+        },
+        {
+          "ter_code": "1858_59",
+          "total": 200075.0
+        }
+      ]
+    },
+    {
+      "path": {
+        "histclass1": "in towns, minor towns, settlements, suburbs, etc.",
+        "histclass2": "â‰¥5000 inhabitants",
+        "histclass3": "Male"
+      },
+      "value_unit": "persons",
+      "ter_codes" : [
+        {
+          "ter_code": "1858_38",
+          "total": 261340.0
+        },
+        {
+          "ter_code": "1858_59",
+          "total": 391442.0
+        }
+      ]
+    }
+  ]
+}

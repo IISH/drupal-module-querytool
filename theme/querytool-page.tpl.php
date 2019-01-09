@@ -104,6 +104,8 @@
     <div id="topic-lists"></div>
 
     <div style="clear:both;"></div>
+      <div id="datamode"><input type="checkbox" name="use-old-datamode"> Use old datastructure for preview</div>
+      <div style="clear:both;"></div>
     <button id="btn-generate" type="button" class="btn btn-primary"></button>
       <script>$('#btn-generate').html(polyglot.t("generate"));</script>
 
@@ -135,6 +137,7 @@
         <div class="zui-scroller"></div>
       </div>
     </div>
+      <div id="loadtime"></div>
 
     <button id="btn-download" type="button" class="btn btn-primary"></button>
       <script>$('#btn-download').html(polyglot.t("download"));</script>

@@ -514,7 +514,6 @@ li:focus{
     overflow: hidden;
 }
 
-
 .step{
     display: none;
 }
@@ -526,4 +525,15 @@ li:focus{
 
 .disabled{
     opacity: .6;
+}
+
+#datamode{
+    background-color: #d8e5ef;
+    padding: 4px 6px;
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+#datamode:after{
+    clear:both;
 }

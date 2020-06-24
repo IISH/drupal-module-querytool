@@ -4,17 +4,11 @@ var RegionSelector = Backbone.View.extend({
     region_objects: {},
     selected_region_codes:[],
 
-    initialize:function(){
-        this.render();
-    },
-
     render:function(){
         var regions = new Regions();
-
         var that = this;
-
-
         //reset
+        $("#regionselection").show();
         this.$el.html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
 
         regions.fetch({
@@ -35,7 +29,6 @@ var RegionSelector = Backbone.View.extend({
 
                     region_objects[region.region_code] = region;
                     regions.push(region);
-
                 });
 
                 regions =  _.sortBy(regions, 'label');
@@ -46,14 +39,17 @@ var RegionSelector = Backbone.View.extend({
                 var html = template(vars);
 
                 that.$el.html(html);
+                that.setDocumentationLink();
                 that.enableMultiSelect();
-
-
                 that.region_objects = region_objects;
-
             }
         });
 
+    },
+
+    setDocumentationLink:function(){
+        matched_files = documentation.getLinks("regions");
+        $("#regionselection .documentation").html(matched_files);
     },
 
 
@@ -112,14 +108,13 @@ var RegionSelector = Backbone.View.extend({
     saveRegions:function(){
         this.selected_region_codes = $('#regions').val();
         querySettings.updateRegions($('#regions').val())
-
     },
 
     getSelectedRegions:function(){
 
-       var selectedRegions = [];
-       var selectedRegion_codes = this.selected_region_codes;
-       var allRegions = this.region_objects;
+        var selectedRegions = [];
+        var selectedRegion_codes = this.selected_region_codes;
+        var allRegions = this.region_objects;
 
         _.each(allRegions, function(region) {
             if(selectedRegion_codes.indexOf(region.region_code) !== -1) selectedRegions.push(region);

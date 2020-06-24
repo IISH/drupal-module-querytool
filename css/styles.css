@@ -2,6 +2,10 @@ html{
    overflow-x: hidden;
 }
 
+body{
+    padding-top: 80px;
+}
+
 #header{
     position: fixed;
     top:0;
@@ -18,7 +22,6 @@ html{
     background-color: #bedaef;
     background-color: #d8e5ef;
     z-index: 699;
-    /* display: none; */
 }
 
 #header img{
@@ -53,9 +56,6 @@ h1{
     text-transform: uppercase;
 }
 
-#main{
-    margin-top:80px;
-}
 
 h2{
     color: #f50a41;
@@ -68,16 +68,7 @@ h2{
     margin:20px;
     border-left: 4px solid rgba(255, 16, 67, 0.2);
     padding: 0px 20px 20px 20px;
-
-    /*border:1px solid #EEE;*/
     clear: both;
-    /*background-color:rgba(0, 0, 0, 0.03) ;*/
-
-/*
-    -webkit-box-shadow:  8px 8px 6px  rgba(0,0,0,0.4);
-    -moz-box-shadow:  8px 8px 6px rgba(0,0,0,0.4);
-    box-shadow:  3px 3px 6px rgba(0,0,0,0.3);
-*/
 }
 
 .question-mark{
@@ -85,10 +76,14 @@ h2{
     margin-left: 4px;
     font-size: 14px;
 }
-/*** YEAR SELECTION ***/
-#yearselection{
 
+
+/*** YEAR SELECTION ***/
+.year-unavailable{
+    padding: 11px 15px;
+    color:#AAA;
 }
+
 
 /*** CLASS MODE SELECTION ***/
 #classmodeselection input{
@@ -98,7 +93,6 @@ h2{
 }
 
 #classmodeselection label{
-    float:left;
     margin-right:4px;
 }
 
@@ -122,9 +116,6 @@ div.mode{
 }
 
 
-#topic-lists{
-}
-
 .selected-info{
     color: #AAA;
     margin-bottom:10px;
@@ -136,18 +127,23 @@ div.mode{
     font-size: 13px;
 }
 
+.ts-box:nth-child(n+5){
+  display:none;
+}
 
 .topic-list-container{
     height:250px;
     margin-bottom: 10px;
+
+    height: 268px;
+    overflow: hidden;
 }
 .topic-list{
-  /* padding: 10px;*/
 
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    border:1px solid #BBB;
+
     -webkit-box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
     -moz-box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
     box-shadow: inset 2px 2px 26px -10px rgba(0,0,0,0.5);
@@ -168,25 +164,6 @@ div.mode{
 .ts-box:nth-child(5) .topic-list{
     background-color: rgba(27,90,133,0.5);
 }
-
-/*
-Other color scheme
-.ts-box:nth-child(1) .topic-list{
-    background-color: rgba(21,153,154,0.3);
-}
-.ts-box:nth-child(2) .topic-list{
-    background-color: rgba(19,144,100,0.3);
-}
-.ts-box:nth-child(3) .topic-list{
-    background-color: rgba(36,62,149,0.3);
-}
-.ts-box:nth-child(4) .topic-list{
-    background-color: rgba(27,90,133,0.3);
-}
-.ts-box:nth-child(5) .topic-list{
-    background-color: rgba(27,90,133,0.3);
-}
-*/
 
 .nosubitems{
     display: none;
@@ -210,9 +187,6 @@ Other color scheme
 
 .topic.focus{
     background-color: rgba(255,0,0,.1);
-}
-
-.tooltip.in {
 }
 
 .tooltip.top .tooltip-inner {
@@ -275,6 +249,13 @@ Other color scheme
     background-size:100% 100% ;
 }
 
+.checkbox-spacer{
+    display: inline-block;
+    width: 18px;
+    height: 10px;
+    float: left;
+}
+
 
 .all div{
     float:left;
@@ -287,7 +268,7 @@ Other color scheme
 
 .connector{
     background-size:100% 100%;
-    width:40px;
+    width:39px;
     float:right;
     height: 100%;
     opacity: .2;
@@ -302,7 +283,6 @@ Other color scheme
 
 span.skip-arrow{
     font-size: 24px;
-    /* padding-top: 10px; */
     line-height: 0;
     padding-top: 8px;
     display: block;
@@ -317,8 +297,6 @@ span.skip-arrow{
 .ts-box:nth-last-child(1) .accolade{
     visibility: hidden;
 }
-
-
 
 #btn-generate{
     display: none;
@@ -336,6 +314,11 @@ span.skip-arrow{
 #regionselection{
     padding-bottom: 50px;
 }
+
+#regionselection .documentation{
+    margin-bottom:6px;
+}
+
 .ms-container {
    width:50%;
     min-width: 700px;
@@ -376,16 +359,13 @@ span.skip-arrow{
 
 /* RESULT / PREVIEW */
 #preview{
-
     width:100%;
-
 }
 
 
 iframe{
     font-family: Arial;
     font-size: 11px;
-
 }
 
 iframe table{
@@ -409,7 +389,6 @@ iframe table{
 
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    /*-webkit-box-shadow: inset 0 0 16px rgba(0,0,0,0.5);*/
     background-color: rgba(0,0,0,.3);
 }
 
@@ -458,22 +437,13 @@ li:focus{
     padding-top:2px;
 }
 
-
-
-
 .g_C{
     height:2em;
-
-}
-
-
-
-#preview{
-    display:none;
 }
 
 #preview table{
     width: 100%;
+    table-layout: fixed;
 }
 
 .zui-table {
@@ -489,6 +459,7 @@ li:focus{
     text-align: left;
     text-shadow: 1px 1px 1px #fff;
     white-space: nowrap;
+    overflow: hidden;
 }
 .zui-table tbody td {
     border-bottom: solid 1px #CCC;
@@ -496,6 +467,7 @@ li:focus{
     padding: 10px;
     text-shadow: 1px 1px 1px #fff;
     white-space: nowrap;
+    overflow: hidden;
 }
 .zui-wrapper {
     position: relative;
@@ -503,12 +475,16 @@ li:focus{
 .zui-scroller {
     display: none;
     margin-left: 800px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: visible;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
     width: 50%;
     border:1px solid #CCC;
     border:3px solid #CCC;
+}
+.zui-scroller.scrollBar {
+    overflow-x:scroll;
+    padding-bottom: 15px;
 }
 
 .zui-table .zui-sticky-col {
@@ -528,22 +504,36 @@ li:focus{
 }
 .zui-table .zui-sticky-col{
     overflow: hidden;
-
 }
 
 .zui-table thead th.region{
-padding-right:0;
+    padding-right:0;
 }
 
 .region-holder{
-
     overflow: hidden;
 }
-
 
 .step{
     display: none;
 }
-.step:nth-child(1){
-    display: block;
+
+#init-loader{
+    margin:20px;
+    margin-top:0;
+}
+
+.disabled{
+    opacity: .6;
+}
+
+#datamode{
+    background-color: #d8e5ef;
+    padding: 4px 6px;
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+#datamode:after{
+    clear:both;
 }

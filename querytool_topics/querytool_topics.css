@@ -1,0 +1,291 @@
+.ui-tabs-vertical {
+    width: 55em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ui-tabs-vertical .ui-tabs-nav {
+    padding: .2em .1em .2em .2em;
+    float: left;
+    width: 20em;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li {
+    clear: left;
+    width: 100%;
+    border: 0;
+}
+
+.ui-widget-content {
+    border: 0;
+}
+
+.ui-widget-header {
+    border: 0px solid #aaa;
+    background: none;
+    color: #222;
+    font-weight: 700;
+}
+
+#tabs {
+    margin-top: 50px;
+}
+
+#tabs li a {
+    outline: 0;
+}
+
+#tabs h3 {
+    margin-top: 15px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: none;
+}
+
+.ui-tabs-vertical .ui-tabs-nav {
+    padding: 0;
+    float: left;
+    width: 20em;
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+    padding: 0em;
+    float: left;
+    width: 29em;
+    padding: 0 20px;
+    margin-left:20px;
+
+    -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
+
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+}
+
+.ui-tabs-vertical .ui-tabs-nav li {
+    margin: 0;
+
+    -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
+
+    margin-bottom: 20px;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+
+    margin-bottom: 20px;
+}
+
+
+.ui-tabs-vertical .ui-tabs-nav li{
+
+}
+
+/*.ui-tabs .ui-tabs-nav li.ui-tabs-active*/
+
+
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active a {
+    color: #ff0033;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a:hover {
+    text-decoration: underline;
+}
+
+.ui-state-focus:focus {
+    outline: 1px dotted white !important
+}
+
+.ui-tabs-panel {
+    min-height: 210px;
+}
+
+
+.ui-tabs-panel a:link, a:visited {
+    text-decoration: none;
+}
+
+.ui-tabs-panel a:hover {
+    text-decoration: underline;
+}
+
+.ui-tabs-panel a:active {
+    color: #ff0033;
+}
+
+.subtopic-description {
+    margin-top: 3px;
+    margin-left: 32px;
+    font-size: 12px;
+}
+
+.topic-disable {
+    color: #AAA;
+}
+
+.topic-title {
+    text-transform: uppercase;
+}
+
+.topic-doc{
+    margin:10px;
+    padding:0 10px 10px 10px;
+    float:left;
+    min-height:150px;
+    min-width:28%;
+    -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
+}
+
+.topic-doc h3{
+    text-transform: uppercase;
+    margin-top:10px;
+}
+
+
+
+/* CATALOG */
+
+.catalog-topic{
+    clear:both;
+    width:300px;
+    border-bottom:2px solid #CCC;
+
+    padding: 4px 8px;
+    font-weight: bold;
+    float:left;
+    margin-top:10px;
+}
+
+.catalog-subtopic{
+    clear:both;
+    float:left;
+    width:300px;
+    border-bottom:1px solid #CCC;
+    padding: 4px 8px;
+}
+
+.catalog-checkbox{
+    float:left;
+    border-bottom:1px solid #CCC;
+    padding: 4px 8px;
+    width:30px;
+    height: 16px;
+
+    text-align: center;
+}
+
+.catalog-checkbox.topic{
+    margin-top:10px;
+}
+
+
+.catalog-checkbox .form-item{
+   margin:0
+}
+
+form#querytool-catalog-form{
+    margin-top:40px;
+}
+form#querytool-catalog-form .form-submit{
+    clear:both;
+    display: block;
+    float:left;
+    margin-top:20px;
+}
+
+form#querytool-catalog-form fieldset{
+   border:none;
+    margin-top:20px;
+
+    background-color: #FFF;
+    -webkit-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
+    box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
+    width:560px;
+}
+form#querytool-catalog-form fieldset#edit-topic-all{
+    margin-top:0;
+    z-index: 20;
+}
+
+
+form#querytool-catalog-form fieldset fieldset{
+    border:none;
+    margin:0px;
+    padding:0;
+    background-color: #FFF;
+    -webkit-box-shadow:  none;
+    -moz-box-shadow: none;
+    box-shadow:  none;
+    width:auto;
+}
+
+
+form#querytool-catalog-form fieldset:first-child .catalog-checkbox{
+    border-bottom:2px solid #CCC;
+}
+form#querytool-catalog-form fieldset#edit-topic-all  .catalog-checkbox{
+    border-bottom:0;
+}
+
+
+form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-subtopic{
+    border-bottom: 0;
+}
+form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbox{
+    border-bottom: 0;
+}
+
+#edit-topic-all .catalog-topic{
+    border-bottom:0;
+    z-index: 12;
+}
+
+.catalog-checkbox.unavailabe{
+    color: #AAA;
+}
+
+
+.catalog-checkbox{
+    position: relative;
+}
+.catalog-checkbox input {
+
+    position: absolute;
+    top:7px;
+    left:35%;
+    z-index: -9999;
+    opacity: 0.01;
+    z-index: 10;
+}
+
+.catalog-checkbox span {
+    pointer-events : none;
+    width: 18px;
+    height: 18px;
+
+    z-index: 9;
+    position: absolute;
+    top:4px;
+    left:35%;
+    background: transparent  url(/sites/all/modules/custom/querytool/img/check-off.png) no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.catalog-checkbox input:checked + span {
+    background: transparent  url(/sites/all/modules/custom/querytool/img/check-on.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.fieldset-wrapper .form-wrapper:nth-child(1) .catalog-checkbox{
+
+    height: 18px;
+    margin-top:8px;
+}

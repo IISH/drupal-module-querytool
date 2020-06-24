@@ -7,6 +7,8 @@ var QueryModuleView = Backbone.View.extend({
     initialize:function(){
         if(querySettings.get("debugmode")){
           $(".step").show();
+        }else{
+            $(".step").first().show();
         }
     },
 
@@ -18,8 +20,11 @@ var QueryModuleView = Backbone.View.extend({
         });
     },
 
+    hideNextSteps:function(stepnum){
+        $("#main > div.step:nth-child(n+"+stepnum+")").hide();
+    },
     showNextStep:function(stepnum){
-        $(".step:nth-child("+stepnum+")").show();
+        $("#main > div.step:nth-child("+stepnum+")").show();
         this.updateSteps();
     }
 });

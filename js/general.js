@@ -7,6 +7,11 @@ function htmlDecode(value){
     return $('<div/>').html(value).text();
 }
 
+function strEscape(value){
+    return value.replace(/["']/g, "&#39;");
+}
+
+
 
 $.fn.serializeObject = function() {
     var o = {};
@@ -24,13 +29,6 @@ $.fn.serializeObject = function() {
     return o;
 };
 
-
-
-function closeWindow(){
-    if (confirm("Close Window?")) {
-        close();
-    }
-}
 
 var QueryString = function () {
     // This function is anonymous, is executed immediately and

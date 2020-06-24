@@ -1,63 +1,90 @@
 var ResultView = Backbone.Model.extend({
 
     el:"#preview",
+    loadTime: 0,
 
     render:function(){
-
+        $("#result").show();
         $("html, body").animate({ scrollTop: $("#result").offset().top + 100  }, 1000);
 
+        var testMode = false;
         var that = this;
-        var postUrl = querySettings.get("baseUrl")+"aggregate";
+        var postUrl = querySettings.get("baseUrl")+"aggregation";
         var postData = {"classification":   querySettings.get("classmode"),
                         "datatype":         querySettings.get("datatype"),
                         "language":         querySettings.get("lang"),
-                        "path":             classification.get("selectedClasses")};
+                        "path":             classification.getSelection()};
+
+        if(testMode){
+            postUrl = "/sites/all/modules/custom/querytool/json-example/resultview-new-data-structure.json";
+        }
+
+        // add data structure mode
+        if($("input[name='use-old-datamode']:checked").length > 0){
+            postData.Method = "old";
+        }else{
+            postData.Method = "new";
+        }
 
         // add year
-        if( querySettings.get("classmode") == "historical" && querySettings.get("base_year") !== ""){
-            postData.year = querySettings.get("base_year");
-        }
+        if( querySettings.get("classmode") == "historical"){
 
-        // add regions
-        var regions = querySettings.get("regions");
-        if(regions !== null && regions.length >0){
-            postData.ter_code = regions;
-        }
+            if( querySettings.get("base_year") !== ""){
+                postData.base_year = querySettings.get("base_year");
+            }
 
-        // testing:
-        // postData = {"classification":"historical","datatype":"1.01","language":"en","path":[{"histclass1":"душ женского пола"},{"histclass1":"душ мужского пола"},{"histclass1":"женщины"},{"histclass1":"мужчины"}],"ter_code":["1858_01","1897_01","1959_23_01","2002_80","1959_75_80","1897_02","2002_04","2002_22","1959_22","1858_100","1858_02","1897_03","1959_28","2002_28","1858_03","1897_04","1795_01","1959_29","2002_29","1858_90","1897_05","1858_04","1959_30","2002_30","1858_98","1897_06","1959_02","1858_87","1959_31","2002_31","1858_05","1897_07","1858_85","1897_93","1795_02","1959_32","2002_32","1959_03","1858_86","1795_14","2002_20","1959_06","2002_74","1959_74","1795_49","1858_78","1897_92","1959_75","2002_75","2002_87","1959_49_87","1959_21","2002_21","1959_05","1897_20","1858_17","1795_12","1858_84","1897_13","1897_21","1897_22","1858_19","1897_23","1858_80","1897_94","1858_81","1897_95","2002_88","1959_24_88","1897_89","1959_52","1959_22_04","1858_101","1858_102","1858_99","1858_16","1897_19","1795_13","1858_21","1897_26","1959_38","2002_38","2002_37","1959_37","2002_79","1959_27_79","1959_07","2002_07","1959_69","1959_39","2002_39","1858_23","1897_28","1959_08","1795_16","1858_24","1897_29","1959_40","2002_40","1959_41","2002_41","2002_09","1959_26_09","1959_10","1897_30","1795_15","1858_22","1897_27","1959_42","2002_42","2002_27","1959_27","1959_24_19","2002_86","1959_72_86","1897_90","1795_48","1858_76","1858_77","1897_91","1858_25","1897_31","1795_17","1858_26","1897_32","1959_43","2002_43","1795_18","1959_11","2002_11","2002_81","1959_59_81","2002_82","1959_41_82","1795_19","1858_28","1897_34","1959_44","2002_44","1858_27","1897_33","2002_23","1959_23","2002_24","1959_24","1897_35","1858_29","1897_36","1959_45","2002_45","1795_51","1858_30","1897_37","1795_21","1858_31","1897_38","1959_46","2002_46","1858_32","1897_39a","1897_39","1959_63","1959_47","2002_47","1858_33","1959_48","2002_48","1897_40","1858_35","1897_42","2002_49","1959_49","1959_12","2002_12","1897_65","1858_58","1795_22","1858_36","1897_43","1897_44","1795_23","1858_37","1959_13","2002_77","1795_24","1858_38","1897_45","1959_50","2002_50","1959_51","2002_51","2002_83","1959_29_83","1795_25","1858_39","1897_46","2002_52","1959_15","1795_27","1858_40","1897_47","1959_53","2002_53","1795_26","1858_88","1959_54","2002_54","1858_41","1897_48","1795_28","1858_44","1897_49","1959_55","2002_55","1795_29","1858_46","1897_51","1959_57","2002_57","1858_89","1858_42","1858_45","1897_50","1959_56","2002_56","1858_75","1897_86","1858_47","1897_53","1795_30","1959_58","2002_58","1795_31","1858_48","1897_54","1959_59","2002_59","1858_49","1897_55","1795_32","1897_57","1858_51","1795_33","1858_52","1897_58","1858_53","1897_59","1959_25","2002_25","1795_34","1858_54","1897_60","1959_60","2002_60","1858_50","1897_56","1858_55","1897_61","2002_01","2002_02","2002_03","2002_05","2002_06","2002_08","2002_10","2002_19","2002_13","2002_15","2002_16","1795_35","1795_36","1959_61","2002_61","1858_56","1897_62","1795_37","1959_62","2002_62","2002_14","1897_52","1959_65","2002_65","1858_57","1897_64","2002_63","1897_63","1795_39","1858_60","1897_67","1959_64","2002_64","1858_62","1897_69","1897_70","1858_79","1858_43","1858_91","1858_61","1897_68","1795_40","1858_63","1897_71","1795_41","1795_42","1858_64","1897_72","1959_67","2002_67","2002_78","1795_38","1858_59","1897_66","1959_34","1897_73","1858_65","2002_26","1959_26","1897_39b","1858_66","1897_74","2002_66","1959_66","1897_75","1795_43","1858_93","1858_94","1858_95","1858_96","1858_69","1897_78","1959_68","2002_68","1959_16","1795_20","1858_68","1897_77","1858_67","1897_76","2002_84","1959_24_84","1897_80","1858_71","1897_81a","1897_81","1858_72","1897_82","1795_45","1858_73","1897_83","1959_70","2002_70","1858_92","1897_24","1858_20","1897_25","1795_46","1858_74","1897_84","1959_71","2002_71","1897_85","1959_17","1795_44","1858_70","1897_79","2002_69","1959_72","2002_72","2002_17","1959_18","2002_18","1897_88","1795_47","1959_73","2002_73","1858_97","1897_87","2002_85","1959_38_85","1858_06","1897_08","1795_10","1858_15","1897_18","1795_03","1897_10","1858_08","1858_09","1897_11","1795_04","1858_10","1897_12","1959_33","2002_33","2002_34","1858_12","1897_15","1795_07","1795_06","1858_11","1897_14","1959_35","2002_35","1795_08","1897_16","1858_13","1959_36","2002_36","1795_05","1795_09","1858_14","1897_17","1858_07","1897_09","1959_14","1858_82","1897_96","2002_89","1959_72_89","1795_50","1897_97","1858_83","1959_76","2002_76","1858_18","1795_11","1897_81b","1858_34","1897_41"]};
+            // add regions
+            var regions = querySettings.get("regions");
+            if(regions !== null && regions.length >0){
+                postData.ter_code = regions;
+            }
+        }
 
         // reset
         $("#preview-message").html("<img src='"+querySettings.get("moduleUrl")+"/img/loader.gif'>");
         $("#preview .zui-scroller").html("");
         $("#preview .zui-scroller").hide();
 
+        loadTime = performance.now();
+
         // send request
-        $.ajax({
+        $.post({
             url: postUrl,
-            method: 'post',
+            type: 'post',
             data: JSON.stringify(postData),
-
-            beforeSend: function (request) {
-                request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-            },
-
             dataType: 'json',
+            contentType: "application/json",
+            // beforeSend: function (request) {
+            //     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+            // },
             success: function (response) {
 
-                $("#preview-message").html("");
                 if(querySettings.get("classmode") == "historical"){
                     that.structuringData(response.data);
                 }else{
                     $("#preview-message").html(polyglot.t("nopreview"));
                 }
                 $("#preview").show();
-                that.setDownloadBtn(response.url);
+
+                //get only filename or key to pass to license page
+                var aUrl = response.url.split("=");
+                var url = "/download/download/key/"+aUrl[1];
+
+                if(querySettings.get("lang") == "ru"){
+                    url ="/ru"+ url;
+                }
+
+                that.setDownloadBtn(url);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $("#preview-message").html("Sorry, something went wrong, please try again or contact us.");
             }
         });
     },
 
-
+    /**
+     * Prepares JSON data to view in table
+     */
     structuringData: function(data){
 
         var sData = {};
@@ -67,40 +94,58 @@ var ResultView = Backbone.Model.extend({
         var region;
         var maxDepth = 1;
         var that = this;
+        var fw;
+
         _.each(data, function(record) {
 
             // key
             path = "";
-            for (var property in record.histclases) {
-                if (record.histclases ) {
-                    path += record.histclases[property];
-
+            for (var property in record.path) {
+                if (record.path ) {
+                    path += record.path[property];
                 }
             }
-            var depth = Object.keys(record.histclases).length;
+            var depth = Object.keys(record.path).length;
             if(depth > maxDepth) maxDepth = depth;
 
-            key = "class"+that.hashCode(path);
+            // create unique key with unit distinction
+            key = "class"+that.hashCode(path)+record.value_unit;
 
-            region = {ter_code:record.ter_code, territory:record.territory, value:record.value};
-
-            if(sData[key]){
-                sData[key].territories.push(region);
-            }else{
+            if(!sData[key]){
                 newRecord = record;
-                newRecord.territories = [region];
+                newRecord.territories = [];
                 sData[key] = newRecord;
             }
 
-            var fw = _.findWhere(regions, {ter_code:record.ter_code});
+            // Supports old data structure with only 1 ter_code in record
+            if(record.ter_code !== ""){
+                region = {ter_code:record.ter_code, territory:record.territory, value:  record.total};
+                sData[key].territories.push(region);
 
-            if(fw  == undefined ){
-                regions.push(region);
+                // fw = _.findWhere(regions, {ter_code:record.ter_code});
+                // if(fw == undefined ){
+                //     regions.push(region);
+                // }
+            }
+
+            // New datastructure provides multiple ter_codes in record
+            if(record.ter_codes !== undefined){
+
+                for(var i = 0; i < record.ter_codes.length; i++) {
+                    var regionItem = record.ter_codes[i];
+                    region = {ter_code:regionItem.ter_code, value:  regionItem.total};
+                    sData[key].territories.push(region);
+
+                    // fw = _.findWhere(regions, {ter_code:regionItem.ter_code});
+                    // if(fw  == undefined ){
+                    //     regions.push(region);
+                    // }
+                }
             }
 
         });
 
-        regions = _.sortBy(regions, function(o) { return o.ter_code; })
+        // regions = _.sortBy(regions, function(o) { return o.ter_code; })
 
         this.buildTable(sData, maxDepth);
     },
@@ -110,29 +155,32 @@ var ResultView = Backbone.Model.extend({
         return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
     },
 
+
     /**
      *  Builds preview table
      */
     buildTable:function(data, maxDepth){
 
         // getting all selected regions
-        regions = regionSelector.getSelectedRegions();
+        var regions = regionSelector.getSelectedRegions();
 
         var hHeadingWidth = 800;
-        var levels = maxDepth;// maxDepth;
+        var levels = maxDepth;
         var classWidth = (hHeadingWidth-150)/levels;
         var table = "";
+        var regionScrollerWidth = $(window).width() *.95-hHeadingWidth;
+        var dataWidth = $(window).width() -hHeadingWidth;
+        var regionWidth = Math.floor((regionScrollerWidth)/regions.length);
 
-        var dataWidth = $(window).width() *.95-800;
-        $("#preview .zui-scroller").css("width",dataWidth);
-        if(regions.length<10){
-            var regionWidth = dataWidth/regions.length;
+        if(regionWidth<100){
+            regionWidth = 100;
+            $("#preview .zui-scroller").addClass('scrollBar');
         }else{
-            var regionWidth = 100;
+            $("#preview .zui-scroller").removeClass('scrollBar');
         }
 
 
-
+        $("#preview .zui-scroller").css("width",dataWidth);
         table += "<table class='zui-table'>";
         table += "<thead><tr>"
 
@@ -146,9 +194,11 @@ var ResultView = Backbone.Model.extend({
 
         // adding regions
         _.each(regions, function(region) {
-            // min-width:100px; width: "+(100/regions.length) +"%;
-            table += "<th class='region'><div class='region-holder' style='width: "+regionWidth+"px;'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
+            table += "<th class='region' width='"+regionWidth+"'><div class='region-holder'><span data-toggle='tooltip' title='"+region.label+"'>"+region.label  + "</span></div></th>";
         });
+        if(regions.length == 0){
+            table += "<th class='region'><div class='region-holder'><span data-toggle='tooltip' title=''>You haven't selected any regions.</span></div></th>";
+        }
 
         table += "</tr></thead><tbody>";
 
@@ -159,16 +209,28 @@ var ResultView = Backbone.Model.extend({
 
             for(var l = 1; l <= levels; l++){
 
-                if(item.histclases["histclass"+l]){
-                   var classname = item.histclases["histclass"+l];
+                if(item.path["histclass"+l]){
+                   var classname = strEscape(item.path["histclass"+l]);
                 }else{
                     var classname = "&nbsp;";
                 }
                 table += "<td class='zui-sticky-col' style='width: "+classWidth+"px; left:"+((l-1)*classWidth)+"px;'> <span data-toggle='tooltip' title='"+classname+"'>"+classname  + "</span></td>";
             }
 
-            table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + item.value_unit +  "</td>";
-            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + item.territories.length +  " / " +regions.length+ "</td>";
+            if(item.value_unit){
+                unit = item.value_unit;
+            }else{
+                unit = "&nbsp;";
+            }
+
+            // check how many territories have a valid number (so not 'na' or 'cannot aggregate at this level')
+            var validCount = 0;
+            $.each(item.territories,function(index){
+              if(typeof item.territories[index].value == 'number') validCount++;
+            })
+
+            table += "<td class='zui-sticky-col'  style='width: 80px; left:650px;'>" + unit +  " </td>";
+            table += "<td class='zui-sticky-col' style='width: 70px; left:730px;'>" + validCount +  " / " +regions.length+ "</td>";
 
             // output regions
             _.each(regions, function(region) {
@@ -178,23 +240,29 @@ var ResultView = Backbone.Model.extend({
                 if(item_region  == undefined || item_region.value=="."){
                     table += "<td> "+polyglot.t("na")+" </td>";
                 }else{
-                    table += "<td>" + item_region.value +  "</td>";
+                    table += "<td><span data-toggle='tooltip' title='"+   item_region.value +"'>" + item_region.value + "</span></td>";
                 }
             });
+            if(regions.length == 0){
+                table += "<td>no data.</td>";
+            }
 
             table += "</tr>"
         });
 
-        table += "</tbody></table>"
+        table += "</tbody></table>";
 
+        $("#preview-message").html("");
         $("#preview .zui-scroller").html(table);
 
         $('[data-toggle="tooltip"]').tooltip({
             container: '#preview'
         });
 
-        $("#preview .zui-scroller").css("width",$(window).width() *.95-760);
+        $("#preview .zui-scroller").css("width",regionScrollerWidth);
         $("#preview .zui-scroller").show();
+
+        this.showLoadTime();
     },
 
     /**
@@ -204,12 +272,27 @@ var ResultView = Backbone.Model.extend({
         if(url){
             $('#btn-download').unbind("click");
             $('#btn-download').show();
-
             $('#btn-download').click(function(){
                 window.open(url);
             });
         }else{
             $('#btn-download').hide();
+        }
+    },
+
+    /**
+     * Show load time for logged in users
+     */
+     showLoadTime:function(){
+        if(qtSettings.user_logged_in == true){
+            loadTime = Math.round(performance.now() - loadTime);
+            loadTimeDisplay = '';
+            if(loadTime < 1000){
+                loadTimeDisplay = (loadTime) + ' milliseconds';
+            }else{
+                loadTimeDisplay = (Math.round(loadTime/100)/10)  + ' seconds';
+            }
+            $("#loadtime").html('Generated in '+ loadTimeDisplay );
         }
     }
 });

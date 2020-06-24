@@ -66,6 +66,13 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -91,7 +98,7 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Field: Taxonomy term: Enable */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_enable']['id'] = 'field_enable';
   $handler->display->display_options['fields']['field_enable']['table'] = 'field_data_field_enable';
   $handler->display->display_options['fields']['field_enable']['field'] = 'field_enable';
@@ -100,12 +107,6 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['edit_term']['id'] = 'edit_term';
   $handler->display->display_options['fields']['edit_term']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['edit_term']['field'] = 'edit_term';
-  /* Field: Taxonomy term: Documentation files */
-  $handler->display->display_options['fields']['field_documentation']['id'] = 'field_documentation';
-  $handler->display->display_options['fields']['field_documentation']['table'] = 'field_data_field_documentation';
-  $handler->display->display_options['fields']['field_documentation']['field'] = 'field_documentation';
-  $handler->display->display_options['fields']['field_documentation']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_documentation']['delta_offset'] = '0';
   /* Sort criterion: Taxonomy term: Datatype (field_datatype) */
   $handler->display->display_options['sorts']['field_datatype_value']['id'] = 'field_datatype_value';
   $handler->display->display_options['sorts']['field_datatype_value']['table'] = 'field_data_field_datatype';
@@ -149,7 +150,6 @@ function topics_taxonomy_views_default_views() {
     t('Name'),
     t('Enable (1=yes)'),
     t('Term edit link'),
-    t('Documentation files'),
     t('Page'),
   );
   $export['edit_topics'] = $view;

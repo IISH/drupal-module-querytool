@@ -2,4 +2,4 @@ name = Query Tool
 description = Provide interface for building desired datasets.
 core = 7.x
 package = Query Tool
-version = 7.x-0.1-dev
+version = 7.x-1.0

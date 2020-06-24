@@ -10,6 +10,12 @@ var TopicSelector = Backbone.View.extend({
 
     initialize: function() {
 
+        if(qtSettings.user_logged_in == true){
+            $("#datamode").show();
+        }else{
+            $("#datamode").hide();
+        }
+
         $(window).on("resize", this.setMainSize);
         this.setMainSize();
 
@@ -17,7 +23,6 @@ var TopicSelector = Backbone.View.extend({
         var PrevY = 0;
         var difX;
         var difY;
-
         var that = this;
         var tc = 0;
 
@@ -44,22 +49,10 @@ var TopicSelector = Backbone.View.extend({
         setInterval(function(){
             that.timerCount++;
         }, 500);
-
     },
 
     setDocumentationLink:function(){
-
-        var matched_files = "";
-        var yearMatch = querySettings.get("base_year");
-
-        $("#topicselection .documentation").html("");
-
-        $.each( querySettings.get("files"),function( filename, filepath ){
-           if(filename.indexOf(yearMatch) > 0){
-               matched_files += "<a href='"+filepath+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ filename.substr(filename.indexOf(".")+1)  +")<br>";
-            }
-        });
-
+        matched_files = documentation.getLinks(querySettings.get("base_year"));
         $("#topicselection .documentation").html(matched_files);
     },
 
@@ -72,7 +65,7 @@ var TopicSelector = Backbone.View.extend({
     },
 
     update:function(){
-        var checked =  $("#topicselection .checked").length;
+        var checked =  $("#topicselection .checked").length + $("#topicselection #ts-box-4 .checked-depth").length;
         if(checked > 0){
             $("#btn-generate").show();
 
@@ -84,7 +77,5 @@ var TopicSelector = Backbone.View.extend({
         resultView.render();
         queryModuleView.showNextStep(5);
 
-        $("#result").show();
     }
-
 });

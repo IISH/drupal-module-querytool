@@ -6,6 +6,7 @@ var ClassBoxView = Backbone.View.extend({
     connector:      null,
     currentFocussed:null,
     useSwitch:      false,
+    level:null,
 
     render:function(level,topics){
 
@@ -15,6 +16,7 @@ var ClassBoxView = Backbone.View.extend({
         var vars;
         var topics;
 
+        this.level = level;
         that.level = level;
 
         // set up template and fill
@@ -34,7 +36,7 @@ var ClassBoxView = Backbone.View.extend({
             }
         });
 
-        // Addding tooltip for explanation
+        // Adding tooltip for explanation
         $('[data-toggle="tooltip"]').tooltip({
             container: '#main'
         });
@@ -58,8 +60,8 @@ var ClassBoxView = Backbone.View.extend({
 
     events:{
         'mouseenter .topic'         :'omeTopicLink',
-        'mouseenter  .topic-list'   :'disableWindowScroll',
-        'mouseleave .topic-list'    :'enableWindowScroll',
+       // 'mouseenter .topic-list'    :'disableWindowScroll',
+       // 'mouseleave .topic-list'    :'enableWindowScroll',
         'click .checkbox'           :'toggleCheckbox',
         'click .checkbox-depth'     :'toggleCheckboxDepth',
         'click .switch'             :'ocSwitch'
@@ -89,8 +91,13 @@ var ClassBoxView = Backbone.View.extend({
             $(topic).closest(".ts-box").next().find(".switch").attr("data-parent",id);
             $(topic).addClass("focus");
 
+            if(childs.length > 0 || this.level < 4){
+                that.connector.render(topic);
+                $("#connector"+ this.level).show();
+            }else{
+                $("#connector"+ this.level).hide();
+            }
 
-            that.connector.render(topic);
             currentFocussed = topic;
         }
         this.updateCouter();
@@ -131,14 +138,15 @@ var ClassBoxView = Backbone.View.extend({
 
             if($(cb).hasClass("checked")){
                 $("#"+ tsboxId +" .topic-list  .checkbox:visible").not(".checked").click();
-               // $("#"+ tsboxId +"  .checkbox:visible").addClass("checked");
+                var totalVisible = $("#"+ tsboxId +" .topic-list .topic:visible").length;
+
+                // Show a warning when not all items have a single checkbox (happens when indicator is a dot, see template)
+                if($("#"+ tsboxId +" .topic-list  .checkbox:visible").length < totalVisible) {
+                    alert("some indicator(s) cannot be aggregated at this level");
+                }
             }else{
-
                 $("#"+ tsboxId +" .topic-list  .checkbox.checked:visible").click();
-             //   $("#"+ tsboxId +"  .checkbox:visible").removeClass("checked");
             }
-
-
 
         }
         that.updateCouter();
@@ -189,20 +197,14 @@ var ClassBoxView = Backbone.View.extend({
 
         if($(cb).hasClass("all")){
             if($(cb).hasClass("checked-depth")){
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").removeClass("checked-depth"); //remove all existing selections to prevent invert selections
-             //   $("#"+ tsboxId +" .topic-list .checkbox:visible").addClass('checked');
                 $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").not(".checked-depth").click();
             }else{
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").hasClass(".checked-depth").click();
                 $("#"+ tsboxId +" .topic-list .checkbox-depth:visible.checked-depth").click();
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").addClass("checked-depth"); // select all first to prevent invert selections
-             //   $("#"+ tsboxId +" .topic-list .checkbox-depth:visible").click();
             }
         }
 
         that.updateCouter();
         classification.updateSelection();
-
         that.checkParentDepthBox(topicId);
     },
 
@@ -225,6 +227,7 @@ var ClassBoxView = Backbone.View.extend({
             }
         });
     },
+
     deselectNextDepth:function(topicId){
         var that = this;
         $(".topic[data-parent='"+topicId+"'] .checkbox").removeClass("checked");
@@ -315,7 +318,6 @@ var ClassBoxView = Backbone.View.extend({
                     modeSwitch.hide();
                 }
             }
-
         });
 
         topicSelector.update();

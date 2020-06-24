@@ -10,6 +10,40 @@
 function topics_taxonomy_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'taxonomy_term-topics-field_available_years'.
+  $field_instances['taxonomy_term-topics-field_available_years'] = array(
+    'bundle' => 'topics',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_available_years',
+    'label' => 'Available years',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-topics-field_datatype'.
   $field_instances['taxonomy_term-topics-field_datatype'] = array(
     'bundle' => 'topics',
@@ -41,6 +75,43 @@ function topics_taxonomy_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-topics-field_disable'.
+  $field_instances['taxonomy_term-topics-field_disable'] = array(
+    'bundle' => 'topics',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check the box if you don\'t want to display the item on the topics page and file catalogue',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_disable',
+    'label' => 'Disable',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 7,
     ),
   );
 
@@ -77,44 +148,7 @@ When a file must show up in the datacategories help popup, the filename must con
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'taxonomy_term-topics-field_enable'.
-  $field_instances['taxonomy_term-topics-field_enable'] = array(
-    'bundle' => 'topics',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'If enable, the user can open up the querytool from the topics page.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'field_enable',
-    'label' => 'Enable',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 1,
+      'weight' => 8,
     ),
   );
 
@@ -200,12 +234,13 @@ When a file must show up in the datacategories help popup, the filename must con
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Available years');
+  t('Check the box if you don\'t want to display the item on the topics page and file catalogue');
   t('Datatype');
+  t('Disable');
   t('Documentation files');
-  t('Enable');
   t('Here you can add documentation files. They will shown in the interface if the filename contains a year that is known by the API, for example "xxxxxx_1795.doc".
 When a file must show up in the datacategories help popup, the filename must contain a data-category name, for example: "xxxxxx_modern.doc" (case-insensitive).');
-  t('If enable, the user can open up the querytool from the topics page.');
   t('Root ID');
   t('Topic ID');
 

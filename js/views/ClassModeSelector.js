@@ -1,5 +1,6 @@
 /**
- *   Provides radio buttons for modes and saves selection to querysettings
+ *   ClassModeSelector; first step in interface
+ *   Provides radio buttons for classification modes and saves selection to querysettings object
  */
 
 var ClassModeSelector = Backbone.View.extend({
@@ -7,38 +8,48 @@ var ClassModeSelector = Backbone.View.extend({
     el:"#classmodes",
 
     render:function(){
-
-
         var modes = this.model.get("classModes");
         var that = this;
         var vars = {modes:modes};
-        var tp   = $('#classmode-template').html();
-        var template = _.template(tp);
-        var html = template(vars);
-        that.$el.append(html);
-        this.setDocumentationLink();
+        var url = querySettings.getYearsUrl()+"&classification=modern";
+
+        $.getJSON(url,function(data){
+
+            var modernAvailable = false;
+
+            $.each( data, function( key, val ) {
+               if(val !== 0) modernAvailable = true;
+            });
+
+            if(!modernAvailable){
+                $.each( modes, function( key, mode ) {
+                    if(mode.name == 'modern'){
+                        mode.label = polyglot.t("no-modern");
+                        mode.description = '';
+                        mode.enabled = false;
+                    }
+                });
+            }
+
+            var tp   = $('#classmode-template').html();
+            var template = _.template(tp);
+            var html = template(vars);
+            that.$el.append(html);
+            that.setDocumentationLink();
+
+            // when modern is disabled, select historical
+            if(!modernAvailable) {
+                $("input#classmode:not([disabled])").first().attr('checked','checked');
+                that.onModeSelect();
+            }
+        })
     },
 
     setDocumentationLink:function(){
-
-        var matched_files = "";
-        $("#classmodeselection .documentation").html("");
-
-        var modes = [];
-        $.each(this.model.get("classModes"), function( index, value ){
-            modes.push(value.name);
-        });
-
-        $.each( querySettings.get("files"), function( filename, filepath ){
-            $.each(modes,function(i,v){
-                if(filename.toLocaleLowerCase().indexOf(v) > 0){
-                    matched_files += "<a href='"+filepath+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ filename.substr(filename.indexOf(".")+1)  +")<br>";
-                }
-            });
-        });
-
-        if(matched_files !== "") matched_files = "<br>"+ matched_files;
-        $("#classmodeselection .documentation").html(matched_files);
+        var matched_files_modern = documentation.getLinks("Modern_Classification");
+        var matched_files_hist = documentation.getLinks("Historical_Classification");
+        var docs = matched_files_modern.concat(matched_files_hist);
+        $("#classmodeselection .documentation").html("<br>"+ docs);
     },
 
     events:{

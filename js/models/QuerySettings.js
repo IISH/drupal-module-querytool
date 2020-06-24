@@ -1,8 +1,9 @@
 var QuerySettings = Backbone.Model.extend({
-    confirmation:false,
+
     defaults: {
         moduleUrl:"",
         baseUrl:"",
+        downloadUrl:"",
         years:[],
         classModes:[],
         datatype:"",
@@ -17,12 +18,23 @@ var QuerySettings = Backbone.Model.extend({
         return this.baseUrl;
     },
 
+    getDownloadUrl:function(){
+        return this.downloadUrl;
+    },
+
     getClassUrl:function(){
-        var urlTail = "datatype="+ this.get("datatype");
+        var urlTail = "";
+
+        if(this.get("classmode") == "modern"){
+            urlTail += "classes?";
+        }else{
+            urlTail += "histclasses?";
+        }
+        urlTail += "datatype="+ this.get("datatype");
         if(this.get("base_year") !== "" && this.get("classmode") == "historical") urlTail += "&base_year="+this.get("base_year");
-        if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
+       // if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
         urlTail += "&language="+this.get("lang");
-        return this.get("baseUrl") +'classes?'+urlTail;
+        return this.get("baseUrl") +urlTail;
     },
 
     getPreviewUrl:function(){
@@ -31,20 +43,31 @@ var QuerySettings = Backbone.Model.extend({
         url += "&regions="+this.get("regions").join(",");
         url += "&classes="+this.get("selectedclasses").join(",");
         url += "&year="+this.get("year");
-
         return url;
     },
     getRegionsUrl:function(){
         var url = this.get("baseUrl")+'regions';
         if(this.get("base_year") !== "")  url += "?basisyear="+this.get("base_year");
         return url;
-
     },
-    updateMode:function(value){
 
+    getYearsUrl:function(){
+        var url = this.get("baseUrl")+"years?datatype="+this.get("datatype");
+        return url;
+    },
+
+    getDocumentationUrl:function(){
+        var url = this.get("baseUrl")+'documentation';
+        var topic = this.get("datatype").split(".")[0];
+        url += "?datatype="+topic;
+        url += "&lang="+this.get("lang");
+        return url;
+    },
+
+    updateMode:function(value){
         var r = true;
 
-       ///if(this.confirmation && this.get('classmode') !=="") r = confirm("Switching mode will reset the screen and all custom selections, are you sure?");
+        if(this.get("confirmmode") && this.get('classmode') !=="") r = confirm(polyglot.t("switch-mode-confirm"));
 
         if(r){
             this.set({classmode: value, selectedclasses:[]});
@@ -53,43 +76,49 @@ var QuerySettings = Backbone.Model.extend({
                 this.set({base_year:''});
                 $("#yearselection").hide();
                 $("#regionselection").hide();
+                $("#result").hide();
                 queryModuleView.showNextStep(4);
-             }else{
-                queryModuleView.showNextStep(2);
-            }
+                classification.getClasses();
 
+             }else if(value == "historical"){
+                $("#regionselection").hide();
+                $("#topicselection").hide();
+                $("#result").hide();
+                queryModuleView.showNextStep(2);
+                classification.reset();
+            }
             querySettingsView.update();
-            classification.getClasses();
+
         }else{
             //reset to current value
             classModeSelector.selectMode(this.get("classmode"));
         }
-
-
     },
 
     updateYear:function(value){
-      //   var  r = confirm("switching year will reset the screen and all your selections, are you sure?");
+
         var r = true;
+
+        if(this.get("confirmmode") && (this.get('base_year') !== ""))  var  r = confirm(polyglot.t("switch-year-confirm"));
+
         if(r){
             this.set({base_year: value});
             querySettingsView.update();
             regionSelector.render();
             classification.getClasses();
+            queryModuleView.hideNextSteps(3)
             queryModuleView.showNextStep(3);
             topicSelector.setDocumentationLink();
         }else{
             //reset to current value
             yearSelector.selectYear(this.get("base_year"));
         }
-
     },
 
     updateRegions:function(regions){
         this.set({"regions":regions});
         querySettingsView.update();
         queryModuleView.showNextStep(4);
-
     },
 
     resetYear:function(){

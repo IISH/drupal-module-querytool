@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * topics_taxonomy.features.field_instance.inc
@@ -56,7 +57,7 @@ function topics_taxonomy_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -94,7 +95,7 @@ function topics_taxonomy_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -148,6 +149,42 @@ When a file must show up in the datacategories help popup, the filename must con
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-topics-field_hide'.
+  $field_instances['taxonomy_term-topics-field_hide'] = array(
+    'bundle' => 'topics',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Hide on public views',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_hide',
+    'label' => 'Hide',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 8,
     ),
   );
@@ -169,7 +206,7 @@ When a file must show up in the datacategories help popup, the filename must con
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -209,7 +246,7 @@ When a file must show up in the datacategories help popup, the filename must con
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -241,6 +278,8 @@ When a file must show up in the datacategories help popup, the filename must con
   t('Documentation files');
   t('Here you can add documentation files. They will shown in the interface if the filename contains a year that is known by the API, for example "xxxxxx_1795.doc".
 When a file must show up in the datacategories help popup, the filename must contain a data-category name, for example: "xxxxxx_modern.doc" (case-insensitive).');
+  t('Hide');
+  t('Hide on public views');
   t('Root ID');
   t('Topic ID');
 

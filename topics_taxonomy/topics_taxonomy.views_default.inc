@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * topics_taxonomy.views_default.inc
@@ -58,7 +59,7 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   /* Field: Bulk operations: Taxonomy term */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_taxonomy_term';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -98,11 +99,6 @@ function topics_taxonomy_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_enable']['id'] = 'field_enable';
-  $handler->display->display_options['fields']['field_enable']['table'] = 'field_data_field_enable';
-  $handler->display->display_options['fields']['field_enable']['field'] = 'field_enable';
-  $handler->display->display_options['fields']['field_enable']['label'] = 'Enable (1=yes)';
   /* Field: Taxonomy term: Term edit link */
   $handler->display->display_options['fields']['edit_term']['id'] = 'edit_term';
   $handler->display->display_options['fields']['edit_term']['table'] = 'taxonomy_term_data';
@@ -121,13 +117,14 @@ function topics_taxonomy_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'admin/edit-topics';
-  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['path'] = 'admin/config/system/querytool/edit-topics';
+  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Edit Topics';
-  $handler->display->display_options['menu']['weight'] = '99';
+  $handler->display->display_options['menu']['weight'] = '4';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $handler->display->display_options['tab_options']['weight'] = '0';
   $translatables['edit_topics'] = array(
     t('Master'),
     t('Edit topics'),
@@ -148,7 +145,6 @@ function topics_taxonomy_views_default_views() {
     t('- Choose an operation -'),
     t('Datatype'),
     t('Name'),
-    t('Enable (1=yes)'),
     t('Term edit link'),
     t('Page'),
   );

@@ -12,6 +12,7 @@ version 1.1
     - define API import url for topics (for example: http://data.sandbox.socialhistoryservices.org/service/topics)
     - check confirm mode if desired
     - add a copyright notice
+- enable jquery_update module, set to jquery version 1.8 at /admin/config/development/jquery_update
 - enable Taxonomy translation module: /admin/modules
 - set multilangual options: /admin/structure/taxonomy/topics/edit choose "Translate. Different terms will be allowed for each language and they can be translated."
 - set proper position of topics page in menu: /admin/structure/menu/manage/navigation

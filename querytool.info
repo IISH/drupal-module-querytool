@@ -5,3 +5,4 @@ package = Query Tool
 version = 7.x-1.0
 
 dependencies[] = views_bulk_operations
+dependencies[] = jquery_update

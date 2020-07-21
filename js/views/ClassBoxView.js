@@ -59,12 +59,10 @@ var ClassBoxView = Backbone.View.extend({
     },
 
     events:{
-        'mouseenter .topic'         :'omeTopicLink',
-       // 'mouseenter .topic-list'    :'disableWindowScroll',
-       // 'mouseleave .topic-list'    :'enableWindowScroll',
-        'click .checkbox'           :'toggleCheckbox',
-        'click .checkbox-depth'     :'toggleCheckboxDepth',
-        'click .switch'             :'ocSwitch'
+        'mouseenter .topic':'omeTopicLink',
+        'click .checkbox':'toggleCheckbox',
+        'click .checkbox-depth':'toggleCheckboxDepth',
+        'click .switch':'ocSwitch'
     },
 
     omeTopicLink: function(e){
@@ -281,13 +279,13 @@ var ClassBoxView = Backbone.View.extend({
             if($(this).find(".topic .checkbox:visible").length>0){
                 $(this).find(".checkbox.all").parent().show();
             }else{
-                $(this).find(".checkbox.all").parent().hide();
+                //$(this).find(".checkbox.all").parent().hide();
             }
 
             if($(this).find(".topic .checkbox-depth:visible").length>0){
                 $(this).find(".checkbox-depth.all").parent().show();
             }else{
-                $(this).find(".checkbox-depth.all").parent().hide();
+             //   $(this).find(".checkbox-depth.all").parent().hide();
             }
 
             // handle accurate state of 'all' checkboxes

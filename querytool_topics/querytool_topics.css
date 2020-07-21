@@ -71,22 +71,12 @@
     -moz-box-shadow:  1px 2px 11px -1px rgba(0,0,0,0.5);
     box-shadow:  1px 2px 8px -1px rgba(0,0,0,0.5);
 
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
-
     margin-bottom: 20px;
 }
-
-
-.ui-tabs-vertical .ui-tabs-nav li{
-
-}
-
-/*.ui-tabs .ui-tabs-nav li.ui-tabs-active*/
-
-
 
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active a {
     color: #ff0033;
@@ -148,14 +138,12 @@
 }
 
 
-
 /* CATALOG */
 
 .catalog-topic{
     clear:both;
     width:300px;
     border-bottom:2px solid #CCC;
-
     padding: 4px 8px;
     font-weight: bold;
     float:left;
@@ -251,16 +239,13 @@ form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbo
     color: #AAA;
 }
 
-
 .catalog-checkbox{
     position: relative;
 }
 .catalog-checkbox input {
-
     position: absolute;
     top:7px;
     left:35%;
-    z-index: -9999;
     opacity: 0.01;
     z-index: 10;
 }
@@ -269,7 +254,6 @@ form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbo
     pointer-events : none;
     width: 18px;
     height: 18px;
-
     z-index: 9;
     position: absolute;
     top:4px;
@@ -285,7 +269,6 @@ form#querytool-catalog-form fieldset fieldset:nth-last-child(1) .catalog-checkbo
 }
 
 .fieldset-wrapper .form-wrapper:nth-child(1) .catalog-checkbox{
-
     height: 18px;
     margin-top:8px;
 }

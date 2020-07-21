@@ -194,7 +194,7 @@ function querytool_init()
 }
 
 /**
- * Lists topics in horizontal tabs, containing subtopics as links to querytool
+ * Lists topics in vertical tabs, containing subtopics as links to querytool
  */
 function querytool_topics()
 {
@@ -215,6 +215,10 @@ function querytool_topics()
 
   foreach ($tree as $term) {
 
+    $hide = !(empty($term->field_hide[LANGUAGE_NONE][0]['value']));
+
+    if($hide) continue;
+
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
     $label = $datatype . ". " . $term->name;
 
@@ -227,14 +231,20 @@ function querytool_topics()
       $tabs .= "<li><a href='#tabs-" . $term->tid . "'>" . $label . "</a></li>";
       $pages .= "<div id='tabs-" . $term->tid . "'><h3>" . $label . "</h3>";
 
-      if ($term->description !== null) $pages .= $term->description . "<br><br><br>";
+      if (!empty($term->description)) $pages .= $term->description . "<br><br><br>";
 
     } else {
 
       $enable = !empty($term->field_available_years[LANGUAGE_NONE][0]['value']) && (empty($term->field_disable[LANGUAGE_NONE][0]['value']));
 
+      // hide when parent is hidden
+      $parent_terms = taxonomy_get_parents($term->tid);
+      $parent = reset($parent_terms);
+      $hide = !(empty($parent->field_hide[LANGUAGE_NONE][0]['value']));
+      if($hide) continue;
+
       if ($enable) {
-        $link = "<a href='#' onClick='openWindow(\"/querytool\",\"" . str_replace(".", "-", $datatype) . "/" . $language->language . "\");' >" . $term->name . " </a>";
+        $link =  "<a href='querytool/". str_replace(".", "-", $datatype) . "/" . $language->language ."' target='_blank'>" . $term->name . " </a>";
         $subtopics .= "<div class='topic'><div class='topic-title'>" . $datatype . ". " . $link . "</div>";
         if ($term->description) $subtopics .= "<div class='subtopic-description'>" . $term->description . "</div>";
         $subtopics .= "</div>";
@@ -299,6 +309,11 @@ function querytool_catalog_form($form, &$form_state)
 
   foreach ($tree as $term) {
 
+
+    $hide = !(empty($term->field_hide[LANGUAGE_NONE][0]['value']));
+
+    if($hide) continue;
+
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];
 
     $label = $datatype . ". " . $term->name;
@@ -342,6 +357,12 @@ function querytool_catalog_form($form, &$form_state)
       // render subtopics
       $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
 
+      $parent_terms = taxonomy_get_parents($term->tid);
+      $parent = reset($parent_terms);
+
+      $hide = !(empty($parent->field_hide[LANGUAGE_NONE][0]['value']));
+      if($hide) continue;
+
       $form['topic_' . $root]['topic_' . $datatype] = array(
         '#type' => 'fieldset',
         '#collapsible' => FALSE,
@@ -356,6 +377,7 @@ function querytool_catalog_form($form, &$form_state)
 
       $topic_years = isset($term->field_available_years[LANGUAGE_NONE][0]['value']) ? $term->field_available_years[LANGUAGE_NONE][0]['value'] : '';
       $disable = !(empty($term->field_disable[LANGUAGE_NONE][0]['value']));
+
 
       foreach ($years as $year) {
 

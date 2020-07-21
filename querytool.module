@@ -57,7 +57,8 @@ function querytool_menu()
     'title' => 'Topics',
     'page callback' => 'querytool',
     'page arguments' => array(1),
-    'access callback' => true
+    'access callback' => true,
+      'weight' => -99
   );
 
   $items['admin/config/system/querytool'] = array(
@@ -77,7 +78,7 @@ function querytool_menu()
     'access arguments' => array('administer querytool'),
     'type' => MENU_LOCAL_TASK,
     'page callback' => 'querytool_helpcontent',
-    'weight' => 2
+    'weight' => 5
   );
 
   $items['download/%/%/%'] = array(

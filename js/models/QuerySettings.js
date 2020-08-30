@@ -119,6 +119,7 @@ var QuerySettings = Backbone.Model.extend({
         this.set({"regions":regions});
         querySettingsView.update();
         queryModuleView.showNextStep(4);
+
     },
 
     resetYear:function(){

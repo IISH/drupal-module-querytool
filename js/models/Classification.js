@@ -57,16 +57,11 @@ var Classification = Backbone.Model.extend({
                 if(selectedClass.level>=2) sClass.histclass2 = selectedClass.c2;
                 if(selectedClass.level>=3) sClass.histclass3 = selectedClass.c3;
                 if(selectedClass.level>=4) sClass.histclass4 = selectedClass.c4;
-             //   if(selectedClass.level>=5) sClass.histclass5 = selectedClass.c5;
-              //  if(selectedClass.level>=6) sClass.histclass6 = selectedClass.c6;
-
             }else{
                 sClass.class1 = selectedClass.c1;
                 if(selectedClass.level>=2) sClass.class2 = selectedClass.c2;
                 if(selectedClass.level>=3) sClass.class3 = selectedClass.c3;
                 if(selectedClass.level>=4) sClass.class4 = selectedClass.c4;
-            //    if(selectedClass.level>=5) sClass.class5 = selectedClass.c5;
-            //    if(selectedClass.level>=6) sClass.class6 = selectedClass.c6;
             }
 
             if(indexItem.subclasses){
@@ -194,14 +189,7 @@ var Classification = Backbone.Model.extend({
                 indexedClasses[classIndex] = newClass
                 classIndex++;
             }
-            /*
-            if(class6 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6]){
-                newClass = {"name": class6, "parent":"null", children:{}, class_id: classIndex, level:6, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].children[class5].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5,c6:class6};
-                Tree.children[class1].children[class2].children[class3].children[class4].children[class5].children[class6] = newClass;
-                indexedClasses[classIndex] = newClass
-                classIndex++;
-            }
-            */
+
         });
 
         var maxInterfaceDepth = 5; // starts with 0

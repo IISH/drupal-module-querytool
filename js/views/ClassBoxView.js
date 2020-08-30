@@ -259,12 +259,16 @@ var ClassBoxView = Backbone.View.extend({
     
         var useSwitch = this.useSwitch;
         $.each($(".ts-box"),function(e){
-            var count = 0;
-            var countSingle = 0;
-            var countDepth = 0;
+            var count = 0;  // visible only
+            var countSingle = 0; // visible only
+            var countDepth = 0; // visible only
             var total = $(this).find(".topic:visible").length;
             var totalWithDepth =  $(this).find(".topic:visible .checked-depth").length;
             var overallTotal = $(this).find(".topic .checked").length;
+
+            var singleCheckboxesTotal = $(this).find(".checkbox").length-1;
+            var depthCheckboxesTotal = $(this).find(".checkbox-depth").length-1;
+            var level = $(this).find(".topic").attr("data-level");
 
             $.each($(this).find(".topic:visible"),function(e){
                 if($(this).find(".checked").length >0 || $(this).find(" .checked-all").length >0 ) count++;
@@ -272,20 +276,22 @@ var ClassBoxView = Backbone.View.extend({
                 if($(this).find(".checked-depth").length >0) countDepth++;
             });
 
+
+            if(level == "1") total = $(this).find(".topic").length;
             $(this).find(".selected").html(count);
             $(this).find(".total").html(total);
 
             // handle visability of 'all' checkboxes
-            if($(this).find(".topic .checkbox:visible").length>0){
+            if($(this).find(".topic .checkbox:visible").length>0 || (level=="1" && singleCheckboxesTotal>0)){
                 $(this).find(".checkbox.all").parent().show();
             }else{
-                //$(this).find(".checkbox.all").parent().hide();
+                $(this).find(".checkbox.all").parent().hide();
             }
 
-            if($(this).find(".topic .checkbox-depth:visible").length>0){
+            if($(this).find(".topic .checkbox-depth:visible").length>0 || (level=="1" && depthCheckboxesTotal>0)){
                 $(this).find(".checkbox-depth.all").parent().show();
             }else{
-             //   $(this).find(".checkbox-depth.all").parent().hide();
+                $(this).find(".checkbox-depth.all").parent().hide();
             }
 
             // handle accurate state of 'all' checkboxes

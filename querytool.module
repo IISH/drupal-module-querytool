@@ -104,7 +104,7 @@ function querytool_download_page($endpoint,$key,$filename)
 
   $decline_msg = t("You have accept in order to download the data.");
   $agree = l('Accept',$url, array("attributes"=>array('class' => 'btn btn-primary')));
-  $decline = l('Decline',null,array("attributes"=>array('class' => 'disagree', 'onClick' => 'alert("'.$decline_msg.'")')));
+  $decline = l('Decline','javascript:void(0)',array('fragment' => '','external'=>true,"attributes"=>array('class' => 'disagree', 'onClick' => 'alert("'.$decline_msg.'")')));
 
   return $license['value'].$agree.$decline;
 }
@@ -132,6 +132,14 @@ function querytool_theme()
     ),
     'querytool_html' => array(
       'template' => 'theme/querytool-html',
+      'render element' => 'html'
+    ),
+    'download_page' => array(
+      'template' => 'theme/download-page',
+      'render element' => 'page'
+    ),
+    'download_html' => array(
+      'template' => 'theme/download-html',
       'render element' => 'html'
     ),
   );
@@ -162,6 +170,14 @@ function querytool_preprocess_html(&$variables, $hook)
     drupal_add_css($path . "/css/common.css", array('group' => 999, 'weight' => 996));
   }
 
+  if (arg(0) == "download") {
+    $variables['theme_hook_suggestions'][] = 'download_html';
+
+    if (($key = array_search('one-sidebar sidebar-first', $variables['classes_array'])) !== false) {
+      unset($variables['classes_array'][$key]);
+    }
+
+  }
 
   if (arg(0) == "querytool") {
     $variables['theme_hook_suggestions'][] = 'querytool_html';
@@ -187,6 +203,7 @@ function querytool_preprocess_html(&$variables, $hook)
 
     drupal_add_js($path . "/js/models/QuerySettings.js");
     drupal_add_js($path . "/js/general.js");
+
     drupal_add_js($path . "/js/models/Documentation.js");
     drupal_add_js($path . "/js/models/Years.js");
     drupal_add_js($path . "/js/models/Regions.js");
@@ -349,6 +366,10 @@ function querytool_preprocess_page(&$variables, $hook)
       $langmenu .= "<a class='" . $class . "' href='/querytool/" . arg(1) . "/" . $key . "'>" . substr($lang->native, 0, $chop) . "</a><br>";
     }
     $variables['lang_menu'] = $langmenu;
+  }
+
+  if (arg(0) == "download") {
+    $variables['theme_hook_suggestions'][] = 'download_page';
   }
 
   $variables['copyright'] = variable_get('querytool_copyright');

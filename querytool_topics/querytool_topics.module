@@ -284,6 +284,8 @@ function querytool_catalog_form($form, &$form_state)
   // @todo make dynamic import of years via API
   $years = array('1795', '1858', '1897', '1959', '2002');
 
+  $form['#attributes']['target'] = '_blank';
+
   $form['topic_all'] = array(
     '#type' => 'fieldset',
     '#title' => t(''),
@@ -306,9 +308,7 @@ function querytool_catalog_form($form, &$form_state)
   }
 
 
-
   foreach ($tree as $term) {
-
 
     $hide = !(empty($term->field_hide[LANGUAGE_NONE][0]['value']));
 
@@ -442,9 +442,6 @@ function querytool_render_subtopics_form(&$form,$vid,$datatype, $parent, $label,
 
     $parent_terms = taxonomy_get_parents($term->tid);
     $parent = reset($parent_terms);
-
-    //$hide = !(empty($parent->field_hide[LANGUAGE_NONE][0]['value']));
-    //if($hide) continue;
 
     $form['topic_' . $root]['topic_' . $datatype] = array(
       '#type' => 'fieldset',

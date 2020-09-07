@@ -358,8 +358,6 @@ function querytool_catalog_form($form, &$form_state)
 
     } else {
       // render subtopics
-
-
       $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
 
       $parent_terms = taxonomy_get_parents($term->tid);
@@ -614,9 +612,6 @@ function querytool_topics_import($delete = FALSE, $output_terms = true)
   $result = curl_exec ($ch);
   curl_close($ch);
 
-  // test with local file
-  //  $path = drupal_get_path('module','querytool');
-  //  $result = file_get_contents($path."/json-example/topics.json");
 
   // converts to JSON and sort topics on datatype to be sure main topics are loaded first and in right order: "1", "1.01", "1.02" etc...
   $topics = json_decode($result);

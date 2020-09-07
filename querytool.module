@@ -364,8 +364,14 @@ function querytool_preprocess_page(&$variables, $hook)
       } else {
         $class = '';
       }
-      $chop = ($key == "ru") ? 4 : 3;
-      $langmenu .= "<a class='" . $class . "' href='/querytool/" . arg(1) . "/" . $key . "'>" . substr($lang->native, 0, $chop) . "</a><br>";
+
+      if($key == "ru"){
+        $lang_shortname = 'Pyc';
+      }else{
+        $lang_shortname = substr($lang->native, 0, 3);
+      }
+
+      $langmenu .= "<a class='" . $class . "' href='/querytool/" . arg(1) . "/" . $key . "'>" . $lang_shortname . "</a><br>";
     }
     $variables['lang_menu'] = $langmenu;
   }
@@ -374,7 +380,13 @@ function querytool_preprocess_page(&$variables, $hook)
     $variables['theme_hook_suggestions'][] = 'download_page';
   }
 
-  $variables['copyright'] = variable_get('querytool_copyright');
+
+  if($current_lang == 'ru'){
+    $variables['copyright'] = variable_get('querytool_copyright_ru');
+  }else{
+    $variables['copyright'] = variable_get('querytool_copyright');
+  }
+
 }
 
 
@@ -447,6 +459,13 @@ function querytool_admin_form($form, &$form_state)
     '#type' => 'textarea',
     '#default_value' => variable_get('querytool_copyright', ''),
     '#title' => t('Copyright notice'),
+    '#description' => t("The text of the copyright in footer."),
+  );
+
+  $form['querytool_copyright_ru'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('querytool_copyright', ''),
+    '#title' => t('Russian copyright notice'),
     '#description' => t("The text of the copyright in footer."),
   );
 

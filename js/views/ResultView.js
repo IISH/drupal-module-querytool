@@ -20,7 +20,7 @@ var ResultView = Backbone.Model.extend({
         }
 
         postData.Method = "new";
-        
+
         // add year
         if( querySettings.get("classmode") == "historical"){
 

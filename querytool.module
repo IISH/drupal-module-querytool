@@ -103,8 +103,10 @@ function querytool_download_page($endpoint,$key,$filename)
   $license = variable_get('querytool_lisenceinfo_' . $language->language);
 
   $decline_msg = t("You have accept in order to download the data.");
-  $agree = l('Accept',$url, array("attributes"=>array('class' => 'btn btn-primary')));
-  $decline = l('Decline','javascript:void(0)',array('fragment' => '','external'=>true,"attributes"=>array('class' => 'disagree', 'onClick' => 'alert("'.$decline_msg.'")')));
+  $agree_label = t('Accept');
+  $agree = l($agree_label, $url, array("attributes"=>array('class' => 'btn btn-primary')));
+  $decline_label = t('Decline');
+  $decline = l($decline_label,'javascript:void(0)',array('fragment' => '','external'=>true,"attributes"=>array('class' => 'disagree', 'onClick' => 'alert("'.$decline_msg.'")')));
 
   return $license['value'].$agree.$decline;
 }

@@ -464,7 +464,7 @@ function querytool_admin_form($form, &$form_state)
 
   $form['querytool_copyright_ru'] = array(
     '#type' => 'textarea',
-    '#default_value' => variable_get('querytool_copyright', ''),
+    '#default_value' => variable_get('querytool_copyright_ru', ''),
     '#title' => t('Russian copyright notice'),
     '#description' => t("The text of the copyright in footer."),
   );

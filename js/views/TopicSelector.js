@@ -10,12 +10,6 @@ var TopicSelector = Backbone.View.extend({
 
     initialize: function() {
 
-        if(qtSettings.user_logged_in == true){
-            $("#datamode").show();
-        }else{
-            $("#datamode").hide();
-        }
-
         $(window).on("resize", this.setMainSize);
         this.setMainSize();
 

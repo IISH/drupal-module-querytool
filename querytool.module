@@ -345,8 +345,10 @@ function _querytool_get_files($root_id)
  */
 function querytool_preprocess_page(&$variables, $hook)
 {
+
+  $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
+
   if (arg(0) == "querytool") {
-    $current_lang = (strlen(arg(2)) !== 2) ? "en" : arg(2);
     $datatype = str_replace("-", ".", arg(1));
     $term = _querytool_get_term($datatype, $current_lang);
     $datatype = $term->field_datatype[LANGUAGE_NONE][0]['value'];

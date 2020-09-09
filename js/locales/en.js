@@ -1,13 +1,12 @@
 /**
  * English translation file for Query Tool
  *
- * version 0.5
+ * version 0.6
  *
  * Update version number when you make changes please.
  */
 var phrases = {
 
-    "close-window-confirm":"Closing the window will end your query for this topic.\nAre you sure?",
 
     "documentation": "Documentation",
 
@@ -16,16 +15,15 @@ var phrases = {
     "historical-description": "Data are expressed in the original categories of the period concerned.",
     "modern": "Modern",
     "modern-description": "Data are expressed in modern categories and classifications, directly comparable over time.",
-    "data-categories-info": "Data in the Electronic Repository are available in two formats - in their 'historical classification', i.e. expressed in the categories used at the time as found in the source, and in a 'modern classification', i.e. expressed and recalculated into categories from modern taxonomies and classifications. The two formats serve different purposes. The historical classification is closest to the source, although unified and systematised, and generally offers a greater level of detail. The modern classification usually distinguishes between a smaller number of categories, but is 100% comparable over time, as well as to other countries and regions when internationally accepted taxonomies have been used. <br><br>For more information, cf. ",
+    "data-categories-info": "Data in the Electronic Repository are available in two formats. <br><br>In their 'historical classification' they are expressed in the categories as found in the source. <br><br> In their 'modern classification' they are expressed and recalculated into categories from modern taxonomies and classifications. <br><br> The two formats serve different purposes. The historical classification is closest to the source, although unified and systematised, and generally offers a greater level of detail. The modern classification usually distinguishes between a smaller number of categories, but is 100% comparable over time. To facilitate comparison to other countries and regions, internationally accepted taxonomies have been used where possible. <br><br>For more information, cf. ",
     "switch-mode-confirm":"Switching mode will reset the screen and all custom selections, are you sure?",
-    "no-modern": "No modern classification for this datatype.",
 
     "choose-year": "Choose year",
-    "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: <br><a href='https://ristat.org/datasets/indicators' target='_blank'>https://ristat.org/datasets/indicators</a>",
+    "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: <br><br><a href='https://ristat.org/catalog' target='_blank'>https://ristat.org/catalog</a>",
     "switch-year-confirm":"Switching year will reset the screen and all your selections, are you sure?",
 
     "choose-regions": "Choose regions",
-    "regions-info": "The Electronic Repository offers data only for the regions which are part of the modern-day Russian Federation (2002). However, for some years and some topics data are also available for other regions of the Russian Empire/Soviet-Union. <br><br>For more information, cf.:",
+    "regions-info": "The Electronic Repository systematically offers data only for the regions which are part of the modern-day Russian Federation (2002). Only for cross-section 1897 data are sometimes available for other regions of the Russian Empire as well. <br><br>For more information, cf.:",
     "select-all": "select all",
     "deselect-all": "deselect all",
     "search": "search",

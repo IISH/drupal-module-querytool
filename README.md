@@ -22,6 +22,8 @@ version 1.1
 - browse to /topics page to see the topics that opens up the tool
 - position the Documentation block 'Data topics with documentation links.' as desired: /admin/structure/block
 
+- setup a cronjob to drupal cron url (get url at /admin/reports/status 'Cron maintenance tasks') for automatic update and import of (new) topics
+
 # Todo
 
 None yet.

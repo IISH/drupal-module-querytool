@@ -3,7 +3,7 @@ var Documentation = Backbone.Model.extend({
     files:[],
 
     url: function() {
-        return querySettings.getDocumentationUrl()
+        return querySettings.getDocumentationUrl();
     },
 
     getFiles: function(){
@@ -22,18 +22,26 @@ var Documentation = Backbone.Model.extend({
         build(); // in App.js
     },
 
-    getLinks: function(match){
+    getLinks: function(match, matchDatatype){
+
+        if (typeof matchDatatype === 'undefined') { matchDatatype = false; }
 
         match = match.toLowerCase();
 
         var matched_files = "";
+        var datatype = querySettings.getDataType();// eg 1.01;
+        var datatypeArray = datatype.split(".");
+        var mainDatatype = datatypeArray[0];
 
         $.each(this.files,function(key, file){
 
             filename = file.name.toLowerCase();
+
             if(filename.indexOf(match) > 0){
-                //matched_files += "<a href='"+file.url+"' target='_blank'>"+polyglot.t("documentation")+"</a> ("+ file.name.substr(file.name.indexOf(".")+1)  +")<br>";\
-                matched_files += "<a href='"+file.url+"' target='_blank'>"+file.name+"</a><br>";
+
+                if(!matchDatatype || (matchDatatype && filename.indexOf("_"+mainDatatype+"_") > 0)){
+                    matched_files += "<a href='"+file.url+"' target='_blank'>"+file.name+"</a><br>";
+                }
             }
         });
 

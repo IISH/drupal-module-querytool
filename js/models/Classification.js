@@ -181,7 +181,6 @@ var Classification = Backbone.Model.extend({
                 classIndex++;
             }
 
-
             // add level 5 to determine if there has to ba an aggregation option (double checkbox)
             if(class5 && !Tree.children[class1].children[class2].children[class3].children[class4].children[class5]){
                 newClass = {"name": class5, "parent":"null", children:{}, class_id: classIndex, level:5, parent_id: Tree.children[class1].children[class2].children[class3].children[class4].class_id, c1:class1, c2:class2, c3:class3, c4:class4,c5:class5};

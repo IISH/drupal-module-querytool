@@ -46,7 +46,7 @@ var TopicSelector = Backbone.View.extend({
     },
 
     setDocumentationLink:function(){
-        matched_files = documentation.getLinks(querySettings.get("base_year"));
+        matched_files = documentation.getLinks(querySettings.get("base_year"),true);
         $("#topicselection .documentation").html(matched_files);
     },
 

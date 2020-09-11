@@ -14,6 +14,10 @@ var QuerySettings = Backbone.Model.extend({
         lang:""
     },
 
+    getDataType: function(){
+        return this.get("datatype");
+    },
+
     getBaseUrl:function(){
         return this.baseUrl;
     },
@@ -32,7 +36,6 @@ var QuerySettings = Backbone.Model.extend({
         }
         urlTail += "datatype="+ this.get("datatype");
         if(this.get("base_year") !== "" && this.get("classmode") == "historical") urlTail += "&base_year="+this.get("base_year");
-       // if(this.get("classmode") !== "") urlTail += "&classification="+this.get("classmode");
         urlTail += "&language="+this.get("lang");
         return this.get("baseUrl") +urlTail;
     },

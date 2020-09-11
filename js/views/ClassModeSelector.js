@@ -46,8 +46,8 @@ var ClassModeSelector = Backbone.View.extend({
     },
 
     setDocumentationLink:function(){
-        var matched_files_modern = documentation.getLinks("Modern_Classification");
-        var matched_files_hist = documentation.getLinks("Historical_Classification");
+        var matched_files_modern = documentation.getLinks("Modern_Classification", true);
+        var matched_files_hist = documentation.getLinks("Historical_Classification", true);
         var docs = matched_files_modern.concat(matched_files_hist);
         $("#classmodeselection .documentation").html("<br>"+ docs);
     },

@@ -36,7 +36,7 @@ var TopicSelector = Backbone.View.extend({
                 }
                 PrevX = event.pageX;
                 PrevY = event.pageY;
-                tc = that.timerCount
+                tc = that.timerCount;
             }
         });
 

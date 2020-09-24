@@ -139,7 +139,6 @@
 
 
 /* CATALOG */
-
 .catalog-topic{
     clear:both;
     width:300px;
@@ -164,14 +163,12 @@
     padding: 4px 8px;
     width:30px;
     height: 16px;
-
     text-align: center;
 }
 
 .catalog-checkbox.topic{
     margin-top:10px;
 }
-
 
 .catalog-checkbox .form-item{
    margin:0

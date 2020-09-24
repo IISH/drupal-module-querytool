@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * @file
+ *
+ * Provides:
+ *  - import functionality for topics on a admin page
+ *  - a file catalog form to download complete per topic datasets
+ *
+ */
+
 
 /**
  * Implements hook_menu().
@@ -49,7 +58,6 @@ function querytool_block_info()
     'region' => "sidebar_first",
     'cache' => DRUPAL_NO_CACHE
   );
-
 
   return $blocks;
 }
@@ -353,10 +361,8 @@ function querytool_catalog_form($form, &$form_state)
         );
       }
 
-      //querytool_render_subtopics_form($form,$vid,$datatype,$term,$label,$years);
 
-
-    } else {
+    } else{
       // render subtopics
       $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
 
@@ -425,69 +431,6 @@ function querytool_catalog_form($form, &$form_state)
 }
 
 
-
-/**
-in progress
-*/
-function querytool_render_subtopics_form(&$form,$vid,$datatype, $parent, $label, $years){
-
-  global $language;
-  $tree = i18n_taxonomy_get_tree($vid, $language->language, $parent->tid, null, true);
-
-  foreach ($tree as $term) {
-
-    $root = $term->field_root_id[LANGUAGE_NONE][0]['value'];
-
-    $parent_terms = taxonomy_get_parents($term->tid);
-    $parent = reset($parent_terms);
-
-    $form['topic_' . $root]['topic_' . $datatype] = array(
-      '#type' => 'fieldset',
-      '#collapsible' => FALSE,
-      '#collapsed' => FALSE,
-    );
-
-    $form['topic_' . $root]['topic_' . $datatype][$datatype . '_markup'] = array(
-      '#markup' => t($label),
-      '#prefix' => '<div class="catalog-subtopic">',
-      '#suffix' => '</div>',
-    );
-
-    $topic_years = isset($term->field_available_years[LANGUAGE_NONE][0]['value']) ? $term->field_available_years[LANGUAGE_NONE][0]['value'] : '';
-    $disable = !(empty($term->field_disable[LANGUAGE_NONE][0]['value']));
-
-
-    foreach ($years as $year) {
-
-      $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
-        '#type' => "checkbox",
-        '#disabled' => true,
-        '#prefix' => '<div class="catalog-checkbox">',
-        '#suffix' => '</div>',
-      );
-
-
-      if (strpos($topic_years, $year) === false || $disable) {
-        $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
-          '#type' => "markup",
-          '#markup' => 'x',
-          '#prefix' => '<div class="catalog-checkbox unavailabe">',
-          '#suffix' => '</div>',
-        );
-      } else {
-        $form['topic_' . $root]['topic_' . $datatype][$datatype . "_" . $year] = array(
-          '#type' => "checkbox",
-          '#theme_wrappers' => array(), // remove the wrapper
-          '#prefix' => '<div class="catalog-checkbox">',
-          '#suffix' => '<span></span></div>',
-        );
-      }
-    }
-  }
-
-  return $form;
-
-}
 
 
 

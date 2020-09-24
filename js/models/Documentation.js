@@ -32,6 +32,7 @@ var Documentation = Backbone.Model.extend({
         var datatype = querySettings.getDataType();// eg 1.01;
         var datatypeArray = datatype.split(".");
         var mainDatatype = datatypeArray[0];
+        var filename;
 
         $.each(this.files,function(key, file){
 
@@ -45,7 +46,7 @@ var Documentation = Backbone.Model.extend({
             }
         });
 
-        return matched_files
+        return matched_files;
     }
 
 });

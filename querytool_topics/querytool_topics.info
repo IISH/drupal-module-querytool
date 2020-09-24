@@ -1,5 +1,5 @@
 name = Query Tool Import
-description = Imports topics from API
+description = Imports topics from API, catalog form
 core = 7.x
 package = Query Tool
 version = 7.x-1.0

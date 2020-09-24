@@ -1,3 +1,6 @@
+/**
+ * Gets topics and structurises data
+ */
 var Classification = Backbone.Model.extend({
 
     classListCollection:null,
@@ -124,7 +127,7 @@ var Classification = Backbone.Model.extend({
         var classes = r.attributes;
         var classMode = querySettings.get("classmode");
 
-        var class1,class2,class3,class4,class5;//,class6;
+        var class1,class2,class3,class4,class5;
         var invalidMessageDisplayed = false;
 
         _.each(classes, function(hclass) {
@@ -135,14 +138,12 @@ var Classification = Backbone.Model.extend({
                 class3  = hclass.class3;
                 class4  = hclass.class4;
                 class5  = hclass.class5;
-           //     class6  = hclass.class6;
             }else{
                 class1  = hclass.histclass1;
                 class2  = hclass.histclass2;
                 class3  = hclass.histclass3;
                 class4  = hclass.histclass4;
                 class5  = hclass.histclass5;
-            //    class6  = hclass.histclass6;
             }
 
             newClass = {};
@@ -192,7 +193,6 @@ var Classification = Backbone.Model.extend({
         });
 
         var maxInterfaceDepth = 5; // starts with 0
-
 
         function loopChildren(obj,depth,parent_id) {
             var childs = new Array();

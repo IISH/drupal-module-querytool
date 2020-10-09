@@ -12,7 +12,6 @@
 #tree-container{
     position: fixed;
     margin:20px;
-  /*  margin-top:0;*/
     width: 96%;
     height: 96%;
     z-index: 899;
@@ -34,9 +33,6 @@
     padding:4px 10px;
     background-color: #DDD;
 }
-
-
-
 
 .node {
     cursor: pointer;

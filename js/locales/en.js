@@ -7,6 +7,7 @@
  */
 var phrases = {
 
+    "close-window-confirm":"Closing the window will end your query for this topic.\nAre you sure?",
 
     "documentation": "Documentation",
 
@@ -17,6 +18,7 @@ var phrases = {
     "modern-description": "Data are expressed in modern categories and classifications, directly comparable over time.",
     "data-categories-info": "Data in the Electronic Repository are available in two formats. <br><br>In their 'historical classification' they are expressed in the categories as found in the source. <br><br> In their 'modern classification' they are expressed and recalculated into categories from modern taxonomies and classifications. <br><br> The two formats serve different purposes. The historical classification is closest to the source, although unified and systematised, and generally offers a greater level of detail. The modern classification usually distinguishes between a smaller number of categories, but is 100% comparable over time. To facilitate comparison to other countries and regions, internationally accepted taxonomies have been used where possible. <br><br>For more information, cf. ",
     "switch-mode-confirm":"Switching mode will reset the screen and all custom selections, are you sure?",
+    "no-modern": "No modern classification for this datatype.",
 
     "choose-year": "Choose year",
     "year-info": "The indicated years are benchmark years. All efforts have been made to find data exactly for these years, but when these were not available data for the nearest adjacent year have been included in the data-set. For information on the exact year that a particular figure in the database relates to the user has to access the data-set in full database-format in the file catalogue: <br><br><a href='https://ristat.org/catalog' target='_blank'>https://ristat.org/catalog</a>",

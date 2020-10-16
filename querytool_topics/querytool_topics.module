@@ -635,13 +635,6 @@ function querytool_topics_import($delete = FALSE, $output_terms = true)
       $term_ru = $indexed_terms_ru[$topic->topic_id];
       $term_ru->name = $topic->topic_name_rus;
 
-      $years = array_keys(get_object_vars($topic->byear_counts));
-      $years_str = implode(",", $years);
-      $term->field_available_years = array(LANGUAGE_NONE => array(array('value' => $years_str)));
-      $term_ru->field_available_years = array(LANGUAGE_NONE => array(array('value' => $years_str)));
-
-
-
       if($output_terms){
         $output .= $topic->datatype . " - " . $topic->topic_name . " updated<br>";
       }

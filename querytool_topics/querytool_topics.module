@@ -431,9 +431,6 @@ function querytool_catalog_form($form, &$form_state)
 }
 
 
-
-
-
 /**
  * Implements hook_form_submit().
  *

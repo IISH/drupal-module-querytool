@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
             var subtopics = $(this).closest("fieldset.topic").find("input[name*='"+year+"']");
             var count = subtopics.length-1; // exclude itself
 
-            if( count == 0){
+            if( count === 0){
                 $(this).parent().addClass("unavailabe");
                 $(this).parent().html("x");
             }else{
@@ -51,6 +51,21 @@ jQuery(document).ready(function ($) {
             $("#edit-topic-1").css("margin-top",20);
         }
     }
+
+
+    /**
+     * Check if there is at least 1 selected item.
+     */
+    $("#querytool-catalog-form").submit(function () {
+
+        var checkboxCount = $("input:checked[type=checkbox]").length;
+
+        if (checkboxCount  === 0) {
+            Drupal.t("You must select at least 1 item.");
+            return false;
+        }
+
+    });
 });
 
 

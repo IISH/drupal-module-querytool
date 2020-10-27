@@ -61,7 +61,8 @@ jQuery(document).ready(function ($) {
         var checkboxCount = $("input:checked[type=checkbox]").length;
 
         if (checkboxCount  === 0) {
-            Drupal.t("You must select at least 1 item.");
+            var msg = Drupal.t("Please select at least 1 checkbox.");
+            alert(msg);
             return false;
         }
 
